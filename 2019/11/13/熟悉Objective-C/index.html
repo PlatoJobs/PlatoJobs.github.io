@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>熟悉Objective-C - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="熟悉Objective-C">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-11-13 16:36" pubdate>
+        2019年11月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      35
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">熟悉Objective-C</h1>
+            
+            <div class="markdown-body">
+              <h3 id="了解Objective-C语言"><a href="#了解Objective-C语言" class="headerlink" title="了解Objective-C语言"></a>了解Objective-C语言</h3><ol>
+<li>消息与函数调用的区别：（oc消息结构和c++函数调用）<br>使用消息结构的语言，其运行时所应执行的代码由运行时环境决定；而使用函数调用的语言，则由编译器决定。<br>如果函数的调用是多态的，那么在运行时姐要按照“virtual table”来查出到底应该执行哪个函数实现。而采用消息结构的语言，不论是多态，总是在运行时才会查找所要执行的方法。实际上，编译器甚至不关心接收消息的对象是何种类型。接收消息的对象问题也要在运行时处理，也就是<a target="_blank" rel="noopener" href="https://platojobs.github.io">oc的动态绑定</a>。</li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">// oc对象所占内存总是分配在堆空间</span><br><span class="hljs-built_in">NSString</span> * someThing = <span class="hljs-string">@&quot;string&quot;</span>;<br><span class="hljs-built_in">NSString</span> *anoterTing = someThing;<br><br></code></pre></td></tr></table></figure>
+<p><code>someThing</code>变量指向分配在堆里的某块内存，其中含有一个<code>NSString</code>对象，也就是说，如果再创建一个变量<code>anoterTing</code>，只是指向同一个地址，那么并不拷贝该对象，只是这两个变量会同时指向此对象。</p>
+<p>只有一个<code>NSString</code>对象，然而有两个变量指向此实例。两个变量都是<code>NSString*</code>类型，这说明当前<code>stack frame</code>里分配了两块内存，每块内存的大小都能容下一枚指针（32位是4字节，64位是8字节）。两块内存的值都一样，就是实例的内存地址。也就是说有两个分配在栈上的指针指向该堆上的实例。</p>
+<blockquote>
+<p> oc为c语言添加了面向对象特性，是其超集。oc使用动态绑定的消息结构，也就是说，在运行时才会检查对象类型。接收一条消息以后，究竟执行何种代码，由运行时环境而非编译器决定。</p>
+</blockquote>
+<h3 id="在类的头文件中尽量少引入其他头文件"><a href="#在类的头文件中尽量少引入其他头文件" class="headerlink" title="在类的头文件中尽量少引入其他头文件"></a>在类的头文件中尽量少引入其他头文件</h3><blockquote>
+<p>有的时候我们只是使用一个类，并不需要知道这个类的全部细节，只需要知道有这个类，那么就需要用到：<code>@class 类名</code>,这就叫做<code>向前声明</code>该类。但是在用到这个类的实现文件里还是要用到引入这个类的<code>.h</code>文件</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">PlatoJobsObj</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">PJObjc</span> : <span class="hljs-title">NSObject</span></span><br><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">copy</span>)<span class="hljs-built_in">NSSting</span> * fname;<br><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">copy</span>)<span class="hljs-built_in">NSSting</span> * sname;<br><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>,<span class="hljs-keyword">strong</span>)PlatoJobsObj * person;<br><br><span class="hljs-keyword">@end</span><br><br><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;PJObjc.h&quot;</span></span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;PlatoJobsObj.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">PJObjc</span></span><br><br><span class="hljs-comment">// Implementation of methods</span><br><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//将引入头文件的时机尽量延后，只在确有需要的时候才去引入，这样就可以减少类的使用者所需引入的头文件的数量，如果不用这种方式，直接引入，那么就会增加编译时间.</span><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p><code>向前声明</code>也解决了两个类的相互引用的问题.</p>
+</blockquote>
+<ul>
+<li>类的头文件互引用事例：<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">// A.h</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;B.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">A</span> : <span class="hljs-title">NSObject</span>    </span><br><br><span class="hljs-keyword">@end</span><br><br><br><span class="hljs-comment">//B.h</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;A.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">B</span> : <span class="hljs-title">NSObject</span> </span><br><br><span class="hljs-keyword">@end</span><br><br><br><span class="hljs-comment">//这样就会出一个无限循环的拷贝状态。无法编译成功</span><br><br></code></pre></td></tr></table></figure></li>
+<li>解决类的头文件互引用方法</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//用关键字：@class 类名。</span><br><span class="hljs-comment">//关键字说明：在编译时，告诉编译器有一个类叫 “类名”。</span><br><span class="hljs-comment">//用法：在两个类A,B的声明中，A.h文件中换成@class B，并A.m文件中导入B.h；也可在B.h文件中换成@class A，并在B.m文件中导入A.h，只要不形成 无限循环的拷贝状态 即可。</span><br><br>   <br><span class="hljs-comment">// A.h</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">B</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">A</span> : <span class="hljs-title">NSObject</span>   </span><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//B.h</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">A</span>;</span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">B</span> : <span class="hljs-title">NSObject</span> </span><br><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//优点：即可以解决无限循环的拷贝状态，也可以减少编译的时间。因为在编译的时候 导入.h文件也就是一个拷贝的过程。</span><br><br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>成员变量的 手动管理对象引用计数器<code>(MRC)</code>被循环判断且循环执行<code>dealloc</code>对象方法 和 内存泄漏问题<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//前提：两个类A和B，A类中有类型为B的成员变量 _b，B类中有类型为A的成员变量 _a</span><br><br><span class="hljs-comment">//A类的成员变量 _b 的set / get 方法：@property (nonatomic ,retain)B * b ;</span><br><br><span class="hljs-comment">//B类的成员变量 _a 的set / get 方法：@property (nonatomic ,retain)A * a ;</span><br><br><span class="hljs-comment">//实现了dealloc对象方法：- (void) dealloc&#123;  [ name release] ;   [surper dealloc] ;  &#125; //name = _a 或 _b</span><br><br><span class="hljs-comment">//main函数体如下:</span><br><br>   A * pa = [ [A alloc] init ] ;  <span class="hljs-comment">// pa引用计数 = 1</span><br><br>   B * pb = [ [B alloc] init ] ;  <span class="hljs-comment">// pb引用计数 = 1</span><br><br>   [pa setB: pb] ;  <span class="hljs-comment">// pb引用计数 = 2</span><br><br>   [pb setA: pa] ;  <span class="hljs-comment">// pa引用计数 = 2</span><br><br><span class="hljs-comment">// 一个alloc 对应一个 release</span><br><br>   [pb release] ;  <span class="hljs-comment">// pb引用计数 = 1</span><br><br>   [pa release] ;  <span class="hljs-comment">// pa引用计数 = 1</span><br><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>(1)问题：上面main函数体的代码出现内存泄漏： 两个对象引用计数 都等于1，在堆里面开辟的空间没有清空。两个对象都没有调用dealloc对象方法。<br>如果上面的<code>[pb setA: pa]</code>; 这行代码去掉，那么会在<code>[pa release]</code>; 这行代码， <code>pa</code>引用计数 = 0 ,会无限循环调用A类dealloc,B类dealloc , _a是个野指针，出现报错。<br>(2)解决方案：两个类中<code>set</code>方法管理内存，一个用<code>retain</code> , 一个用<code>assign</code>。<br>在两类中做如下更改：  在<code>A</code>类：<code>@property (nonatomic ,retain)B * b;</code>在<code>B</code>类：<code>@property (nonatomic ,assign)A * a ;</code><br>问题：<code>strong</code>对象的指针出现了循环互引用。这样就会导致在一个相互指向的循环圈内的对象内存不能被释放，出现内存泄漏问题.<br>解决：一端用<code>strong</code>类型指针，一端用<code>weak</code>类型指针。只要没有出现强指针类型的对象循环指向就可以解决该问题。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>小结：对于头文件互引用问题，解决方法：在头文件中用@class 类名 ; 告诉编译器有那么一个类。对于对象出现的互引用问题，<br><em>解决方法</em>：<br><code>ARC</code>：一端用<code>strong</code> 类型指针，一端用<code>weak</code>类型指针。<br><code>MRC</code>：一端用 <code>retain</code>类型指针，一端用<code>assign</code> 类型指针。</p>
+</blockquote>
+<hr>
+<h3 id="多用字面量语法，少用与之等价的方法"><a href="#多用字面量语法，少用与之等价的方法" class="headerlink" title="多用字面量语法，少用与之等价的方法"></a>多用字面量语法，少用与之等价的方法</h3><h4 id="字面数值和字面数组"><a href="#字面数值和字面数组" class="headerlink" title="字面数值和字面数组"></a>字面数值和字面数组</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//字面量创建字符串</span><br><span class="hljs-built_in">NSString</span> * someTh =<span class="hljs-string">@&quot;PlatoJobs&quot;</span>;<br><span class="hljs-comment">//数值</span><br><span class="hljs-built_in">NSNumber</span> * someNum = [<span class="hljs-built_in">NSNumber</span> numberWithInt: <span class="hljs-number">30</span>];<br><span class="hljs-comment">//使用字面量数值</span><br><span class="hljs-built_in">NSNumber</span> * someNum = @<span class="hljs-number">30</span>;<br><br><span class="hljs-comment">//字面量数组</span><br><span class="hljs-built_in">NSArray</span> *persons = @[<span class="hljs-string">@&quot;习近平&quot;</span>,<span class="hljs-string">@&quot;胡锦涛&quot;</span>,<span class="hljs-string">@&quot;江泽民&quot;</span>,<span class="hljs-string">@&quot;毛泽东&quot;</span>];<br><span class="hljs-comment">//字面量取值</span><br><span class="hljs-built_in">NSString</span> * xijinping = persons[<span class="hljs-number">0</span>];  <span class="hljs-comment">//也是subscripting</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>字面量语法创建数组时候⚠️：若数组元素对象中有nil，那么则会抛出异常，因为字面量语法<br>实际上只是一种<code>语法糖</code>，其效果等于先创建了一个数组，然后把方括号内的所有对象添加到数组中。</p>
+</blockquote>
+<p>常见异常如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><br>*** Terminating app due to uncaught exception <br><span class="hljs-string">&#x27;NSInvalidArgumentException&#x27;</span>, reason: <span class="hljs-string">&#x27;*** </span><br><span class="hljs-string">-[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil object from objects[0]&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>那么问题来了：</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-built_in">NSArray</span> * arrayA = [<span class="hljs-built_in">NSArray</span> arrayWithObjects:objc1,objc2,objc3,<span class="hljs-literal">nil</span>];<span class="hljs-comment">//方法1</span><br><br><span class="hljs-built_in">NSArray</span> * arrayB =@[objc1,objc2,objc3]; <br><br><span class="hljs-comment">//如果objc2=nil；那么arrayA只有一个元素，由于objc2=nil，方法1会提前结束。</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h4 id="字面字典"><a href="#字面字典" class="headerlink" title="字面字典"></a>字面字典</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-built_in">NSDictionary</span> *person =[<span class="hljs-built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:<span class="hljs-string">@&quot;value1&quot;</span>,<span class="hljs-string">@&quot;key1&quot;</span>,<span class="hljs-string">@&quot;value2&quot;</span>,<span class="hljs-string">@&quot;key2&quot;</span>,<span class="hljs-string">@&quot;value3&quot;</span>,<span class="hljs-string">@&quot;key3&quot;</span>, <span class="hljs-literal">nil</span>];<br>  <br><span class="hljs-comment">//字面量</span><br><span class="hljs-built_in">NSDictionary</span>* peronDic =@&#123;<span class="hljs-string">@&quot;key1&quot;</span>:<span class="hljs-string">@&quot;value1&quot;</span>,<span class="hljs-string">@&quot;key2&quot;</span>:<span class="hljs-string">@&quot;value2&quot;</span>,<span class="hljs-string">@&quot;key3&quot;</span>:<span class="hljs-string">@&quot;value3&quot;</span>&#125;;<br>   <br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>字面量的缺点：除了字符串之外，所创建出来的对象必须属于<code>Foundation</code>框架才行。如果是自定义了这些类的子类，则无法用字面量语法创建其对象。要想创建自定义子类的实例，必须用非字面量语法。由于<code>NSArray,NSDictionary,NSNumber</code>都是业已定型的子簇，因此很少会有人自定义子类。创建字符串时可以使用自定义的子类，然而必须要修改编译器的选项才行，除非你清楚这样做的后果。否则不鼓励。</p>
+</blockquote>
+<hr>
+<h3 id="多用类型常量，少用-define-预处理指令"><a href="#多用类型常量，少用-define-预处理指令" class="headerlink" title="多用类型常量，少用#define 预处理指令"></a>多用类型常量，少用#define 预处理指令</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> AMin 1.9  <span class="hljs-comment">//预处理指令</span></span><br><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">CGFloat</span> aMin = <span class="hljs-number">1.8</span>;  <span class="hljs-comment">//类型常量</span><br><br><br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>类型常量包含<strong>类型信息</strong>，好处是清楚地描述了常量的含义。由此可知该常量类型<code>CGFloat</code>，后续阅读代码的人比较理解其意图。</p>
+</li>
+<li><p>若不打算公开某个常量，则应将其定义在使用该常量的实现文件里。</p>
+</li>
+<li><p>变量一定要用<code>static</code>与<code>const</code>声明。试图修改由<code>const</code>修饰符所声明的变量，那么编译器会报错。</p>
+</li>
+<li><p>有时候需要对外公开某个常量，比如说通知名称，而这个名称就可以声明为一个外界可见的常值变量。此类常量需放在<code>全局符号表</code>中，以便可以在定义该常量的编译单元之外使用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// In the header file</span><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs<br><br><span class="hljs-comment">//In the implementation file</span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs=<span class="hljs-string">@&quot;PlatoJobs&quot;</span>;<span class="hljs-comment">//常量类型应从右至左解读</span><br><br><br></code></pre></td></tr></table></figure>
+<p>此类常量必须定义一次，而且只能定义一次，通常将其定义在与声明该常量的头文件相关的实现文件里。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//PlatoJobsManager.h</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff;<br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">PJLoginManager</span> : <span class="hljs-title">NSObject</span></span><br><br>-(<span class="hljs-keyword">void</span>)login;<br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//PlatoJobsManager.m</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;PJLoginManager.h&quot;</span></span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff =<span class="hljs-string">@&quot;PlatoJobsLoginNotification&quot;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">PJLoginManager</span></span><br><br>-(<span class="hljs-keyword">void</span>)login&#123;<br><br><span class="hljs-comment">//Perform login method</span><br><br>&#125;<br><br>-(<span class="hljs-keyword">void</span>)pj_didLogin&#123;<br><br>[<span class="hljs-built_in">NSNotificationCenter</span> defaultCenter]postNotificationName:PJLoginManagerNoticeff object:<span class="hljs-literal">nil</span>];<br>  <br>&#125;<br><br><span class="hljs-comment">//避免常量名字冲突，最好用与之相关的类名做前缀。</span><br><br><span class="hljs-keyword">@end</span><br><br></code></pre></td></tr></table></figure>
+<p>那么其他类型的常量也是如此</p>
+</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// PJAnimatView.h</span><br><span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> PJAniationDuration;<br><br><span class="hljs-comment">// PJAnimatView.m</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> PJAniationDuration = <span class="hljs-number">0.8</span>;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>不要使用预处理指令定义常量，如果有人重新定义了此值，编译器也不会警告，这将导致应用程序中的常量值不一致。</li>
+</ul>
+</blockquote>
+<ul>
+<li>实现文件中使用 <code>static const</code>定义的只在编译单元内可见的常量，无须为其加前缀，要加就加<code>k</code>加一区分。</li>
+<li><code>extern</code>来声明的全局常量，要在其前加类名前缀，来做区分，而且好查找。</li>
+</ul>
+<hr>
+<h3 id="用枚举便是状态、选项、状态码-enum"><a href="#用枚举便是状态、选项、状态码-enum" class="headerlink" title="用枚举便是状态、选项、状态码 enum"></a>用枚举便是状态、选项、状态码 <code>enum</code></h3><p>枚举只是一种常量命名方式。某个对象经历的各种状态就可以定义为一个简单的枚举集。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//NS_ENUM 定义的枚举</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSUInteger</span>, PlatoJobsConnectState) &#123;<br>    PlatoJobsConnectStateDisconnected,<br>    PlatoJobsConnectStateConnecting,<br>    PlatoJobsConnectStateConnected,<br>&#125;;<br><br><span class="hljs-comment">//NS_OPTIONS 定义的枚举</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, PlatoJobsDirection)&#123;<br>    <br>    PlatoJobsDirectionUp =<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">0</span>,<br>    <br>    PlatoJobsDirectionDown = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">1</span>,<br>    <br>    PlatoJobsDirectionLeft = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">2</span>,<br>    <br>    PlatoJobsDirectionRight = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">3</span>,<br><br>&#125;;<br><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIViewAutoresizing</span>) &#123;<br>    <span class="hljs-built_in">UIViewAutoresizingNone</span>                 = <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleLeftMargin</span>   = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleWidth</span>        = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">1</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleRightMargin</span>  = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleTopMargin</span>    = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleHeight</span>       = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">4</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleBottomMargin</span> = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">5</span><br> &#125;;<br><br><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>应该用枚举来表示状态机的状态，传递给方法的选项以及状态码等值，给这些值起个易懂的名字。</li>
+</ul>
+</blockquote>
+<ul>
+<li>如果把传递给某个方法的选项表示为枚举类型，而多个选项又可以同时使用，那么就将各选项值定义为2的幂，以便通过位或操作将其组合起来。</li>
+<li><code>NS_ENUM</code> 和 <code>NS_OPTIONS</code>宏来定义枚举类型，并指明底层数据类型。这么做可以确保枚举是用开发者所选的底层数据类型实现出来的，而不会采用编译器所选的类型。</li>
+<li>在处理枚举类型的switch语句中不要实现default分支。这样的话，加入新枚举之后，编译器就会提示开发者：switch语句并没有处理所有枚举。</li>
+</ul>
+<p><code>我们总是习惯在 switch 语句中加上 default 分支。然而，若是用枚举来定义状态机（state machine）,则最好不要有 default 分支。这样的话，如果稍后又加了一种状态，那么编译器就会发出警告信息，提示新加入的状态并未在 switch 分支中处理。假如写上了 default 分支，那么它就会处理这个新状态，从而导致编译器不发出警告信息。用 NS_ENUM 定义其他枚举类型时也要注意此问题。例如，在定义代表 UI 元素的枚举时，通常要确保 switch 语句能正确处理所有样式。</code></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/%E4%B9%A6%E9%98%85/">书阅</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E9%9D%A2%E9%87%8F/">字面量</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B1%BB%E5%9E%8B%E5%B8%B8%E9%87%8F/">类型常量</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9E%9A%E4%B8%BE/">枚举</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Lookin 的使用</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/12/NSOperation%E3%80%81NSOperationQueue%E3%80%81NSThread-runloop%E5%AE%9E%E7%8E%B0%E5%B8%B8-%E9%A9%BB%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8A%A0%E9%94%81/">
+                        <span class="hidden-mobile">NSOperation、NSOperationQueue、NSThread+runloop实现常驻线程、加锁</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,767 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>NSOperation、NSOperationQueue、NSThread+runloop实现常驻线程、加锁 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="NSOperation、NSOperationQueue、NSThread+runloop实现常驻线程、加锁">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-11-12 09:33" pubdate>
+        2019年11月12日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      88
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">NSOperation、NSOperationQueue、NSThread+runloop实现常驻线程、加锁</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li><p><code>NSOperationQueue</code>的优点</p>
+</li>
+<li><p><code>NSOperation</code>和<code>NSOperationQueue</code></p>
+</li>
+<li><p><code>NSThread+runloop</code>实现常驻线程</p>
+</li>
+<li><p>自旋锁与互斥锁</p>
+</li>
+</ul>
+<hr>
+<h4 id="一、NSOperationQueue的优点"><a href="#一、NSOperationQueue的优点" class="headerlink" title="一、NSOperationQueue的优点"></a>一、NSOperationQueue的优点</h4><p><code>NSOperation、NSOperationQueue</code> 是苹果提供给我们的一套多线程解决方案。实际上 <code>NSOperation、NSOperationQueue</code> 是基于<code>GCD</code>更高一层的封装，完全面向对象。但是比 GCD 更简单易用、代码可读性也更高。</p>
+<ol>
+<li><p>可以添加任务依赖，方便控制执行顺序.</p>
+</li>
+<li><p>可以设定操作执行的优先级.</p>
+</li>
+<li><p>任务执行状态控制:<code>isReady,isExecuting,isFinished,isCancelled</code></p>
+</li>
+</ol>
+<p>如果只是重写<code>NSOperation</code>的<code>main</code>方法，由底层控制变更任务执行及完成状态，以及任务退出<br>如果重写了NSOperation的start方法，自行控制任务状态系统通过KVO的方式移除isFinished==YES的<code>NSOperation</code>.</p>
+<ol start="4">
+<li>可以设置最大并发量.</li>
+</ol>
+<h4 id="二、NSOperation和NSOperationQueue"><a href="#二、NSOperation和NSOperationQueue" class="headerlink" title="二、NSOperation和NSOperationQueue"></a>二、NSOperation和NSOperationQueue</h4><ul>
+<li>操作（Operation）：</li>
+</ul>
+<p>执行操作的意思，换句话说就是你在线程中执行的那段代码。<br>在<code>GCD</code>中是放在<code>block</code> 中的。在<code>NSOperation</code> 中，使用 <code>NSOperation</code>子类 <code>NSInvocationOperation</code>、<code>NSBlockOperation</code>，或者自定义子类来封装操作。</p>
+<ul>
+<li>操作队列（Operation Queues）：</li>
+</ul>
+<p>这里的队列指操作队列，即用来存放操作的队列。不同于 GCD 中的调度队列 FIFO（先进先出）的原则。NSOperationQueue 对于添加到队列中的操作，首先进入准备就绪的状态（就绪状态取决于操作之间的依赖关系），然后进入就绪状态的操作的开始执行顺序（非结束执行顺序）由操作之间相对的优先级决定（优先级是操作对象自身的属性）。<br>操作队列通过设置<code>最大并发操作数</code>（maxConcurrentOperationCount）来控制并发、串行。<br>NSOperationQueue 为我们提供了两种不同类型的队列：主队列和自定义队列。主队列运行在主线程之上，而自定义队列在后台执行。</p>
+<blockquote>
+<p>为什么要使用 <code>NSOperation、NSOperationQueue</code>？</p>
+</blockquote>
+<ul>
+<li>可添加完成的代码块，在操作完成后执行。</li>
+<li>添加操作之间的依赖关系，方便的控制执行顺序。</li>
+<li>设定操作执行的优先级。</li>
+<li>可以很方便的取消一个操作的执行。</li>
+<li>使用 KVO 观察对操作执行状态的更改：isExecuteing、isFinished、isCancelled。</li>
+</ul>
+<h5 id="NSOperation、NSOperationQueue-使用步骤"><a href="#NSOperation、NSOperationQueue-使用步骤" class="headerlink" title="NSOperation、NSOperationQueue 使用步骤"></a>NSOperation、NSOperationQueue 使用步骤</h5><p><code>NSOperation</code> 需要配合 <code>NSOperationQueue</code>来实现多线程。因为默认情况下，NSOperation 单独使用时系统同步执行操作，配合 NSOperationQueue 我们能更好的实现异步执行。</p>
+<p><code>NSOperation</code> 实现多线程的使用步骤分为三步：</p>
+<ul>
+<li>创建操作：先将需要执行的操作封装到一个 <code>NSOperation</code>对象中。</li>
+<li>创建队列：创建 <code>NSOperationQueue</code> 对象。</li>
+<li>将操作加入到队列中：将 <code>NSOperation</code> 对象添加到<code>NSOperationQueue</code> 对象中。<br>之后呢，系统就会自动将 <code>NSOperationQueue</code> 中的 <code>NSOperation</code> 取出来，在新线程中执行操作。</li>
+</ul>
+<h5 id="NSOperation-和-NSOperationQueue-基本使用"><a href="#NSOperation-和-NSOperationQueue-基本使用" class="headerlink" title="NSOperation 和 NSOperationQueue 基本使用"></a>NSOperation 和 NSOperationQueue 基本使用</h5><h6 id="创建操作"><a href="#创建操作" class="headerlink" title="创建操作"></a>创建操作</h6><p><code>NSOperation</code>是个抽象类，不能用来封装操作。我们只有使用它的子类来封装操作。我们有三种方式来封装操作。</p>
+<ul>
+<li>使用子类 NSInvocationOperation</li>
+<li>使用子类 NSBlockOperation</li>
+<li>自定义继承自 NSOperation 的子类，通过实现内部相应的方法来封装操作。<br>在不使用 NSOperationQueue，单独使用 NSOperation 的情况下系统同步执行操作，下面我们学习以下操作的三种创建方式。</li>
+</ul>
+<p>1.使用子类 <code>NSInvocationOperation</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用子类 NSInvocationOperation</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)useInvocationOperation &#123;<br><br>    <span class="hljs-comment">// 1.创建 NSInvocationOperation 对象</span><br>    <span class="hljs-built_in">NSInvocationOperation</span> *op = [[<span class="hljs-built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(task1) object:<span class="hljs-literal">nil</span>];<br><br>    <span class="hljs-comment">// 2.调用 start 方法开始执行操作</span><br>    [op start];<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 任务1</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)task1 &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>        [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>        <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="1877784-8adc1a81b44170e6.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看到：在其他线程中单独使用子类 <code>NSInvocationOperation</code>，操作是在当前调用的其他线程执行的，并没有开启新线程。</p>
+</blockquote>
+<ol start="2">
+<li>使用子类 <code>NSBlockOperation</code></li>
+</ol>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用子类 NSBlockOperation</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)useBlockOperation &#123;<br><br>    <span class="hljs-comment">// 1.创建 NSBlockOperation 对象</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 2.调用 start 方法开始执行操作</span><br>    [op start];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-bfec9a19f48614b07.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看到：在没有使用 <code>NSOperationQueue</code>、在主线程中单独使用 <code>NSBlockOperation</code> 执行一个操作的情况下，操作是在当前线程执行的，并没有开启新线程。</p>
+</blockquote>
+<p><code>注意：和上边</code>NSInvocationOperation<code>使用一样。因为代码是在主线程中调用的，所以打印结果为主线程。如果在其他线程中执行操作，则打印结果为其他线程。</code></p>
+<p>但是，<code>NSBlockOperation</code> 还提供了一个方法 <code>addExecutionBlock:</code>，通过 <code>addExecutionBlock:</code> 就可以为 <code>NSBlockOperation</code> 添加额外的操作。这些操作（包括 <code>blockOperationWithBlock</code> 中的操作）可以在不同的线程中同时（并发）执行。只有当所有相关的操作已经完成执行时，才视为完成。</p>
+<p>如果添加的操作多的话，<code>blockOperationWithBlock:</code> 中的操作也可能会在其他线程（非当前线程）中执行，这是由系统决定的，并不是说添加到 <code>blockOperationWithBlock:</code>中的操作一定会在当前线程中执行。（可以使用 addExecutionBlock: 多添加几个操作试试）。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用子类 NSBlockOperation</span><br><span class="hljs-comment"> * 调用方法 AddExecutionBlock:</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)useBlockOperationAddExecutionBlock &#123;<br><br>    <span class="hljs-comment">// 1.创建 NSBlockOperation 对象</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 2.添加额外的操作</span><br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;4---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;5---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;6---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;7---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;8---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 3.调用 start 方法开始执行操作</span><br>    [op start];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="1877784-86c1302fa13acc83.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：使用子类 <code>NSBlockOperation</code>，并调用方法 <code>AddExecutionBlock:</code> 的情况下，<code>blockOperationWithBlock:</code>方法中的操作 和<code>addExecutionBlock:</code> 中的操作是在不同的线程中异步执行的。而且，这次执行结果中 <code>blockOperationWithBlock:</code>方法中的操作也不是在当前线程（主线程）中执行的。从而印证了<code>blockOperationWithBlock:</code>中的操作也可能会在其他线程（非当前线程）中执行。</p>
+</blockquote>
+<p>一般情况下，如果一个 <code>NSBlockOperation</code> 对象封装了多个操作。<code>NSBlockOperation</code> 是否开启新线程，取决于操作的个数。如果添加的操作的个数多，就会自动开启新线程。当然开启的线程数是由系统来决定的。</p>
+<ol start="3">
+<li>使用自定义继承自 <code>NSOperation</code>的子类</li>
+</ol>
+<p>如果使用子类 <code>NSInvocationOperation</code>、<code>NSBlockOperation</code> 不能满足日常需求，我们可以使用自定义继承自 <code>NSOperation</code> 的子类。可以通过重写<code>main</code> 或者 start 方法 来定义自己的 <code>NSOperation</code> 对象。重写<code>main</code>方法比较简单，我们不需要管理操作的状态属性 <code>isExecuting</code> 和 <code>isFinished</code>。当 <code>main</code> 执行完返回的时候，这个操作就结束了。</p>
+<p>先定义一个继承自 <code>NSOperation</code> 的子类，重写<code>main</code>方法。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// YSCOperation.h 文件</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">YSCOperation</span> : <span class="hljs-title">NSOperation</span></span><br><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">// YSCOperation.m 文件</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;YSCOperation.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">YSCOperation</span></span><br><br>- (<span class="hljs-keyword">void</span>)main &#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">self</span>.isCancelled) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>];<br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]);<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<p>然后使用的时候导入头文件<code>YSCOperation.h</code>。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用自定义继承自 NSOperation 的子类</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)useCustomOperation &#123;<br>    <span class="hljs-comment">// 1.创建 YSCOperation 对象</span><br>    YSCOperation *op = [[YSCOperation alloc] init];<br>    <span class="hljs-comment">// 2.调用 start 方法开始执行操作</span><br>    [op start];<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="1877784-3ed047566df45382.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：在没有使用 <code>NSOperationQueue</code>、在主线程单独使用自定义继承自 <code>NSOperation</code>的子类的情况下，是在主线程执行操作，并没有开启新线程。</p>
+</blockquote>
+<p>下边我们来讲讲 <code>NSOperationQueue</code>的创建。</p>
+<h5 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h5><ol>
+<li>创建队列</li>
+</ol>
+<blockquote>
+<p><code>NSOperationQueue</code> 一共有两种队列：主队列、自定义队列。其中自定义队列同时包含了串行、并发功能。下边是主队列、自定义队列的基本创建方法和特点。</p>
+</blockquote>
+<ul>
+<li>主队列<br>凡是添加到主队列中的操作，都会放到主线程中执行（注：不包括操作使用addExecutionBlock:添加的额外操作，额外操作可能在其他线程执行）。</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">// 主队列获取方法</span><br><span class="hljs-built_in">NSOperationQueue</span> *queue = [<span class="hljs-built_in">NSOperationQueue</span> mainQueue];<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>自定义队列（非主队列）</li>
+</ul>
+<p>添加到这种队列中的操作，就会自动放到子线程中执行。<br>同时包含了：串行、并发功能。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// 自定义队列创建方法</span><br><span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>将操作加入到队列中</li>
+</ol>
+<p>上边我们说到<code>NSOperation</code>需要配合<code>NSOperationQueue</code>来实现多线程。</p>
+<p>那么我们需要将创建好的操作加入到队列中去。总共有两种方法：</p>
+<ul>
+<li>2.1 <code>- (void)addOperation:(NSOperation *)op;</code></li>
+</ul>
+<p>需要先创建操作，再将创建好的操作加入到创建好的队列中去</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用 addOperation: 将操作加入到操作队列中</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)addOperationToQueue &#123;<br><br>    <span class="hljs-comment">// 1.创建队列</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br><br>    <span class="hljs-comment">// 2.创建操作</span><br>    <span class="hljs-comment">// 使用 NSInvocationOperation 创建操作1</span><br>    <span class="hljs-built_in">NSInvocationOperation</span> *op1 = [[<span class="hljs-built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(task1) object:<span class="hljs-literal">nil</span>];<br><br>    <span class="hljs-comment">// 使用 NSInvocationOperation 创建操作2</span><br>    <span class="hljs-built_in">NSInvocationOperation</span> *op2 = [[<span class="hljs-built_in">NSInvocationOperation</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(task2) object:<span class="hljs-literal">nil</span>];<br><br>    <span class="hljs-comment">// 使用 NSBlockOperation 创建操作3</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op3 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [op3 addExecutionBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;4---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 3.使用 addOperation: 添加所有操作到队列中</span><br>    [queue addOperation:op1]; <span class="hljs-comment">// [op1 start]</span><br>    [queue addOperation:op2]; <span class="hljs-comment">// [op2 start]</span><br>    [queue addOperation:op3]; <span class="hljs-comment">// [op3 start]</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-f31a03ee66c365e5.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：使用 <code>NSOperation</code> 子类创建操作，并使用 <code>addOperation:</code> 将操作加入到操作队列后能够开启新线程，进行并发执行。</p>
+</blockquote>
+<ul>
+<li>2.2 <code>- (void)addOperationWithBlock:(void (^)(void))block;</code></li>
+</ul>
+<blockquote>
+<p>无需先创建操作，在 block 中添加操作，直接将包含操作的 block 加入到队列中。</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用 addOperationWithBlock: 将操作加入到操作队列中</span><br><span class="hljs-comment"> */</span><br><br>- (<span class="hljs-keyword">void</span>)addOperationWithBlockToQueue &#123;<br>    <span class="hljs-comment">// 1.创建队列</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br><br>    <span class="hljs-comment">// 2.使用 addOperationWithBlock: 添加操作到队列中</span><br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-ac8c2cdaf40b4202.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：使用 <code>addOperationWithBlock:</code> 将操作加入到操作队列后能够开启新线程，进行并发执行。</p>
+</blockquote>
+<ol start="3">
+<li><code>NSOperationQueue</code> 控制串行执行、并发执行</li>
+</ol>
+<p>之前我们说过，<code>NSOperationQueue</code> 创建的自定义队列同时具有串行、并发功能，上边我们演示了并发功能，那么他的串行功能是如何实现的？<br>这里有个关键属性 <code>maxConcurrentOperationCount</code>，叫做最大并发操作数。用来控制一个特定队列中可以有多少个操作同时参与并发执行。</p>
+<blockquote>
+<p>注意：这里 <code>maxConcurrentOperationCount</code> 控制的不是并发线程的数量，而是一个队列中同时能并发执行的最大操作数。而且一个操作也并非只能在一个线程中运行。</p>
+</blockquote>
+<p>最大并发操作数：<code>maxConcurrentOperationCount</code><br><code>maxConcurrentOperationCount</code>默认情况下为-1，表示不进行限制，可进行并发执行。<br><code>maxConcurrentOperationCount</code> 为1时，队列为串行队列。只能串行执行。<br><code>maxConcurrentOperationCount</code>大于1时，队列为并发队列。操作并发执行，当然这个值不应超过系统限制，即使自己设置一个很大的值，系统也会自动调整为 <code>min&#123;自己设定的值，系统设定的默认最大值&#125;</code>。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 设置 MaxConcurrentOperationCount（最大并发操作数）</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)setMaxConcurrentOperationCount &#123;<br><br>    <span class="hljs-comment">// 1.创建队列</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br><br>    <span class="hljs-comment">// 2.设置最大并发操作数</span><br>    queue.maxConcurrentOperationCount = <span class="hljs-number">1</span>; <span class="hljs-comment">// 串行队列</span><br><span class="hljs-comment">// queue.maxConcurrentOperationCount = 2; // 并发队列</span><br><span class="hljs-comment">// queue.maxConcurrentOperationCount = 8; // 并发队列</span><br><br>    <span class="hljs-comment">// 3.添加操作</span><br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;3---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;4---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>最大并发操作数为1 输出结果：</p>
+<p><img src="1877784-79e0996ee294d434.png" srcset="/img/loading.gif" alt=""></p>
+<p>最大并发操作数为2 输出结果：</p>
+<p><img src="1877784-c4f7ac2202fcb871.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：当最大并发操作数为1时，操作是按顺序串行执行的，并且一个操作完成之后，下一个操作才开始执行。当最大操作并发数为2时，操作是并发执行的，可以同时执行两个操作。而开启线程数量是由系统决定的，不需要我们来管理。<br><code>这样看来，是不是比 GCD 还要简单了许多？</code></p>
+</blockquote>
+<ol start="4">
+<li><code>NSOperation</code>操作依赖</li>
+</ol>
+<p><code>NSOperation、NSOperationQueue</code> 最吸引人的地方是它能添加操作之间的依赖关系。通过操作依赖，我们可以很方便的控制操作之间的执行先后顺序。<code>NSOperation</code>提供了3个接口供我们管理和查看依赖。</p>
+<ul>
+<li><code>- (void)addDependency:(NSOperation *)op;</code> 添加依赖，使当前操作依赖于操作 op 的完成。</li>
+<li><code>- (void)removeDependency:(NSOperation *)op;</code>移除依赖，取消当前操作对操作 op 的依赖。</li>
+<li><code>@property (readonly, copy) NSArray&lt;NSOperation *&gt; *dependencies;</code> 在当前操作开始执行之前完成执行的所有操作对象数组。<br>当然，我们经常用到的还是添加依赖操作。现在考虑这样的需求，比如说有 A、B 两个操作，其中 A 执行完操作，B 才能执行操作。</li>
+</ul>
+<p>如果使用依赖来处理的话，那么就需要让操作 B 依赖于操作 A。具体代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 操作依赖</span><br><span class="hljs-comment"> * 使用方法：addDependency:</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)addDependency &#123;<br><br>    <span class="hljs-comment">// 1.创建队列</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br><br>    <span class="hljs-comment">// 2.创建操作</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op1 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br>    <span class="hljs-built_in">NSBlockOperation</span> *op2 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 3.添加依赖</span><br>    [op2 addDependency:op1]; <span class="hljs-comment">// 让op2 依赖于 op1，则先执行op1，在执行op2</span><br><br>    <span class="hljs-comment">// 4.添加操作到队列中</span><br>    [queue addOperation:op1];<br>    [queue addOperation:op2];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-c0ce9c8c762ea71b.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看到：通过添加操作依赖，无论运行几次，其结果都是 op1 先执行，op2 后执行。</p>
+</blockquote>
+<ol start="5">
+<li><code>NSOperation 优先级</code></li>
+</ol>
+<p><code>NSOperation</code> 提供了<code>queuePriority（优先级）</code>属性，<code>queuePriority属性</code>适用于同一操作队列中的操作，不适用于不同操作队列中的操作。默认情况下，所有新创建的操作对象优先级都是<code>NSOperationQueuePriorityNormal</code>。但是我们可以通过<code>setQueuePriority:</code>方法来改变当前操作在同一队列中的执行优先级。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">// 优先级的取值</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSInteger</span>, <span class="hljs-built_in">NSOperationQueuePriority</span>) &#123;<br>    <span class="hljs-built_in">NSOperationQueuePriorityVeryLow</span> = <span class="hljs-number">-8</span>L,<br>    <span class="hljs-built_in">NSOperationQueuePriorityLow</span> = <span class="hljs-number">-4</span>L,<br>    <span class="hljs-built_in">NSOperationQueuePriorityNormal</span> = <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">NSOperationQueuePriorityHigh</span> = <span class="hljs-number">4</span>,<br>    <span class="hljs-built_in">NSOperationQueuePriorityVeryHigh</span> = <span class="hljs-number">8</span><br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<p>上边我们说过：对于添加到队列中的操作，首先进入准备就绪的状态（就绪状态取决于操作之间的依赖关系），然后进入就绪状态的操作的开始执行顺序（非结束执行顺序）由操作之间相对的优先级决定（优先级是操作对象自身的属性）。</p>
+<blockquote>
+<p>那么，什么样的操作才是进入就绪状态的操作呢？<br>  当一个操作的所有依赖都已经完成时，操作对象通常会进入准备就绪状态，等待执行。<br>举个例子，现在有4个优先级都是<code>NSOperationQueuePriorityNormal（默认级别）</code>的操作：op1，op2，op3，op4。其中 op3 依赖于 op2，op2 依赖于 op1，即 op3 -&gt; op2 -&gt; op1。现在将这4个操作添加到队列中并发执行。<br>因为 op1 和 op4 都没有需要依赖的操作，所以在 op1，op4 执行之前，就是处于准备就绪状态的操作。<br>而 op3 和 op2 都有依赖的操作（op3 依赖于 op2，op2 依赖于 op1），所以 op3 和 op2 都不是准备就绪状态下的操作。<br>理解了进入就绪状态的操作，那么我们就理解了queuePriority 属性的作用对象。<br><code>queuePriority</code>属性决定了进入准备就绪状态下的操作之间的开始执行顺序。并且，优先级不能取代依赖关系。如果一个队列中既包含高优先级操作，又包含低优先级操作，并且两个操作都已经准备就绪，那么队列先执行高优先级操作。比如上例中，如果 op1 和 op4 是不同优先级的操作，那么就会先执行优先级高的操作。如果，一个队列中既包含了准备就绪状态的操作，又包含了未准备就绪的操作，未准备就绪的操作优先级比准备就绪的操作优先级高。那么，虽然准备就绪的操作优先级低，也会优先执行。优先级不能取代依赖关系。如果要控制操作间的启动顺序，则必须使用依赖关系。</p>
+</blockquote>
+<ol start="6">
+<li><code>NSOperation、NSOperationQueue 线程间</code>的通信</li>
+</ol>
+<blockquote>
+<p>在 iOS 开发过程中，我们一般在主线程里边进行 UI 刷新，例如：点击、滚动、拖拽等事件。我们通常把一些耗时的操作放在其他线程，比如说图片下载、文件上传等耗时操作。而当我们有时候在其他线程完成了耗时操作时，需要回到主线程，那么就用到了线程之间的通讯。</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 线程间通信</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)communication &#123;<br><br>    <span class="hljs-comment">// 1.创建队列</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc]init];<br><br>    <span class="hljs-comment">// 2.添加操作</span><br>    [queue addOperationWithBlock:^&#123;<br>        <span class="hljs-comment">// 异步进行耗时操作</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br><br>        <span class="hljs-comment">// 回到主线程</span><br>        [[<span class="hljs-built_in">NSOperationQueue</span> mainQueue] addOperationWithBlock:^&#123;<br>            <span class="hljs-comment">// 进行一些 UI 刷新等操作</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>                [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>                <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;2---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>            &#125;<br>        &#125;];<br>    &#125;];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-c284bc79994a08dc.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p><strong><em>可以看到：通过线程间的通信，先在其他线程中执行操作，等操作执行完了之后再回到主线程执行主线程的相应操作。</em></strong></p>
+</blockquote>
+<ol start="7">
+<li><code>NSOperation、NSOperationQueue</code> 线程同步和线程安全</li>
+</ol>
+<ul>
+<li>线程安全：如果你的代码所在的进程中有多个线程在同时运行，而这些线程可能会同时运行这段代码。如果每次运行结果和单线程运行的结果是一样的，而且其他的变量的值也和预期的是一样的，就是线程安全的。<br>若每个线程中对全局变量、静态变量只有读操作，而无写操作，一般来说，这个全局变量是线程安全的；若有多个线程同时执行写操作（更改变量），一般都需要考虑线程同步，否则的话就可能影响线程安全。</li>
+<li>线程同步：可理解为线程 A 和 线程 B 一块配合，A 执行到一定程度时要依靠线程 B 的某个结果，于是停下来，示意 B 运行；B 依言执行，再将结果给 A；A 再继续操作。<br>举个简单例子就是：两个人在一起聊天。两个人不能同时说话，避免听不清(操作冲突)。等一个人说完(一个线程结束操作)，另一个再说(另一个线程再开始操作)。</li>
+</ul>
+<p>下面，我们模拟火车票售卖的方式，实现 NSOperation 线程安全和解决线程同步问题。<br>场景：总共有50张火车票，有两个售卖火车票的窗口，一个是北京火车票售卖窗口，另一个是上海火车票售卖窗口。两个窗口同时售卖火车票，卖完为止。</p>
+<ol start="8">
+<li><code>NSOperation、NSOperationQueue</code> 非线程安全</li>
+</ol>
+<p>先来看看不考虑线程安全的代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 非线程安全：不使用 NSLock</span><br><span class="hljs-comment"> * 初始化火车票数量、卖票窗口(非线程安全)、并开始卖票</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)initTicketStatusNotSave &#123;<br>    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;currentThread---%@&quot;</span>,[<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br><br>    <span class="hljs-keyword">self</span>.ticketSurplusCount = <span class="hljs-number">50</span>;<br><br>    <span class="hljs-comment">// 1.创建 queue1,queue1 代表北京火车票售卖窗口</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue1 = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br>    queue1.maxConcurrentOperationCount = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">// 2.创建 queue2,queue2 代表上海火车票售卖窗口</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue2 = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br>    queue2.maxConcurrentOperationCount = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">// 3.创建卖票操作 op1</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op1 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        [<span class="hljs-keyword">self</span> saleTicketNotSafe];<br>    &#125;];<br><br>    <span class="hljs-comment">// 4.创建卖票操作 op2</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op2 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        [<span class="hljs-keyword">self</span> saleTicketNotSafe];<br>    &#125;];<br><br>    <span class="hljs-comment">// 5.添加操作，开始卖票</span><br>    [queue1 addOperation:op1];<br>    [queue2 addOperation:op2];<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 售卖火车票(非线程安全)</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)saleTicketNotSafe &#123;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.ticketSurplusCount &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//如果还有票，继续售卖</span><br>            <span class="hljs-keyword">self</span>.ticketSurplusCount--;<br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;剩余票数:%d 窗口:%@&quot;</span>, <span class="hljs-keyword">self</span>.ticketSurplusCount, [<span class="hljs-built_in">NSThread</span> currentThread]]);<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">0.2</span>];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;所有火车票均已售完&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<p><img src="1877784-e4a2e86c0523d4c8.png" srcset="/img/loading.gif" alt=""></p>
+<p>省略一部分结果图。。。</p>
+<p><img src="1877784-4a354394f006929f.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看到：在不考虑线程安全，不使用<code>NSLock</code> 情况下，得到票数是错乱的，这样显然不符合我们的需求，所以我们需要考虑线程安全问题。</p>
+</blockquote>
+<ol start="9">
+<li><code>NSOperation、NSOperationQueue</code> 线程安全</li>
+</ol>
+<p>线程安全解决方案：可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。iOS 实现线程加锁有很多种方式。<code>@synchronized</code>、 <code>NSLock</code>、<code>NSRecursiveLock</code>、<code>NSCondition</code>、<code>NSConditionLock</code>、<code>pthread_mutex</code>、<code>dispatch_semaphore</code>、<code>OSSpinLock</code>、<code>atomic(property) set/get</code>等等各种方式。这里我们使用<code>NSLock</code> 对象来解决线程同步问题。<code>NSLock</code> 对象可以通过进入锁时调用 lock 方法，解锁时调用 unlock 方法来保证线程安全。</p>
+<p>考虑线程安全的代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 线程安全：使用 NSLock 加锁</span><br><span class="hljs-comment"> * 初始化火车票数量、卖票窗口(线程安全)、并开始卖票</span><br><span class="hljs-comment"> */</span><br><br>- (<span class="hljs-keyword">void</span>)initTicketStatusSave &#123;<br>    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;currentThread---%@&quot;</span>,[<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br><br>    <span class="hljs-keyword">self</span>.ticketSurplusCount = <span class="hljs-number">50</span>;<br><br>    <span class="hljs-keyword">self</span>.lock = [[<span class="hljs-built_in">NSLock</span> alloc] init];  <span class="hljs-comment">// 初始化 NSLock 对象</span><br><br>    <span class="hljs-comment">// 1.创建 queue1,queue1 代表北京火车票售卖窗口</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue1 = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br>    queue1.maxConcurrentOperationCount = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">// 2.创建 queue2,queue2 代表上海火车票售卖窗口</span><br>    <span class="hljs-built_in">NSOperationQueue</span> *queue2 = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br>    queue2.maxConcurrentOperationCount = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-comment">// 3.创建卖票操作 op1</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op1 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        [<span class="hljs-keyword">self</span> saleTicketSafe];<br>    &#125;];<br><br>    <span class="hljs-comment">// 4.创建卖票操作 op2</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op2 = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        [<span class="hljs-keyword">self</span> saleTicketSafe];<br>    &#125;];<br><br>    <span class="hljs-comment">// 5.添加操作，开始卖票</span><br>    [queue1 addOperation:op1];<br>    [queue2 addOperation:op2];<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 售卖火车票(线程安全)</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)saleTicketSafe &#123;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br><br>        <span class="hljs-comment">// 加锁</span><br>        [<span class="hljs-keyword">self</span>.lock lock];<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.ticketSurplusCount &gt; <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//如果还有票，继续售卖</span><br>            <span class="hljs-keyword">self</span>.ticketSurplusCount--;<br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;%@&quot;</span>, [<span class="hljs-built_in">NSString</span> stringWithFormat:<span class="hljs-string">@&quot;剩余票数:%d 窗口:%@&quot;</span>, <span class="hljs-keyword">self</span>.ticketSurplusCount, [<span class="hljs-built_in">NSThread</span> currentThread]]);<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">0.2</span>];<br>        &#125;<br><br>        <span class="hljs-comment">// 解锁</span><br>        [<span class="hljs-keyword">self</span>.lock unlock];<br><br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.ticketSurplusCount &lt;= <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;所有火车票均已售完&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br><br><br></code></pre></td></tr></table></figure>
+<p>输出结果：<br><img src="1877784-7bffb9eade5887d0.png" srcset="/img/loading.gif" alt=""></p>
+<p>省略一部分结果图。。。<br><img src="1877784-6698fdd0d10b0d14.png" srcset="/img/loading.gif" alt=""></p>
+<blockquote>
+<p>可以看出：在考虑了线程安全，使用<code>NSLock</code> 加锁、解锁机制的情况下，得到的票数是正确的，没有出现混乱的情况。我们也就解决了多个线程同步的问题。</p>
+</blockquote>
+<ol start="9">
+<li><code>NSOperation、NSOperationQueue</code>常用属性和方法归纳</li>
+</ol>
+<ul>
+<li>NSOperation 常用属性和方法</li>
+</ul>
+<p>取消操作方法<br><code>- (void)cancel;</code>可取消操作，实质是标记 isCancelled 状态。</p>
+<ul>
+<li>判断操作状态方法<br><code>- (BOOL)isFinished;</code>判断操作是否已经结束。<br><code>- (BOOL)isCancelled;</code>判断操作是否已经标记为取消。<br><code>- (BOOL)isExecuting;</code> 判断操作是否正在在运行。<br><code>- (BOOL)isReady;</code> 判断操作是否处于准备就绪状态，这个值和操作的依赖关系相关。</li>
+<li>操作同步<br><code>- (void)waitUntilFinished;</code> 阻塞当前线程，直到该操作结束。可用于线程执行顺序的同步。<br><code>- (void)setCompletionBlock:(void (^)(void))block;</code> <code>completionBlock</code> 会在当前操作执行完毕时执行 completionBlock。<br><code>- (void)addDependency:(NSOperation *)op;</code> 添加依赖，使当前操作依赖于操作 op 的完成。<br><code>- (void)removeDependency:(NSOperation *)op</code>; 移除依赖，取消当前操作对操作 op 的依赖。<br><code>@property (readonly, copy) NSArray&lt;NSOperation *&gt; *dependencies</code>; 在当前操作开始执行之前完成执行的所有操作对象数组。</li>
+</ul>
+<ol start="10">
+<li><p><code>NSOperationQueue</code>常用属性和方法</p>
+</li>
+<li><ol>
+<li><ol>
+<li>取消/暂停/恢复操作<br><code>- (void)cancelAllOperations;</code> 可以取消队列的所有操作。<br><code>- (BOOL)isSuspended;</code>判断队列是否处于暂停状态。 YES 为暂停状态，NO 为恢复状态。<br><code>- (void)setSuspended:(BOOL)b</code>; 可设置操作的暂停和恢复，YES 代表暂停队列，NO 代表恢复队列。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><ol>
+<li><ol start="2">
+<li>操作同步</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p><code>- (void)waitUntilAllOperationsAreFinished</code>; 阻塞当前线程，直到队列中的操作全部执行完毕。</p>
+<ol start="10">
+<li><ol>
+<li><ol start="3">
+<li>添加/获取操作</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><code>- (void)addOperationWithBlock:(void (^)(void))block</code>; 向队列中添加一个 NSBlockOperation 类型操作对象。</li>
+<li><code>- (void)addOperations:(NSArray *)ops waitUntilFinished:(BOOL)wait</code>; 向队列中添加操作数组，<code>wait</code> 标志是否阻塞当前线程直到所有操作结束</li>
+<li><code>- (NSArray *)operations;</code> 当前在队列中的操作数组（某个操作执行结束后会自动从这个数组清除）。</li>
+<li><code>- (NSUInteger)operationCount;</code>当前队列中的操作数。</li>
+</ul>
+<ol start="10">
+<li><ol>
+<li><ol start="4">
+<li>获取队列</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><code>+ (id)currentQueue;</code> 获取当前队列，如果当前线程不是在 <code>NSOperationQueue</code> 上运行则返回<code>nil</code>。</li>
+<li><code>+ (id)mainQueue;</code> 获取主队列。</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<ol>
+<li>这里的暂停和取消（包括操作的取消和队列的取消）并不代表可以将当前的操作立即取消，而是当当前的操作执行完毕之后不再执行新的操作。</li>
+<li>暂停和取消的区别就在于：暂停操作之后还可以恢复操作，继续向下执行；而取消操作之后，所有的操作就清空了，无法再接着执行剩下的操作。</li>
+</ol>
+<h4 id="NSThread-runloop实现常驻线程"><a href="#NSThread-runloop实现常驻线程" class="headerlink" title="NSThread+runloop实现常驻线程"></a><code>NSThread+runloop</code>实现常驻线程</h4><p><code>NSThread</code>在实际开发中比较常用到的场景就是去实现常驻线程。</p>
+<p>由于每次开辟子线程都会消耗cpu，在需要频繁使用子线程的情况下，频繁开辟子线程会消耗大量的cpu，而且创建线程都是任务执行完成之后也就释放了，不能再次利用，那么如何创建一个线程可以让它可以再次工作呢？也就是创建一个常驻线程。<br>首先常驻线程既然是常驻，那么我们可以用<code>GCD</code>实现一个单例来保存<code>NSThread</code></p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs objc">+ (<span class="hljs-built_in">NSThread</span> *)shareThread &#123;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">NSThread</span> *shareThread = <span class="hljs-literal">nil</span>;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_once_t</span> oncePredicate;<br>    <br>    <span class="hljs-built_in">dispatch_once</span>(&amp;oncePredicate, ^&#123;<br>        <br>        shareThread = [[<span class="hljs-built_in">NSThread</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(threadTest) object:<span class="hljs-literal">nil</span>];<br><br>        [shareThread setName:<span class="hljs-string">@&quot;threadTest&quot;</span>];<br>        <br>        [shareThread start];<br>    &#125;);<br>    <br>    <span class="hljs-keyword">return</span> shareThread;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这样创建的thread就不会销毁了吗？</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc">[<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test) onThread:[ViewController shareThread] withObject:<span class="hljs-literal">nil</span> waitUntilDone:<span class="hljs-literal">NO</span>];<br><br>- (<span class="hljs-keyword">void</span>)test<br>&#123;<br>    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;test:%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]);<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>并没有打印，说明<code>test方法</code>没有被调用。<br>那么可以用<code>runloop</code>来让线程常驻:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>+ (<span class="hljs-built_in">NSThread</span> *)shareThread &#123;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">NSThread</span> *shareThread = <span class="hljs-literal">nil</span>;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_once_t</span> oncePredicate;<br>    <br>    <span class="hljs-built_in">dispatch_once</span>(&amp;oncePredicate, ^&#123;<br>        <br>        shareThread = [[<span class="hljs-built_in">NSThread</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(threadTest2) object:<span class="hljs-literal">nil</span>];<br>        <br>        [shareThread setName:<span class="hljs-string">@&quot;threadTest&quot;</span>];<br>        <br>        [shareThread start];<br>    &#125;);<br>    <br>    <span class="hljs-keyword">return</span> shareThread;<br>&#125;<br><br>+ (<span class="hljs-keyword">void</span>)threadTest<br>&#123;<br>    <span class="hljs-keyword">@autoreleasepool</span> &#123;<br>        <br>        <span class="hljs-built_in">NSRunLoop</span> *runLoop = [<span class="hljs-built_in">NSRunLoop</span> currentRunLoop];<br>        <br>        [runLoop addPort:[<span class="hljs-built_in">NSMachPort</span> port] forMode:<span class="hljs-built_in">NSDefaultRunLoopMode</span>];<br>        <br>        [runLoop run];<br>    &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>这时候再去调用<code>performSelector</code>就有打印了。</p>
+<h4 id="自旋锁与互斥锁"><a href="#自旋锁与互斥锁" class="headerlink" title="自旋锁与互斥锁"></a>自旋锁与互斥锁</h4><p><img src="1782258-8ca7c2b6e5fe5352.png" srcset="/img/loading.gif" alt=""></p>
+<p><strong>自旋锁</strong>：</p>
+<p>是一种用于保护多线程共享资源的锁，与一般互斥锁（mutex）不同之处在于当自旋锁尝试获取锁时以忙等待（busy waiting）的形式不断地循环检查锁是否可用。当上一个线程的任务没有执行完毕的时候（被锁住），那么下一个线程会一直等待（不会睡眠），当上一个线程的任务执行完毕，下一个线程会立即执行。<br>在多CPU的环境中，对持有锁较短的程序来说，使用自旋锁代替一般的互斥锁往往能够提高程序的性能。</p>
+<p><strong>互斥锁</strong>：</p>
+<p>当上一个线程的任务没有执行完毕的时候（被锁住），那么下一个线程会进入睡眠状态等待任务执行完毕，当上一个线程的任务执行完毕，下一个线程会自动唤醒然后执行任务。</p>
+<p><strong>总结</strong>：</p>
+<p>自旋锁会忙等: 所谓忙等，即在访问被锁资源时，调用者线程不会休眠，而是不停循环在那里，直到被锁资源释放锁。<br>互斥锁会休眠: 所谓休眠，即在访问被锁资源时，调用者线程会休眠，此时cpu可以调度其他线程工作。直到被锁资源释放锁。此时会唤醒休眠线程。</p>
+<p><strong>优缺点</strong>：</p>
+<p>自旋锁的优点在于，因为自旋锁不会引起调用者睡眠，所以不会进行线程调度，CPU时间片轮转等耗时操作。所有如果能在很短的时间内获得锁，自旋锁的效率远高于互斥锁。<br>　　缺点在于，自旋锁一直占用CPU，他在未获得锁的情况下，一直运行－－自旋，所以占用着CPU，如果不能在很短的时 间内获得锁，这无疑会使CPU效率降低。自旋锁不能实现递归调用。</p>
+<p><strong>自旋锁</strong>：<code>atomic</code>、<code>OSSpinLock</code>、<code>dispatch_semaphore_t</code></p>
+<p><strong>互斥锁</strong>：<code>pthread_mutex</code>、<code>@ synchronized</code>、<code>NSLock</code>、<code>NSConditionLock</code> 、<code>NSCondition</code>、<code>NSRecursiveLock</code>.</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/NSOperation/">NSOperation</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NSOperationQueue/">NSOperationQueue</a>
+                    
+                      <a class="hover-with-bg" href="/tags/NSThread/">NSThread</a>
+                    
+                      <a class="hover-with-bg" href="/tags/runloop/">runloop</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/11/13/%E7%86%9F%E6%82%89Objective-C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">熟悉Objective-C</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/10/%E6%88%91%E7%9A%84%E5%A5%B3%E6%9C%8B%E5%8F%8B/">
+                        <span class="hidden-mobile">我的女朋友</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

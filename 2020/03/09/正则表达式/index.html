@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>正则表达式 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="正则表达式">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-09 22:07" pubdate>
+        2020年3月9日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      57
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">正则表达式</h1>
+            
+            <div class="markdown-body">
+              <h3 id="正则表达式是什么"><a href="#正则表达式是什么" class="headerlink" title="正则表达式是什么"></a>正则表达式是什么</h3><blockquote>
+<p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。</p>
+<p>正则表达式语言由两种基本字符类型组成：原义（正常）<code>文本字符</code>和<code>元字符</code>。元字符使正则表达式具有处理能力。</p>
+</blockquote>
+<h3 id="常用元字符"><a href="#常用元字符" class="headerlink" title="常用元字符"></a>常用元字符</h3><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>做什么用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.</code></td>
+<td>匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>匹配字母或数字或下划线或汉字</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>匹配任意的空白符，包括空格，制表符（Tab），换行符，中文全角空格等）</td>
+</tr>
+<tr>
+<td><code>\d</code></td>
+<td>匹配数字</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>匹配单词的开始或结束</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>匹配字符串的开始</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>匹配字符串的结束</td>
+</tr>
+</tbody></table>
+<h3 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h3><blockquote>
+<p>如果你想查找元字符本身的话，比如你查找 <code>.</code> ,或者 <code>*</code> ,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用 <code>\</code> 来取消这些字符的特殊意义。因此，你应该使用 <code>\.</code> 和 <code>\*</code> 。当然，要查找 <code>\</code> 本身，你也得用 <code>\\</code> .<br>例如： <code>deerchao\.net</code> 匹配 <strong>deerchao.net</strong>，<code>C:\\Windows</code> 匹配 <strong>C:\Windows</strong> 。</p>
+</blockquote>
+<h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><blockquote>
+<p>你已经看过了前面的 <code>*</code> , <code>+</code> , <code>&#123;2&#125;</code> , <code>&#123;5,12&#125;</code> 这几个匹配重复的方式了。下面是正则表达式中所有的限定符(指定数量的代码，例如*,{5,12}等)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>做什么用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>重复零次或更多次</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>重复一次或更多次</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>重复零次或一次</td>
+</tr>
+<tr>
+<td><code>&#123;n&#125;</code></td>
+<td>重复n次</td>
+</tr>
+<tr>
+<td><code>&#123;n,&#125;</code></td>
+<td>重复n次或更多次</td>
+</tr>
+<tr>
+<td><code>&#123;n,m&#125;</code></td>
+<td>重复n到m次</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>下面是一些重复的示例：<br><code>Windows\d+</code> 匹配Windows后面跟1个或更多数字<br><code>^\w+</code> 匹配一行的第一个单词(或整个字符串的第一个单词，具体匹配哪个意思得看选项设置)</p>
+</blockquote>
+<h3 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h3><blockquote>
+<p>要想查找数字，字母或数字，空白是很简单的，因为已经有了对应这些字符集合的元字符，但是如果你想匹配没有预定义元字符的字符集合(比如元音字母a,e,i,o,u),应该怎么办？<br>很简单，你只需要在方括号里列出它们就行了，像 <code>[aeiou]</code> 就匹配任何一个英文元音字母， <code>[.?!]</code> 匹配标点符号(.或?或!)。<br>我们也可以轻松地指定一个字符范围，像 <code>[0-9]</code> 代表的含意与 <code>\d</code> 就是完全一致的：一位数字；同理[a-z0-9A-Z_]也完全等同于 <code>\w</code> （如果只考虑英文的话）。<br>下面是一个更复杂的表达式： <code>\(?0\d&#123;2&#125;[) -]?\d&#123;8&#125;</code> 。<br>这个表达式可以匹配几种格式的电话号码，像(010)88886666，或022-22334455，或02912345678等。我们对它进行一些分析吧：首先是一个转义字符(,它能出现0次或1次(?),然后是一个0，后面跟着2个数字(\d{2})，然后是)或-或空格中的一个，它出现1次或不出现(?)，最后是8个数字(\d{8})。</p>
+</blockquote>
+<h3 id="分支条件"><a href="#分支条件" class="headerlink" title="分支条件"></a>分支条件</h3><blockquote>
+<p>正则表达式里的分枝条件指的是有几种规则，如果满足其中任意一种规则都应该当成匹配，具体方法是用|把不同的规则分隔开。<br>示例： <code>0\d&#123;2&#125;-\d&#123;8&#125;|0\d&#123;3&#125;-\d&#123;7&#125;</code><br>这个表达式匹配3位区号的电话号码，其中区号可以用小括号括起来，也可以不用，区号与本地号间可以用连字号或空格间隔，也可以没有间隔。你可以试试用分枝条件把这个表达式扩展成也支持4位区号的。<br>示例： <code>\d&#123;5&#125;-\d&#123;4&#125;|\d&#123;5&#125;</code><br>这个表达式用于匹配美国的邮政编码。美国邮编的规则是5位数字，或者用连字号间隔的9位数字。之所以要给出这个示例是因为它能说明一个问题：<strong>使用分枝条件时，要注意各个条件的顺序</strong>。如果你把它改成 <code>\d&#123;5&#125;|\d&#123;5&#125;-\d&#123;4&#125;</code> 的话，那么就只会匹配5位的邮编(以及9位邮编的前5位)。原因是匹配分枝条件时，将会从左到右地测试每个条件，如果满足了某个分枝的话，就不会去再管其它的条件了。</p>
+</blockquote>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><blockquote>
+<p>重复单个字符，直接在字符后面加上限定符就行了。但如果想要重复多个字符，我们可以用小括号来指定 <strong>子表达式</strong>(也叫作<strong>分组</strong>)。<br><code>(\d&#123;1,3&#125;\.)&#123;3&#125;\d&#123;1,3&#125;</code> 是一个简单的IP地址匹配表达式。要理解这个表达式，请按下列顺序分析它： <code>\d&#123;1,3&#125;</code>匹配1到3位的数字， <code>(\d&#123;1,3&#125;\.)&#123;3&#125;</code> 匹配三位数字加上一个英文句号(这个整体也就是这个分组)重复3次，最后再加上一个一到三位的数字 <code>(\d&#123;1,3&#125;)</code> 。<br>不幸的是，它也将匹配 <em>256.300.888.999</em> 这种不可能存在的IP地址。我们只能使用冗长的分组，选择，字符串来描述一个 <strong>正确的IP地址：</strong> <code>((2[0-4]\d|25[0-5]|[01]?\d\d?)\.)&#123;3&#125;(2[0-4]\d|25[0-5]|[01]?\d\d?)</code></p>
+</blockquote>
+<h3 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h3><blockquote>
+<p>有时需要查找不属于某个能简单定义的字符类的字符。比如想查找除了数字以外，其它任意字符都行的情况，这时需要用到反义：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>做什么用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\W</code></td>
+<td>匹配任意不是字母，数字，下划线，汉字的字符</td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>匹配任意不是空白符的字符</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>匹配不是单词开头或结束的位置</td>
+</tr>
+<tr>
+<td><code>[^x]</code></td>
+<td>匹配除了x以外的任意字符</td>
+</tr>
+<tr>
+<td><code>[^aeiou]</code></td>
+<td>匹配除了aeiou这几个字母以外的任意字符</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>示例： <code>\S+</code> 匹配不包含空白符的字符串。 <code>&lt;a[^&gt;]+&gt;</code> 匹配用尖括号括起来的以a开头的字符串。</p>
+</blockquote>
+<h3 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h3><blockquote>
+<p>使用小括号指定一个子表达式后，<strong>匹配这个子表达式</strong> 的文本(也就是此分组捕获的内容)可以在表达式或其它程序中作进一步的处理。默认情况下，每个分组会自动拥有一个 <strong>组号</strong>，规则是：从左向右，以分组的左括号为标志，第一个出现的分组的组号为1，第二个为2，以此类推。<br><strong>后向引用</strong> 用于重复搜索前面某个分组匹配的文本。<br>示例： <code>\b(\w+)\b\s+\1\b</code> 可以用来匹配重复的单词，像go go, 或者kitty kitty。这个表达式首先是一个单词，也就是单词开始处和结束处之间的多于一个的字母或数字 <code>\b(\w+)\b</code> ，这个单词会被捕获到编号为1的分组中，然后是1个或几个空白符<code>\s+</code>，最后是分组1中捕获的内容（也就是前面匹配的那个单词） <code>\1</code>。<br>你也可以自己指定子表达式的 <strong>组名</strong>.要指定一个子表达式的组名，请使用这样的语法： <code>(?&lt;Word&gt;\w+)</code> (或者把尖括号换成 <code>&#39;</code> 也行： <code>(?&#39;Word&#39;\w+))</code>,这样就把<code>\w+</code>的组名指定为 <strong>Word</strong> 了。要反向引用这个分组捕获的内容，你可以使用 <code>\k&lt;Word&gt;</code> ,所以上一个示例也可以写成这样： <code>\b(?&lt;Word&gt;\w+)\b\s+\k&lt;Word&gt;\b</code> 。</p>
+</blockquote>
+<h3 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h3><blockquote>
+<p>接下来的四个用于查找在某些内容(但并不包括这些内容)之前或之后的东西，也就是说它们像\b,^,$那样用于指定一个位置，这个位置应该满足一定的条件(即断言)，因此它们也被称为 <strong>零宽断言</strong>。<br><code>(?=exp)</code> 也叫 <strong>零宽度正预测先行断言</strong>，它断言自身出现的位置的后面能匹配表达式exp。比如<code>\b\w+(?=ing\b)</code>，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找 <em>I’m singing while you’re dancing.</em> 时，它会匹配 sing 和 danc 。<br><code>(?&lt;=exp)</code> 也叫 <strong>零宽度正回顾后发断言</strong> ，它断言自身出现的位置的前面能匹配表达式exp。比如 <code>(?&lt;=\bre)\w+\b</code> 会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找 <em>reading a book</em> 时，它匹配ading。<br>假如你想要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分： <code>((?&lt;=\d)\d&#123;3&#125;)+\b</code> ，用它对1234567890进行查找时结果是234567890。<br>下面这个示例同时使用了这两种断言： <code>(?&lt;=\s)\d+(?=\s)</code> 匹配以空白符间隔的数字( <strong>再次强调，不包括这些空白符</strong> )。</p>
+</blockquote>
+<h3 id="负向零宽断言"><a href="#负向零宽断言" class="headerlink" title="负向零宽断言"></a>负向零宽断言</h3><blockquote>
+<p>前面我们提到过怎么查找不是某个字符或不在某个字符类里的字符的方法(反义)。但是如果我们只是想要确保某个字符没有出现，但并不想去匹配它时怎么办？例如，如果我们想查找这样的单词–它里面出现了字母q,但是q后面跟的不是字母u,我们可以尝试这样：<br><code>\b\w*q[^u]\w*\b</code> 匹配 <em>包含后面不是字母u的字母q的单词</em> 。但是如果多做测试(或者你思维足够敏锐，直接就观察出来了)，你会发现，如果q出现在单词的结尾的话，像Iraq,Benq，这个表达式就会出错。这是因为[^u]总要匹配一个字符，所以如果q是单词的最后一个字符的话，后面的[^u]将会匹配q后面的单词分隔符(可能是空格，或者是句号或其它的什么)，后面的 <code>\w*\b</code> 将会匹配下一个单词，于是 <code>\b\w*q[^u]\w*\b</code>就能匹配整个Iraq fighting。<strong>负向零宽断言</strong> 能解决这样的问题，因为它只匹配一个位置，并不消费任何字符。现在，我们可以这样来解决这个问题： <code>\b\w*q(?!u)\w*\b</code> 。<br><strong>零宽度负预测先行断言</strong>(?!exp)，断言此位置的后面不能匹配表达式exp。例如： <code>\d&#123;3&#125;(?!\d)</code> 匹配三位数字，而且这三位数字的后面不能是数字； <code>\b((?!abc)\w)+\b</code> 匹配不包含连续字符串abc的单词。<br>同理，我们可以用(?&lt;!exp),<strong>零宽度负回顾后发断言来断言</strong> 此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。<br>一个更复杂的示例：<code>(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</code> 匹配不包含属性的简单HTML标签内里的内容。<code>(?&lt;=&lt;(\w+)&gt;)</code> 指定了这样的 <strong>前缀</strong>：被尖括号括起来的单词(比如可能是<strong>)，然后是. <code>*</code> (任意的字符串),最后是一个 **后缀</strong> <code>(?=&lt;\/\1&gt;)</code>。注意后缀里的 / ，它用到了前面提过的字符转义；\1则是一个反向引用，引用的正是捕获的第一组，前面的 <code>(\w+)</code> 匹配的内容，这样如果前缀实际上是<strong>的话，后缀就是</strong>了。整个表达式匹配的是<strong>和</strong>之间的内容(再次提醒，不包括前缀和后缀本身)。**</p>
+</blockquote>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><blockquote>
+<p>小括号的另一种用途是通过语法(?#comment)来包含注释。例如：<code>2[0-4]\d(?#200-249)|25[0-5](?#250-255)|[01]?\d\d?(?#0-199)</code>。<br>要包含注释的话，最好是启用“忽略模式里的空白符”选项，这样在编写表达式时能任意的添加空格，Tab，换行，而实际使用时这些都将被忽略。启用这个选项后，在#后面到这一行结束的所有文本都将被当成注释忽略掉。例如，我们可以前面的一个表达式写成这样：<br><code>(?&lt;=</code> # 断言要匹配的文本的前缀<br><code>&lt;(\w+)&gt;</code> # 查找尖括号括起来的字母或数字(即HTML/XML标签)<br><code>)</code> # 前缀结束<br><code>.*</code> # 匹配任意文本<br><code>(?=</code> # 断言要匹配的文本的后缀<br><code>&lt;\/\1&gt;</code> # 查找尖括号括起来的内容：前面是一个”/“，后面是先前捕获的标签<br><code>)</code> # 后缀结束</p>
+</blockquote>
+<h3 id="贪婪与懒惰"><a href="#贪婪与懒惰" class="headerlink" title="贪婪与懒惰"></a>贪婪与懒惰</h3><blockquote>
+<p>当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配 <strong>尽可能多</strong> 的字符。以这个表达式为例： <code>a.*b</code> ，它将会匹配最长的以a开始，以b结束的字符串。如果用它来搜索aabab的话，它会匹配整个字符串aabab。这被称为 <strong>贪婪匹配</strong>。<br>有时，我们更需要 <strong>懒惰匹配</strong>，也就是匹配尽可能少的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号 ? 。这样 <code>.*?</code> 就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。<br>示例： <code>a.*?b</code> 匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>做什么用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*?</code></td>
+<td>重复任意次，但尽可能少重复</td>
+</tr>
+<tr>
+<td><code>+?</code></td>
+<td>重复1次或更多次，但尽可能少重复</td>
+</tr>
+<tr>
+<td><code>??</code></td>
+<td>重复0次或1次，但尽可能少重复</td>
+</tr>
+<tr>
+<td><code>&#123;n,m&#125;?</code></td>
+<td>重复n到m次，但尽可能少重复</td>
+</tr>
+<tr>
+<td><code>&#123;n,&#125;?</code></td>
+<td>重复n次以上，但尽可能少重复</td>
+</tr>
+</tbody></table>
+<h3 id="其他元字符"><a href="#其他元字符" class="headerlink" title="其他元字符"></a>其他元字符</h3><table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>做什么用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\a</code></td>
+<td>报警字符(打印它的效果是电脑嘀一声)</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>通常是单词分界位置，但如果在字符类里使用代表退格</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>制表符，Tab</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车</td>
+</tr>
+<tr>
+<td><code>\v</code></td>
+<td>竖向制表符</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>换页符</td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>换行符</td>
+</tr>
+<tr>
+<td><code>\e</code></td>
+<td>Escape</td>
+</tr>
+<tr>
+<td><code>\0nn</code></td>
+<td>ASCII代码中八进制代码为nn的字符</td>
+</tr>
+<tr>
+<td><code>\xnn</code></td>
+<td>ASCII代码中十六进制代码为nn的字符</td>
+</tr>
+<tr>
+<td><code>\unnnn</code></td>
+<td>Unicode代码中十六进制代码为nnnn的字符</td>
+</tr>
+<tr>
+<td><code>\cN</code></td>
+<td>ASCII控制字符。比如\cC代表Ctrl+C</td>
+</tr>
+<tr>
+<td><code>\A</code></td>
+<td>字符串开头(类似^，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td><code>\Z</code></td>
+<td>字符串结尾或行尾(不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td><code>\z</code></td>
+<td>字符串结尾(类似$，但不受处理多行选项的影响)</td>
+</tr>
+<tr>
+<td><code>\G</code></td>
+<td>当前搜索的开头</td>
+</tr>
+<tr>
+<td><code>\p&#123;name&#125;</code></td>
+<td>Unicode中命名为name的字符类，例如\p{IsGreek}</td>
+</tr>
+<tr>
+<td><code>(?&gt;exp)</code></td>
+<td>贪婪子表达式</td>
+</tr>
+<tr>
+<td><code>(?&lt;x&gt;-&lt;y&gt;exp)</code></td>
+<td>平衡组</td>
+</tr>
+<tr>
+<td><code>(?im-nsx:exp)</code></td>
+<td>在子表达式exp中改变处理选项</td>
+</tr>
+<tr>
+<td><code>(?im-nsx)</code></td>
+<td>为表达式后面的部分改变处理选项</td>
+</tr>
+<tr>
+<td><a href="`(?(exp)yes|no)`">1</a></td>
+<td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
+</tr>
+<tr>
+<td><code>(?(exp)yes)</code></td>
+<td>同上，只是使用空表达式作为no</td>
+</tr>
+<tr>
+<td><a href="`(?(name)yes|no)`">2</a></td>
+<td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
+</tr>
+<tr>
+<td><code>(?(name)yes)</code></td>
+<td>同上，只是使用空表达式作为no</td>
+</tr>
+</tbody></table>
+<blockquote>
+</blockquote>
+<h2 id="正则表达式常用实例"><a href="#正则表达式常用实例" class="headerlink" title="正则表达式常用实例"></a>正则表达式常用实例</h2><h3 id="账号-密码"><a href="#账号-密码" class="headerlink" title="账号/密码"></a>账号/密码</h3><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk">帐号是否合法(字母开头，允许<span class="hljs-number">5</span><span class="hljs-number">-16</span>字节，允许字母数字下划线) = <span class="hljs-comment">&quot;^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$&quot;</span><br>密码(以字母开头，长度在<span class="hljs-number">6</span>~<span class="hljs-number">18</span>之间，只能包含字母、数字和下划线) = <span class="hljs-comment">&quot;^[a-zA-Z]\w&#123;5,17&#125;$&quot;</span><br>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在<span class="hljs-number">8</span><span class="hljs-number">-10</span>之间) = <span class="hljs-comment">&quot;^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$&quot;</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="字符串校验"><a href="#字符串校验" class="headerlink" title="字符串校验"></a>字符串校验</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell">汉字 = <span class="hljs-string">&quot;^[\u4e00-\u9fa5]&#123;0,&#125;<span class="hljs-variable">$</span>&quot;</span>;<br>英文和数字 = <span class="hljs-string">&quot;^[A-Za-z0-9]+<span class="hljs-variable">$</span> 或 ^[A-Za-z0-9]&#123;4,40&#125;<span class="hljs-variable">$</span>&quot;</span>;<br>长度为<span class="hljs-number">3</span><span class="hljs-literal">-20</span>的所有字符 = <span class="hljs-string">&quot;^.&#123;3,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Za-z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个大写英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个小写英文字母组成的字符串 = <span class="hljs-string">&quot;^[a-z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由数字和<span class="hljs-number">26</span>个英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Za-z0-9]+<span class="hljs-variable">$</span>&quot;</span>；<br>由数字、<span class="hljs-number">26</span>个英文字母或者下划线组成的字符串 = <span class="hljs-string">&quot;^\w+<span class="hljs-variable">$</span> 或 ^\w&#123;3,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>中文、英文、数字包括下划线 = <span class="hljs-string">&quot;^[\u4E00-\u9FA5A-Za-z0-9_]+<span class="hljs-variable">$</span>&quot;</span>；<br>中文、英文、数字但不包括下划线等符号 = <span class="hljs-string">&quot;^[\u4E00-\u9FA5A-Za-z0-9]+<span class="hljs-variable">$</span> 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>禁止输入含有~的字符 = <span class="hljs-string">&quot;[^~\x22]+&quot;</span>；<br><br></code></pre></td></tr></table></figure>
+<h3 id="手机号"><a href="#手机号" class="headerlink" title="手机号"></a>手机号</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs dns">/**<br> * 手机号码  新增的号段自己看着添加<br> * 移动：<span class="hljs-number">134,135,136,137</span>,<span class="hljs-number">138,139,147,150</span>,<span class="hljs-number">151,152,157,158</span>,<span class="hljs-number">159,170,178,182</span>,<span class="hljs-number">183,184,187,188</span><br> * 联通：<span class="hljs-number">130,131,132,145</span>,<span class="hljs-number">152,155,156</span>,<span class="hljs-number">1709,171,176</span>,<span class="hljs-number">185,186</span><br> * 电信：<span class="hljs-number">133,134,153</span>,<span class="hljs-number">1700,177,180</span>,<span class="hljs-number">181,189</span><br> */<br>String MOBILE = &quot;^<span class="hljs-number">1(3[0-9</span>]|<span class="hljs-number">4</span>[<span class="hljs-number">57</span>]|<span class="hljs-number">5[0-35-9</span>]|<span class="hljs-number">7[01678</span>]|<span class="hljs-number">8</span>[<span class="hljs-number">0</span>-<span class="hljs-number">9</span>])\\d&#123;<span class="hljs-number">8</span>&#125;$&quot;<span class="hljs-comment">;</span><br>/**<br> * 中国移动：China Mobile<br> * <span class="hljs-number">134,135,136,137</span>,<span class="hljs-number">138,139,147,150</span>,<span class="hljs-number">151,152,157,158</span>,<span class="hljs-number">159,170,178,182</span>,<span class="hljs-number">183,184,187,188</span><br> */<br>String CM = &quot;^<span class="hljs-number">1(3[4-9</span>]|<span class="hljs-number">4</span>[<span class="hljs-number">7</span>]|<span class="hljs-number">5[0-27-9</span>]|<span class="hljs-number">7</span>[<span class="hljs-number">0</span>]|<span class="hljs-number">7</span>[<span class="hljs-number">8</span>]|<span class="hljs-number">8[2-478</span>])\\d&#123;<span class="hljs-number">8</span>&#125;$&quot;<span class="hljs-comment">;</span><br>/**<br> * 中国联通：China Unicom<br> * <span class="hljs-number">130,131,132,145</span>,<span class="hljs-number">152,155,156</span>,<span class="hljs-number">1709,171,176</span>,<span class="hljs-number">185,186</span><br> */<br>String CU = &quot;^<span class="hljs-number">1(3[0-2</span>]|<span class="hljs-number">4</span>[<span class="hljs-number">5</span>]|<span class="hljs-number">5</span>[<span class="hljs-number">56</span>]|<span class="hljs-number">709|7[1</span>]|<span class="hljs-number">7</span>[<span class="hljs-number">6</span>]|<span class="hljs-number">8</span>[<span class="hljs-number">56</span>])\\d&#123;<span class="hljs-number">8</span>&#125;$&quot;<span class="hljs-comment">;</span><br>/**<br> * 中国电信：China Telecom<br> * <span class="hljs-number">133,134,153</span>,<span class="hljs-number">1700,177,180</span>,<span class="hljs-number">181,189</span><br> */<br>String CT = &quot;^<span class="hljs-number">1</span>(<span class="hljs-number">3</span>[<span class="hljs-number">34</span>]|<span class="hljs-number">53|77|700</span>|<span class="hljs-number">8</span>[<span class="hljs-number">019</span>])\\d&#123;<span class="hljs-number">8</span>&#125;$&quot;<span class="hljs-comment">;</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">String IPREGEXP = &quot;((2[0-4]<span class="hljs-symbol">\d</span>|25[0-5]|[01]?<span class="hljs-symbol">\d</span><span class="hljs-symbol">\d</span>?)<span class="hljs-symbol">\.</span>)&#123;3&#125;(2[0-4]<span class="hljs-symbol">\d</span>|25[0-5]|[01]?<span class="hljs-symbol">\d</span><span class="hljs-symbol">\d</span>?)&quot;;<br><br></code></pre></td></tr></table></figure>
+<h3 id="EMAIL地址"><a href="#EMAIL地址" class="headerlink" title="EMAIL地址"></a>EMAIL地址</h3><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">Email地址 = &quot;^<span class="hljs-symbol">\w</span>+([-+.]<span class="hljs-symbol">\w</span>+)*@<span class="hljs-symbol">\w</span>+([-.]<span class="hljs-symbol">\w</span>+)*<span class="hljs-symbol">\.</span><span class="hljs-symbol">\w</span>+([-.]<span class="hljs-symbol">\w</span>+)*$&quot;;<br><br></code></pre></td></tr></table></figure>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">域名 = <span class="hljs-string">&quot;<span class="hljs-subst">[a-zA-Z0-9]</span><span class="hljs-subst">[-a-zA-Z0-9]</span>&#123;0,62&#125;(/.<span class="hljs-subst">[a-zA-Z0-9]</span><span class="hljs-subst">[-a-zA-Z0-9]</span>&#123;0,62&#125;)+/.?&quot;</span>;<br>InternetURL = <span class="hljs-string">&quot;<span class="hljs-subst">[a-zA-z]</span>+://<span class="hljs-subst">[^\s]</span>* 或 ^http://(<span class="hljs-subst">[\w-]</span>+\.)+<span class="hljs-subst">[\w-]</span>+(/<span class="hljs-subst">[\w-./?%&amp;=]</span>*)?$&quot;</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h3><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml">身份证号(15位、18位数字) = &quot;^\d</span><span class="hljs-template-variable">&#123;15&#125;</span><span class="xml">|\d</span><span class="hljs-template-variable">&#123;18&#125;</span><span class="xml">$&quot;</span><br><span class="xml">短身份证号码(数字、字母x结尾) = &quot;^([0-9])</span><span class="hljs-template-variable">&#123;7,18&#125;</span><span class="xml">(x|X)?$ 或 ^\d</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">|[0-9x]</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">|[0-9X]</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">?$&quot;</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="数字类校验"><a href="#数字类校验" class="headerlink" title="数字类校验"></a>数字类校验</h3><pre><code>数字 = &quot;^[0-9]*$&quot;;
+n位的数字 = &quot;^\d&#123;n&#125;$&quot;;
+至少n位的数字 = &quot;^\d&#123;n,&#125;$&quot;;
+m-n位的数字 = &quot;^\d&#123;m,n&#125;$&quot;;
+零和非零开头的数字 = &quot;^(0|[1-9][0-9]*)$&quot;;
+非零开头的最多带两位小数的数字 = &quot;^([1-9][0-9]*)+(.[0-9]&#123;1,2&#125;)?$&quot;;
+带1-2位小数的正数或负数 = &quot;^(\-)?\d+(\.\d&#123;1,2&#125;)?$&quot;;
+正数、负数、和小数 = &quot;^(\-|\+)?\d+(\.\d+)?$&quot;;
+有两位小数的正实数 = &quot;^[0-9]+(.[0-9]&#123;2&#125;)?$&quot;;
+有1~3位小数的正实数 = &quot;^[0-9]+(.[0-9]&#123;1,3&#125;)?$&quot;;
+非零的正整数 = &quot;^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$&quot;;
+非零的负整数 = &quot;^\-[1-9][]0-9&quot;*$&quot; 或 &quot;^-[1-9]\d*$&quot;;
+```**</code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MVP架构</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">加密算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

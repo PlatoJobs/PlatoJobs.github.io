@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>MVP架构 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MVP架构">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-27 10:04" pubdate>
+        2020年3月27日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MVP架构</h1>
+            
+            <div class="markdown-body">
+              <h1 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h1><p>MVP模式是MVC模式的一个演化版本（好像所有的模式都是出自于MVC~~），MVP全称Model-View-Presenter。顾名思义，</p>
+<p>Model：与MVC中的model没有太大的区别。主要提供数据的存储功能，一般都是用来封装网络获取的json数据的集合。Presenter通过调用Model进行对象交互。</p>
+<p>View：这里的View与MVC中的V又有一些小差别，这个View可以是viewcontroller、view等控件。Presenter通过向View传model数据进行交互。</p>
+<p>Presenter：作为model和view的中间人，从model层获取数据之后传给view，使得View和model没有耦合。</p>
+<p>说了那么多，总得来说MVP的好处就是解除view与model的耦合，使得view或model有更强的复用性。</p>
+<h1 id="MVP模式下的三个特性的分析"><a href="#MVP模式下的三个特性的分析" class="headerlink" title="MVP模式下的三个特性的分析"></a>MVP模式下的三个特性的分析</h1><ul>
+<li>任务均摊 – 我们将最主要的任务划分到 Presenter 和 Model，而 View 的功能较少；</li>
+<li>可测试性 – 非常好，由于一个功能简单的 View 层，所以测试大多数业务逻辑也变得简单；</li>
+<li>易用性 – 代码量比 MVC 模式的大，但同时 MVP 的概念却非常清晰。</li>
+</ul>
+<p>iOS MVP 示意图</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-ccd2a84fe9568245.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" srcset="/img/loading.gif" alt="img"></p>
+<p>在这里输入图片标题</p>
+<ul>
+<li>就 MVP 而言，UIViewController 的子类实际上就是 Views 并不是 Presenters。这点区别使得这种模式的可测试性得到了极大的提高，付出的代价是开发速度的一些降低，因为必须要做一些手动的数据和事件绑定。<br>还有一些其他形态的 MVP – 监控控制器的 MVP。这个变体包含了 View 和 Model 之间的直接绑定，但是 Presenter 仍然来管理来自 View 的动作事件，同时也能胜任对 View 的更新。</li>
+</ul>
+<h1 id="规范的MVP设计模式"><a href="#规范的MVP设计模式" class="headerlink" title="规范的MVP设计模式"></a>规范的MVP设计模式</h1><ul>
+<li>Model 层应该不仅仅是创建一个数据对象，还应该包含网络请求，以及数据 SQLite 的 CRUD 操作（比如 iOS 平台，一般以 FMDB 框架直接操作 sql，或者用 CoreData) 。一般可以将数据对象是否需要缓存设计成一个字段 isCache，或者针对整个项目设计一个开存储关，决定整个项目是否需要数据缓存。我们常见的新闻类 App，在离线的时候看到的数据，都是做了缓存处理的。比如一些金融类的 App，实时性比较高，是不做缓存的。</li>
+<li>View 层比较简单明了，就是 View 的一些封装、重用。在一款精心设计过的 App 里面，应该有很多 View 是可以封装重用的。比如一些自己的 TableViewCell，自己设计的 Button，一些 View（包含一些子 View，UI 精心设计过，在项目里多处出现的）等等。</li>
+<li>Presenter 层并不涉及数据对象的网络请求和 SQLite 操作，只是 Model 层和 View 层的一个桥梁。Presenter 层就不至于太臃肿，容易看懂。一些大的 App，或因为上线时间比较久了，经历过众多程序员的修补，或因前期并未做好架构，以至于打开一个类，几千行的代码，看着自己都晕。</li>
+</ul>
+<h1 id="MVP的优势"><a href="#MVP的优势" class="headerlink" title="MVP的优势"></a>MVP的优势</h1><ul>
+<li>模型与视图完全分离，我们可以修改视图而不影响模型</li>
+<li>可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部</li>
+<li>我们可以将一个Presener用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁。</li>
+<li>如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）</li>
+</ul>
+<h1 id="MVP的问题"><a href="#MVP的问题" class="headerlink" title="MVP的问题"></a>MVP的问题</h1><ul>
+<li>由于对视图的渲染放在了Presenter中，所以视图和Persenter的交互会过于频繁.</li>
+<li>还有一点你需要明白，如果Presenter过多地渲染了视图，往往会使得它与特定的视图的 联系过于紧密。一旦视图需要变更，那么 Presenter也需要变更了。比如说，原本用来呈现Html的Presenter现在也需要用于呈现Pdf了，那么视图很有可能也需要变更。</li>
+</ul>
+<h1 id="MVPDemo"><a href="#MVPDemo" class="headerlink" title="MVPDemo"></a>MVPDemo</h1><p>参考了<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/abea207c23e7">http://www.jianshu.com/p/abea207c23e7</a>里面给出的一个例子，这里向作者表示感谢。<br>先说下例子的核心思想就是：每个模块会有一个Presenter，Presenter里面包含了View（ViewController）和Model。获取数据（例如网络请求等）之后，进行View的展示和ViewController内部的逻辑处理。</p>
+<p>下面我们结合代码来看：</p>
+<h3 id="首先来看项目的文件结构："><a href="#首先来看项目的文件结构：" class="headerlink" title="首先来看项目的文件结构："></a>首先来看项目的文件结构：</h3><p><img src="https:////upload-images.jianshu.io/upload_images/2139357-c27301eb2e313e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/254" srcset="/img/loading.gif" alt="img"></p>
+<p>MVP文件结构</p>
+<p>代码给出了一个控制器作为例子，大家可以看到，home里面包含了四个文件夹，model、controller、presenter、view。home当中的HomePresenter是继承presenter的，HomePresenter根据业务的不同来实现自己的presenter。</p>
+<h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>网络的底层还是用AFNetWorking来实现，HttpClient具体的封装大概为</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-8ee4cc619f807050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/841" srcset="/img/loading.gif" alt="img"></p>
+<p>网络层</p>
+<p>这里说明一下，这里用delegate而不用block做回调是因为后面的HomePresenter需要对返回的数据进行处理，为了然后结构更加清晰，遵守一个函数一个功能的原则。后面还会再说一下。HttpClient提供了赋值responseHandle的init函数，外部可以通过init函数来绑定responseHandle协议。</p>
+<p>再来看一下上面那个responseHandle这个proctocol的结构：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-479b2c83756413b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/486" srcset="/img/loading.gif" alt="img"></p>
+<p>responseHandle</p>
+<p>目前只写了success和fail两个回调，这里为了方便演示，只写了一个参数，这个一块大伙可以根据自己的业务需求来写。</p>
+<p>结合HttpClient来看一下，我们分别在AFNetWorking请求成功、失败的回调当中处理delegate。简单说，HttpResponseHandle就是嫁接presenter和HttpClient的协议~~</p>
+<p>接下来看一下父类Presenter的设计。先看接口：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-4523e9879ead4b97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387" srcset="/img/loading.gif" alt="img"></p>
+<p>Presenter.h</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-499e644734a4d341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/394" srcset="/img/loading.gif" alt="img"></p>
+<p>Presenter.m</p>
+<p>这里采用了泛型，简单说泛型就是有点类似objective-c中的id类型，大伙可以自行Google一下。父类Presenter主要是提供绑定View和解绑View的功能。</p>
+<p>基于网络请求设计的HttpPresenter，HttpPresenter继承与Presenter，遵守HttpResponseHandle协议，并且拥有自己的泛型，HttpClient成员变量。供外部调用HttpClient，降低耦合性。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-85bc39308fa8f49b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/790" srcset="/img/loading.gif" alt="img"></p>
+<p>HttpPresenter.m</p>
+<p>HttpPresenter.m</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大致就可以分为这几层了，看一下怎么应用到实例中。</p>
+<p>上文的文件目录中可以看出我们每个功能模块都有presenter这个文件夹，对每个模块的presenter都是为这个模块服务，我们可以把请求、储存数据的活动放在这里。并且在这层presenter中处理model数据。为了使controller得到的数据能直接使用，可以多写一个protocol，来承上启下，HomeViewProtocol就为了这个产生。</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">HomeViewProtocol</span> </span><br><br>- (<span class="hljs-keyword">void</span>)onGetMovieListSuccess:(HomeModel*)homeModel;<br><br>- (<span class="hljs-keyword">void</span>)onGetMovieListFail:(<span class="hljs-built_in">NSInteger</span>) errorCode des:(<span class="hljs-built_in">NSString</span>*)des;<br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<p>先看了protocol，HomePresenter看起来就清晰多了吧</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-f4e00bd243fd1362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/774" srcset="/img/loading.gif" alt="img"></p>
+<p>HomePresenter.m</p>
+<p>在看一下controller的调用，初始化HomePresenter，然后绑定一下自己的视图，</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-0191085a6dced8af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/766" srcset="/img/loading.gif" alt="img"></p>
+<p>controller对presenter的调用</p>
+<p>遵循HomeViewProtocol</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-6eb68ef9e026014c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/776" srcset="/img/loading.gif" alt="img"></p>
+<p>controller实现HomeViewProtocol协议</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>关于db这层还没有写好，大家可以自由发挥，按照网络这种方式，放在业务的presenter里面就可以啦，后续有时间会附上一个基于FMDB的<br>如果同学们有更好的方案，随时欢迎指正~<br>附上github地址：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/baoshanf/MVP-iOS">https://github.com/baoshanf/MVP-iOS</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9E%B6%E6%9E%84/">架构</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Git的诞生</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <span class="hidden-mobile">正则表达式</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

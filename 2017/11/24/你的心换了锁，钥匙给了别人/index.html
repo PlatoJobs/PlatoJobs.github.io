@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>你的心换了锁，钥匙给了别人 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="你的心换了锁，钥匙给了别人">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-11-24 11:31" pubdate>
+        2017年11月24日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">你的心换了锁，钥匙给了别人</h1>
+            
+            <div class="markdown-body">
+              <p>雨，好像是千万支魔指，好像是千万条琴弦，弹出了千变万化的声音——题记</p>
+<p>1.</p>
+<p>从菲林口中得知你结婚的消息时，我没有哭，除了觉得手里的茶杯像加了一层润滑剂一般握也握不住之外，情绪波动并不大。</p>
+<p>我的电话号码多年不变，短信，微信却都没有你结婚的消息。你是不想我的出现让你尴尬，还是不想你的电话让我难堪。</p>
+<p>你不知道我从别人口中听到这个消息时，就像一个小丑，明明心里在滴血，却还将伤口捏成微笑的形状。</p>
+<p>我从她家走出来，外面下起了银针般的细雨，淅淅沥沥的落在我的身上，很冷，生疼。</p>
+<p>多年以前，你曾对我说过无数次：“我们一起去淋雨吧”</p>
+<p>我总是一再推脱，什么淋雨容易感冒，生病了影响学业，大姨妈来了等等，不善言辞的我，只在拒绝你的时候，得心应手。</p>
+<p>你很丧气，我们是学生，学海无涯，不知道等到何时才有机会，与我漫步雨中，成为雨巷里，丁香一样的恋人。</p>
+<p>你一定想不到，多年以后，我会走入雨中，夜凉如水，灯火通明，来人如织，雨势很小。像是漫天飞落的丁香花，我置身其中，任由回忆肆意侵袭。</p>
+<p>我终于无所顾忌的淋雨了，只是身边没有了你，丁香般的柔情细语，能与谁说，有谁能懂。世人不过觉得我是一时兴起的疯子罢了，却不知道我清醒着的那些年，失去了最重要的你。</p>
+<p>清醒的人，是压抑自己真实欲望的傻子，疯子，才是敢于面对自己的勇士。</p>
+<p>我在最好的年纪遇到了你，你是沙子，我太过用力，便流失于指缝中。</p>
+<p>2.</p>
+<p>与你相遇，并不美好，可以说是我循规蹈矩十几年里，乍现的一只苍蝇，烦人又无奈。</p>
+<p>那时候，学校安排差生与优等生互帮互助，共同进步，这不过，就是变相扶贫。</p>
+<p>我很不幸遇到了你，你不是我帮助的差生，你坐在我后排，却比他还难缠，他不过就是数学题不懂需要讲解十遍以上，英语口语说出来比西班牙语还难懂，我常常问：我是这样教的？他还会老老实实的点头，名正言顺的将罪名嫁祸给我，脸不红，心不跳，不去当演员实在可惜。</p>
+<p>不过我觉得，你比他更难搞，或者你们俩是一伙儿的，他负责击垮我的心理防线，你负责让我浑身不自在。</p>
+<p>我扎马尾的时候，你就在后面揪我的头发，一次揪一点儿，疼得我抓狂。我现在老是偏头痛，你罪责难逃。</p>
+<p>我吃包子，你就在旁边说人肉包子的恐怖故事，还提醒我小心别吃到手指头了。直到今天我都觉得馒头比包子安全。</p>
+<p>我上厕所，你就跟到门口，像诈尸一样的出来吓我，我吓得大哭，你就开心得像个疯子，好像你来学校的目的就是为了让我和你一起发疯。</p>
+<p>我回宿舍，你经常会在宿舍楼下鬼哭狼嚎，各种乱七八糟的歌，乱七八糟的话层出不穷，你就是个废话制造机，每次说完还要署名是为我而来，你知道我那时候差点成为全民公敌吗？</p>
+<p>你就是无处不在的苍蝇，赶都赶不走，见缝插针的给我添堵。我只祈祷扶贫工作赶紧结束，尽快脱离苦海，再也不要见到你，就天下天平了。</p>
+<p>有一天，我对菲林诉苦：“林清远，就是阴魂不散”</p>
+<p>菲林说：“男人如果捉弄一个女生，多半是出于喜欢”</p>
+<p>我不屑的看了她一眼，喜欢？林清远这种苍蝇式的求爱方式只有苍蝇才能懂。作为人类，我没有感受到喜欢，只觉得恶心。</p>
+<p>3.</p>
+<p>扶贫工作结束了，可是你这只苍蝇却飞进来优等生的班里，学校颁布的进步学生黄榜上，你的大名比一般的苍蝇还醒目。一个暑假，你就基因突变了，我严重怀疑老师在阅卷的时候，打了盹儿，胡乱给了你一个分数。</p>
+<p>很不幸，你还成了我的同桌，不过这次，我坚决不会理你。</p>
+<p>上课的时候，你会时不时给我递张纸条儿：“怎么了，最近都不理我了”</p>
+<p>课堂讨论的时候，你想尽办法跟我套近乎，我摆出一副毕加索抽象画的表情，送给你。</p>
+<p>下课的时候，你会凑过来问：“你最近不开心啊，家里死人了啊？”</p>
+<p>反正不管你说什么，做什么，除了干瞪眼，我不会给你任何回应，沉默是我铠甲，惹不起，我还躲不起啦！</p>
+<p>我是班里少数骑电动车上学的人，表面上看上去像大户人家的小姐，其实也就是一台面临退休的小破车儿，打雷下雨的时候，还莫名其妙的罢工，一到下雨天，我就心慌。</p>
+<p>越心慌，车越不懂事，一个雨天，车坏在了去学校的马路上，我穿着我爸那件加大加厚的雨衣，像是穿了件活动板房，笨重的像企鹅一样撒不开手脚。</p>
+<p>上坡的时候，车子没电了，轮胎坏了，力气也耗光了，雨越下越大，步子却怎么也迈不开了。</p>
+<p>突然，有一股力将车子推动了，我打算回头去看，雨衣挡住了我的视线，什么都看不见。只觉得身后这个人，力气很大，身体结实，在我最落魄的时候，帮了我，实在感激不尽。</p>
+<p>到了停车棚，我脱下雨衣，才看见浑身湿透的你，脸色煞白的看着我，手里拿着一把没有打开的伞。</p>
+<p>“有伞为什么不打？是不是傻？”我看着你，忍不住心疼的责备起来。</p>
+<p>“一只手帮你推车，一只手推自行车，我又没有三头六臂，怎么打伞”明明理直气壮的话，却被你说得像个委屈的小媳妇儿。</p>
+<p>“你会不会感冒啊？”</p>
+<p>“不会，等会儿喝点姜汤就好”说着，他将伞打开，我们一起撑伞去了教室，那是第一次，我们俩没有吵架，没有嘶吼，身上的刺，好像被大雨全冲走了。</p>
+<p>你说的喝姜汤，是不实际的，学校不是家里，没有姜，没有汤，也没有火。但是第二节课下课时，你居然用一次性碗端了一碗姜汤给我，热气腾腾的与你嘴里的白气融合成了一道氤氲，我头一次觉得你长得还不赖。</p>
+<p>“你在哪里弄的？”我忍不住好奇</p>
+<p>“学校后山，自己弄了个火”你得意的说</p>
+<p>“姜，你是怎么切的”我咬住一口姜片问道，你的姜片切得太清奇了。</p>
+<p>“用口咬的”</p>
+<p>我当时差点没有被一口姜汤噎死，恶狠狠的盯着笑得花枝乱颤的你，胃里一阵翻滚，却分不清是恶心还是暖心。</p>
+<p>4.</p>
+<p>你因为私自生火被学校处分了，一贯大题小做的教导处主任，为你专门组织了一场集会，让你在国旗下检讨你的错误。</p>
+<p>你的兄弟和你一样，都是不分场合的乌合之众。你一登台，他们就把你当成了超级演说家，底下掌声雷动，教导主任的那一张苦瓜一样的脸，又打了一层霜。</p>
+<p>我站在底下，听着你读从百度上下载的检讨书，牛头不对马嘴的内容，这哪里是检讨，分明是单口相声啊。</p>
+<p>读完之后，老师要你在国旗下面壁思过一天，太阳很大，可是我觉得你比它还耀眼。你身上的放荡不羁，与众不同，都在阳光下，熠熠生辉。</p>
+<p>我躲在教室里，不止一次的朝你望去，看你的眼神变得温柔细腻，那是，爱情开始的信号。</p>
+<p>不久，我们在一起了，偷偷摸摸的像是共产党初期的地下党员，每天在学校外面接头。</p>
+<p>你的性情也发生了变化，不再以令我抓狂为乐，学着像别人家的男朋友，走起了暖心路线。说实在的，我对于你的再一次基因突变，心里很害怕。</p>
+<p>你第一次买好了包子，牛奶放我桌上时，我掰开包子问你：“里面没有你的手指吧？”</p>
+<p>你将十个手指抖得跟抽筋一样，自己又咬了一口，我才放心的吃了下去。</p>
+<p>你第一次带我出去吃饭，点了两份包菜，我拿着筷子敲你的头：“谁告诉你我喜欢吃包菜”</p>
+<p>“不是你自己说的吗？”你一脸无辜的扒着饭。</p>
+<p>“我最讨厌这个菜了”那天，你找老板换了菜，从此以后，我们出门，你再没有点过包菜，错过一次的事情，你记得格外清楚。</p>
+<p>你在宿舍下面等我，也不再鬼哭狼嚎，要是遇到我的舍友，还会故意将我搂在怀里，讨好的对人家说：“我女朋友在宿舍，麻烦你们多多关照啊”</p>
+<p>我们会骑着自行车走过沿江风光带，但是你可没有人家电视剧男主角浪漫，你骑得几乎都要飞起来了，跟打了兴奋剂一样在树林边呼啸而过，我被甩下车半里地，都不知道。</p>
+<p>人家是两个人吹着晚风，我们是一个人飞，一个人追。</p>
+<p>我们会省钱一起去旅游，绿皮火车，都是硬座。你每次都让我坐在你的腿上，我有专属的软座，自带恒温系统，冬暖夏凉。</p>
+<p>我们会一起读英语，冬天晨读是对意志力与耐寒力的双重考验。你买了几个热水袋，放在教室里，隔一阵拿一个热乎乎的给我暖手，自己从来不用，说什么皮糙肉厚，扛得住。</p>
+<p>结果那个冬天，你长了一手冻疮，我心疼的一边替你擦药，一边抹眼泪。</p>
+<p>我数学比你好，你一个男生居然数学不如一个女的，你也不害臊，每次我教育你的时候，你就一个一个老师的喊着，跟个马屁精一样的逗我。</p>
+<p>在你面前，连生气都需要定力，不然容易笑场。</p>
+<p>我们约定考同一所大学，甚至想过如果事与愿违怎么熬过漫长的异地恋。却没有想到，会在高考来临前夕，分手，而且连正式的告别都没有。</p>
+<p>5.</p>
+<p>那个时候，我加入了学校的读书会，每周一群志同道合的朋友，会将自己喜欢的诗词美文，摘抄下来，到学校的长廊里相互分享，这对我的作文水平的提升，帮助很大。</p>
+<p>你很支持我，原本打算与我一起参加，无奈你实在缺少文艺细胞，看到一群人摇头晃脑的读上几个小时，你一度觉得他们吃多了摇头丸。</p>
+<p>那个时候，我认识了沈以宁，我们俩都喜欢纳兰性德和张爱玲，每一次交流起来都有一种相见恨晚的感觉，但仅仅只限于诗词。</p>
+<p>我曾私下和你提到过对沈以宁的崇拜，你颇有微词，气鼓鼓吃醋的样子，可气又可爱。</p>
+<p>都说女孩子比男孩子心细，第一次恋爱的我，并没有意识到，他会成为我们感情的杀手。</p>
+<p>有一次，他读到：“你总为爱你值不得值得，其实爱，就是不问值不值得”是张爱玲的句子，每一字都是她对胡兰成低到尘埃里的爱。</p>
+<p>他忽然深情款款的说：“我爱你，也不问值不值得”</p>
+<p>我心头一惊，被猝不及防的告白，乱了方寸，一时间连拒绝的话都卡壳了。一抬头，就看了你，出现在我的正对面，沈以宁的手，不知道什么时候落在了我的手上。我像触电一般的抽过来，你却转身就走了，连解释的机会都没给我。</p>
+<p>我什么都没说，可我也什么都没有做啊，你为什么一点儿都不信任我呢，你的那份自以为是的理直气壮一度，让我在深夜痛哭了无数次。我们开始了冷战，互不理睬，明明像个无人机一样盯着对方的一举一动，偏要做出一副老死不相往来的假象。</p>
+<p>直到有一天，你红着眼跑来问我：“陪我去淋一场雨吧”</p>
+<p>这是冷战以后，你第一次跟我说话，我受宠若惊。原本打算立马答应了，可是耳边的雨声轰隆，电闪雷鸣，一想到明天的第三次模拟考试，这是高考前，最重要的一场模考，我不允许自己生病，我下意识的动摇了。</p>
+<p>我看着课本，轻轻地摇摇头，还来不及解释几句，你就怒气冲冲的跑出了教室，我不是第一次拒绝你淋雨的邀请，你却是第一次生气。</p>
+<p>那天，你一反常态，缺席了所有的课。</p>
+<p>放学之后，沈以宁来接我去读书会，雨还没有停。我们俩共撑一把伞，走到学校花园，看见你一个人孤零零的坐在冰冷的石凳子上，捂着脸，哭得瑟瑟发抖。</p>
+<p>我准备走过去，你却先抬起了头，一双充血的眼睛狠狠的盯着我，一触即发。</p>
+<p>“我也准备了一把伞，只是你不愿意跟我走”你说完话，站起来就跑雨里去了，那一刻，我觉得你的背影都写满无助。</p>
+<p>我从菲林那里得知，那天你妈妈去世了，车祸，当场死亡。</p>
+<p>你跑来学校，一定是希望我能安慰你，陪在你的身边，陪你淋一场雨。不知道内情的我，居然又以学习为借口，再一次拒绝了你。</p>
+<p>我不想用不知者无罪来为自己开脱，那天你一个人呆在雨里，心一定比身体更冷吧，就像妈妈躺在川流不息的马路上一样凄凉。我居然在你最需要的时候，和别人一起出现在你绝望的深谷里，每次想到这里，我的心就比上万次凌迟还要痛苦。</p>
+<p>我恨死了考试，恨死了学习，恨死了自己。多年后，回忆起你，还是那个在雨里无助到绝望的眼神，目不转睛的盯着我。如果时间可以倒流，我一定陪你到雨里酣畅淋漓的淋一场，你的母亲也许还是不会回来，至少你不用孤独的面对这一切，至少你身边还有一个我。</p>
+<p>从那以后，你就跟老师要求做到了最后一排，我们之间隔着无数个座位，无数个人，要再一次走近你，我需要付出更多的努力。</p>
+<p>我试过很多种方法，与你和解。制造巧遇，制造话题，假装摔倒，给你写信，却都没有得到你的回应，你的心上了锁，唯一的钥匙丢在了雨里，再也找不到了。</p>
+<p>高中毕业之后，我们的缘分没有断，去了同一座城市，不同的大学。你知道，我曾悄悄的去过的你的学校，校园好大，我走了一天，都没有遇到你。</p>
+<p>我视力一直不好，又不喜欢戴眼镜。却总能在人群中一眼就认出你，这是在你面前才有的特异功能。那天我看遍了所有人，却找不到你的磁场，我像迷了路的小白兔，找不到回你心里的路了。</p>
+<p>听菲林说，你也来过我的学校，看到我和一个男孩，在湖边散步。你一定又一次心灰意冷了吧，一定以为我移情别恋了，如果我告诉，那我表弟弟来学校看我，这一次，你会不会信我。</p>
+<p>6.</p>
+<p>我一个人失魂落魄的从雨幕里走到了家里，浑身湿透，淋过一场，像是对我们的爱情做了最后一次的告别，年轻时没有来得及实现的心愿，现在却为时已晚。</p>
+<p>我换下衣服，打开空调，拿起柔软的毛巾擦拭着湿漉漉的头发，忽然，手机的声音响了。</p>
+<p>一条简讯，你的简讯，时隔五年，联系人备注着——不敢联系的人。</p>
+<p>“我不能等你了，我要结婚了”</p>
+<p>我看着手机屏幕，一个一个字的数着，十几个字，我读了不下百遍，眼里的泪水，滴在屏幕上。像是新娘的钻戒一般，耀眼夺目。</p>
+<p>外面的雨声越来越大，不时伴有雷声，我的心里不止一次的提醒自己要冷静，要克制。身体却要诚实得多，等我真正感受到那种撕心裂肺的痛苦时，我已经置身在滂沱大雨了，雨水像一把把尖锐刺骨的手术到，非要将你从我的身体里剔除出去才甘心。</p>
+<p>我常在想，如果我们晚一点相遇，晚一点恋爱，会不会从别人的教训里学会爱一个人，陪你走到最后的会不会就是我？</p>
+<p>爱情是一个偶然接着另一个偶然，我们一个误会接着另一个误会，盘根错节多次之后，剪不断，理还乱。</p>
+<p>你要结婚了，新娘一定是一个愿意陪你淋雨的女子，宛若丁香。我会从菲林那里去看你结婚的视频，见证你从校服走向西装。这场婚礼除了新娘不是我，应该不会任何遗憾。</p>
+<p>你的心换了锁，钥匙给了另一个女人，我祝你幸福。</p>
+<p>我终于知道你为什么喜欢淋雨了，在雨里，没有人看得见，你在哭。就像现在，没人看见我的眼泪。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2017/11/24/%E5%A2%83%E7%95%8C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">境界</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/">
+                        <span class="hidden-mobile">好想恋爱啊</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

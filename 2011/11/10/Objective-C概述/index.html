@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>Objective-C概述 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Objective-C概述">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2011-11-10 13:02" pubdate>
+        2011年11月10日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      55
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Objective-C概述</h1>
+            
+            <div class="markdown-body">
+              <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p><code>Object-C</code> 通常写作 Objective-C 或者 Obj-C 或 <code>OC</code>，是根据C语言所衍生出来的语言，继承了C语言的特性，是扩充 C 语言的面向对象编程语言。<br><code>Object-C</code> 是一种面向对象的语言。而 C 语言是面向过程的语言。<br><code>Object-C</code> 是 MAC OSX 和 iOS 开发的基础语言。</p>
+<h5 id="优点及缺点"><a href="#优点及缺点" class="headerlink" title="优点及缺点"></a>优点及缺点</h5><p><code>Object-C</code></p>
+<ul>
+<li>是非常“实际”的语言。它使用一个用C写成，很小的运行库，OC写成的程序通常不会比其原始码大很多。</li>
+<li><code>Objective-C</code> 的最初版本并不支持垃圾回收。</li>
+<li><code>Objective-C</code> 不包括命名空间机制(namespace mechanism)。</li>
+<li>虽然 <code>Objective-C</code> 是C的母集，但它也不视C的基本型别为第一级的对象。</li>
+<li>和C++不同，<code>Objective-C</code> 不支持运算子重载（它不支持 ad-hoc 多型）。</li>
+<li><code>Object-C</code> 仅支持单一父类继承，不支持多重继承。</li>
+</ul>
+<h5 id="和C-的比较"><a href="#和C-的比较" class="headerlink" title="和C++的比较"></a>和C++的比较</h5><blockquote>
+<p>目前只有Apple使用 Objective-C 作为其支持的语言。</p>
+</blockquote>
+<h5 id="与C-的不同之处有："><a href="#与C-的不同之处有：" class="headerlink" title="与C++的不同之处有："></a>与C++的不同之处有：</h5><ul>
+<li>O-C中所有的类都必须直接或间接继承自 NSObject;</li>
+<li>O-C中所有对象都是指针的形式;</li>
+<li>O-C用self代替this;</li>
+<li>O-C使用id代替void;</li>
+<li>O-C使用nil表示NULL;</li>
+<li>O-C只支持单继承;</li>
+<li>O-C使用YES/NO表示TRUE/FALSE;</li>
+<li>O-C使用#import代替#include;</li>
+<li>O-C中用消息表示类的方法，并采用[aInstance method:argv]调用形式;</li>
+<li>O-C支持反射机制;</li>
+<li>O-C支持Dynamic Typing, Dynamic Binding和Dynamic Loading.</li>
+</ul>
+<h5 id="与C-的相同之处有："><a href="#与C-的相同之处有：" class="headerlink" title="与C++的相同之处有："></a>与C++的相同之处有：</h5><ul>
+<li>与C共享的部分一致;<br>可以使用<code>assert(BOOL</code>), 一般用<code>NSCParameterAssert(BOOL)</code>代替。</li>
+</ul>
+<h5 id="O-C中的命名前缀说明："><a href="#O-C中的命名前缀说明：" class="headerlink" title="O-C中的命名前缀说明："></a>O-C中的命名前缀说明：</h5><p><code>NS-：NextStep;</code><br><code>CF-：Core Foundation;</code><br><code>CA-：Core Animation;</code><br><code>CG-：Core Graphics;</code><br><code>UI-：User Interface;</code></p>
+<h5 id="O-C中的消息特殊性："><a href="#O-C中的消息特殊性：" class="headerlink" title="O-C中的消息特殊性："></a>O-C中的消息特殊性：</h5><blockquote>
+<p>调用消息的类可以不知道如何响应这个消息。如果它不知道如何处理这个消息，它会自动将这个消息传递给其他的类，比如它的父类。<br>调用消息的类可以是nil。在C++中，在使用类方法之前，我们都需要检查对象是否为空，所以在实现析构函数的时候，常会有如下的代码，如<code>if (var) &#123; delete var; &#125;</code>但是在<code>Objective-C</code> 中，我们就可以直接写<code>[var release]</code>;即使<code>var == nil</code>, 也不会有问题。</p>
+</blockquote>
+<p><strong><em>O-C中的函数声明格式有</em></strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">-/+ (<span class="hljs-keyword">return</span> type) function_name;<br>-/+ (<span class="hljs-keyword">return</span> type) function_name : (parameter type) parameter;<br>-/+ (<span class="hljs-keyword">return</span> type) function_name : (parameter type) parameter1 otherParameter: (parameter_type) parameter2;<br></code></pre></td></tr></table></figure>
+<p>以上参数说明：<code>-</code>表示一般函数，<code>+</code>表示静态函数。<code>otherParameter</code>是参数的别名(第一个参数的别名省略)，在函数调用时方便指定。</p>
+<h5 id="O-C中的构造-析构函数"><a href="#O-C中的构造-析构函数" class="headerlink" title="O-C中的构造/析构函数:"></a>O-C中的构造/析构函数:</h5><ul>
+<li>O-C中的 init()/release() 对应于C++的构造/析构函数。alloc()/dealloc()也就对应于C++的new和delete,其中的dealloc()由于引用计数的自动调用而不用手动调用。</li>
+<li>O-C中父类的init()/release()函数需要子类的手动调用。而且每次都必须调用。不同于C++的自动调用。</li>
+<li>构造函数(- (id) init)调用形如:CSample* pSample=[[CSample alloc] init];其中alloc(+ (id) alloc)是继承来的static函数，init是继承来的一般函数，如重写一般函数时，则相当于C++的覆盖(不带参数)或重载(带参数)。</li>
+<li>析构函数(- (void)release)将引用计数减1，当=0时父类的 release() 会自动调用dealloc(- (void)dealloc);</li>
+</ul>
+<blockquote>
+<p>当O-C没有数据成员时，可省略{},建议保留。</p>
+</blockquote>
+<blockquote>
+<p>继承下来的方法，如：-(id) init可以头文件中省略，建议保留。</p>
+</blockquote>
+<blockquote>
+<p>O-C中只有数据成员的访问限制，没有方法的访问限制。</p>
+</blockquote>
+<blockquote>
+<p>同C++一样，数据成员有三种访问限制public, protected, private，缺省是protected。<br>示例：</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">AccessExample</span>: <span class="hljs-title">NSObject</span> </span>&#123;    <br><br><span class="hljs-keyword">@public</span><br><span class="hljs-keyword">int</span> publicVar;<br><br><span class="hljs-keyword">@protected</span><br><span class="hljs-keyword">int</span> protectedVar;<br><br><span class="hljs-keyword">@private</span><br><span class="hljs-keyword">int</span> privateVar; <br>&#125; <br><span class="hljs-keyword">@end</span>  <br><br></code></pre></td></tr></table></figure>
+<p>方法的访问限制可通过Category（类别）实现，示例代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// MyClass 类</span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span>   </span><br>-(<span class="hljs-keyword">void</span>) sayHello    <br>&#123;   <br><span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;Hello&quot;</span>);   <br>&#125;   <br><span class="hljs-keyword">@end</span><br><span class="hljs-comment">// MyClass  的扩展类</span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">MyClass</span>(<span class="hljs-title">Private</span>)   </span><br>-(<span class="hljs-keyword">void</span>) kissGoodbye;   <br><span class="hljs-keyword">@end</span>   <br></code></pre></td></tr></table></figure>
+<p>O-C中没有类的静态变量，只有全局变量。</p>
+<p>O-C中的数组NSArray可以保存不同类型的数据。</p>
+<p>O-C也支持run-time时的类型检查：</p>
+<p><code>- (BOOL) isKindOfClass: classObj</code>用于判断该对象是否属于某个类或者它的子类。</p>
+<p><code>- (BOOL) isMemberOfClass: classObj</code>用于判断该对象是否属于某个类（这里不包括子类) 。<br><code>- (BOOL) respondsToSelector: selector</code> 用于判断该对象是否能响应某个消息。这里，我们可以将@selector后面带的参数理解为C++中的函数指针。<br>注意:1）不要忘了@</p>
+<p>　　 2）@selector后面用的是<code>()</code>，而不是<code>[]</code>。<br>　　<br>　　3）要在消息名称后面跟：，无论这个消息是否带参数。<br>　　<br>　　 如：<code>[pSquare respondsToSelector:@selector(Set: andHeight:)]</code>。<br><code>+ (BOOL) instancesRespondToSelector: selector</code> 用于判断该类是否能响应某个消息。这是一个静态函数。</p>
+<p><code>-(id) performSelector: selector ：</code> 调用对象的selector方法。</p>
+<p><code>conformsToProtocol</code>类似于<code>respondsToSelector</code>，用于动态检查某个对象是否遵守某个协议。</p>
+<p><code>Category</code>：范畴/扩展类：在没有源代码的情况下，为一个已经存在的类添加一些新的功能。</p>
+<p>只能添加新的方法，不能添加新的数据成员；</p>
+<p><code>Category</code>的名字必须是唯一的。</p>
+<p><code>Protocol</code>：协议类：相当于C++中的纯虚类</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//创建协议</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">MyProtocol</span> &lt;<span class="hljs-title">NSObject</span>&gt;</span><br><span class="hljs-comment">//规则1</span><br><span class="hljs-comment">//规则2</span><br><br><span class="hljs-keyword">@required</span>    <span class="hljs-comment">//表示修饰的协议方法必须实现</span><br><span class="hljs-comment">//完成作业的协议方法</span><br>- (<span class="hljs-keyword">void</span>)finishTask;<br><br><span class="hljs-comment">//不能迟到的协议方法</span><br>-(<span class="hljs-keyword">void</span>)dontLate;<br><br><span class="hljs-keyword">@optional</span>   <span class="hljs-comment">//表示修饰的协议可选,可实现/可不实现</span><br><span class="hljs-comment">//穿戴整洁</span><br>- (<span class="hljs-keyword">void</span>)wearNeat;<br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//  类签订协议:&lt;协议名&gt;</span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Student</span>: <span class="hljs-title">NSObject</span> &lt; <span class="hljs-title">MyProtocol</span> &gt; </span>&#123;<br><br><span class="hljs-comment">//实现协议方法</span><br>- (<span class="hljs-keyword">void</span>)finishTask&#123;...&#125;<br>-(<span class="hljs-keyword">void</span>)dontLate&#123;...&#125;<br><br> &#125; <span class="hljs-keyword">@end</span><br><br></code></pre></td></tr></table></figure>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// 使用：</span><br>Student * student1 = [[Student alloc] init];<br><span class="hljs-keyword">id</span>&lt; MyProtocol &gt; student1 = dat;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>说明：我们首先声明了<code>MyProtocol</code>协议，任何遵守这个协议的类，都必须实现<code>@required</code>中的方法。在<code>Objective-C</code> 中，我们通过&lt;&gt;来表示遵守某个协议。当某个类声明要遵守某个协议之后，它就必须在.m文件中实现这个协议中的所有方法。使用<code>id&lt; MyProtocol &gt;</code> 作为类型，而不是像<code>C++</code>中的<code>MyProtocol* var</code>。</p>
+</blockquote>
+<p><code>IBOutlet</code>, IBAction: 告诉Xcode之后会使用Interface <code>Builder</code>关联该插座变量、动作。如果你希望在Interface <code>Builder</code>中能看到这个控件对象，那么在定义的时候前面加上IBOutlet，在IB里就能看到这个对象的outlet，如果你希望在Interface <code>Builder</code>里控制某个对象执行某些动作，就在方法前面加上IBAction。<br>形如：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// 声明一个属性 questionLabel，可以指向 UILabel 对象</span><br><span class="hljs-keyword">@property</span>(<span class="hljs-keyword">nonatomic</span>, <span class="hljs-keyword">weak</span>) <span class="hljs-keyword">IBOutlet</span> <span class="hljs-built_in">UILabel</span> *questionLabel;<br><br><span class="hljs-comment">//方法：实现 Botton 动作</span><br>- (<span class="hljs-keyword">IBAction</span>)showQuestion:(<span class="hljs-keyword">id</span>)sender&#123;<br>  <span class="hljs-comment">//...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>尽量避免在一行语句中进行两层以上的嵌套。</p>
+</blockquote>
+<blockquote>
+<p>消息转发：- (void) forwardInvocation: (NSInvocation *)anInvocation;</p>
+</blockquote>
+<p>扩展的关键字</p>
+<p><strong>@interface</strong></p>
+<p>类型声明，类似于 c++ 中的 class，区别在于OC中的声明与实现是强制分开的，@interface存放于.h文件中，而@implementation存放于.m文件中。@interface关键字用于类型的声明，包括数据成员、方法声明、属性等。方法的参数传递采用中缀符的形式，利用“：”分割参数名和被传递参数，类型的声明以@interface开头，以@end结束，通常一个类型的声明采用下面的结构：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">someOtherObject</span> //外部类型声明   </span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NewClassName</span> : <span class="hljs-title">ParentClassName</span> //类型声明 子类：父类   </span><br>&#123;  <br><span class="hljs-comment">//    定义属性   </span><br><span class="hljs-comment">//    全局变量，成员变量，实例变量   </span><br>    <span class="hljs-built_in">NSInteger</span> _age;  <span class="hljs-comment">//年龄   </span><br>    <span class="hljs-built_in">NSString</span> *_name;  <span class="hljs-comment">//姓名   </span><br>    <span class="hljs-keyword">float</span> _weight;  <span class="hljs-comment">//体重     </span><br>&#125;  <br><span class="hljs-comment">//方法定义   </span><br>-(<span class="hljs-keyword">void</span>)shopping；<span class="hljs-comment">//不带参数的方法   </span><br>-(<span class="hljs-keyword">void</span>)goshopping:(<span class="hljs-keyword">float</span>)price; <span class="hljs-comment">//带参数的方法       </span><br>-(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg someOtherArgName:(<span class="hljs-keyword">int</span>)someOtherArg;     <br><span class="hljs-comment">//类方法,使用类名调用的方法 [类名 方法]   </span><br><span class="hljs-comment">//以&#x27;+&#x27;开头    </span><br>+(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg;     <br>-(<span class="hljs-keyword">id</span>)init; <span class="hljs-comment">//初始化方法     </span><br><span class="hljs-keyword">@property</span> <span class="hljs-keyword">int</span> num; <span class="hljs-comment">//属性,为属性自动生成set和get方法   </span><br><span class="hljs-keyword">@end</span>   <br></code></pre></td></tr></table></figure>
+<p><strong>@implementation</strong></p>
+<p>对应于@interface的类型声明，@implementation表示一个类型的实现过程，存放于‘.m’文件中，同样以@end结束，实现的格式通常如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//预编译指令，只编译 .m 文件，而 .h 文件导入到此处处理。   </span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;Person.h&quot;</span>   </span><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">NewClassName</span>     </span><br>-(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg someOtherArgName:(<span class="hljs-keyword">int</span>)someOtherArg   <br>&#123;   <br><span class="hljs-comment">//实现代码   </span><br>&#125;    <br>+(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg    <br>&#123;   <br><span class="hljs-comment">//类方法实现代码    </span><br><span class="hljs-comment">//与实例方法的区别：类方法中不能使用属性    </span><br> &#125;   <br><span class="hljs-keyword">@synthesize</span> num=i; <span class="hljs-comment">//将属性与变量进行对应 </span><br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<p><strong>new、alloc</strong></p>
+<p>Object-C中的方法调用形式采用消息发送的方式，通常调用的形式如：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>[someObject someMethod:firstArg someOtherArgName:otherArg];<br><br></code></pre></td></tr></table></figure>
+<p>实例的初始化也采用消息发送的形式，可以简单的调用类型的new方法来获取一个实例对象，简单实例化的方法通常是：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs objc">someObject *obj = [someObject new]; <span class="hljs-comment">//类的实例化</span><br></code></pre></td></tr></table></figure>
+<p>new 方法的实际过程是调用 alloc 和 init 方法，因此如果需要采用自定义的方法来初始化实例，则需要自己重写 init 方法，通常的初始化方式为：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs objc">someObject *obj = [[someObject alloc] init]; <span class="hljs-comment">//采用无参数的init实例化   </span><br>someObject *obj = [[someObject alloc] initWithArg:Arg]; <span class="hljs-comment">//采用参数的实例化 </span><br></code></pre></td></tr></table></figure>
+<p><strong>@class</strong></p>
+<p>@class是一个前向引用声明，类似于C++中的friend友元声明，其作用是告诉编译器其后面的字段代表一个类型名称，尽管不知道类型的具体实现，但是只需要将其作为一个类型名称处理即可。通常在使用复合的结构时可以采用@class来减少头文件的相互引用，如果出现循环依赖，则需要依靠@class来避免引用的死循环。</p>
+<p>@class 可以解决 #import 引起的相互导入而导致的循环引用问题。<br>在头文件里要使用其他类,一般用@class, 在实现文件用#import导入类文件。<br>通常使用形式为：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@class</span> <span class="hljs-title">someOtherObject</span>;      </span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">someObject</span>:<span class="hljs-title">NSObject</span>   </span><br>&#123;   <br>someOtherObject *obj;  <br></code></pre></td></tr></table></figure>
+<p>#import</p>
+<p>类似于C语言中的 #include，导入一个头文件,获取该头文件中类的定义—方法和属性。</p>
+<p><strong>@property</strong></p>
+<p>尽管可以使用 obj-&gt;arr 的形式去强制读取对象的成员变量，但是良好的编程形式是对外界提供成员变量的读写接口。@property关键字提供了外界对成员变量的访问接口，其本质是自动为某一个属性生成set和get方法。<br>根据不同的需要，可以添加 readonly（只读，相当于只添加get不添加set方法）或者 readwrite（读写，如果不添加则为默认）；<br>还有三种赋值方式可选 ：<br>assign（直接赋值，通常用于基本类型），</p>
+<p>retain（释放旧值，增加新的retaincount），</p>
+<p>copy（常用于字符串，生成一个新的拷贝）.</p>
+<p>格式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">@property</span>(原子性©,赋值©,读写性©)<span class="hljs-built_in">NSString</span> *XXX;  <br><span class="hljs-number">1.</span>原子性    <br>  * atomic：多线程环境下，存在线程保护；   <br>  * <span class="hljs-keyword">nonatomic</span>：多线程环境下，不存在线程保护；   <br><span class="hljs-number">2.</span>赋值     <br>  * <span class="hljs-keyword">assign</span>：直接赋值，默认；(对象之外的类型使用)   <br>  * <span class="hljs-keyword">retain</span>：保留对象；（所有的对象，都使用 <span class="hljs-keyword">retain</span>）   <br>  * <span class="hljs-keyword">copy</span>：拷贝对象；<span class="hljs-built_in">NSString</span> 的对象都使用 <span class="hljs-keyword">copy</span>    <br><span class="hljs-number">3.</span>读写性     <br>  * <span class="hljs-keyword">readwrite</span>：生成<span class="hljs-keyword">getter</span>、<span class="hljs-keyword">setter</span>方法，默认；   <br>  * <span class="hljs-keyword">readonly</span>：只生成<span class="hljs-keyword">getter</span>方法  <br></code></pre></td></tr></table></figure>
+<p>作用：</p>
+<ol>
+<li>生成一个 _XXX 属性，此属性是 private ,不能被继承；</li>
+<li>自动为该属性生成 set 和 get 方法。<br>通常使用的方式如下：<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">someObject</span>:<span class="hljs-title">NSObject</span>   </span><br>&#123;   <br><span class="hljs-keyword">int</span> i; <span class="hljs-comment">//成员变量    </span><br>&#125;   <br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">assign</span>,<span class="hljs-keyword">readonly</span>) <span class="hljs-keyword">int</span> num; <span class="hljs-comment">//属性(注意无需下划线)   </span><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>@synthesize</strong></p>
+<p>与 @property 对应，将一个外在属性与成员变量相关联，定义在 @implementation 中，如果属性名与变量名一致则可以省略变量名。常用方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">someObject</span> </span><br>  <br><span class="hljs-keyword">@synthesize</span> num=i;<span class="hljs-comment">//如果属性名也为i，则可以直接写为 @synthesize i </span><br><br><span class="hljs-comment">//更改属性名，将默认的 _username 改为 _name</span><br><span class="hljs-keyword">@synthesize</span> username = _name;  <br><span class="hljs-keyword">@end</span>   <br></code></pre></td></tr></table></figure>
+<h6 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h6><p>内存管理是关于如何管理 对象 生命周期的编程原则。<br>Object-C采用引用计数的方式进行内存管理，由于所有的对象都继承于 NSObject，因此所有的对象都可以接受 NSObject 的三个方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>-(<span class="hljs-keyword">id</span>)<span class="hljs-keyword">retain</span>;   <span class="hljs-comment">//retain方法将对象的引用计数加1并返回该对象   </span><br>-(<span class="hljs-keyword">void</span>)release; <span class="hljs-comment">//release将引用计数减1   </span><br>-(<span class="hljs-keyword">unsigned</span>)retainCount; <span class="hljs-comment">//retainCount方法返回对象当前的引用计数  </span><br></code></pre></td></tr></table></figure>
+<p>当采用 <code>new、alloc、copy</code> 方法创建一个对象时，它的引用计数被置为1，如果程序中对该对象进行操作，则应根据需要，通过调用 <code>retain</code> 和<code>release</code> 方法来保证该对象在不需要的时候被清除。当一个对象的引用计数被置为0后，系统会自动向对象发送一个 <code>dealloc</code> 消息，将其占有的资源释放。通常情况下，如果一个对象的初始化过程调用了其他资源，则应该重写该对象的 <code>dealloc</code>过程，保证在对象的销毁期正确释放这些资源。</p>
+<p><strong><em><code>Object-C</code>进行内存管理的3条规则</em></strong>是：</p>
+<ul>
+<li>如果使用 new、alloc、copy 操作获得一个对象，则该对象的保留计数器值为1.</li>
+<li>如果通过任何其他方法获得一个对象，则假设该对象的保留计数器值为1，而且已经被设置为自动释放。</li>
+<li>如果保留了某个对象，则必须保持 retain 方法和 release 方法的使用次数相等。</li>
+</ul>
+<p><code>retainCount</code>：内存管理默认为系统自动.<br>内存管理改为手动方法：选中<code>Project -&gt; Build settings -&gt; 搜索框搜索“arc”</code>,将 Object-C <code>Automatic Reference Counting</code>值设置为<code>No</code>；<br>手动内存管理(MRC)黄金法则:如果对一个对象使用了 <code>alloc,[mutable]copy,retain</code>, 那么你必须使用相应的 <code>release</code>或者<code>autorelease</code> 释放.</p>
+<ul>
+<li>为了更加方便的进行能存管理，cocoa中提供了一个自动释放池（autorelease pool）的概念，每一个类都继承了一个autorelease方法，当调用对象的autorelease方法时，该对象会被加入到开始创建的自动释放池中。当程序进行到不再需要自动释放池中的对象时，将自动释放池释放的时候会向池中的所有对象发送一个 release 消息，从而保证不再需要的对象被正确的释放。通常的用法如下：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-built_in">NSAutoreleasePool</span> *pool = [[<span class="hljs-built_in">NSAutoreleasePool</span> alloc] init];   <br>someObject * obj = [[someObject alloc] init];   <br>[obj autorelease]; <span class="hljs-comment">//将 obj 对象加入自动释放池中，引用计数不会-1.   </span><br><span class="hljs-comment">//其他代码  </span><br>[pool release]; <span class="hljs-comment">//执行该语句时，系统会向池内所有的对象发送 release 消息；</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>在这个例子中，如果对obj进行的其他 retain 操作和 release 操作保持一致的话，则会将obj的引用计数变为0，从而调用它的 dealloc 方法进行资源释放.</p>
+</blockquote>
+<h5 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h5><p>ARC自动引用计数(automatic reference counting)，提供自动管理内存的功能。<br>不需要手动管理引用计数,不需要也不允许 retain、release、autorelease。<br>注意版本的支持是在iOS4(不支持弱引用)、iOS5上。<br>内存中的区域划分</p>
+<p>栈:栈区(stack)由系统自动分配和释放 ,存放局部变量的值等。<br>堆:一般由程序员分配和释放,如果不释放,则出现内存泄露。程序退出时, 系统会回收你的内存。特点:无序、速度慢、容量大。<br>静态存储区:全局变量(外部变量)和静态变量都存放在静态区域。当程序结束时,系统回收。<br>常量区:存放常量的内存区域,程序结束时,系统回收。<br>代码区:存放二进制代码的区域。<br>数组内存管理</p>
+<p>如果一个对象被添加到数组,那么这个对象的引用计数会被 retain 而 +1.<br>数组销毁或者 removeAllObjects,会给每一个元素发送 release 消息。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//对数组中的每一个元素发送release消息  </span><br>[array removeAllObjects]; <br>    <br><span class="hljs-comment">//移除下标为1的元素,同时向它发送release消息  </span><br>[array removeObjectAtIndex:<span class="hljs-number">1</span>];<br></code></pre></td></tr></table></figure>
+<h5 id="类方法创建的内存管理"><a href="#类方法创建的内存管理" class="headerlink" title="类方法创建的内存管理"></a>类方法创建的内存管理</h5><p>Foundation 中的类可以通过 alloc 创建和 类方法 创建,区别在于内存管理不一样。<br>类方法 创建的对象是加入了自动释放池。<br>新语法（简便写法）创建的对象和类方法创建的对象相同,由自动释放池管理。</p>
+<h4 id="Category-（类别、类目）"><a href="#Category-（类别、类目）" class="headerlink" title="Category （类别、类目）"></a>Category （类别、类目）</h4><ul>
+<li>类目是为现有的类提供一个新的方法的方法，即使没有一个类的源代码，仍然可以向类中添加一个方法以方便使用。</li>
+<li>通过类目扩展的方法,子类也能继承下来。</li>
+<li>类目不能为原始类增加属性。</li>
+<li>无法调用原始类的方法。</li>
+<li>类目的主要目的有3个：将类的实现分散到多个不同的文件或框架中，创建对私有方法的前向引用，向对象添加非正式协议。</li>
+<li>类目的定义和类的定义相似。在.h文件里声明,.m文件里实现方法。</li>
+<li>定义类目的文件命名规则: 类名+类目名称,如“NSString+Revert”。<br>类目的创建： 菜单选File -&gt; New -&gt; File -&gt; Object-C File -&gt;选择File Type为 Category</li>
+</ul>
+<p>类别的声明方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">NSString</span> (<span class="hljs-title">Extension</span>)</span><br>&#123;<br><span class="hljs-comment">//        NSString *s = @&quot;hello&quot;;  错误！类目不能创建属性！！！</span><br>&#125;<br><br><span class="hljs-comment">// 要扩展的方法 </span><br>-(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg; <br><br><span class="hljs-comment">//覆写父类方法</span><br>- (<span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSString</span> *&gt; *)componentsSeparatedByString:(<span class="hljs-built_in">NSString</span> *)separator;<br><br><span class="hljs-keyword">@end</span> <br></code></pre></td></tr></table></figure>
+<p>类别的实现方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">NSString</span> (<span class="hljs-title">Extension</span>)</span><br><br>-(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg; &#123;<br><span class="hljs-comment">//实现代码</span><br>&#125;<br><br>- (<span class="hljs-built_in">NSArray</span>&lt;<span class="hljs-built_in">NSString</span> *&gt; *)componentsSeparatedByString:(<span class="hljs-built_in">NSString</span> *)separator&#123;<br><span class="hljs-comment">//无法调用原始类的方法</span><br><span class="hljs-comment">//实现代码</span><br><span class="hljs-keyword">return</span> expression;<br>&#125;<br><span class="hljs-keyword">@end</span>  <br></code></pre></td></tr></table></figure>
+<h5 id="延展"><a href="#延展" class="headerlink" title="延展"></a>延展</h5><blockquote>
+<p>在类的实现文件.m中定义类目,叫延展。</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//延展：使用类目声明方法，在实现类中实现此方法</span><br><span class="hljs-comment">//延展可以在.h中声明,也可以在.m中声明</span><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">Persion</span> (<span class="hljs-title">p2</span>)</span><br><br>-(<span class="hljs-keyword">id</span>)someMethod:(<span class="hljs-keyword">int</span>)someArg;<br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<h4 id="protocol-（协议）"><a href="#protocol-（协议）" class="headerlink" title="@protocol （协议）"></a>@protocol （协议）</h4><ul>
+<li>Object-C中的协议类似于java中的接口，通过@protocol关键字定义一个或多个需要遵从协议的对象实现的方法。</li>
+<li>协议本身不是类，它定义了一组方法，让其他类来实现。</li>
+<li>在类实现时需要将协议中规定的方法都予以实现。Object C 2.0增加了2个新的协议修饰符@optional和@required，可以规定协议中的方法是否为必须实现的方法。</li>
+<li>创建方式：菜单选<code>File -&gt; New -&gt; File -&gt; Object-C File -&gt;自定义协议名</code>，选择File Type为 Protocl。<br>协议定义的方法：</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">MyProtocol</span> &lt; <span class="hljs-title">NSObject</span> &gt;</span><br><br><span class="hljs-keyword">@required</span> <span class="hljs-comment">//表示修饰的协议方法必须实现    </span><br>-(<span class="hljs-keyword">void</span>)someMethod1; <span class="hljs-comment">//协议方法</span><br><br><span class="hljs-keyword">@optional</span> <span class="hljs-comment">//表示修饰的协议可选，可实现/可不实现      </span><br>-(<span class="hljs-keyword">void</span>)someMethod2;     <br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
+<p>采用协议的方法需在类声明时使用尖括号注明其需要使用的协议：<br><code>@interface someObject:NSObject &lt;MyProtocol&gt;</code><br>然后在 .m 文件中添加协议中需要实现的方法。</p>
+<h5 id="self-和-super"><a href="#self-和-super" class="headerlink" title="self 和 super"></a><code>self</code> 和 <code>super</code></h5><ul>
+<li><code>self</code>指的是类对象本身;</li>
+<li><code>super</code>是父类对象本身;</li>
+<li><code>self</code>用来调用本类对象的方法;</li>
+<li><code>self</code>关键字先从本类中查找是否有此方法，如果没有，再从父类中调用此方法;</li>
+<li><code>super</code>调用从父类继承下来的方法;</li>
+<li><code>super</code>关键字直接调用父类中定义的方法.</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Objective-C/">Objective-C</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A6%82%E8%BF%B0/">概述</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">求职简历</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2011/07/20/%E8%B4%AA%E5%AE%98%E5%BF%8F%E6%82%94%E5%BD%95%E9%87%8C%E5%A5%97%E8%B7%AF%E5%A4%9A/">
+                        <span class="hidden-mobile">贪官忏悔录里套路多:打虚假感情牌 摆出身讲贡献</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

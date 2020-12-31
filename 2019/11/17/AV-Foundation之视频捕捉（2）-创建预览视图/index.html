@@ -1,0 +1,476 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>AV Foundation之视频捕捉（2）__创建预览视图 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="AV Foundation之视频捕捉（2）__创建预览视图">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-11-17 21:36" pubdate>
+        2019年11月17日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      807 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">AV Foundation之视频捕捉（2）__创建预览视图</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>前言在讲述<code>AVFoundation</code>框架之媒体捕捉。我将用一个小案例来开始整个知识点的引导以及疏通。我就不一一赘述相关的UI实现了。关于UI搭建部分，同学们可以在本篇文章末尾拿到百度网盘分享。你就可以在这个基础上进行编码了.<a target="_blank" rel="noopener" href="https://platojobs.github.io/2019/11/17/AV-Foundation之视频捕捉（1）-关键概念/">AV Foundation 基础概念</a></p>
+</blockquote>
+<h4 id="2-1-1-创建预览视图"><a href="#2-1-1-创建预览视图" class="headerlink" title="2.1.1 创建预览视图"></a>2.1.1 创建预览视图</h4><p>图2-1是项目的用户界面的组成图示。我们把重点放在中间层<code>THPreview View</code>的实现上。因为它直接包含了<code>AVFoundation</code> 的用户界面。</p>
+<p><img src="%E5%9B%BE2-1.png" srcset="/img/loading.gif" alt="图2-1"></p>
+<p>图2-1所示的THPreview View 类提供给用户用i 个摄像头当前拍摄内容的实时预览图。我们将使用AVCaptureVideoPreviewLayer方法实现这个行为。首先我们通过认识THPreview View 的接口开始了解如何实现。</p>
+<p>代码实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;AVFoundation/AVFoundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">THPreviewViewDelegate</span> &lt;<span class="hljs-title">NSObject</span>&gt;</span><br>- (<span class="hljs-keyword">void</span>)tappedToFocusAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//聚焦</span><br>- (<span class="hljs-keyword">void</span>)tappedToExposeAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//曝光</span><br>- (<span class="hljs-keyword">void</span>)tappedToResetFocusAndExposure;<span class="hljs-comment">//点击重置聚焦和曝光</span><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">THPreviewView</span> : <span class="hljs-title">UIView</span></span><br><span class="hljs-comment">//session用来关联AVCaptureVideoPreviewLayer和激活AVCaptureSession</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">strong</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">AVCaptureSession</span> *session;<br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">weak</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-keyword">id</span>&lt;THPreviewViewDelegate&gt; delegate;<br><span class="hljs-comment">//是否聚焦</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToFocusEnabled;<br><span class="hljs-comment">//是否曝光</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToExposeEnabled;<br><br><span class="hljs-keyword">@end</span><br><br><br></code></pre></td></tr></table></figure>
+<p>实现：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>+ (Class)layerClass &#123;<br>    <span class="hljs-comment">// 返回AVCaptureVideoPreviewLayer对象</span><br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> <span class="hljs-keyword">class</span>];<br>&#125;<br><br>- (<span class="hljs-built_in">AVCaptureSession</span>*)session &#123;<br>    <span class="hljs-comment">// 返回捕捉会话</span><br>    <span class="hljs-keyword">return</span> [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setSession:(<span class="hljs-built_in">AVCaptureSession</span> *)session &#123;<br>    <span class="hljs-comment">// 捕捉数据直接输出到图层中，保证会话状态同步   </span><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer setSession:session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setupView &#123;<br><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer setVideoGravity:<span class="hljs-built_in">AVLayerVideoGravityResizeAspectFill</span>];<br><br><br>    _singleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleSingleTap:)];<br><br>    _doubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleTap:)];<br>    _doubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br><br>    _doubleDoubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleDoubleTap:)];<br>    _doubleDoubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br>    _doubleDoubleTapRecognizer.numberOfTouchesRequired = <span class="hljs-number">2</span>;<br><br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_singleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleDoubleTapRecognizer];<br>    [_singleTapRecognizer requireGestureRecognizerToFail:_doubleTapRecognizer];<br><br>    _focusBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">0.102</span> green:<span class="hljs-number">0.636</span> blue:<span class="hljs-number">1.000</span> alpha:<span class="hljs-number">1.000</span>]];<br>    _exposureBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">1.000</span> green:<span class="hljs-number">0.421</span> blue:<span class="hljs-number">0.054</span> alpha:<span class="hljs-number">1.000</span>]];<br>    [<span class="hljs-keyword">self</span> addSubview:_focusBox];<br>    [<span class="hljs-keyword">self</span> addSubview:_exposureBox];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)handleSingleTap:(<span class="hljs-built_in">UIGestureRecognizer</span> *)recognizer &#123;<br>    <span class="hljs-built_in">CGPoint</span> point = [recognizer locationInView:<span class="hljs-keyword">self</span>];<br>    [<span class="hljs-keyword">self</span> runBoxAnimationOnView:<span class="hljs-keyword">self</span>.focusBox point:point];<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.delegate) &#123;<br>        [<span class="hljs-keyword">self</span>.delegate tappedToFocusAtPoint:[<span class="hljs-keyword">self</span> captureDevicePointForPoint:point]];<br>    &#125;<br>&#125;<br><span class="hljs-comment">//屏幕坐标系转化为摄像头坐标系点</span><br>- (<span class="hljs-built_in">CGPoint</span>)captureDevicePointForPoint:(<span class="hljs-built_in">CGPoint</span>)point &#123;                      <span class="hljs-comment">// 3</span><br>    <span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *layer =<br>        (<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer;<br>    <span class="hljs-keyword">return</span> [layer captureDevicePointOfInterestForPoint:point];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="2-1-2-坐标空间转换"><a href="#2-1-2-坐标空间转换" class="headerlink" title="2.1.2 坐标空间转换"></a>2.1.2 坐标空间转换</h4><p>当使用<code>AVFoundation</code> 的捕捉API时，一定要理解屏幕坐标系和捕捉设备坐标系不同。iOS6.0之前的版本，要在这2个坐标空间进行转换非常困难。要精确的将屏幕坐标点转换为摄像头坐标点。开发者必须考虑诸如视频重力、镜像、图层变换和方向等因素进行综合计算。幸运的是，<code>AVCaptureVideoPreviewLayer</code>现在定义了一个转换方法让这一过程变得简单多了。</p>
+<p><code>AVCaptureVideoPreviewLayer</code>定义了2个方法用于坐标系间进行转换：</p>
+<p><code>captureDevicePointOfInterestForPoint:</code>获取屏幕坐标系的CGPoint 数据，返回转换得到的设备坐标系CGPoint数据。</p>
+<p><code>pointForCaptureDevicePointOfInterest:</code>获取摄像头坐标系的CGPoint数据，返回转换得到的屏幕坐标系CGPoint 数据。<br><code>THPreviewView</code> 使用<code>captureDevicePointOfInterestForPoint:</code>方法将用户触点信息转换为摄像头设备坐标系的中的点。在项目中点击对焦和点击曝光功能实现会用到这个转换坐标点。</p>
+<blockquote>
+<p>文章重点，要弄明白预览视图的创建 和 坐标空间转换的方法。<br><a target="_blank" rel="noopener" href="https://github.com/PlatoJobs/AVFoundationCustum">实例代码</a></p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/%E9%9F%B3%E8%A7%86%E9%A2%91/">音视频</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/AVFoundation/">AVFoundation</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Javascript学习图谱</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/">
+                        <span class="hidden-mobile">AV Foundation之视频捕捉（1）__关键概念</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

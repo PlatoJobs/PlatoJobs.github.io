@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>iOS 13.0以后presentViewController - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="iOS 13.0以后presentViewController">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-31 10:53" pubdate>
+        2020年12月31日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      17
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">iOS 13.0以后presentViewController</h1>
+            
+            <div class="markdown-body">
+              <h3 id="第一：基础的Present-View-Controller解析"><a href="#第一：基础的Present-View-Controller解析" class="headerlink" title="第一：基础的Present View Controller解析"></a>第一：基础的<code>Present View Controller</code>解析</h3><p>一、主要用途</p>
+<p>弹出模态<code>ViewController</code>是<code>iOS</code>变成中很有用的一个技术，UIKit提供的一些专门用于模态显示的<code>ViewController</code>，如<code>UIImagePickerController</code>等。弹出模态<code>ViewController</code>主要使用于一下这几种情形：</p>
+<ul>
+<li><p>1、收集用户输入信息</p>
+</li>
+<li><p>2、临时呈现一些内容</p>
+</li>
+<li><p>3、临时改变工作模式</p>
+</li>
+<li><p>4、相应设备方向变化（用于针对不同方向分别是想两个ViewController的情况）</p>
+</li>
+<li><p>5、显示一个新的<code>view</code>层级</p>
+</li>
+</ul>
+<p>这几种情形都会暂时中断程序正常的执行流程，主要作用是收集或者显示一些信息。</p>
+<h3 id="二、几个概念和常用设置"><a href="#二、几个概念和常用设置" class="headerlink" title="二、几个概念和常用设置"></a>二、几个概念和常用设置</h3><h4 id="1、presenting-view-controllerVs-presented-view-controller"><a href="#1、presenting-view-controllerVs-presented-view-controller" class="headerlink" title="1、presenting view controllerVs presented view controller"></a>1、<code>presenting view controller</code>Vs <code>presented view controller</code></h4><p>当我们在<code>view controller A</code>中模态显示<code>view controller B</code>的时候，A就充当<code>presenting view controller</code>（弹出<code>VC</code>），而B就是<code>presented view controller</code>（被弹出<code>VC</code>）。官方文档建议这两者之间通过<code>delegate</code>实现交互，如果使用过<code>UIImagePickerController</code>从系统相册选取照片或者拍照，我们可以发现<code>imagePickerController</code>和弹出它的<code>VC</code>之间就是通过<code>UIImagePickerControllerDelegate</code>实现交互的。因此我们在实际应用用，最好也遵守这个原则，在被弹出的VC中定义<code>delegate</code>，然后在弹出<code>VC</code>中实现该代理，这样就可以比较方便的实现两者之间的交互。</p>
+<h4 id="2、Modal-Presentation-Styles（弹出风格）"><a href="#2、Modal-Presentation-Styles（弹出风格）" class="headerlink" title="2、Modal Presentation Styles（弹出风格）"></a>2、<code>Modal Presentation Styles</code>（弹出风格）</h4><p>通过设置<code>presented VC</code>的<code>modalPresentationStyle</code>属性，我们可以设置弹出View Controller时的风格，有以下四种风格，其定义如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> &#123;<br><br><span class="hljs-built_in">UIModalPresentationFullScreen</span> = <span class="hljs-number">0</span>,<br><br><span class="hljs-built_in">UIModalPresentationPageSheet</span>,<br><br><span class="hljs-built_in">UIModalPresentationFormSheet</span>,<br><br><span class="hljs-built_in">UIModalPresentationCurrentContext</span>,<br><br>&#125; <span class="hljs-built_in">UIModalPresentationStyle</span>;<br><br></code></pre></td></tr></table></figure>
+<p><code>UIModalPresentationFullScreen</code>代表弹出<code>VC</code>时，<code>presented VC</code>充满全屏，如果弹出VC的<code>wantsFullScreenLayout</code>设置为<code>YES</code>的，则会填充到状态栏下边，否则不会填充到状态栏之下。</p>
+<p><code>UIModalPresentationPageSheet</code>代表弹出是弹出VC时，presented VC的高度和当前屏幕高度相同，宽度和竖屏模式下屏幕宽度相同，剩余未覆盖区域将会变暗并阻止用户点击，这种弹出模式下，竖屏时跟UIModalPresentationFullScreen的效果一样，横屏时候两边则会留下变暗的区域。</p>
+<p><code>UIModalPresentationFormSheet</code>这种模式下，presented VC的高度和宽度均会小于屏幕尺寸，presented VC居中显示，四周留下变暗区域。</p>
+<p><code>UIModalPresentationCurrentContext</code>这种模式下，presented VC的弹出方式和presenting VC的父VC的方式相同。</p>
+<p>这四种方式在<code>iPad上</code>面统统有效，但在<code>iPhone</code>和<code>iPod touch</code>上面系统始终已<code>UIModalPresentationFullScreen</code>模式显示presented VC。</p>
+<h4 id="3、Modal-Transition-Style（弹出时的动画风格）"><a href="#3、Modal-Transition-Style（弹出时的动画风格）" class="headerlink" title="3、Modal Transition Style（弹出时的动画风格）"></a>3、<code>Modal Transition Style</code>（弹出时的动画风格）</h4><p>通过设置设置presented VC的<code>modalTransitionStyle</code>属性，我们可以设置弹出<code>presented VC</code>时场景切换动画的风格，其定义如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> &#123;<br><br><span class="hljs-built_in">UIModalTransitionStyleCoverVertical</span> = <span class="hljs-number">0</span>,<br><br><span class="hljs-built_in">UIModalTransitionStyleFlipHorizontal</span>,<br><br><span class="hljs-built_in">UIModalTransitionStyleCrossDissolve</span>,<br><br><span class="hljs-built_in">UIModalTransitionStylePartialCurl</span>,<br><br>&#125; <span class="hljs-built_in">UIModalTransitionStyle</span>;<br></code></pre></td></tr></table></figure>
+<p>我们可以看到有从底部滑入，水平翻转进入，交叉溶解以及翻页这四种风格可选。这四种风格在不受设备的限制，即不管是iPhone还是iPad都会根据我们指定的风格显示转场效果。</p>
+<h4 id="4、Dismiss-Modal-ViewController（消失弹出的VC）"><a href="#4、Dismiss-Modal-ViewController（消失弹出的VC）" class="headerlink" title="4、Dismiss Modal ViewController（消失弹出的VC）"></a>4、<code>Dismiss Modal ViewController</code>（消失弹出的VC）</h4><p>消失<code>presented VC</code>，我们可以通过调用以下两个函数中的任何一个来完成</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs objc">dismissModalViewControllerAnimated:                <span class="hljs-comment">// 将要废弃，不赞成继续使用</span><br><br>dismissViewControllerAnimated:completion:<br></code></pre></td></tr></table></figure>
+<p>谁来调用这消失presented VC的这个方法：正确的做法是<code>“谁污染谁治理”</code>，即<code>presenting VC</code>调用上面的方法来取消<code>presented VC</code>的显示。这样做有一个好处，如果一个VC真不用户做的不同选择可能弹出不同的<code>view controller</code>，当不再需要显示被弹出的<code>view controller</code>的时候，直接调用<code>[self dismissModalViewControllerAnimated]</code>即可使之消失，而不用去关心其具体显示的哪一类view controller。当然系统在这里做了优化，当我们在presented VC里面调用上面的方法的时候，系统会自动的将这个消息传递到相应的presenting VC中，这样就可以实现不管谁弹出了自己，当不再需要的时候直接将自己消失掉的功能。在应用中具体要采用那种要看具体情况，如果presented VC需要和presenting VC有数据传递的话，建议在presenting VC实现的代理函数中dismiss弹出的view controller。</p>
+<p><code>presentModalViewController</code>支持5.0，而<code>presentViewController</code>支持5.0以下</p>
+<p>你可以</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">if</span> (SYSTEM_VERSION_LESS_THAN(<span class="hljs-string">@&quot;5.0&quot;</span>)) &#123;<br><br>[<span class="hljs-keyword">self</span> presentModalViewController:<span class="hljs-keyword">self</span>.childVC animated:<span class="hljs-literal">YES</span>];<br><br>&#125; <span class="hljs-keyword">else</span> &#123;<br><br>[<span class="hljs-keyword">self</span> presentViewController:<span class="hljs-keyword">self</span>.childVC animated:<span class="hljs-literal">YES</span> completion:<span class="hljs-literal">nil</span>];<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>或直接使用</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs objc">[<span class="hljs-keyword">self</span> presentViewController:<span class="hljs-keyword">self</span>.childVC animated:<span class="hljs-literal">YES</span> completion:<span class="hljs-literal">nil</span>];<br></code></pre></td></tr></table></figure>
+<p>来解决兼容性问题</p>
+<h5 id="第二：高级自定义Present-View-Controller解析"><a href="#第二：高级自定义Present-View-Controller解析" class="headerlink" title="第二：高级自定义Present View Controller解析"></a>第二：高级自定义<code>Present View Controller</code>解析</h5><p>我们在使用View跳转的过程中，想使用各种各样的特效，例如：翻页、立方体等特效，我们就可以使用一下几种方法，实现自己想要的动态的效果。</p>
+<p><code>presentModalViewController:animated:completion:</code>使用系统自带四种动画</p>
+<p>简单的实现方式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs objc">[page2Controller setModalTransitionStyle:<span class="hljs-built_in">UIModalTransitionStyleFlipHorizontal</span>];<br><br>[<span class="hljs-keyword">self</span> presentModalViewController:myNextViewController animated:<span class="hljs-literal">YES</span>  completion:<span class="hljs-literal">nil</span>];<br></code></pre></td></tr></table></figure>
+<p>系统支持的四种动画：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">enum</span> &#123;<br><br><span class="hljs-built_in">UIModalTransitionStyleCoverVertical</span>=<span class="hljs-number">0</span>, <span class="hljs-comment">//默认方式，竖向上推</span><br><br><span class="hljs-built_in">UIModalTransitionStyleFlipHorizontal</span>, <span class="hljs-comment">//水平反转</span><br><br><span class="hljs-built_in">UIModalTransitionStyleCrossDissolve</span>,<span class="hljs-comment">//隐出隐现</span><br><br><span class="hljs-built_in">UIModalTransitionStylePartialCurl</span>,<span class="hljs-comment">//部分翻页效果</span><br><br>&#125; <span class="hljs-built_in">UIModalTransitionStyle</span>;<br></code></pre></td></tr></table></figure>
+<p><code>presentModalViewController:animated:completion:</code>不用自带的四种动画效果</p>
+<p>以下是我们高级自定义的动画效果：</p>
+<p>实现全翻页效果：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-built_in">CATransition</span> *animation = [<span class="hljs-built_in">CATransition</span> animation];<br><br>animation.duration = <span class="hljs-number">1.0</span>;<br><br>animation.timingFunction = <span class="hljs-built_in">UIViewAnimationCurveEaseInOut</span>;<br><br>animation.type = <span class="hljs-string">@&quot;pageCurl&quot;</span>;<br><br><span class="hljs-comment">//animation.type = kCATransitionPush;</span><br><br>animation.subtype = kCATransitionFromLeft;<br><br>[<span class="hljs-keyword">self</span>.view.window.layer addAnimation:animation forKey:<span class="hljs-literal">nil</span>];<br><br>[<span class="hljs-keyword">self</span> presentModalViewController:myNextViewController animated:<span class="hljs-literal">NO</span> completion:<span class="hljs-literal">nil</span>];<br><br>常見的轉換類型（type）：<br><br>kCATransitionFade              <span class="hljs-comment">//淡出</span><br><br>kCATransitionMoveIn          <span class="hljs-comment">//覆盖原图</span><br><br>kCATransitionPush              <span class="hljs-comment">//推出</span><br><br>kCATransitionReveal          <span class="hljs-comment">//底部显出来</span><br><br>SubType:<br><br>kCATransitionFromRight<br><br>kCATransitionFromLeft    <span class="hljs-comment">// 默认值</span><br><br>kCATransitionFromTop<br><br>kCATransitionFromBottom<br><br>设置其他动画类型的方法(type):<br><br>pageCurl  向上翻一页<br><br>pageUnCurl 向下翻一页<br><br>rippleEffect 滴水效果<br><br>suckEffect 收缩效果，如一块布被抽走<br><br>cube 立方体效果<br><br>oglFlip 上下翻转效果<br></code></pre></td></tr></table></figure>
+<p>总之，我们使用这些静态的<code>ViewController</code>过程中，实现更多的动画效果，就需要深入了解它的底层，了解更深入的IOS底层内容。</p>
+<p>在<code>iOS13</code>中使用<code>presentViewController</code>的时候，页面顶部会空出一部分来，并且可以手动往下滑动关闭界面。</p>
+<p>原因：<code>UIViewController</code>的一个属性modalPresentationStyle</p>
+<p>在iOS13中，<code>modalPresentationStyle</code>的默认值是<code>UIModalPresentationAutomatic</code>，而在iOS12以下的版本，默认值是<code>UIModalPresentationFullScreen</code>，这就导致了在iOS13中present出来的页面没法全屏。因此加上代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs objc">XXXX.modalPresentationStyle = <span class="hljs-built_in">UIModalPresentationFullScreen</span>;<br></code></pre></td></tr></table></figure>
+<p>显示正常。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">移动端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/iOS/">iOS</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/31/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/24/Hello-Fluid/">
+                        <span class="hidden-mobile">Hello Fluid</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

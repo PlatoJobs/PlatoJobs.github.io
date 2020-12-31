@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>iOS不规则圆角 - 既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/xcode.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="iOS不规则圆角">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2011-05-10 10:46" pubdate>
+        2011年5月10日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      530 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">iOS不规则圆角</h1>
+            
+            <div class="markdown-body">
+              <p><img src="https://upload-images.jianshu.io/upload_images/19168340-826ded794dbc796b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/img/loading.gif" alt="图1.png"></p>
+<blockquote>
+<p>如上面的<code>开多</code>,<code>开空</code>按钮视图</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/19168340-86a25eab7d9dc340.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" srcset="/img/loading.gif" alt="图2.png"></p>
+<blockquote>
+<p><code>蓝色</code>视图的圆角，左下和右下圆角视图</p>
+</blockquote>
+<p>对于这种情况，<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2264083/rounded-uiview-using-calayers-only-some-corners-how">Stackoverflow</a>上提供了几种解决方案。其中最简单优雅的方案，就是使用<code>UIBezierPath</code>。下面给出一段示例代码。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-built_in">UIView</span> *view2 = [[<span class="hljs-built_in">UIView</span> alloc]initWithFrame:<span class="hljs-built_in">CGRectMake</span>(<span class="hljs-number">120</span>, <span class="hljs-number">10</span>, <span class="hljs-number">80</span>, <span class="hljs-number">80</span>)];<br>view2.backgroundColor = [<span class="hljs-built_in">UIColor</span> redColor];[<span class="hljs-keyword">self</span>.view addSubview:view2]; <br><span class="hljs-built_in">UIBezierPath</span> *maskPath = [<span class="hljs-built_in">UIBezierPath</span> bezierPathWithRoundedRect:view2.bounds byRoundingCorners:<span class="hljs-built_in">UIRectCornerBottomLeft</span> | <span class="hljs-built_in">UIRectCornerBottomRight</span> cornerRadii:<span class="hljs-built_in">CGSizeMake</span>(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>)];<br><span class="hljs-built_in">CAShapeLayer</span> *maskLayer = [[<span class="hljs-built_in">CAShapeLayer</span> alloc] init];<br>maskLayer.frame = view2.bounds;maskLayer.path = maskPath.CGPath;<br>view2.layer.mask = maskLayer;<br><br></code></pre></td></tr></table></figure>
+<p>其中，<br><code>byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight</code></p>
+<p>指定了需要成为圆角的角。该参数是UIRectCorner类型的，可选的值有：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIRectCorner</span>) &#123;<br>    <span class="hljs-built_in">UIRectCornerTopLeft</span>     = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">UIRectCornerTopRight</span>    = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">1</span>,<br>    <span class="hljs-built_in">UIRectCornerBottomLeft</span>  = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>,<br>    <span class="hljs-built_in">UIRectCornerBottomRight</span> = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>,<br>    <span class="hljs-built_in">UIRectCornerAllCorners</span>  = ~<span class="hljs-number">0</span>UL<br>&#125;;<br><br><br>+ <span class="hljs-built_in">UIRectCornerTopLeft</span>  <span class="hljs-comment">//左边</span><br>+ <span class="hljs-built_in">UIRectCornerTopRight</span> <span class="hljs-comment">//右边</span><br>+ <span class="hljs-built_in">UIRectCornerBottomLeft</span>  <span class="hljs-comment">//下左</span><br>+ <span class="hljs-built_in">UIRectCornerBottomRight</span> <span class="hljs-comment">//下右</span><br>+ <span class="hljs-built_in">UIRectCornerAllCorners</span>  <span class="hljs-comment">//所有都是圆角</span><br></code></pre></td></tr></table></figure>
+<p>从名字很容易看出来代表的意思，使用<code>“|”</code>来组合就好了。</p>
+<h5 id="如果添加阴影"><a href="#如果添加阴影" class="headerlink" title="如果添加阴影"></a>如果添加阴影</h5><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2264083/rounded-uiview-using-calayers-only-some-corners-how">Stackoverflow</a>里面有个例子：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">// Create a transparent view</span><br><span class="hljs-built_in">UIView</span> *theView = [[<span class="hljs-built_in">UIView</span> alloc] initWithFrame:theFrame];<br>[theView setBackgroundColor:[<span class="hljs-built_in">UIColor</span> clearColor]];<br><br><span class="hljs-comment">// Create the path (with only the top-left corner rounded)</span><br><span class="hljs-built_in">UIBezierPath</span> *maskPath = [<span class="hljs-built_in">UIBezierPath</span> bezierPathWithRoundedRect:theView.bounds <br>                                               byRoundingCorners:<span class="hljs-built_in">UIRectCornerTopLeft</span><br>                                                     cornerRadii:<span class="hljs-built_in">CGSizeMake</span>(<span class="hljs-number">10.0</span>f, <span class="hljs-number">10.0</span>f)];<br><br><span class="hljs-comment">// Create the shadow layer</span><br><span class="hljs-built_in">CAShapeLayer</span> *shadowLayer = [<span class="hljs-built_in">CAShapeLayer</span> layer];<br>[shadowLayer setFrame:theView.bounds];<br>[shadowLayer setMasksToBounds:<span class="hljs-literal">NO</span>];<br>[shadowLayer setShadowPath:maskPath.CGPath];<br><span class="hljs-comment">// ...</span><br><span class="hljs-comment">// Set the shadowColor, shadowOffset, shadowOpacity &amp; shadowRadius as required</span><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-comment">// Create the rounded layer, and mask it using the rounded mask layer</span><br><span class="hljs-built_in">CALayer</span> *roundedLayer = [<span class="hljs-built_in">CALayer</span> layer];<br>[roundedLayer setFrame:theView.bounds];<br>[roundedLayer setContents:(<span class="hljs-keyword">id</span>)theImage.CGImage];<br><br><span class="hljs-built_in">CAShapeLayer</span> *maskLayer = [<span class="hljs-built_in">CAShapeLayer</span> layer];<br>[maskLayer setFrame:theView.bounds];<br>[maskLayer setPath:maskPath.CGPath];<br><br>roundedLayer.mask = maskLayer;<br><br><span class="hljs-comment">// Add these two layers as sublayers to the view</span><br>[theView.layer addSublayer:shadowLayer];<br>[theView.layer addSublayer:roundedLayer];<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h4><blockquote>
+<p>写个分类</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">//</span><br><span class="hljs-comment">//  UIView+BzexACSLayer.h</span><br><span class="hljs-comment">//  BZEX</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//  Created by yebinghe on 2019/11/08.</span><br><span class="hljs-comment">//  Copyright © 2019 bzex. All rights reserved.</span><br><span class="hljs-comment">//</span><br><br><br><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;UIKit/UIKit.h&gt;</span></span><br><br><span class="hljs-built_in">NS_ASSUME_NONNULL_BEGIN</span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">UIView</span> (<span class="hljs-title">KimACSLayer</span>)</span><br><br>- (<span class="hljs-keyword">void</span>)bzex_radiusWithRadius:(<span class="hljs-built_in">CGFloat</span>)radius corner:(<span class="hljs-built_in">UIRectCorner</span>)corner;<br><br><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-built_in">NS_ASSUME_NONNULL_END</span><br><br><br></code></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//  UIView+BzexACSLayer.m</span><br><span class="hljs-comment">//  BZEX</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//  Created by yebinghe on 2019/11/08.</span><br><span class="hljs-comment">//  Copyright © 2019 bzex. All rights reserved.</span><br><span class="hljs-comment">//</span><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;UIView+BzexACSLayer.h&quot;</span></span><br><br><br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">UIView</span> (<span class="hljs-title">BzexACSLayer</span>)</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> 圆角</span><br><span class="hljs-comment"> 使用自动布局，需要在layoutsubviews 中使用</span><br><span class="hljs-comment"> @param radius 圆角尺寸</span><br><span class="hljs-comment"> @param corner 圆角位置</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)bzex_radiusWithRadius:(<span class="hljs-built_in">CGFloat</span>)radius corner:(<span class="hljs-built_in">UIRectCorner</span>)corner &#123;<br>    <span class="hljs-keyword">if</span> (@available(iOS <span class="hljs-number">11.0</span>, *)) &#123;<br>        <span class="hljs-keyword">self</span>.layer.cornerRadius = radius;<br>        <span class="hljs-keyword">self</span>.layer.maskedCorners = (<span class="hljs-built_in">CACornerMask</span>)corner;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">UIBezierPath</span> * path = [<span class="hljs-built_in">UIBezierPath</span> bezierPathWithRoundedRect:<span class="hljs-keyword">self</span>.bounds byRoundingCorners:corner cornerRadii:<span class="hljs-built_in">CGSizeMake</span>(radius, radius)];<br>        <span class="hljs-built_in">CAShapeLayer</span> *maskLayer = [[<span class="hljs-built_in">CAShapeLayer</span> alloc] init];<br>        maskLayer.frame = <span class="hljs-keyword">self</span>.bounds;<br>        maskLayer.path = path.CGPath;<br>        <span class="hljs-keyword">self</span>.layer.mask = maskLayer;<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">@end</span><br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>运用很简单： <code>[self.blueView bzex_radiusWithRadius:10 corner:UIRectCornerBottomLeft | UIRectCornerBottomRight];</code> 【图2的效果】<br>【图1】就简单多了</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/iOS/">iOS</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%86%E8%A7%92/">圆角</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2011/07/20/%E8%B4%AA%E5%AE%98%E5%BF%8F%E6%82%94%E5%BD%95%E9%87%8C%E5%A5%97%E8%B7%AF%E5%A4%9A/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">贪官忏悔录里套路多:打虚假感情牌 摆出身讲贡献</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2009/09/10/%E5%BD%93%E5%B9%B4%E4%B8%87%E9%87%8C%E8%A7%85%E5%B0%81%E4%BE%AF/">
+                        <span class="hidden-mobile">当年万里觅封侯</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
