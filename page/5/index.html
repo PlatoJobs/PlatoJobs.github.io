@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="author" content="GitArtOS">
+  <meta name="keywords" content="GitArtOS">
+  <title>既见君子，云胡不喜</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"platojobs.gitee.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>PlatoJobs</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                文档
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/">
+                    
+                    主题博客
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/">
+                    
+                    配置指南
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/icon/">
+                    
+                    图标用法
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://w.wallhaven.cc/full/g7/wallhaven-g7jg63.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="既见君子，云胡不喜">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/My-Block/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="OS代码块Block">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/My-Block/">OS代码块Block</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/My-Block/">
+          
+          
+            
+          
+          概述代码块Block是苹果在iOS4开始引入的对C语言的扩展,用来实现匿名函数的特性,Block是一种特殊的数据类型,其可以正常定义变量、作为参数、作为返回值,特殊地,Block还可以保存一段代码,在需要的时候调用,目前Block已经广泛应用于iOS开发中,常用于GCD、动画、排序及各类回调
+注: Block的声明与赋值只是保存了一段代码段,必须调用才能执行内部代码Block变量的声明、赋值与调用
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 14:32" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ios/">ios</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="父爱无边">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/">父爱无边</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/">
+          
+          
+            
+          
+          My father was a self-taught mandolin player. He was one of the best string instrument players in our town. He could not read music, but if he heard a tune a few times, he could play it. When he was yo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 14:10" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%95%A3%E6%96%87/">散文</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="境界">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/">境界</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/">
+          
+          
+            
+          
+          我想有一个家，家前有土，土上可种植丝瓜，丝瓜沿竿而爬，迎光开出几朵黄花，花谢结果，垒累棚上。我就坐在那土地上，看丝瓜身上一粒粒突起的青色疙瘩。
+读罢此文，我禁不住得意起来，信步走出门口，来到丝瓜架下。
+我家门口有土，靠着水塘边种了一棵丝瓜。丝瓜藤葱葱郁郁，沿着电线竿爬了两米多高转了弯，再顺着绳索平行向东，向前方的梓树逼去。主藤上又生长出许多细藤，相互缠绕攀爬，形成一条十几米长的绿色蛟龙。
+蛟龙的头
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 11:38" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="你的心换了锁，钥匙给了别人">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/">你的心换了锁，钥匙给了别人</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/">
+          
+          
+            
+          
+          雨，好像是千万支魔指，好像是千万条琴弦，弹出了千变万化的声音——题记
+1.
+从菲林口中得知你结婚的消息时，我没有哭，除了觉得手里的茶杯像加了一层润滑剂一般握也握不住之外，情绪波动并不大。
+我的电话号码多年不变，短信，微信却都没有你结婚的消息。你是不想我的出现让你尴尬，还是不想你的电话让我难堪。
+你不知道我从别人口中听到这个消息时，就像一个小丑，明明心里在滴血，却还将伤口捏成微笑的形状。
+我从她家走
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 11:31" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="好想恋爱啊">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/">好想恋爱啊</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/">
+          
+          
+            
+          
+          01
+上了大三，身边所有的小伙伴都拿出了高三的学习状态，每天早出晚归，在图书馆占有一席之地。
+但我的舍友沈贝显然是个例外，她的日常口头禅是“我好想恋爱啊” 。
+半个月前的校迎新晚会，作为老腊肉，沈贝还是想凑热闹，并且软硬兼施，成功忽悠我陪她一起去。
+那天天气微凉，诺大的音乐厅里，却异常温暖。上课郁郁不得志的她，到了这里像一只飞出笼子的小鸟，活跃而躁动。
+开场的节目是星舞堂的爵士，一群痞帅痞帅的男孩
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 11:22" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="成年人的疼痛，都是默不作声">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/">成年人的疼痛，都是默不作声</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/">
+          
+          
+            
+          
+          01
+
+今年3月份，一则只有10秒的“日本小哥在地铁上边哭边吃东西”的视频被大量转发，点赞评论者众多，大家都说，那种忍不住、控制不了又不敢发出声音的无声哭泣，全是满满的无助；
+今年8月份，广东遭台风“天鸽”袭击，中山市一位54岁的男子试图阻挡大风中摇摇欲倒的小货车，却无力回天，车辆被风吹倒，男子被压车下，当场身亡。这辆车是两周前买的，现场很多人劝他算了，但他不听，非常执拗；
+还是8月份，杭州58岁
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 11:19" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="我的前世今生">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">我的前世今生</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">
+          
+          
+            
+          
+          有的事情不用当面对你说：有一个人，他总是把你放在心中，就像那看似平静的湖面，把高远的天空映入深邃的湖底，只要有一点微光，它总会第一个把你珍藏，不分昼夜。
+许多事情你不必知道：在这个大千世界中总有一个人，他从来不会忘了你的存在。你的欢笑和眼泪，你的呼吸，你的想法，你心脏的每一次跳动，你所有的一切，都会使他激动不已。他是那么地深爱着，不管春夏秋冬，不管世事变迁，不在乎生命的短长，即使身边战火纷飞，随时
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 10:57" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%96%87%E5%AD%A6/">文学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="内存中的区域划分">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">内存中的区域划分</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">
+          
+          
+            
+          
+          
+栈区(stack):由系统自动分配和释放，存放局部变量的值，容量小速度快，有序
+堆：一般由程序员分配和释放，如果不释放，则出现内存泄露。程序会回收您的内存，特点：容量大，速度慢，无序
+静态存储区：全局变量（外部变量）和静态变量都存放在静态区域。当程序结束使，系统回收
+常量区：存放常量的内存区域，程序结束时，系统回收
+代码区：存放二进制代码的区域
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2012-11-10 12:55" pubdate>
+              2012-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/iOS%E9%9D%A2%E8%AF%95/">iOS面试</a>
+            
+              <a href="/categories/iOS%E9%9D%A2%E8%AF%95/iOS/">iOS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+            
+              <a href="/tags/%E5%86%85%E5%AD%98/">内存</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="求职简历">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/">求职简历</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/">
+          
+          
+            
+          
+          
+Email：goodman@gmail.com （虽然我觉得QQ邮箱无所谓，不过有些技术人员比较反感，建议用G，非要用的话，不要用数字邮箱名）
+QQ/微信号：6…（提供一个通过网络可以联系到你的方式）
+
+工作经历（工作经历按逆序排列，最新的在最前边，按公司做一级分组，公司内按二级分组）
+ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪些工作，分别在哪些地方做得出
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2012-01-24 11:19" pubdate>
+              2012-01-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%AE%80%E5%8E%86%E6%A0%BC%E5%BC%8F/">简历格式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="Objective-C概述">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/">Objective-C概述</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/">
+          
+          
+            
+          
+          简介Object-C 通常写作 Objective-C 或者 Obj-C 或 OC，是根据C语言所衍生出来的语言，继承了C语言的特性，是扩充 C 语言的面向对象编程语言。Object-C 是一种面向对象的语言。而 C 语言是面向过程的语言。Object-C 是 MAC OSX 和 iOS 开发的基础语言。
+优点及缺点Object-C
+
+是非常“实际”的语言。它使用一个用C写成，很小的运行库，OC写
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2011-11-10 13:02" pubdate>
+              2011-11-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/iOS/">iOS</a>
+            
+              <a href="/categories/iOS/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Objective-C/">Objective-C</a>
+            
+              <a href="/tags/%E6%A6%82%E8%BF%B0/">概述</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
+      ele.href += '#board';
+    }
+  </script>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
