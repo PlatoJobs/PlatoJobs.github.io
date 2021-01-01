@@ -174,7 +174,7 @@
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2016-01-21 18:45:55</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://opensource.org/licenses/MIT
 ">[2]</span></a></sup></p>
-<p>Copyright (c) 2015-2019 Hiitea <a href="mailto:&#108;&#117;&#x6f;&#x68;&#x61;&#x6f;&#x6a;&#x69;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#117;&#x6f;&#x68;&#x61;&#x6f;&#x6a;&#x69;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+<p>Copyright (c) 2015-2019 Hiitea <a href="mailto:&#108;&#x75;&#x6f;&#x68;&#x61;&#111;&#106;&#105;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#108;&#x75;&#x6f;&#x68;&#x61;&#111;&#106;&#105;&#x6e;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a></p>
 <h2 id="Buy-me-coffee-yum"><a href="#Buy-me-coffee-yum" class="headerlink" title="Buy me coffee :yum:"></a>Buy me coffee :yum:</h2><p>BTC: 19U6USzi7WaFmY3DTkgn67EzYpTqZPNwRG<br><img src="https://user-images.githubusercontent.com/5300359/30433338-cb7a9e48-9996-11e7-8e17-55f582b56e48.png" alt="image"></p>
 <p><a href="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png"><img src="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png" alt="Coffee Fund"></a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://cse.google.com/">https://cse.google.com/</a>
@@ -185,26 +185,6 @@
       </categories>
       <tags>
         <tag>主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内存中的区域划分</title>
-    <url>/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/</url>
-    <content><![CDATA[<ul>
-<li><strong>栈区(stack)</strong>:由系统自动分配和释放，存放局部变量的值，容量小速度快，有序</li>
-<li><strong>堆</strong>：一般由程序员分配和释放，如果不释放，则出现内存泄露。程序会回收您的内存，特点：容量大，速度慢，无序</li>
-<li><strong>静态存储区</strong>：全局变量（外部变量）和静态变量都存放在静态区域。当程序结束使，系统回收</li>
-<li><strong>常量区</strong>：存放常量的内存区域，程序结束时，系统回收</li>
-<li><strong>代码区</strong>：存放二进制代码的区域</li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS面试</category>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -242,6 +222,26 @@
       </categories>
       <tags>
         <tag>圆角</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内存中的区域划分</title>
+    <url>/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/</url>
+    <content><![CDATA[<ul>
+<li><strong>栈区(stack)</strong>:由系统自动分配和释放，存放局部变量的值，容量小速度快，有序</li>
+<li><strong>堆</strong>：一般由程序员分配和释放，如果不释放，则出现内存泄露。程序会回收您的内存，特点：容量大，速度慢，无序</li>
+<li><strong>静态存储区</strong>：全局变量（外部变量）和静态变量都存放在静态区域。当程序结束使，系统回收</li>
+<li><strong>常量区</strong>：存放常量的内存区域，程序结束时，系统回收</li>
+<li><strong>代码区</strong>：存放二进制代码的区域</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS面试</category>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -293,34 +293,6 @@
       </tags>
   </entry>
   <entry>
-    <title>要么不开始，要么一辈子</title>
-    <url>/2019/11/10/%E8%A6%81%E4%B9%88%E4%B8%8D%E5%BC%80%E5%A7%8B%EF%BC%8C%E8%A6%81%E4%B9%88%E4%B8%80%E8%BE%88%E5%AD%90/</url>
-    <content><![CDATA[<blockquote>
-<p>我真的完全没有精力再失恋一次了。﻿</p>
-</blockquote>
-<p><img src="http://a.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01681fbe0859d2bd40734fa35b8.jpg" alt="图片"><br>18岁失恋了，可以躲在厕所里哭，可以在ktv喝酒唱通宵，可以哭得昏天暗地，可以发誓以后和他老死不相往来，然后重新开始，像没有受过伤一样。﻿﻿</p>
-<p>22岁失恋了，一夜未眠，一夜游荡，第二天却还要假装没事，因为你还要工作，还要生活，你面无表情，可你知道你心里已经塌了。﻿﻿</p>
-<p>25岁，你想过无数次，要不索性回到十七岁，再轰轰烈烈的爱一次，可是你清楚的知道，你已经没有力气再失恋一次了。﻿﻿</p>
-<p>第一次恋爱，心里住了梅花鹿，连看他一眼都小鹿乱撞。﻿﻿</p>
-<p>后来心里生了一条蛇，一有人靠近就摇起尾巴，告诉别人你很危险更没有耐心。﻿﻿</p>
-<p>经常有人问我，为什么不谈恋爱？﻿﻿</p>
-<p>其实身边也不缺追求者，只是每次想答应的时候，都会胆怯害怕，然后习惯性的拒绝，爱一个人的成本太高了，要耗上大把时间和精力，还不一定会有回报，大概是件稳赔不赚的事。﻿﻿</p>
-<p>所以，我怕了。﻿﻿</p>
-<p>两个人在一起很简单，相互喜欢就好，但是分开，却要耗尽毕生的精力。﻿﻿</p>
-<p>你花了大把的时间和精力去习惯了解一个人，最后却还是要分开，真的很累，我好不容易从上一段感情中活过来，不想再送死了。﻿﻿</p>
-<p>我知道，我们都到了害怕失恋的年纪。﻿﻿</p>
-<p>有人说，爱情是属于那些即使灰心失望，却仍继续期待的人，是属于那些被出卖欺骗，却仍坚信美好的人，是属于那些纵然伤痕累累，却仍渴求爱的人。﻿﻿</p>
-<p><code>所以希望下一次恋爱，要么不开始，要么一辈子。</code></p>
-]]></content>
-      <categories>
-        <category>散文</category>
-      </categories>
-      <tags>
-        <tag>文学</tag>
-        <tag>情感</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>清歌莫断肠</title>
     <url>/2019/11/10/%E6%B8%85%E6%AD%8C%E8%8E%AB%E6%96%AD%E8%82%A0/</url>
     <content><![CDATA[  <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br>“以后无论我去哪我都把你带着我看账你帮我打算盘我谈生意你<br>      帮我出主意一起把吴家东院发扬光大做到陕西第一天下第一”<br><br></code></pre></td></tr></table></figure>
@@ -349,6 +321,34 @@
       </categories>
       <tags>
         <tag>文学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>要么不开始，要么一辈子</title>
+    <url>/2019/11/10/%E8%A6%81%E4%B9%88%E4%B8%8D%E5%BC%80%E5%A7%8B%EF%BC%8C%E8%A6%81%E4%B9%88%E4%B8%80%E8%BE%88%E5%AD%90/</url>
+    <content><![CDATA[<blockquote>
+<p>我真的完全没有精力再失恋一次了。﻿</p>
+</blockquote>
+<p><img src="http://a.hiphotos.baidu.com/image/pic/item/38dbb6fd5266d01681fbe0859d2bd40734fa35b8.jpg" alt="图片"><br>18岁失恋了，可以躲在厕所里哭，可以在ktv喝酒唱通宵，可以哭得昏天暗地，可以发誓以后和他老死不相往来，然后重新开始，像没有受过伤一样。﻿﻿</p>
+<p>22岁失恋了，一夜未眠，一夜游荡，第二天却还要假装没事，因为你还要工作，还要生活，你面无表情，可你知道你心里已经塌了。﻿﻿</p>
+<p>25岁，你想过无数次，要不索性回到十七岁，再轰轰烈烈的爱一次，可是你清楚的知道，你已经没有力气再失恋一次了。﻿﻿</p>
+<p>第一次恋爱，心里住了梅花鹿，连看他一眼都小鹿乱撞。﻿﻿</p>
+<p>后来心里生了一条蛇，一有人靠近就摇起尾巴，告诉别人你很危险更没有耐心。﻿﻿</p>
+<p>经常有人问我，为什么不谈恋爱？﻿﻿</p>
+<p>其实身边也不缺追求者，只是每次想答应的时候，都会胆怯害怕，然后习惯性的拒绝，爱一个人的成本太高了，要耗上大把时间和精力，还不一定会有回报，大概是件稳赔不赚的事。﻿﻿</p>
+<p>所以，我怕了。﻿﻿</p>
+<p>两个人在一起很简单，相互喜欢就好，但是分开，却要耗尽毕生的精力。﻿﻿</p>
+<p>你花了大把的时间和精力去习惯了解一个人，最后却还是要分开，真的很累，我好不容易从上一段感情中活过来，不想再送死了。﻿﻿</p>
+<p>我知道，我们都到了害怕失恋的年纪。﻿﻿</p>
+<p>有人说，爱情是属于那些即使灰心失望，却仍继续期待的人，是属于那些被出卖欺骗，却仍坚信美好的人，是属于那些纵然伤痕累累，却仍渴求爱的人。﻿﻿</p>
+<p><code>所以希望下一次恋爱，要么不开始，要么一辈子。</code></p>
+]]></content>
+      <categories>
+        <category>散文</category>
+      </categories>
+      <tags>
+        <tag>文学</tag>
+        <tag>情感</tag>
       </tags>
   </entry>
   <entry>
