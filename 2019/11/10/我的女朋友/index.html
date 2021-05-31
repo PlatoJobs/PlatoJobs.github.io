@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="见天地，见众生，见自己">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>我的女朋友 - 既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -55,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -156,7 +157,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -192,13 +194,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -284,7 +286,7 @@
             
             <div class="markdown-body">
               <p>或许是回忆太美，只是物是人非。</p>
-<p><img src="http://c.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c54b6cc922935292df5e0fe7f9c.jpg" srcset="/img/loading.gif" alt="1"></p>
+<p><img src="http://c.hiphotos.baidu.com/image/pic/item/ae51f3deb48f8c54b6cc922935292df5e0fe7f9c.jpg" srcset="/img/loading.gif" lazyload alt="1"></p>
 <p>毕业答辩的前一天，我问喵小姐：“你真的愿意和我一起留在北京吃苦？你妈妈都给你安排好了一切，我要是你，早就回老家发展了。”</p>
 <p>喵小姐说：“你再说，再说我可生气了哇！”然后把一块回锅肉夹起喂到我的嘴巴里。 喵小姐是北方人，对于川菜的辛辣有点接受不了，但每次出去约会的时候，她都愿意和我一起吃回锅肉。</p>
 <p>吃一口，嘴巴就呼哧呼哧直喘气，然后一张一合地喝水：“真辣啊，但是很好吃！”我说：“你这是何必呢，不能吃辣就别勉强啊。”喵小姐说：“我就要和你吃一样的！”在一起两年后，喵小姐逐渐习惯了川菜的辛辣，每次出去吃饭的时候她都会点一份回锅肉。</p>
@@ -293,20 +295,20 @@
 <p>当喵小姐和我说她妈妈在老家给她安排了一份薪水五位数一周还休息三天的工作的时候，我是很欣慰的，心想她要是回去了就不用跟着我吃苦了。结果喵小姐给她妈打电话说：“我不回去了，我要待在北京，和我男朋友在一起。”</p>
 <p>我当时心情是很复杂的，有感动，有开心，还有对未来的恐惧和担忧。如果你是一个男人，你应该明白那种带着心爱的女人一起吃苦的屈辱感。</p>
 <p>但一个人就不一样，一个馒头就能凑合一顿，没有地方睡花十来块钱在网吧上个通宵一晚上就过去了，如果带着心爱的女人就不行了啊！ 我非常不可思议地看着喵小姐：“我以后可是要住一段时间地下室的，里面潮湿阴暗，不见阳光，憋得慌，还有很多怪叔叔和社会小青年，你不怕啊？”喵小姐说：“有你在，天塌了我都不怕。”</p>
-<p><img src="http://c.hiphotos.baidu.com/image/pic/item/6c224f4a20a44623c3f7f2649722720e0cf3d7f3.jpg" srcset="/img/loading.gif" alt="15"></p>
+<p><img src="http://c.hiphotos.baidu.com/image/pic/item/6c224f4a20a44623c3f7f2649722720e0cf3d7f3.jpg" srcset="/img/loading.gif" lazyload alt="15"></p>
 <p>吃完回锅肉后，我和喵小姐拉着手往学校里走，我把她送到宿舍楼下准备离开的时候，她突然冲上来吻了我一下。我心里想着明天答辩的事儿，恍惚了几秒才反应过来，此时她已经跑出了几米远，冲我比了比剪刀手和拳头，以示努力、加油。</p>
-<p><img src="http://h.hiphotos.baidu.com/image/pic/item/cc11728b4710b9129ff1a1f8ccfdfc0392452287.jpg" srcset="/img/loading.gif" alt="图片发自简书App"></p>
+<p><img src="http://h.hiphotos.baidu.com/image/pic/item/cc11728b4710b9129ff1a1f8ccfdfc0392452287.jpg" srcset="/img/loading.gif" lazyload alt="图片发自简书App"></p>
 <p>答辩结束的第二天，我就收拾东西搬到了地下室，我没有和喵小姐说，心里还是在期望她能回去的。我希望她也不和我告别，只要她能生活得好，一切都不重要。结果，我刚收拾完狭窄的地下室的床，转身就看到了她，我没有关门，她倚在门边叉着手似笑非笑地看着我。</p>
 <p>我手足无措起来，尴尬得不知道说什么好。喵小姐没有说什么，她把她的行李往床上一放，开始收拾起屋子来。我知道，我们将要在地下室住一段日子了。 我在一家互联网公司做运营，每天晚上要加班到八九点钟。</p>
 <p>喵小姐没有去上班，她每晚在我公司楼下等我，和我一起去路边摊吃晚饭，然后一边聊天一边向地铁站走。</p>
 <p>开始我沉浸在这样的幸福中，但渐渐地我开始拒绝她等我，最后变成了反感。有一天晚上她又来等我，我们吃完东西往地铁站走的时候，她一边说话一边拉我的手，我突然气上心头，一下子甩开她的手。</p>
 <p>她一脸惊愕，难以置信地看着我。我冲她吼叫：“我们能一直这样吗？我们能这样一辈子吗？” 喵小姐怔怔地看着我，眼眶里有泪水在闪烁，眼泪顺着脸颊流了下来。</p>
 <p>她一哭我就心软，我抓了抓头发，向她道歉：“对不起，最近压力有点大。”然后轻轻地抱住了她。 第二天晚上下班的时候，喵小姐没有来接我，下午的时候她给我发微信说她去找了一份工作，在一家金融公司当总经理助理，我因为太忙，还没来得及回复。﻿</p>
-<p><img src="http://e.hiphotos.baidu.com/image/pic/item/71cf3bc79f3df8dcedf7cd91c211728b461028e3.jpg" srcset="/img/loading.gif" alt="图片发自简书App"><br>            我掏出手机给她打电话，电话接通后，那边的声音很嘈杂，好像是有人在唱歌。正常的声音她听不清楚，我就吼着问她：“你那边怎么回事啊？”她也用吼的声音和我说：“经理说我今天就开始上班了，晚上正好有个饭局，就把我也带上了。”我说：“你看现在都几点了！你在哪儿？我去找你！”喵小姐说了地址后，我就匆匆向她那边赶去。</p>
+<p><img src="http://e.hiphotos.baidu.com/image/pic/item/71cf3bc79f3df8dcedf7cd91c211728b461028e3.jpg" srcset="/img/loading.gif" lazyload alt="图片发自简书App"><br>            我掏出手机给她打电话，电话接通后，那边的声音很嘈杂，好像是有人在唱歌。正常的声音她听不清楚，我就吼着问她：“你那边怎么回事啊？”她也用吼的声音和我说：“经理说我今天就开始上班了，晚上正好有个饭局，就把我也带上了。”我说：“你看现在都几点了！你在哪儿？我去找你！”喵小姐说了地址后，我就匆匆向她那边赶去。</p>
 <p>在KTV的门口，我见到了喵小姐，她满身酒气，还有些微醉，我扶住她：“走，跟我回家。”她说：“我不回去。”还想挣脱我的手，我厉声道：“快和我回去！”她说：“那你要答应和我一起开饭店。”我没吭声。</p>
 <p>她又说：“那你别拦着我，他们还等着我呢。”我说：“好好好，我答应你。” 喵小姐一觉睡到了中午，醒来后没有发现我，就直接给我打了电话过来，惊慌失措地问我去了哪里。我说：“我在上班啊，还能去哪里？”她说：“不是说好和我一起开饭店的吗？”昨晚我当她喝醉了神志不清才说一起开饭店的，结果她一直记着。</p>
 <p>我耍赖说：“你是不是记错了，我什么时候说啦。”她呵呵一笑：“我就知道你会这么说，我可录音了，你要不要听？”我很无奈：“那你总得让我把今天忙完吧，我还没辞职呢。” 我工作了三个月，这三个月过得昏天黑地的，每天除了有做不完的工作，还时常被办公室的各个人叫去跑腿，好像谁都能欺负我一般。我每天晚上加班的时候都想把桌子给掀了，然后一走了之。﻿</p>
-<p><img src="http://b.hiphotos.baidu.com/image/pic/item/e850352ac65c1038a2a99ac4bd119313b17e89e5.jpg" srcset="/img/loading.gif" alt="图片发自简书App"><br>      但我忍住了。我给自己灌鸡汤，生活不都是这样吗？每个成功人士都是这样走过来的。 当喵小姐再次和我说起一起开饭店这件事情的时候，我发现我并没有自己想象的那么坚强，我居然动摇了。</p>
+<p><img src="http://b.hiphotos.baidu.com/image/pic/item/e850352ac65c1038a2a99ac4bd119313b17e89e5.jpg" srcset="/img/loading.gif" lazyload alt="图片发自简书App"><br>      但我忍住了。我给自己灌鸡汤，生活不都是这样吗？每个成功人士都是这样走过来的。 当喵小姐再次和我说起一起开饭店这件事情的时候，我发现我并没有自己想象的那么坚强，我居然动摇了。</p>
 <p>我可耻地想，日子每天都得照常过，我为什么要活得那么累呢？既然有机会，就要好好抓住啊，不珍惜机会的人都是傻子！ 我花了三个晚上的时间平复自己的内心。</p>
 <p>这三个晚上，我告别了那个曾经自以为坚持自我、能独自一人闯出一片天的自己，开始变得世故和圆滑。为了不那么辛苦，我开始接受喵小姐以及她们家的帮助，尽管我曾一度鄙视过会这样做的自己。虽然喵小姐的出发点和我想的截然不同，她只是希望我们的爱情不要那么辛苦而已。</p>
 <p>我虽然会做几个菜，但离厨师这个职业还差一大截，我也没有学过管理。除了年轻有动力我爱喵小姐喵小姐也爱我之外，我没有其他条件能征求到喵小姐妈妈的支持。</p>
@@ -342,12 +344,12 @@
 <p>我也笑了。 喵小姐说：“我不知道为什么还是对你念念不忘。”</p>
 <p>我微笑：“或许是回忆太美，只是物是人非。”我眼睛看向了她无名指上戴着的钻戒。 喵小姐说：“其实，当时我妈挺喜欢你的，只是她觉得你还太固执太清高，需要一些改变和突破——说得直白点，就是你的思维太执拗和传统，如果想做一件大事，你得具有多面性。</p>
 <p>我很不喜欢我妈用商人的角度来看你，但她和我说，她只有我这一个孩子，她不可能轻易把自己一辈子努力的事业和最心爱的宝贝交给一个不懂得变通的人。我离开以后，你并没有坚持下来，无论是对我们的爱情，还是那家我帮你从我妈妈那里争取到的饭店。”</p>
-<p><img src="http://a.hiphotos.baidu.com/image/pic/item/35a85edf8db1cb1339ac2910d254564e93584bef.jpg" srcset="/img/loading.gif" alt="图片发自简书App"></p>
+<p><img src="http://a.hiphotos.baidu.com/image/pic/item/35a85edf8db1cb1339ac2910d254564e93584bef.jpg" srcset="/img/loading.gif" lazyload alt="图片发自简书App"></p>
 <p>我静静地看着喵小姐，她的眼里流出了眼泪。 我把纸巾给她递过去，她抹了抹眼睛：“对不起，我失态了。” 我想说些什么，但还没开口，她就打断了我：“其实我跑这么远，只是想再吃一次你做的回锅肉。</p>
 <p>自从那年你给我做了一份回锅肉后，我吃遍了上百家川菜店，都没有吃出你的味道。</p>
 <p>所以，今天，你能再为我做一次吗？” 我点点头，进了后厨，开始准备做这道菜谱上没有的菜，也渐渐回忆起了当年回锅肉的味道。</p>
 <p>热锅，倒油，煸香辣椒，我的眼泪缓缓流出。 一定是辣椒辣到了眼里，我想着。用手去擦，眼泪却怎么也擦不完。﻿</p>
-<p><img src="http://b.hiphotos.baidu.com/image/pic/item/d788d43f8794a4c2dce5f32801f41bd5ac6e39ea.jpg" srcset="/img/loading.gif" alt="图片发自简书App"></p>
+<p><img src="http://b.hiphotos.baidu.com/image/pic/item/d788d43f8794a4c2dce5f32801f41bd5ac6e39ea.jpg" srcset="/img/loading.gif" lazyload alt="图片发自简书App"></p>
 
             </div>
             <hr>
@@ -375,7 +377,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
                 <div class="post-prevnext">
@@ -469,8 +475,9 @@
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -485,7 +492,6 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -493,7 +499,7 @@
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -518,6 +524,10 @@
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -530,20 +540,6 @@
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -575,7 +571,6 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

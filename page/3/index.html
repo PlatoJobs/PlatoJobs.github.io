@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="见天地，见众生，见自己">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -140,7 +141,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -176,13 +178,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -230,19 +232,97 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="加密算法">
+        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="正则表达式">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">加密算法</a>
+        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
+          正则表达式
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/">
+        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
+          
+          
+            
+          
+          正则表达式是什么
+在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。
+正则表达式语言由两种基本字符类型组成：原义（正常）文本字符和元字符。元字符使正则表达式具有处理能力。
+
+常用元字符
+
+
+元字符
+做什么用
+
+
+
+.
+匹配除换行符以外的任意字符
+
+
+\w
+匹配字母或数字或下划线或汉字
+
+
+\
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-03-09 22:07" pubdate>
+              2020-03-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="加密算法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_self">
+          加密算法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/03/09/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" target="_self">
           
           
             
@@ -292,18 +372,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="”音频编码格式“">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="”音频编码格式“">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/">”音频编码格式“</a>
+        <a href="/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/" target="_self">
+          ”音频编码格式“
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/">
+        <a href="/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/" target="_self">
           
           
             
@@ -356,18 +438,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/09/OC%E5%86%85%E9%83%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1-%E5%A4%8D%E5%88%B6-%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="OC内部可变对象和不可变对象的深(复制)拷贝问题">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="OC内部可变对象和不可变对象的深(复制)拷贝问题">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/09/OC%E5%86%85%E9%83%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1-%E5%A4%8D%E5%88%B6-%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98/">OC内部可变对象和不可变对象的深(复制)拷贝问题</a>
+        <a href="/2020/03/09/OC%E5%86%85%E9%83%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1-%E5%A4%8D%E5%88%B6-%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98/" target="_self">
+          OC内部可变对象和不可变对象的深(复制)拷贝问题
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/09/OC%E5%86%85%E9%83%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1-%E5%A4%8D%E5%88%B6-%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98/">
+        <a href="/2020/03/09/OC%E5%86%85%E9%83%A8%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B7%B1-%E5%A4%8D%E5%88%B6-%E6%8B%B7%E8%B4%9D%E9%97%AE%E9%A2%98/" target="_self">
           
           
             
@@ -412,18 +496,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="男生其实没多少选择">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="男生其实没多少选择">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/">男生其实没多少选择</a>
+        <a href="/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/" target="_self">
+          男生其实没多少选择
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/">
+        <a href="/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/" target="_self">
           
           
             
@@ -469,18 +555,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="Javascript学习图谱">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="Javascript学习图谱">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/">Javascript学习图谱</a>
+        <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/" target="_self">
+          Javascript学习图谱
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/">
+        <a href="/2019/11/19/Javascript%E5%AD%A6%E4%B9%A0%E5%9B%BE%E8%B0%B1/" target="_self">
           
           
             
@@ -533,18 +621,20 @@ D：辛苦学习后又看似和实际应用脱节。通
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="AV Foundation之视频捕捉（2）__创建预览视图">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="AV Foundation之视频捕捉（2）__创建预览视图">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/">AV Foundation之视频捕捉（2）__创建预览视图</a>
+        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/" target="_self">
+          AV Foundation之视频捕捉（2）__创建预览视图
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/">
+        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/" target="_self">
           
           
             
@@ -592,18 +682,20 @@ D：辛苦学习后又看似和实际应用脱节。通
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="AV Foundation之视频捕捉（1）__关键概念">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="AV Foundation之视频捕捉（1）__关键概念">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/">AV Foundation之视频捕捉（1）__关键概念</a>
+        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/" target="_self">
+          AV Foundation之视频捕捉（1）__关键概念
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/">
+        <a href="/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%881%EF%BC%89-%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5/" target="_self">
           
           
             
@@ -649,18 +741,20 @@ D：辛苦学习后又看似和实际应用脱节。通
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="大龄程序员的职业规划">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="大龄程序员的职业规划">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">大龄程序员的职业规划</a>
+        <a href="/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" target="_self">
+          大龄程序员的职业规划
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/">
+        <a href="/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/" target="_self">
           
           
             
@@ -710,18 +804,20 @@ D：辛苦学习后又看似和实际应用脱节。通
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2019/11/15/%E7%BB%8F%E5%85%B8%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E4%B8%80%E7%AE%A9%E7%AD%90/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="经典编程书籍一箩筐">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="经典编程书籍一箩筐">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/11/15/%E7%BB%8F%E5%85%B8%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E4%B8%80%E7%AE%A9%E7%AD%90/">经典编程书籍一箩筐</a>
+        <a href="/2019/11/15/%E7%BB%8F%E5%85%B8%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E4%B8%80%E7%AE%A9%E7%AD%90/" target="_self">
+          经典编程书籍一箩筐
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/11/15/%E7%BB%8F%E5%85%B8%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E4%B8%80%E7%AE%A9%E7%AD%90/">
+        <a href="/2019/11/15/%E7%BB%8F%E5%85%B8%E7%BC%96%E7%A8%8B%E4%B9%A6%E7%B1%8D%E4%B8%80%E7%AE%A9%E7%AD%90/" target="_self">
           
           
             
@@ -770,79 +866,13 @@ D：辛苦学习后又看似和实际应用脱节。通
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="Lookin 的使用">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/">Lookin 的使用</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/">
-          
-          
-            
-          
-          
-Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带的 UI Inspector 工具，或另一款叫做 Reveal 的软件。官网：https://lookin.work/
-如果这是你的 iOS 项目第一次使用 Lookin，则需要先把 Lookin 的 iOS Framework 嵌入到你的 iOS 项目中，教程：https://lookin.work/faq
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-11-15 11:41" pubdate>
-              2019-11-15
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/iOS/">iOS</a>
-            
-              <a href="/categories/iOS/UI/">UI</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Lookin/">Lookin</a>
-            
-              <a href="/tags/debug/">debug</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -897,8 +927,9 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -913,7 +944,6 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -921,7 +951,7 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -940,6 +970,10 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -952,20 +986,6 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -997,7 +1017,6 @@ Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带�
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

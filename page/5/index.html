@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="见天地，见众生，见自己">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -140,7 +141,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -176,13 +178,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -230,19 +232,77 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2017/11/24/My-Block/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="OS代码块Block">
+        <a href="/2017/11/24/2017-11-24/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="Hello GitHub HomePage">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/My-Block/">OS代码块Block</a>
+        <a href="/2017/11/24/2017-11-24/" target="_self">
+          Hello GitHub HomePage
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/My-Block/">
+        <a href="/2017/11/24/2017-11-24/" target="_self">
+          
+          
+            
+          
+          It was the end of November,more than a month after ourreturn from Baskerville Hall.Holmes and I were sitting on either side of a bright fire in our sitting room in Baker Street.Since our return,Holmes
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2017-11-24 14:50" pubdate>
+              2017-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8E%86%E5%8F%B2/">历史</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2017/11/24/My-Block/" target="_self">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="OS代码块Block">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2017/11/24/My-Block/" target="_self">
+          OS代码块Block
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2017/11/24/My-Block/" target="_self">
           
           
             
@@ -286,18 +346,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="父爱无边">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="父爱无边">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/">父爱无边</a>
+        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/" target="_self">
+          父爱无边
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/">
+        <a href="/2017/11/24/%E7%88%B6%E7%88%B1%E6%97%A0%E8%BE%B9/" target="_self">
           
           
             
@@ -340,18 +402,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E5%A2%83%E7%95%8C/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="境界">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="境界">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/">境界</a>
+        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/" target="_self">
+          境界
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/">
+        <a href="/2017/11/24/%E5%A2%83%E7%95%8C/" target="_self">
           
           
             
@@ -397,18 +461,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="你的心换了锁，钥匙给了别人">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="你的心换了锁，钥匙给了别人">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/">你的心换了锁，钥匙给了别人</a>
+        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/" target="_self">
+          你的心换了锁，钥匙给了别人
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/">
+        <a href="/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/" target="_self">
           
           
             
@@ -456,18 +522,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="好想恋爱啊">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="好想恋爱啊">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/">好想恋爱啊</a>
+        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/" target="_self">
+          好想恋爱啊
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/">
+        <a href="/2017/11/24/%E5%A5%BD%E6%83%B3%E6%81%8B%E7%88%B1%E5%95%8A/" target="_self">
           
           
             
@@ -515,18 +583,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="成年人的疼痛，都是默不作声">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="成年人的疼痛，都是默不作声">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/">成年人的疼痛，都是默不作声</a>
+        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/" target="_self">
+          成年人的疼痛，都是默不作声
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/">
+        <a href="/2017/11/24/%E6%88%90%E5%B9%B4%E4%BA%BA%E7%9A%84%E7%96%BC%E7%97%9B%EF%BC%8C%E9%83%BD%E6%98%AF%E9%BB%98%E4%B8%8D%E4%BD%9C%E5%A3%B0/" target="_self">
           
           
             
@@ -573,18 +643,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="我的前世今生">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="我的前世今生">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">我的前世今生</a>
+        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" target="_self">
+          我的前世今生
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">
+        <a href="/2017/11/24/%E6%88%91%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/" target="_self">
           
           
             
@@ -628,18 +700,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="内存中的区域划分">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="内存中的区域划分">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">内存中的区域划分</a>
+        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" target="_self">
+          内存中的区域划分
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/">
+        <a href="/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/" target="_self">
           
           
             
@@ -693,18 +767,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="求职简历">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="求职简历">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/">求职简历</a>
+        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/" target="_self">
+          求职简历
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/">
+        <a href="/2012/01/24/%E6%B1%82%E8%81%8C%E7%AE%80%E5%8E%86/" target="_self">
           
           
             
@@ -747,80 +823,13 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="Objective-C概述">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/">Objective-C概述</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2011/11/10/Objective-C%E6%A6%82%E8%BF%B0/">
-          
-          
-            
-          
-          简介Object-C 通常写作 Objective-C 或者 Obj-C 或 OC，是根据C语言所衍生出来的语言，继承了C语言的特性，是扩充 C 语言的面向对象编程语言。Object-C 是一种面向对象的语言。而 C 语言是面向过程的语言。Object-C 是 MAC OSX 和 iOS 开发的基础语言。
-优点及缺点Object-C
-
-是非常“实际”的语言。它使用一个用C写成，很小的运行库，OC写
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2011-11-10 13:02" pubdate>
-              2011-11-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/iOS/">iOS</a>
-            
-              <a href="/categories/iOS/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/">日常学习</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Objective-C/">Objective-C</a>
-            
-              <a href="/tags/%E6%A6%82%E8%BF%B0/">概述</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/4/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -875,8 +884,9 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -891,7 +901,6 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -899,7 +908,7 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -918,6 +927,10 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -930,20 +943,6 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -975,7 +974,6 @@ ABC公司 （ 2012年9月 ~ 2014年9月 ）DEF项目我在此项目负责了哪�
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

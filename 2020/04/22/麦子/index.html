@@ -8,15 +8,22 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="见天地，见众生，见自己">
+  <meta name="description" content="
+
+麦子不想长在麦田里。麦子想长在城市里，楼很高车很多的城市里。麦子当然不是麦子。麦子是麦田边一座村庄里，一个女孩的名字。
+
+后来，麦子真的去了城市。麦子太想去城市了，高中书还没读完，别人一叫，麦子就放下正读的书，走了。
+其实还没到城市，麦子进了离城市老远老远的一座工厂里。麦子在机器旁一站，一天就过去了。
+星期天，麦子喜欢坐车往城里跑。麦子太喜欢城市了，麦子喜欢看城市车来车往高楼林立的模样，麦子喜">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>麦子 - 既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -55,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -156,7 +163,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -192,13 +200,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -283,7 +291,7 @@
             <h1 style="display: none">麦子</h1>
             
             <div class="markdown-body">
-              <p><img src="http://q96fa88b1.bkt.clouddn.com/QJ8759771750.jpg" srcset="/img/loading.gif" alt=""></p>
+              <p><img src="http://q96fa88b1.bkt.clouddn.com/QJ8759771750.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>麦子不想长在麦田里。麦子想长在城市里，楼很高车很多的城市里。<br>麦子当然不是麦子。麦子是麦田边一座村庄里，一个女孩的名字。</p>
 </blockquote>
@@ -295,11 +303,11 @@
 
 <p>小伙子看麦子的样子很城市，小伙子说话的声音很城市，小伙子走路的样子很城市，小伙子当然是城里人。<br>麦子和小伙子最初一前一后走在城市里。<br>麦子和小伙子后来手挽手走在城市里。</p>
 <p>再后来，麦子就躺在小伙子的怀里。<br>再后来，小伙子就领麦子进了一间小房子。<br>麦子最初感觉很害怕，很疼，麦子后来就哭了，哭着哭着，麦子又笑了。<br>再后来，麦子找到小伙子，说，咱俩结婚吧，我将自己都给你了。<br>小伙子望着麦子，惊讶得张大了嘴，好像不是麦子在说话，而是麦田里麦棵上一穗麦子在说话。<br>小伙子后来哧哧笑着说，麦子麦子，你还真是一穗麦子！</p>
-<p><img src="http://q96fa88b1.bkt.clouddn.com/maizi.jpg" srcset="/img/loading.gif" alt=""></p>
+<p><img src="http://q96fa88b1.bkt.clouddn.com/maizi.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>小伙子说完从身上掏出一沓钱，塞在麦子手里，让麦子走。<br>麦子一下就哭了，眼里流出泪来，麦子忽然看见城市的高楼大厦在她眼前突突突抖个不停，麦子睁开眼，小伙子早不见人影了。<br>将脸上的泪水擦干净后，麦子就不再叫麦子了，叫阿花阿芳阿丝阿丽阿猫阿狗反正不再叫麦子了。<br>麦子开始在城市的发廊发屋美容院按摩院酒店饭店和很多城里男人干那事，麦子不再感觉害怕不再感觉疼也不再哭泣或者笑，麦子就像一地熟透了的麦子，男人想咋割就咋割。</p>
 <p>男人折腾完了，就给麦子递过钱，麦子大大方方伸手就接了。<br>麦子想，这就是城市，用我所有的换回我所需要的，城市真好！<br>麦子从一座城市走到另一座城市，麦子成了城市发廊发屋美容院按摩院酒店饭店间漂着的一粒麦子。<br>麦子感觉自己很快乐。<br>有一天，麦子回到了麦田边的村庄。麦子的嘴唇很城市地红着，麦子的头发很城市地黄着，麦子的裙子很城市地在风中飘着。麦子进了村庄，好多人愣愣地望着麦子，忽然一个个朝麦子大声喊着，麦子！麦子！</p>
 <p>麦子一下愣愣的，心想他们喊谁呢？<br>后来，麦子才想起他们是喊自己呢。<br>麦子的心里一下潮潮的暖暖的。<br>麦子妈说，咱不去了，咱在村里种麦子。<br>麦子爸说，咱不去了，咱在村里割麦子。<br>麦子撇撇嘴，心说我才不想一辈子种麦子割麦子呢。</p>
-<p>麦子一转身，就头也不回地走了。<br>后来，麦子还是回到了麦田边的村庄里。不是麦子在城市间漂累了，是麦子得了病，得了那种不敢叫人知道的病。<br>麦子整天整天躺在屋里，蔫蔫的，像一穗被雨淋得快要发霉的麦子。<br>麦子妈流着泪说，咱看好了，咱在村里种麦子。<br>麦子爸流着泪说，咱看好了，咱在村里割麦子。<br>麦子噙着泪点了点头。<br><img src="http://q96fa88b1.bkt.clouddn.com/maizi1.jpg" srcset="/img/loading.gif" alt=""><br>麦子将自己在城市里挣的钱一张一张花完了，麦子的病还没看好。<br>麦子后来就不想活了，麦子用爸妈割麦的镰刀，将自己当成一棵熟透的麦稞子，偷偷割倒在村口的麦田里。<br>现在，麦子躺在村口的土坡上，麦子的身边，一大片一大片麦子，年年春天绿，年年夏天黄。</p>
+<p>麦子一转身，就头也不回地走了。<br>后来，麦子还是回到了麦田边的村庄里。不是麦子在城市间漂累了，是麦子得了病，得了那种不敢叫人知道的病。<br>麦子整天整天躺在屋里，蔫蔫的，像一穗被雨淋得快要发霉的麦子。<br>麦子妈流着泪说，咱看好了，咱在村里种麦子。<br>麦子爸流着泪说，咱看好了，咱在村里割麦子。<br>麦子噙着泪点了点头。<br><img src="http://q96fa88b1.bkt.clouddn.com/maizi1.jpg" srcset="/img/loading.gif" lazyload alt=""><br>麦子将自己在城市里挣的钱一张一张花完了，麦子的病还没看好。<br>麦子后来就不想活了，麦子用爸妈割麦的镰刀，将自己当成一棵熟透的麦稞子，偷偷割倒在村口的麦田里。<br>现在，麦子躺在村口的土坡上，麦子的身边，一大片一大片麦子，年年春天绿，年年夏天黄。</p>
 
             </div>
             <hr>
@@ -323,7 +331,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
                 <div class="post-prevnext">
@@ -417,8 +429,9 @@
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -433,7 +446,6 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -441,7 +453,7 @@
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -466,6 +478,10 @@
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -478,20 +494,6 @@
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -523,7 +525,6 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

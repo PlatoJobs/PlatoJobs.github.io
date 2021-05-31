@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="见天地，见众生，见自己">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -39,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -140,7 +141,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -176,13 +178,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -230,19 +232,77 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/27/Oh-My-ZSH/" target="_self">
-          <img src="https://th.wallhaven.cc/small/g8/g83m3d.jpg" srcset="/img/loading.gif" alt="Oh My ZSH">
+        <a href="/2020/04/28/swift%E7%B4%AF%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8E%A2%E7%B4%A2/" target="_self">
+          <img src="https://th.wallhaven.cc/small/ox/oxkjgm.jpg" srcset="/img/loading.gif" lazyload alt="swift类和结构体内存分配探索">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/27/Oh-My-ZSH/">Oh My ZSH</a>
+        <a href="/2020/04/28/swift%E7%B4%AF%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8E%A2%E7%B4%A2/" target="_self">
+          swift类和结构体内存分配探索
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/27/Oh-My-ZSH/">
+        <a href="/2020/04/28/swift%E7%B4%AF%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8E%A2%E7%B4%A2/" target="_self">
+          
+          
+            
+          
+          1. 类和 结构体 内存分配探索12345678910111213141516171819202122232425262728293031323334353637383940func stuctandClassTest() -&gt;()&#123;        class Size &#123;        var width = 1        var heght = 2    &#12
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-28 17:50" pubdate>
+              2020-04-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/siwft/">siwft</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/">内存分配</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/27/Oh-My-ZSH/" target="_self">
+          <img src="https://th.wallhaven.cc/small/g8/g83m3d.jpg" srcset="/img/loading.gif" lazyload alt="Oh My ZSH">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/27/Oh-My-ZSH/" target="_self">
+          Oh My ZSH
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/27/Oh-My-ZSH/" target="_self">
           
           
             
@@ -286,18 +346,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_self">
-          <img src="https://th.wallhaven.cc/small/9m/9mxz8k.jpg" srcset="/img/loading.gif" alt="数据结构与算法（二）">
+          <img src="https://th.wallhaven.cc/small/9m/9mxz8k.jpg" srcset="/img/loading.gif" lazyload alt="数据结构与算法（二）">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">数据结构与算法（二）</a>
+        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_self">
+          数据结构与算法（二）
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
+        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_self">
           
           
             
@@ -347,18 +409,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/22/%E9%BA%A6%E5%AD%90/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="麦子">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="麦子">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/22/%E9%BA%A6%E5%AD%90/">麦子</a>
+        <a href="/2020/04/22/%E9%BA%A6%E5%AD%90/" target="_self">
+          麦子
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/22/%E9%BA%A6%E5%AD%90/">
+        <a href="/2020/04/22/%E9%BA%A6%E5%AD%90/" target="_self">
           
           
             
@@ -407,18 +471,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/22/%E5%B0%8F%E6%A1%83%E7%9A%84%E8%81%8C%E4%B8%9A/" target="_self">
-          <img src="https://th.wallhaven.cc/small/m9/m9qq5k.jpg" srcset="/img/loading.gif" alt="小桃的职业">
+          <img src="https://th.wallhaven.cc/small/m9/m9qq5k.jpg" srcset="/img/loading.gif" lazyload alt="小桃的职业">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/22/%E5%B0%8F%E6%A1%83%E7%9A%84%E8%81%8C%E4%B8%9A/">小桃的职业</a>
+        <a href="/2020/04/22/%E5%B0%8F%E6%A1%83%E7%9A%84%E8%81%8C%E4%B8%9A/" target="_self">
+          小桃的职业
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/22/%E5%B0%8F%E6%A1%83%E7%9A%84%E8%81%8C%E4%B8%9A/">
+        <a href="/2020/04/22/%E5%B0%8F%E6%A1%83%E7%9A%84%E8%81%8C%E4%B8%9A/" target="_self">
           
           
             
@@ -467,18 +533,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="数据结构和算法（一）">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="数据结构和算法（一）">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">数据结构和算法（一）</a>
+        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
+          数据结构和算法（一）
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/">
+        <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/" target="_self">
           
           
             
@@ -526,18 +594,20 @@
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/21/%E8%B7%B3%E6%A7%BD%E8%A6%81%E4%B8%8D%E8%A6%81%E6%89%BE%E7%8C%8E%E5%A4%B4/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="跳槽要不要找猎头">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="跳槽要不要找猎头">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/21/%E8%B7%B3%E6%A7%BD%E8%A6%81%E4%B8%8D%E8%A6%81%E6%89%BE%E7%8C%8E%E5%A4%B4/">跳槽要不要找猎头</a>
+        <a href="/2020/04/21/%E8%B7%B3%E6%A7%BD%E8%A6%81%E4%B8%8D%E8%A6%81%E6%89%BE%E7%8C%8E%E5%A4%B4/" target="_self">
+          跳槽要不要找猎头
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/21/%E8%B7%B3%E6%A7%BD%E8%A6%81%E4%B8%8D%E8%A6%81%E6%89%BE%E7%8C%8E%E5%A4%B4/">
+        <a href="/2020/04/21/%E8%B7%B3%E6%A7%BD%E8%A6%81%E4%B8%8D%E8%A6%81%E6%89%BE%E7%8C%8E%E5%A4%B4/" target="_self">
           
           
             
@@ -587,18 +657,20 @@ QQ 好友里躺了好几百个猎头，每次打开都一排排的粉色头像�
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/01/brew-install-cask/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="brew install cask">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="brew install cask">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/01/brew-install-cask/">brew install cask</a>
+        <a href="/2020/04/01/brew-install-cask/" target="_self">
+          brew install cask
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/01/brew-install-cask/">
+        <a href="/2020/04/01/brew-install-cask/" target="_self">
           
           
             
@@ -642,18 +714,20 @@ QQ 好友里躺了好几百个猎头，每次打开都一排排的粉色头像�
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="Git的诞生">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="Git的诞生">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/">Git的诞生</a>
+        <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/" target="_self">
+          Git的诞生
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/">
+        <a href="/2020/03/29/Git%E7%9A%84%E8%AF%9E%E7%94%9F/" target="_self">
           
           
             
@@ -698,18 +772,20 @@ Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者�
     
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="MVP架构">
+          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" lazyload alt="MVP架构">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/">MVP架构</a>
+        <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/" target="_self">
+          MVP架构
+        </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/">
+        <a href="/2020/03/27/MVP%E6%9E%B6%E6%9E%84/" target="_self">
           
           
             
@@ -749,93 +825,13 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" target="_self">
-          <img src="https://th.wallhaven.cc/small/39/39dmkd.jpg" srcset="/img/loading.gif" alt="正则表达式">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/03/09/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-          
-          
-            
-          
-          正则表达式是什么
-在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。
-正则表达式语言由两种基本字符类型组成：原义（正常）文本字符和元字符。元字符使正则表达式具有处理能力。
-
-常用元字符
-
-
-元字符
-做什么用
-
-
-
-.
-匹配除换行符以外的任意字符
-
-
-\w
-匹配字母或数字或下划线或汉字
-
-
-\
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-03-09 22:07" pubdate>
-              2020-03-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -890,8 +886,9 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -906,7 +903,6 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -914,7 +910,7 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -933,6 +929,10 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -945,20 +945,6 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -990,7 +976,6 @@ View：这里的View与MVC中的V又有一些小差别，这个View可以是view
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>

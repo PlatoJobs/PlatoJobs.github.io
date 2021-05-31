@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,6 +17,7 @@
   <meta name="description" content="见天地，见众生，见自己">
   <meta name="author" content="GitArtOS">
   <meta name="keywords" content="GitArtOS">
+  
   <title>数据结构和算法（一） - 既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
@@ -55,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -156,7 +157,8 @@
           
           
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" target="_self" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-books"></i>
                 文档
               </a>
@@ -192,13 +194,13 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
                 class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
+            <a class="nav-link" target="_self">&nbsp;<i
                 class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
@@ -283,9 +285,9 @@
             <h1 style="display: none">数据结构和算法（一）</h1>
             
             <div class="markdown-body">
-              <p><img src="http://q96fa88b1.bkt.clouddn.com/gjk.jpg" srcset="/img/loading.gif" alt=""></p>
+              <p><img src="http://q96fa88b1.bkt.clouddn.com/gjk.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <h2 id="1-数据结构与算法-C语言"><a href="#1-数据结构与算法-C语言" class="headerlink" title="1.数据结构与算法-C语言"></a>1.数据结构与算法-C语言</h2><h3 id="1-1-数据结构的数据、数据元素、数据项、数据对象"><a href="#1-1-数据结构的数据、数据元素、数据项、数据对象" class="headerlink" title="1.1 数据结构的数据、数据元素、数据项、数据对象"></a>1.1 数据结构的数据、数据元素、数据项、数据对象</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> 数据: 程序的操作对象,用于描述客观事物.</span><br><span class="hljs-comment"> 数据的特点: 1️⃣ 可以输入到计算机 2️⃣ 可以被计算机处理</span><br><span class="hljs-comment"> </span><br><span class="hljs-comment"> 数据项: 一个数据元素由若干数据项组成</span><br><span class="hljs-comment"> 数据元素: 组成数据的对象的基本单位</span><br><span class="hljs-comment"> 数据对象: 性质相同的数据元素的集合(类似于数组)</span><br><span class="hljs-comment"> </span><br><span class="hljs-comment"> 结构: 数据元素之间不是独立的,存在特定的关系.这些关系即是结构;</span><br><span class="hljs-comment"> 数据结构:指的数据对象中的数据元素之间的关系</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-comment">//声明一个结构体类型</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Teacher</span>&#123;</span>     <span class="hljs-comment">//一种数据结构</span><br>    <span class="hljs-keyword">char</span> *name;     <span class="hljs-comment">//数据项--名字</span><br>    <span class="hljs-keyword">char</span> *title;    <span class="hljs-comment">//数据项--职称</span><br>    <span class="hljs-keyword">int</span>  age;       <span class="hljs-comment">//数据项--年龄</span><br>&#125;;<br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>&#123;<br>   <br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Teacher</span> <span class="hljs-title">t1</span>;</span>     <span class="hljs-comment">//数据元素;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Teacher</span> <span class="hljs-title">tArray</span>[10];</span> <span class="hljs-comment">//数据对象;</span><br>    <br>    t1.age = <span class="hljs-number">18</span>;       <span class="hljs-comment">//数据项</span><br>    t1.name = <span class="hljs-string">&quot;CC&quot;</span>;    <span class="hljs-comment">//数据项</span><br>    t1.title = <span class="hljs-string">&quot;讲师&quot;</span>;  <span class="hljs-comment">//数据项</span><br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;老师姓名:%s\n&quot;</span>,t1.name);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;老师年龄:%d\n&quot;</span>,t1.age);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;老师职称:%s\n&quot;</span>,t1.title);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h3 id="1-2-数据结构"><a href="#1-2-数据结构" class="headerlink" title="1.2 数据结构"></a>1.2 数据结构</h3><p><img src="https://gitee.com/platojobs/images/raw/master/gitartos20200415193101.png" srcset="/img/loading.gif" alt=""></p>
+<h3 id="1-2-数据结构"><a href="#1-2-数据结构" class="headerlink" title="1.2 数据结构"></a>1.2 数据结构</h3><p><img src="https://gitee.com/platojobs/images/raw/master/gitartos20200415193101.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="1-2-1-逻辑结构划分"><a href="#1-2-1-逻辑结构划分" class="headerlink" title="1.2.1 逻辑结构划分"></a>1.2.1 逻辑结构划分</h4><blockquote>
 <p>数据结构的逻辑结构：按逻辑分为：集合结构，线性结构，树形结构，图形结构等</p>
 </blockquote>
@@ -355,7 +357,7 @@
 <blockquote>
 <p>循环嵌套n*n，时间复杂度为O(n^2)。</p>
 </blockquote>
-<p><img src="https://gitee.com/platojobs/images/raw/master/gitartos20200415193100.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="https://gitee.com/platojobs/images/raw/master/gitartos20200415193100.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p><strong>时间复杂实际就是评估算法执行的次数</strong>:<br>O(1) &lt; O(log n) &lt; O(n) &lt; O(nlog n) &lt; O(n2) &lt; O(n3) &lt; O(2n) &lt; O(n!) &lt; O(n^n)</p>
 </blockquote>
@@ -392,7 +394,11 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
                 <div class="post-prevnext">
@@ -486,8 +492,9 @@
   
 </footer>
 
-<!-- SCRIPTS -->
 
+  <!-- SCRIPTS -->
+  
   <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
@@ -502,7 +509,6 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
@@ -510,7 +516,7 @@
 
 
   
-    <script  src="/js/lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -535,6 +541,10 @@
 
 
 
+  <script  src="/js/local-search.js" ></script>
+
+
+
 
 
 
@@ -547,20 +557,6 @@
       typing(title)
       
     })(window, document);
-  </script>
-
-
-
-  <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
   </script>
 
 
@@ -592,7 +588,6 @@
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
-
 
 
 </body>
