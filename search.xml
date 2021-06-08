@@ -174,7 +174,7 @@
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2016-01-21 18:45:55</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://opensource.org/licenses/MIT
 ">[2]</span></a></sup></p>
-<p>Copyright (c) 2015-2019 Hiitea <a href="mailto:&#108;&#x75;&#111;&#104;&#97;&#x6f;&#x6a;&#105;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;">&#108;&#x75;&#111;&#104;&#97;&#x6f;&#x6a;&#105;&#110;&#x67;&#64;&#103;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>Copyright (c) 2015-2019 Hiitea <a href="mailto:&#108;&#117;&#x6f;&#x68;&#x61;&#x6f;&#106;&#x69;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#108;&#117;&#x6f;&#x68;&#x61;&#x6f;&#106;&#x69;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <h2 id="Buy-me-coffee-yum"><a href="#Buy-me-coffee-yum" class="headerlink" title="Buy me coffee :yum:"></a>Buy me coffee :yum:</h2><p>BTC: 19U6USzi7WaFmY3DTkgn67EzYpTqZPNwRG<br><img src="https://user-images.githubusercontent.com/5300359/30433338-cb7a9e48-9996-11e7-8e17-55f582b56e48.png" alt="image"></p>
 <p><a href="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png"><img src="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png" alt="Coffee Fund"></a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://cse.google.com/">https://cse.google.com/</a>
@@ -185,26 +185,6 @@
       </categories>
       <tags>
         <tag>主题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内存中的区域划分</title>
-    <url>/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/</url>
-    <content><![CDATA[<ul>
-<li><strong>栈区(stack)</strong>:由系统自动分配和释放，存放局部变量的值，容量小速度快，有序</li>
-<li><strong>堆</strong>：一般由程序员分配和释放，如果不释放，则出现内存泄露。程序会回收您的内存，特点：容量大，速度慢，无序</li>
-<li><strong>静态存储区</strong>：全局变量（外部变量）和静态变量都存放在静态区域。当程序结束使，系统回收</li>
-<li><strong>常量区</strong>：存放常量的内存区域，程序结束时，系统回收</li>
-<li><strong>代码区</strong>：存放二进制代码的区域</li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS面试</category>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -242,6 +222,26 @@
       </categories>
       <tags>
         <tag>圆角</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内存中的区域划分</title>
+    <url>/2012/11/10/%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E5%8C%BA%E5%9F%9F%E5%88%92%E5%88%86/</url>
+    <content><![CDATA[<ul>
+<li><strong>栈区(stack)</strong>:由系统自动分配和释放，存放局部变量的值，容量小速度快，有序</li>
+<li><strong>堆</strong>：一般由程序员分配和释放，如果不释放，则出现内存泄露。程序会回收您的内存，特点：容量大，速度慢，无序</li>
+<li><strong>静态存储区</strong>：全局变量（外部变量）和静态变量都存放在静态区域。当程序结束使，系统回收</li>
+<li><strong>常量区</strong>：存放常量的内存区域，程序结束时，系统回收</li>
+<li><strong>代码区</strong>：存放二进制代码的区域</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS面试</category>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+        <tag>内存</tag>
       </tags>
   </entry>
   <entry>
@@ -1988,6 +1988,23 @@
       </categories>
       <tags>
         <tag>摘抄</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最好的爱情是什么状态</title>
+    <url>/2021/06/08/%E6%9C%80%E5%A5%BD%E7%9A%84%E7%88%B1%E6%83%85%E6%98%AF%E4%BB%80%E4%B9%88%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<p>我想讲三个故事。</p>
+<p><img src="/img/20210607.jpg" alt=""></p>
+<p>第一个故事是我爸和我妈。刚大学毕业那会，第一个月，我发了工资。看着我爸还在用老年机，我当时看着着实有些不好受。于是偷偷地给我爸买了一个手机，拿回家以后，我爸虽然表面上骂我乱花钱，可是脸上还是看着很高兴的。他摆弄了半天，想了想，又用纸把屏幕擦干净，然后重新放进盒子里：算了，给你妈用吧。我用旧的。<br>父母让我觉得最好的爱情是：我把我最好的都留给你。</p>
+<p>第二个故事，是我听闻的。男生女生出去玩，看见一家装潢很好的店铺，于是手拉手进去。<br>坐下之后，服务员拿了菜谱，俩人一看，好特么贵呀。<br>于是女生假装看手机，然后跟服务员说：不好意思，有点急事，我们先走了。<br>然后男生赶紧配合女方：是不是客户又出什么幺蛾子了，我陪你去吧。<br>俩人飞奔而出，到了小吃街的小角落，然后一人要了一碗烤冷面。<br>双方抱着烤冷面相互一笑：我还不了解你？<br>爱情没必要打肿脸充胖子，相互接受彼此，面对对方就很好。<br>其实我觉得还不够。因为这个世界毕竟还是聚少离多。</p>
+<p>第三个故事，是我亲身经历的一件事。男生和女生谈恋爱的时候，正赶上男生的家里经济出了些问题。而女生，家里就比较富裕。男生为了不难堪，于是每次女生想要逛街的时候，都要想很多借口。要么是课太多了，要么就是该考试了，要么就是系里有事。其实女生也明白男生这么做的原因。<br>俩人谈恋爱谈了半年，转眼到了冬季。那个冬天特别冷，男生就那么几件衣服换来换去，都快洗破了。<br>有一天，女生跟男生显摆，我今天让我爸给我买了件男版衣服。超大款，能当裙子穿。<br>女生穿男版衣服，是一个流行趋势男生也没多想，好奇地问了问价钱，两千多。<br>男生吐吐舌头，好家伙，竟然是我两个月的生活费。<br>后来女生穿了两天就腻了，丢给了男生。男生穿上之后，刚好合适。<br>于是女生说：哎，反正我不想穿了，就给你咯。哎，衣服贵一点，能穿很多年的。过了一会女生又一脸惆怅地说：万一我们不在一起了，以后你也要好好对自己，知道没。我买的是经典款，穿很多年都不会被淘汰的。<br>男生当时就明白了，女生最开始就是买给他的。只不过碍于男生的面子，就找了个借口。<br>正如很多普通的青春故事一样，因为诸多现实原因，男生女生最后没有走到一起，他们在恋爱的第五年和平分手了。<br>而男生的那件衣服已经穿了好几年了，衣服很暖和，像女孩说的那样，还是可以穿很久。<br>有人问男生，衣服挺好看，衣品不错啊。<br>男生回答，这是ex之前买的。<br>男生的话引来一阵嘘声：你这样好渣啊。<br>男生是这样说的：我们虽然不联系了，开始有各自的人生了。但是彼此却没有刻意地删掉联系方式，也没有满怀怨气地删掉合影。你知道为什么吗？因为越刻意，越忘不掉。倒不如把她放在过去的时光里，坦然地接受未来。以后我也会正常的谈恋爱，认真地喜欢下一个人。我们不会互相憎恨，因为我们都曾经付诸真心。我们不会刻意怀念，因为我们还有彼此的人生。我不会去怀念前任，但也不会刻意地忘记她。她是我留在过去时光里的一个亲人。只是不再见面了而已。</p>
+<p>所谓爱情，在一起时，我们会坦然接受对方的好与不好，会把我最好的都留给你。其实我更希望，即使我哪天离开了你，你也要更好地活下去。<br>如果能走到最后，我会好好对你好，把我最好的都给你。就像歌词里那样，清贫也好，富贵也好，都是你。<br>爱你呢，是每分每秒都要做的小事。<br>亲爱的，如果不能走到最后，也会有一个人真诚地祝福着你。你要像爱我一样，继续爱下一个人。<br>我们是亲人，只是不再见面了而已。</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>情感</tag>
       </tags>
   </entry>
   <entry>
