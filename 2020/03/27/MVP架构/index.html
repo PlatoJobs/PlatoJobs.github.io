@@ -291,15 +291,15 @@
 <p>Presenter：作为model和view的中间人，从model层获取数据之后传给view，使得View和model没有耦合。</p>
 <p>说了那么多，总得来说MVP的好处就是解除view与model的耦合，使得view或model有更强的复用性。</p>
 <h1 id="MVP模式下的三个特性的分析"><a href="#MVP模式下的三个特性的分析" class="headerlink" title="MVP模式下的三个特性的分析"></a>MVP模式下的三个特性的分析</h1><ul>
-<li>任务均摊 – 我们将最主要的任务划分到 Presenter 和 Model，而 View 的功能较少；</li>
-<li>可测试性 – 非常好，由于一个功能简单的 View 层，所以测试大多数业务逻辑也变得简单；</li>
-<li>易用性 – 代码量比 MVC 模式的大，但同时 MVP 的概念却非常清晰。</li>
+<li>任务均摊 — 我们将最主要的任务划分到 Presenter 和 Model，而 View 的功能较少；</li>
+<li>可测试性 — 非常好，由于一个功能简单的 View 层，所以测试大多数业务逻辑也变得简单；</li>
+<li>易用性 — 代码量比 MVC 模式的大，但同时 MVP 的概念却非常清晰。</li>
 </ul>
 <p>iOS MVP 示意图</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-ccd2a84fe9568245.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-ccd2a84fe9568245.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>在这里输入图片标题</p>
 <ul>
-<li>就 MVP 而言，UIViewController 的子类实际上就是 Views 并不是 Presenters。这点区别使得这种模式的可测试性得到了极大的提高，付出的代价是开发速度的一些降低，因为必须要做一些手动的数据和事件绑定。<br>还有一些其他形态的 MVP – 监控控制器的 MVP。这个变体包含了 View 和 Model 之间的直接绑定，但是 Presenter 仍然来管理来自 View 的动作事件，同时也能胜任对 View 的更新。</li>
+<li>就 MVP 而言，UIViewController 的子类实际上就是 Views 并不是 Presenters。这点区别使得这种模式的可测试性得到了极大的提高，付出的代价是开发速度的一些降低，因为必须要做一些手动的数据和事件绑定。<br>还有一些其他形态的 MVP — 监控控制器的 MVP。这个变体包含了 View 和 Model 之间的直接绑定，但是 Presenter 仍然来管理来自 View 的动作事件，同时也能胜任对 View 的更新。</li>
 </ul>
 <h1 id="规范的MVP设计模式"><a href="#规范的MVP设计模式" class="headerlink" title="规范的MVP设计模式"></a>规范的MVP设计模式</h1><ul>
 <li>Model 层应该不仅仅是创建一个数据对象，还应该包含网络请求，以及数据 SQLite 的 CRUD 操作（比如 iOS 平台，一般以 FMDB 框架直接操作 sql，或者用 CoreData) 。一般可以将数据对象是否需要缓存设计成一个字段 isCache，或者针对整个项目设计一个开存储关，决定整个项目是否需要数据缓存。我们常见的新闻类 App，在离线的时候看到的数据，都是做了缓存处理的。比如一些金融类的 App，实时性比较高，是不做缓存的。</li>
@@ -318,39 +318,39 @@
 </ul>
 <h1 id="MVPDemo"><a href="#MVPDemo" class="headerlink" title="MVPDemo"></a>MVPDemo</h1><p>参考了<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/abea207c23e7">http://www.jianshu.com/p/abea207c23e7</a>里面给出的一个例子，这里向作者表示感谢。<br>先说下例子的核心思想就是：每个模块会有一个Presenter，Presenter里面包含了View（ViewController）和Model。获取数据（例如网络请求等）之后，进行View的展示和ViewController内部的逻辑处理。</p>
 <p>下面我们结合代码来看：</p>
-<h3 id="首先来看项目的文件结构："><a href="#首先来看项目的文件结构：" class="headerlink" title="首先来看项目的文件结构："></a>首先来看项目的文件结构：</h3><p><img src="https:////upload-images.jianshu.io/upload_images/2139357-c27301eb2e313e6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/254" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="首先来看项目的文件结构："><a href="#首先来看项目的文件结构：" class="headerlink" title="首先来看项目的文件结构："></a>首先来看项目的文件结构：</h3><p><img src="https:////upload-images.jianshu.io/upload_images/2139357-c27301eb2e313e6b.png?imageMogr2/auto-orient/strip|imageView2/2/w/254" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>MVP文件结构</p>
 <p>代码给出了一个控制器作为例子，大家可以看到，home里面包含了四个文件夹，model、controller、presenter、view。home当中的HomePresenter是继承presenter的，HomePresenter根据业务的不同来实现自己的presenter。</p>
 <h3 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h3><p>网络的底层还是用AFNetWorking来实现，HttpClient具体的封装大概为</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-8ee4cc619f807050.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/841" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-8ee4cc619f807050.png?imageMogr2/auto-orient/strip|imageView2/2/w/841" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>网络层</p>
 <p>这里说明一下，这里用delegate而不用block做回调是因为后面的HomePresenter需要对返回的数据进行处理，为了然后结构更加清晰，遵守一个函数一个功能的原则。后面还会再说一下。HttpClient提供了赋值responseHandle的init函数，外部可以通过init函数来绑定responseHandle协议。</p>
 <p>再来看一下上面那个responseHandle这个proctocol的结构：</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-479b2c83756413b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/486" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-479b2c83756413b3.png?imageMogr2/auto-orient/strip|imageView2/2/w/486" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>responseHandle</p>
 <p>目前只写了success和fail两个回调，这里为了方便演示，只写了一个参数，这个一块大伙可以根据自己的业务需求来写。</p>
 <p>结合HttpClient来看一下，我们分别在AFNetWorking请求成功、失败的回调当中处理delegate。简单说，HttpResponseHandle就是嫁接presenter和HttpClient的协议~~</p>
 <p>接下来看一下父类Presenter的设计。先看接口：</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-4523e9879ead4b97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-4523e9879ead4b97.png?imageMogr2/auto-orient/strip|imageView2/2/w/387" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>Presenter.h</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-499e644734a4d341.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/394" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-499e644734a4d341.png?imageMogr2/auto-orient/strip|imageView2/2/w/394" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>Presenter.m</p>
 <p>这里采用了泛型，简单说泛型就是有点类似objective-c中的id类型，大伙可以自行Google一下。父类Presenter主要是提供绑定View和解绑View的功能。</p>
 <p>基于网络请求设计的HttpPresenter，HttpPresenter继承与Presenter，遵守HttpResponseHandle协议，并且拥有自己的泛型，HttpClient成员变量。供外部调用HttpClient，降低耦合性。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-85bc39308fa8f49b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/790" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-85bc39308fa8f49b.png?imageMogr2/auto-orient/strip|imageView2/2/w/790" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>HttpPresenter.m</p>
 <p>HttpPresenter.m</p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>大致就可以分为这几层了，看一下怎么应用到实例中。</p>
 <p>上文的文件目录中可以看出我们每个功能模块都有presenter这个文件夹，对每个模块的presenter都是为这个模块服务，我们可以把请求、储存数据的活动放在这里。并且在这层presenter中处理model数据。为了使controller得到的数据能直接使用，可以多写一个protocol，来承上启下，HomeViewProtocol就为了这个产生。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">HomeViewProtocol</span> </span><br><br>- (<span class="hljs-keyword">void</span>)onGetMovieListSuccess:(HomeModel*)homeModel;<br><br>- (<span class="hljs-keyword">void</span>)onGetMovieListFail:(<span class="hljs-built_in">NSInteger</span>) errorCode des:(<span class="hljs-built_in">NSString</span>*)des;<br><br><span class="hljs-keyword">@end</span><br></code></pre></td></tr></table></figure>
 <p>先看了protocol，HomePresenter看起来就清晰多了吧</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-f4e00bd243fd1362.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/774" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-f4e00bd243fd1362.png?imageMogr2/auto-orient/strip|imageView2/2/w/774" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>HomePresenter.m</p>
 <p>在看一下controller的调用，初始化HomePresenter，然后绑定一下自己的视图，</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-0191085a6dced8af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/766" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-0191085a6dced8af.png?imageMogr2/auto-orient/strip|imageView2/2/w/766" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>controller对presenter的调用</p>
 <p>遵循HomeViewProtocol</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-6eb68ef9e026014c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/776" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2139357-6eb68ef9e026014c.png?imageMogr2/auto-orient/strip|imageView2/2/w/776" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>controller实现HomeViewProtocol协议</p>
 <h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>关于db这层还没有写好，大家可以自由发挥，按照网络这种方式，放在业务的presenter里面就可以啦，后续有时间会附上一个基于FMDB的<br>如果同学们有更好的方案，随时欢迎指正~<br>附上github地址：<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://github.com/baoshanf/MVP-iOS">https://github.com/baoshanf/MVP-iOS</a></p>
 
@@ -545,9 +545,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

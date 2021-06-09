@@ -334,21 +334,15 @@
 </ul>
 <h3 id="1-5-算法的空间复杂度"><a href="#1-5-算法的空间复杂度" class="headerlink" title="1.5 算法的空间复杂度"></a>1.5 算法的空间复杂度</h3><h4 id="1-5-1-时间复杂度"><a href="#1-5-1-时间复杂度" class="headerlink" title="1.5.1 时间复杂度"></a>1.5.1 时间复杂度</h4><blockquote>
 <p>算法的时间复杂度的定义如下： 在进行算法分析时，语句的总执行次数T(n)是关于问题规模n的函数，进而分析T(n)随着n变化情况并确定T(n)的数量级。算法的时间复杂度，也就是算法的时间量度，即为T(n) = O(f(n))。它表示随问题规模n的增大，算法执行时间的增长率和f(n)的增长率相同，称作算法的渐近时间复杂度，简称为时间复杂度。其中f(n)是问题规模n的某个函数。 大写O( )来体现算法时间复杂度的记法，我们称之为大O记法。</p>
-</blockquote>
 <p><strong>推导大O阶的方法</strong>：</p>
 <ul>
 <li>用常数1取代运行时间中所有加法常数</li>
 <li>在修改后的运行次数函数中，只保留最高阶项</li>
 <li>如果在最高阶项存在且不是1，则去除与这个项相乘的常数;<h5 id="1-5-1-1-常数阶"><a href="#1-5-1-1-常数阶" class="headerlink" title="1.5.1.1 常数阶"></a>1.5.1.1 常数阶</h5><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>, n = <span class="hljs-number">100</span>;<br>sum = (<span class="hljs-number">1</span> + n) * n / <span class="hljs-number">2</span>;<br>printf(<span class="hljs-string">&quot;%d&quot;</span>, sum);<br><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>这个算法的每行代码都会执行一次，运行次数函数是f(n) = 3，依据推导大O阶的方法，第一步就是将常数替换为1，由于没有最高阶项，所以该算法的时间复杂度为O(1)。需要注意的是，常数阶的算法不管常数是多少，我们都记做O(1)，并没有O(2)、O(3)之类的复杂度。</p>
-</blockquote>
-<h5 id="1-5-1-2-线性阶"><a href="#1-5-1-2-线性阶" class="headerlink" title="1.5.1.2 线性阶"></a>1.5.1.2 线性阶</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-comment">//  时间复杂度为O(1)的操作   </span><br>&#125;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>分析算法的复杂度，就是要分析循环结构的运行情况。上述代码的时间复杂度为O(n)，是因为循环体中的代码要执行n次。</p>
-</blockquote>
-</li>
+这个算法的每行代码都会执行一次，运行次数函数是f(n) = 3，依据推导大O阶的方法，第一步就是将常数替换为1，由于没有最高阶项，所以该算法的时间复杂度为O(1)。需要注意的是，常数阶的算法不管常数是多少，我们都记做O(1)，并没有O(2)、O(3)之类的复杂度。<h5 id="1-5-1-2-线性阶"><a href="#1-5-1-2-线性阶" class="headerlink" title="1.5.1.2 线性阶"></a>1.5.1.2 线性阶</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-comment">//  时间复杂度为O(1)的操作   </span><br>&#125;<br></code></pre></td></tr></table></figure>
+分析算法的复杂度，就是要分析循环结构的运行情况。上述代码的时间复杂度为O(n)，是因为循环体中的代码要执行n次。</li>
 </ul>
+</blockquote>
 <h5 id="1-5-1-3-对数阶"><a href="#1-5-1-3-对数阶" class="headerlink" title="1.5.1.3 对数阶"></a>1.5.1.3 对数阶</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span> (i &lt; n) &#123;<br>    i = i * <span class="hljs-number">2</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>在循环体内，i每次都乘以2倍，即为2^x = n，可以得出次数x为以2为低n的对数x = log2n。根据推导大O阶的方法，去除最高阶项的常数，即为O(logn)。</p>
@@ -366,8 +360,8 @@
 <h4 id="1-5-2-空间复杂度"><a href="#1-5-2-空间复杂度" class="headerlink" title="1.5.2 空间复杂度"></a>1.5.2 空间复杂度</h4><p>算法的空间复杂度：</p>
 <blockquote>
 <p>算法的空间复杂度通过计算算法所需要的存储空间实现，算法空间复杂度的计算公式记做：S(n) = n(f(n)), 其中n为问题的规模， f(n) 为语句关于n 所占内存空间的函数。</p>
-</blockquote>
-<h5 id="1-5-2-1-示例demo"><a href="#1-5-2-1-示例demo" class="headerlink" title="1.5.2.1 示例demo"></a>1.5.2.1 示例demo</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> 程序空间计算因素:</span><br><span class="hljs-comment"> 1. 寄存本身的指令</span><br><span class="hljs-comment"> 2. 常数</span><br><span class="hljs-comment"> 3. 变量</span><br><span class="hljs-comment"> 4. 输入</span><br><span class="hljs-comment"> 5. 对数据进行操作的辅助空间</span><br><span class="hljs-comment"> </span><br><span class="hljs-comment"> 在考量算法的空间复杂度,主要考虑算法执行时所需要的辅助空间.</span><br><span class="hljs-comment"> 空间复杂度计算:</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> 问题: 数组逆序,将一维数组a中的n个数逆序存放在原数组中.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>&#123;<br>    <span class="hljs-comment">// insert code here...</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>   <br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;<br>    <br>    <span class="hljs-comment">//算法实现(1)</span><br>    <span class="hljs-keyword">int</span> temp;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n/<span class="hljs-number">2</span> ; i++)&#123;<br>        temp = a[i];<br>        a[i] = a[n-i<span class="hljs-number">-1</span>];<br>        a[n-i<span class="hljs-number">-1</span>] = temp;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,a[i]);<br><br>    &#125;<br>    <br>    <span class="hljs-comment">//算法实现(2)</span><br>    <span class="hljs-keyword">int</span> b[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n;i++)&#123;<br>        b[i] = a[n-i<span class="hljs-number">-1</span>];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;<br>        a[i] = b[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,a[i]);<br>        <br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h5 id="1-5-2-1-示例demo"><a href="#1-5-2-1-示例demo" class="headerlink" title="1.5.2.1 示例demo"></a>1.5.2.1 示例demo</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*</span><br><span class="hljs-comment"> 程序空间计算因素:</span><br><span class="hljs-comment"> 1. 寄存本身的指令</span><br><span class="hljs-comment"> 2. 常数</span><br><span class="hljs-comment"> 3. 变量</span><br><span class="hljs-comment"> 4. 输入</span><br><span class="hljs-comment"> 5. 对数据进行操作的辅助空间</span><br><span class="hljs-comment"> </span><br><span class="hljs-comment"> 在考量算法的空间复杂度,主要考虑算法执行时所需要的辅助空间.</span><br><span class="hljs-comment"> 空间复杂度计算:</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> 问题: 数组逆序,将一维数组a中的n个数逆序存放在原数组中.</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * argv[])</span> </span>&#123;<br>    <span class="hljs-comment">// insert code here...</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>   <br>    <span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>&#125;;<br>    <br>    <span class="hljs-comment">//算法实现(1)</span><br>    <span class="hljs-keyword">int</span> temp;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n/<span class="hljs-number">2</span> ; i++)&#123;<br>        temp = a[i];<br>        a[i] = a[n-i<span class="hljs-number">-1</span>];<br>        a[n-i<span class="hljs-number">-1</span>] = temp;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,a[i]);<br><br>    &#125;<br>    <br>    <span class="hljs-comment">//算法实现(2)</span><br>    <span class="hljs-keyword">int</span> b[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n;i++)&#123;<br>        b[i] = a[n-i<span class="hljs-number">-1</span>];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)&#123;<br>        a[i] = b[i];<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">10</span>;i++)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,a[i]);<br>        <br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure></blockquote>
+
             </div>
             <hr>
             <div>
@@ -563,9 +557,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

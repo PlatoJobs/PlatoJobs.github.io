@@ -285,7 +285,7 @@
             <h1 style="display: none">iOS性能优化-安装包瘦身</h1>
             
             <div class="markdown-body">
-              <p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20190508%2F18%2F1557312058-zObtpAiXgK.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611304390&t=c28765de398489f92566de79a71a1c0c" srcset="/img/loading.gif" lazyload alt=""></p>
+              <p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20190508%2F18%2F1557312058-zObtpAiXgK.jpg&amp;refer=http%3A%2F%2Fimage.biaobaiju.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1611304390&amp;t=c28765de398489f92566de79a71a1c0c" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="1-常规瘦身方案"><a href="#1-常规瘦身方案" class="headerlink" title="1.常规瘦身方案"></a><strong>1.常规瘦身方案</strong></h3><h5 id="1-压缩资源"><a href="#1-压缩资源" class="headerlink" title="1.压缩资源"></a>1.压缩资源</h5><blockquote>
 <p>项目中资源包括图片、字符串、音视频等资源。由于项目中图片比较多，所以资源压缩一般会从图片入手。在把图片加入到项目中时候需要采用tinypng或者ImageOptim对图片进行压缩；另外，可以通知设计，对切图进行压缩处理再上传；不需要内嵌到项目中的图片可以改为动态下载。</p>
 </blockquote>
@@ -502,9 +502,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

@@ -288,16 +288,15 @@
               <h4 id="1-类和-结构体-内存分配探索"><a href="#1-类和-结构体-内存分配探索" class="headerlink" title="1. 类和 结构体 内存分配探索"></a>1. 类和 结构体 内存分配探索</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">stuctandClassTest</span><span class="hljs-params">()</span></span> -&gt;()&#123;<br>    <br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Size</span> </span>&#123;<br>        <span class="hljs-keyword">var</span> width <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br>        <span class="hljs-keyword">var</span> heght <span class="hljs-operator">=</span> <span class="hljs-number">2</span><br>    &#125;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Point</span></span>&#123;<br>        <span class="hljs-keyword">var</span> x <span class="hljs-operator">=</span> <span class="hljs-number">3</span><br>        <span class="hljs-keyword">var</span> y <span class="hljs-operator">=</span> <span class="hljs-number">4</span><br>    &#125;<br>    <span class="hljs-keyword">var</span> size <span class="hljs-operator">=</span> <span class="hljs-type">Size</span>()<br>    <span class="hljs-keyword">var</span> point <span class="hljs-operator">=</span> <span class="hljs-type">Point</span>()<br>    <br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;===+  %d&quot;</span>,<span class="hljs-type">MemoryLayout</span>&lt;<span class="hljs-type">Size</span>&gt;.stride);<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;===+  %d&quot;</span>,<span class="hljs-type">MemoryLayout</span>&lt;<span class="hljs-type">Point</span>&gt;.stride);<br>    <br>    <span class="hljs-built_in">print</span>(class_getInstanceSize(<span class="hljs-built_in">type</span>(of: size))) <span class="hljs-comment">//获取真正的内存大小</span><br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.ptr(ofRef: size))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.memStr(ofRef: size))<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;1----------------&quot;</span>)<br>    <br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.ptr(ofVal: <span class="hljs-operator">&amp;</span>size))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.memStr(ofVal: <span class="hljs-operator">&amp;</span>size))<br>       <br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;2----------------&quot;</span>)<br>    <br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.ptr(ofVal: <span class="hljs-operator">&amp;</span>point))<br>    <span class="hljs-built_in">print</span>(<span class="hljs-type">Mems</span>.memStr(ofVal: <span class="hljs-operator">&amp;</span>point))<br>    <br>    <br>&#125;<br><br>stuctandClassTest()<br><br><br><br></code></pre></td></tr></table></figure>
 <h5 id="1-1打印结果"><a href="#1-1打印结果" class="headerlink" title="1.1打印结果"></a>1.1打印结果</h5><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs dns">===+  %d <span class="hljs-number">8</span><br>===+  %d <span class="hljs-number">16</span><br><span class="hljs-number">32</span><br><span class="hljs-number">0</span>x000000010053cfc0<br><span class="hljs-number">0</span>x000000<span class="hljs-number">01000082a8</span> <span class="hljs-number">0</span>x0000<span class="hljs-number">000200000002</span> <span class="hljs-number">0</span>x00000<span class="hljs-number">00000000001</span> <span class="hljs-number">0</span>x00000<span class="hljs-number">00000000002</span><br><span class="hljs-number">1</span>----------------<br><span class="hljs-number">0</span>x00007ffeefbff510<br><span class="hljs-number">0</span>x000000010053cfc0<br><span class="hljs-number">2</span>----------------<br><span class="hljs-number">0</span>x00007ffeefbff500<br><span class="hljs-number">0</span>x00000<span class="hljs-number">00000000003</span> <span class="hljs-number">0</span>x00000<span class="hljs-number">00000000004</span><br><br></code></pre></td></tr></table></figure>
 <h4 id="2-分析结果"><a href="#2-分析结果" class="headerlink" title="2. 分析结果"></a>2. 分析结果</h4><ul>
-<li><p><code>0x00007ffeefbff510</code>（<code>size</code>）和<code>0x00007ffeefbff500</code>（<code>point</code>）的内存地址是挨着的，</p>
-</li>
+<li><code>0x00007ffeefbff510</code>（<code>size</code>）和<code>0x00007ffeefbff500</code>（<code>point</code>）的内存地址是挨着的，</li>
 <li><p><code>size</code> 需要申请堆空间内存,堆空间的内存大小也就是<code>32字节</code>，大致流程如下：<br> 1.<code>_allocating_init()</code><br> 2.<code>_swift_allocObject</code><br> 3.<code>swift_slowAlloc</code><br> 4.<code>maloc</code></p>
 </li>
 <li><p><code>point</code>只是在栈空间，16个字节</p>
 </li>
-<li><p><code>size</code>堆空间的情况：<br>  <code>0x00000001000082a8</code>  —-<code>Size</code>类的信息</p>
-<p>  <code>0x0000000200000002</code> —- 引用计数</p>
-<p>  <code>0x0000000000000001</code> —– 1</p>
-<p>  <code>0x0000000000000002</code>——- 2</p>
+<li><p><code>size</code>堆空间的情况：<br>  <code>0x00000001000082a8</code>  ——<code>Size</code>类的信息</p>
+<p>  <code>0x0000000200000002</code> —— 引用计数</p>
+<p>  <code>0x0000000000000001</code> ——- 1</p>
+<p>  <code>0x0000000000000002</code>———- 2</p>
 </li>
 </ul>
 
@@ -492,9 +491,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

@@ -306,7 +306,7 @@
 </li>
 </ol>
 <p>如果只是重写<code>NSOperation</code>的<code>main</code>方法，由底层控制变更任务执行及完成状态，以及任务退出<br>如果重写了NSOperation的start方法，自行控制任务状态系统通过KVO的方式移除isFinished==YES的<code>NSOperation</code>.</p>
-<ol start="4">
+<ol>
 <li>可以设置最大并发量.</li>
 </ol>
 <h4 id="二、NSOperation和NSOperationQueue"><a href="#二、NSOperation和NSOperationQueue" class="headerlink" title="二、NSOperation和NSOperationQueue"></a>二、NSOperation和NSOperationQueue</h4><ul>
@@ -346,7 +346,7 @@
 <blockquote>
 <p>可以看到：在其他线程中单独使用子类 <code>NSInvocationOperation</code>，操作是在当前调用的其他线程执行的，并没有开启新线程。</p>
 </blockquote>
-<ol start="2">
+<ol>
 <li>使用子类 <code>NSBlockOperation</code></li>
 </ol>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 使用子类 NSBlockOperation</span><br><span class="hljs-comment"> */</span><br>- (<span class="hljs-keyword">void</span>)useBlockOperation &#123;<br><br>    <span class="hljs-comment">// 1.创建 NSBlockOperation 对象</span><br>    <span class="hljs-built_in">NSBlockOperation</span> *op = [<span class="hljs-built_in">NSBlockOperation</span> blockOperationWithBlock:^&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span>; i++) &#123;<br>            [<span class="hljs-built_in">NSThread</span> sleepForTimeInterval:<span class="hljs-number">2</span>]; <span class="hljs-comment">// 模拟耗时操作</span><br>            <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;1---%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]); <span class="hljs-comment">// 打印当前线程</span><br>        &#125;<br>    &#125;];<br><br>    <span class="hljs-comment">// 2.调用 start 方法开始执行操作</span><br>    [op start];<br>&#125;<br><br></code></pre></td></tr></table></figure>
@@ -364,7 +364,7 @@
 <p>可以看出：使用子类 <code>NSBlockOperation</code>，并调用方法 <code>AddExecutionBlock:</code> 的情况下，<code>blockOperationWithBlock:</code>方法中的操作 和<code>addExecutionBlock:</code> 中的操作是在不同的线程中异步执行的。而且，这次执行结果中 <code>blockOperationWithBlock:</code>方法中的操作也不是在当前线程（主线程）中执行的。从而印证了<code>blockOperationWithBlock:</code>中的操作也可能会在其他线程（非当前线程）中执行。</p>
 </blockquote>
 <p>一般情况下，如果一个 <code>NSBlockOperation</code> 对象封装了多个操作。<code>NSBlockOperation</code> 是否开启新线程，取决于操作的个数。如果添加的操作的个数多，就会自动开启新线程。当然开启的线程数是由系统来决定的。</p>
-<ol start="3">
+<ol>
 <li>使用自定义继承自 <code>NSOperation</code>的子类</li>
 </ol>
 <p>如果使用子类 <code>NSInvocationOperation</code>、<code>NSBlockOperation</code> 不能满足日常需求，我们可以使用自定义继承自 <code>NSOperation</code> 的子类。可以通过重写<code>main</code> 或者 start 方法 来定义自己的 <code>NSOperation</code> 对象。重写<code>main</code>方法比较简单，我们不需要管理操作的状态属性 <code>isExecuting</code> 和 <code>isFinished</code>。当 <code>main</code> 执行完返回的时候，这个操作就结束了。</p>
@@ -392,7 +392,7 @@
 </ul>
 <p>添加到这种队列中的操作，就会自动放到子线程中执行。<br>同时包含了：串行、并发功能。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// 自定义队列创建方法</span><br><span class="hljs-built_in">NSOperationQueue</span> *queue = [[<span class="hljs-built_in">NSOperationQueue</span> alloc] init];<br></code></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>将操作加入到队列中</li>
 </ol>
 <p>上边我们说到<code>NSOperation</code>需要配合<code>NSOperationQueue</code>来实现多线程。</p>
@@ -419,7 +419,7 @@
 <blockquote>
 <p>可以看出：使用 <code>addOperationWithBlock:</code> 将操作加入到操作队列后能够开启新线程，进行并发执行。</p>
 </blockquote>
-<ol start="3">
+<ol>
 <li><code>NSOperationQueue</code> 控制串行执行、并发执行</li>
 </ol>
 <p>之前我们说过，<code>NSOperationQueue</code> 创建的自定义队列同时具有串行、并发功能，上边我们演示了并发功能，那么他的串行功能是如何实现的？<br>这里有个关键属性 <code>maxConcurrentOperationCount</code>，叫做最大并发操作数。用来控制一个特定队列中可以有多少个操作同时参与并发执行。</p>
@@ -435,7 +435,7 @@
 <blockquote>
 <p>可以看出：当最大并发操作数为1时，操作是按顺序串行执行的，并且一个操作完成之后，下一个操作才开始执行。当最大操作并发数为2时，操作是并发执行的，可以同时执行两个操作。而开启线程数量是由系统决定的，不需要我们来管理。<br><code>这样看来，是不是比 GCD 还要简单了许多？</code></p>
 </blockquote>
-<ol start="4">
+<ol>
 <li><code>NSOperation</code>操作依赖</li>
 </ol>
 <p><code>NSOperation、NSOperationQueue</code> 最吸引人的地方是它能添加操作之间的依赖关系。通过操作依赖，我们可以很方便的控制操作之间的执行先后顺序。<code>NSOperation</code>提供了3个接口供我们管理和查看依赖。</p>
@@ -451,7 +451,7 @@
 <blockquote>
 <p>可以看到：通过添加操作依赖，无论运行几次，其结果都是 op1 先执行，op2 后执行。</p>
 </blockquote>
-<ol start="5">
+<ol>
 <li><code>NSOperation 优先级</code></li>
 </ol>
 <p><code>NSOperation</code> 提供了<code>queuePriority（优先级）</code>属性，<code>queuePriority属性</code>适用于同一操作队列中的操作，不适用于不同操作队列中的操作。默认情况下，所有新创建的操作对象优先级都是<code>NSOperationQueuePriorityNormal</code>。但是我们可以通过<code>setQueuePriority:</code>方法来改变当前操作在同一队列中的执行优先级。</p>
@@ -460,7 +460,7 @@
 <blockquote>
 <p>那么，什么样的操作才是进入就绪状态的操作呢？<br>  当一个操作的所有依赖都已经完成时，操作对象通常会进入准备就绪状态，等待执行。<br>举个例子，现在有4个优先级都是<code>NSOperationQueuePriorityNormal（默认级别）</code>的操作：op1，op2，op3，op4。其中 op3 依赖于 op2，op2 依赖于 op1，即 op3 -&gt; op2 -&gt; op1。现在将这4个操作添加到队列中并发执行。<br>因为 op1 和 op4 都没有需要依赖的操作，所以在 op1，op4 执行之前，就是处于准备就绪状态的操作。<br>而 op3 和 op2 都有依赖的操作（op3 依赖于 op2，op2 依赖于 op1），所以 op3 和 op2 都不是准备就绪状态下的操作。<br>理解了进入就绪状态的操作，那么我们就理解了queuePriority 属性的作用对象。<br><code>queuePriority</code>属性决定了进入准备就绪状态下的操作之间的开始执行顺序。并且，优先级不能取代依赖关系。如果一个队列中既包含高优先级操作，又包含低优先级操作，并且两个操作都已经准备就绪，那么队列先执行高优先级操作。比如上例中，如果 op1 和 op4 是不同优先级的操作，那么就会先执行优先级高的操作。如果，一个队列中既包含了准备就绪状态的操作，又包含了未准备就绪的操作，未准备就绪的操作优先级比准备就绪的操作优先级高。那么，虽然准备就绪的操作优先级低，也会优先执行。优先级不能取代依赖关系。如果要控制操作间的启动顺序，则必须使用依赖关系。</p>
 </blockquote>
-<ol start="6">
+<ol>
 <li><code>NSOperation、NSOperationQueue 线程间</code>的通信</li>
 </ol>
 <blockquote>
@@ -472,7 +472,7 @@
 <blockquote>
 <p><strong><em>可以看到：通过线程间的通信，先在其他线程中执行操作，等操作执行完了之后再回到主线程执行主线程的相应操作。</em></strong></p>
 </blockquote>
-<ol start="7">
+<ol>
 <li><code>NSOperation、NSOperationQueue</code> 线程同步和线程安全</li>
 </ol>
 <ul>
@@ -480,7 +480,7 @@
 <li>线程同步：可理解为线程 A 和 线程 B 一块配合，A 执行到一定程度时要依靠线程 B 的某个结果，于是停下来，示意 B 运行；B 依言执行，再将结果给 A；A 再继续操作。<br>举个简单例子就是：两个人在一起聊天。两个人不能同时说话，避免听不清(操作冲突)。等一个人说完(一个线程结束操作)，另一个再说(另一个线程再开始操作)。</li>
 </ul>
 <p>下面，我们模拟火车票售卖的方式，实现 NSOperation 线程安全和解决线程同步问题。<br>场景：总共有50张火车票，有两个售卖火车票的窗口，一个是北京火车票售卖窗口，另一个是上海火车票售卖窗口。两个窗口同时售卖火车票，卖完为止。</p>
-<ol start="8">
+<ol>
 <li><code>NSOperation、NSOperationQueue</code> 非线程安全</li>
 </ol>
 <p>先来看看不考虑线程安全的代码：</p>
@@ -492,7 +492,7 @@
 <blockquote>
 <p>可以看到：在不考虑线程安全，不使用<code>NSLock</code> 情况下，得到票数是错乱的，这样显然不符合我们的需求，所以我们需要考虑线程安全问题。</p>
 </blockquote>
-<ol start="9">
+<ol>
 <li><code>NSOperation、NSOperationQueue</code> 线程安全</li>
 </ol>
 <p>线程安全解决方案：可以给线程加锁，在一个线程执行该操作的时候，不允许其他线程进行操作。iOS 实现线程加锁有很多种方式。<code>@synchronized</code>、 <code>NSLock</code>、<code>NSRecursiveLock</code>、<code>NSCondition</code>、<code>NSConditionLock</code>、<code>pthread_mutex</code>、<code>dispatch_semaphore</code>、<code>OSSpinLock</code>、<code>atomic(property) set/get</code>等等各种方式。这里我们使用<code>NSLock</code> 对象来解决线程同步问题。<code>NSLock</code> 对象可以通过进入锁时调用 lock 方法，解锁时调用 unlock 方法来保证线程安全。</p>
@@ -503,7 +503,7 @@
 <blockquote>
 <p>可以看出：在考虑了线程安全，使用<code>NSLock</code> 加锁、解锁机制的情况下，得到的票数是正确的，没有出现混乱的情况。我们也就解决了多个线程同步的问题。</p>
 </blockquote>
-<ol start="9">
+<ol>
 <li><code>NSOperation、NSOperationQueue</code>常用属性和方法归纳</li>
 </ol>
 <ul>
@@ -514,7 +514,7 @@
 <li>判断操作状态方法<br><code>- (BOOL)isFinished;</code>判断操作是否已经结束。<br><code>- (BOOL)isCancelled;</code>判断操作是否已经标记为取消。<br><code>- (BOOL)isExecuting;</code> 判断操作是否正在在运行。<br><code>- (BOOL)isReady;</code> 判断操作是否处于准备就绪状态，这个值和操作的依赖关系相关。</li>
 <li>操作同步<br><code>- (void)waitUntilFinished;</code> 阻塞当前线程，直到该操作结束。可用于线程执行顺序的同步。<br><code>- (void)setCompletionBlock:(void (^)(void))block;</code> <code>completionBlock</code> 会在当前操作执行完毕时执行 completionBlock。<br><code>- (void)addDependency:(NSOperation *)op;</code> 添加依赖，使当前操作依赖于操作 op 的完成。<br><code>- (void)removeDependency:(NSOperation *)op</code>; 移除依赖，取消当前操作对操作 op 的依赖。<br><code>@property (readonly, copy) NSArray&lt;NSOperation *&gt; *dependencies</code>; 在当前操作开始执行之前完成执行的所有操作对象数组。</li>
 </ul>
-<ol start="10">
+<ol>
 <li><p><code>NSOperationQueue</code>常用属性和方法</p>
 </li>
 <li><ol>
@@ -525,7 +525,7 @@
 </ol>
 </li>
 <li><ol>
-<li><ol start="2">
+<li><ol>
 <li>操作同步</li>
 </ol>
 </li>
@@ -533,9 +533,9 @@
 </li>
 </ol>
 <p><code>- (void)waitUntilAllOperationsAreFinished</code>; 阻塞当前线程，直到队列中的操作全部执行完毕。</p>
-<ol start="10">
+<ol>
 <li><ol>
-<li><ol start="3">
+<li><ol>
 <li>添加/获取操作</li>
 </ol>
 </li>
@@ -548,9 +548,9 @@
 <li><code>- (NSArray *)operations;</code> 当前在队列中的操作数组（某个操作执行结束后会自动从这个数组清除）。</li>
 <li><code>- (NSUInteger)operationCount;</code>当前队列中的操作数。</li>
 </ul>
-<ol start="10">
+<ol>
 <li><ol>
-<li><ol start="4">
+<li><ol>
 <li>获取队列</li>
 </ol>
 </li>
@@ -571,9 +571,7 @@
 <h4 id="NSThread-runloop实现常驻线程"><a href="#NSThread-runloop实现常驻线程" class="headerlink" title="NSThread+runloop实现常驻线程"></a><code>NSThread+runloop</code>实现常驻线程</h4><p><code>NSThread</code>在实际开发中比较常用到的场景就是去实现常驻线程。</p>
 <p>由于每次开辟子线程都会消耗cpu，在需要频繁使用子线程的情况下，频繁开辟子线程会消耗大量的cpu，而且创建线程都是任务执行完成之后也就释放了，不能再次利用，那么如何创建一个线程可以让它可以再次工作呢？也就是创建一个常驻线程。<br>首先常驻线程既然是常驻，那么我们可以用<code>GCD</code>实现一个单例来保存<code>NSThread</code></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs objc">+ (<span class="hljs-built_in">NSThread</span> *)shareThread &#123;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">NSThread</span> *shareThread = <span class="hljs-literal">nil</span>;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_once_t</span> oncePredicate;<br>    <br>    <span class="hljs-built_in">dispatch_once</span>(&amp;oncePredicate, ^&#123;<br>        <br>        shareThread = [[<span class="hljs-built_in">NSThread</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(threadTest) object:<span class="hljs-literal">nil</span>];<br><br>        [shareThread setName:<span class="hljs-string">@&quot;threadTest&quot;</span>];<br>        <br>        [shareThread start];<br>    &#125;);<br>    <br>    <span class="hljs-keyword">return</span> shareThread;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>这样创建的thread就不会销毁了吗？</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc">[<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test) onThread:[ViewController shareThread] withObject:<span class="hljs-literal">nil</span> waitUntilDone:<span class="hljs-literal">NO</span>];<br><br>- (<span class="hljs-keyword">void</span>)test<br>&#123;<br>    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;test:%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]);<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
-<p>并没有打印，说明<code>test方法</code>没有被调用。<br>那么可以用<code>runloop</code>来让线程常驻:</p>
+<p>这样创建的thread就不会销毁了吗？<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc">[<span class="hljs-keyword">self</span> performSelector:<span class="hljs-keyword">@selector</span>(test) onThread:[ViewController shareThread] withObject:<span class="hljs-literal">nil</span> waitUntilDone:<span class="hljs-literal">NO</span>];<br><br>- (<span class="hljs-keyword">void</span>)test<br>&#123;<br>    <span class="hljs-built_in">NSLog</span>(<span class="hljs-string">@&quot;test:%@&quot;</span>, [<span class="hljs-built_in">NSThread</span> currentThread]);<br>&#125;<br><br><br></code></pre></td></tr></table></figure><br>并没有打印，说明<code>test方法</code>没有被调用。<br>那么可以用<code>runloop</code>来让线程常驻:</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>+ (<span class="hljs-built_in">NSThread</span> *)shareThread &#123;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">NSThread</span> *shareThread = <span class="hljs-literal">nil</span>;<br>    <br>    <span class="hljs-keyword">static</span> <span class="hljs-built_in">dispatch_once_t</span> oncePredicate;<br>    <br>    <span class="hljs-built_in">dispatch_once</span>(&amp;oncePredicate, ^&#123;<br>        <br>        shareThread = [[<span class="hljs-built_in">NSThread</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> selector:<span class="hljs-keyword">@selector</span>(threadTest2) object:<span class="hljs-literal">nil</span>];<br>        <br>        [shareThread setName:<span class="hljs-string">@&quot;threadTest&quot;</span>];<br>        <br>        [shareThread start];<br>    &#125;);<br>    <br>    <span class="hljs-keyword">return</span> shareThread;<br>&#125;<br><br>+ (<span class="hljs-keyword">void</span>)threadTest<br>&#123;<br>    <span class="hljs-keyword">@autoreleasepool</span> &#123;<br>        <br>        <span class="hljs-built_in">NSRunLoop</span> *runLoop = [<span class="hljs-built_in">NSRunLoop</span> currentRunLoop];<br>        <br>        [runLoop addPort:[<span class="hljs-built_in">NSMachPort</span> port] forMode:<span class="hljs-built_in">NSDefaultRunLoopMode</span>];<br>        <br>        [runLoop run];<br>    &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
 <p>这时候再去调用<code>performSelector</code>就有打印了。</p>
 <h4 id="自旋锁与互斥锁"><a href="#自旋锁与互斥锁" class="headerlink" title="自旋锁与互斥锁"></a>自旋锁与互斥锁</h4><p><img src="1782258-8ca7c2b6e5fe5352.png" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -787,9 +785,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

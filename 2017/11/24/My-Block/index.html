@@ -252,7 +252,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      67
+      66
        分钟
     </span>
   
@@ -289,22 +289,14 @@
 <p>注: Block的声明与赋值只是保存了一段代码段,必须调用才能执行内部代码<br>Block变量的声明、赋值与调用</p>
 <p>Block变量的声明</p>
 <p>Block变量的声明格式为: 返回值类型(^Block名字)(参数列表);</p>
-<p>// 声明一个无返回值,参数为两个字符串对象,叫做aBlock的Block</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void(^aBlock)(NSString *x, NSString *y);<br><br></code></pre></td></tr></table></figure>
-<p>// 形参变量名称可以省略,只留有变量类型即可</p>
+<p>// 声明一个无返回值,参数为两个字符串对象,叫做aBlock的Block<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void(^aBlock)(NSString *x, NSString *y);<br><br></code></pre></td></tr></table></figure><br>// 形参变量名称可以省略,只留有变量类型即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void(^aBlock)(NSString *, NSString *);<br></code></pre></td></tr></table></figure>
 <p>注: ^被称作”脱字符”<br>Block变量的赋值</p>
-<p>Block变量的赋值格式为: Block变量 = ^(参数列表){函数体};</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">aBlock &#x3D; ^(NSString *x, NSString *y)&#123;<br>NSLog(@&quot;%@ love %@&quot;, x, y);<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>注: Block变量的赋值格式可以是: Block变量 = ^返回值类型(参数列表){函数体};,不过通常情况下都将返回值类型省略,因为编译器可以从存储代码块的变量中确定返回值的类型<br>声明Block变量的同时进行赋值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br></code></pre></td></tr></table></figure>
-<p>int(^myBlock)(int) = ^(int num){<br>return num * 7;<br>};</p>
+<p>Block变量的赋值格式为: Block变量 = ^(参数列表){函数体};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">aBlock &#x3D; ^(NSString *x, NSString *y)&#123;<br>NSLog(@&quot;%@ love %@&quot;, x, y);<br>&#125;;<br></code></pre></td></tr></table></figure><br>注: Block变量的赋值格式可以是: Block变量 = ^返回值类型(参数列表){函数体};,不过通常情况下都将返回值类型省略,因为编译器可以从存储代码块的变量中确定返回值的类型<br>声明Block变量的同时进行赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br></code></pre></td></tr></table></figure><br>int(^myBlock)(int) = ^(int num){<br>return num * 7;<br>};</p>
 <p>// 如果没有参数列表,在赋值时参数列表可以省略</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void(^aVoidBlock)() &#x3D; ^&#123;<br>NSLog(@&quot;I am a aVoidBlock&quot;);<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p>Block变量的调用</p>
-<p>// 调用后控制台输出”Li Lei love Han Meimei”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">aBlock(@&quot;Li Lei&quot;,@&quot;Han Meimei&quot;);<br></code></pre></td></tr></table></figure>
-<p>// 调用后控制台输出”result = 63”<br>NSLog(@”result = %d”, myBlock(9));</p>
+<p>// 调用后控制台输出”Li Lei love Han Meimei”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">aBlock(@&quot;Li Lei&quot;,@&quot;Han Meimei&quot;);<br></code></pre></td></tr></table></figure><br>// 调用后控制台输出”result = 63”<br>NSLog(@”result = %d”, myBlock(9));</p>
 <p>// 调用后控制台输出”I am a aVoidBlock”<br>aVoidBlock();<br>使用typedef定义Block类型</p>
 <p>在实际使用Block的过程中,我们可能需要重复地声明多个相同返回值相同参数列表的Block变量,如果总是重复地编写一长串代码来声明变量会非常繁琐,所以我们可以使用typedef来定义Block类型</p>
 <p>// 定义一种无返回值无参数列表的Block类型</p>
@@ -313,19 +305,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">SayHello hello &#x3D; ^()&#123;<br>NSLog(@&quot;hello&quot;);<br>&#125;;<br></code></pre></td></tr></table></figure>
 <p>// 调用后控制台输出”hello”<br>hello();<br>Block作为函数参数</p>
 <p>Block作为C函数参数</p>
-<p>// 1.定义一个形参为Block的C函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void useBlockForC(int(^aBlock)(int, int))<br>&#123;<br>NSLog(@&quot;result &#x3D; %d&quot;, aBlock(300,200));<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>// 2.声明并赋值定义一个Block变量</p>
+<p>// 1.定义一个形参为Block的C函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">void useBlockForC(int(^aBlock)(int, int))<br>&#123;<br>NSLog(@&quot;result &#x3D; %d&quot;, aBlock(300,200));<br>&#125;<br></code></pre></td></tr></table></figure><br>// 2.声明并赋值定义一个Block变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">int(^addBlock)(int, int) &#x3D; ^(int x, int y)&#123;<br>return x+y;<br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
 <p>// 3.以Block作为函数参数,把Block像对象一样传递<br>useBlockForC(addBlock);</p>
 <p>// 将第2点和第3点合并一起,以内联定义的Block作为函数参数</p>
-<p>Block作为OC函数参数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">useBlockForC(^(int x, int y) &#123;<br>return x+y;<br>&#125;);<br></code></pre></td></tr></table></figure>
-<p>// 1.定义一个形参为Block的OC函数</p>
+<p>Block作为OC函数参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">useBlockForC(^(int x, int y) &#123;<br>return x+y;<br>&#125;);<br></code></pre></td></tr></table></figure><br>// 1.定义一个形参为Block的OC函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">- (void)useBlockForOC:(int(^)(int, int))aBlock<br>&#123;<br>NSLog(@&quot;result &#x3D; %d&quot;, aBlock(300,200));<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>// 2.声明并赋值定义一个Block变量<br>int(^addBlock)(int, int) = ^(int x, int y){<br>return x+y;<br>};</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br></code></pre></td></tr></table></figure>
-<p>// 3.以Block作为函数参数,把Block像对象一样传递<br>[self useBlockForOC:addBlock];</p>
+<p>// 2.声明并赋值定义一个Block变量<br>int(^addBlock)(int, int) = ^(int x, int y){<br>return x+y;<br>};<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br></code></pre></td></tr></table></figure><br>// 3.以Block作为函数参数,把Block像对象一样传递<br>[self useBlockForOC:addBlock];</p>
 <p>// 将第2点和第3点合并一起,以内联定义的Block作为函数参数<br>[self useBlockForOC:^(int x, int y){<br>return x+y;<br>}];<br>使用typedef简化Block</p>
 <p>// 1.使用typedef定义Block类型<br>typedef int(^MyBlock)(int, int);</p>
 <p>// 2.定义一个形参为Block的OC函数</p>
@@ -342,8 +328,8 @@
 <p>// 将变量类型精简之后C++代码如下,我们发现Block变量实际上就是一个指向结构体<strong>main_block_impl_0的指针,而结构体的第三个元素是局部变量global的值<br>void(*myBlock)() = &amp;</strong>main_block_impl_0(<strong>main_block_func_0, &amp;</strong>main_block_desc_0_DATA, global);</p>
 <p>// 我们看一下结构体__main_block_impl_0的代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">struct __main_block_impl_0 &#123;<br>struct __block_impl impl;<br>struct __main_block_desc_0* Desc;<br>int global;<br>__main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int _global, int flags&#x3D;0) : global(_global) &#123;<br>impl.isa &#x3D; &amp;_NSConcreteStackBlock;<br>impl.Flags &#x3D; flags;<br>impl.FuncPtr &#x3D; fp;<br>Desc &#x3D; desc;<br>&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p><img src="/img/qinglv.jpg" srcset="/img/loading.gif" lazyload alt=""><br>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl *))((<strong>block_impl *)myBlock)-&gt;FuncPtr)((</strong>block_impl *)myBlock);</p>
-<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global正是定义Block时为结构体传进去的局部变量global的值<br>static void __main_block_func_0(struct __main_block_impl_0 *</strong>cself) {<br>int global = <strong>cself-&gt;global; // bound by copy<br>NSLog((NSString *)&amp;</strong>NSConstantStringImpl__var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_d5d9eb_mi_0, global);<br>}</p>
+<p><img src="/img/qinglv.jpg" srcset="/img/loading.gif" lazyload alt=""><br>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl <em>))((__block_impl </em>)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);</p>
+<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global正是定义Block时为结构体传进去的局部变量global的值<br>static void </strong>main_block_func_0(struct <strong>main_block_impl_0 *</strong>cself) {<br>int global = <strong>cself-&gt;global; // bound by copy<br>NSLog((NSString *)&amp;</strong>NSConstantStringImpl__var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_d5d9eb_mi_0, global);<br>}</p>
 <p>// 由此可知,在Block定义时便是将局部变量的值传给Block变量所指向的结构体,因此在调用Block之前对局部变量进行修改并不会影响Block内部的值,同时内部的值也是不可修改的<br>Block内访问__block修饰的局部变量</p>
 <p>在局部变量前使用下划线下划线block修饰,在声明Block之后、调用Block之前对局部变量进行修改,在调用Block时局部变量值是修改之后的新值<br>// 声明局部变量global<br>__block int global = 100;</p>
 <p>void(^myBlock)() = ^{<br>NSLog(@”global = %d”, global);<br>};<br>global = 101;<br>// 调用后控制台输出”global = 101”<br>myBlock();<br>在局部变量前使用下划线下划线block修饰,在Block中可以直接修改局部变量<br>// 声明局部变量global<br>__block int global = 100;</p>
@@ -357,32 +343,32 @@
 <p>void(^myBlock)() = ^{<br>global ++;<br>NSLog(@”global = %d”, global);<br>};<br>// 调用后控制台输出”global = 101”<br>myBlock();<br>注: 原理解析,通过clang命令将OC转为C++代码来查看一下Block底层实现<br>// OC代码如下<br>void(^myBlock)() = ^{<br>NSLog(@”global = %d”, global);<br>};</p>
 <p>// 转为C++代码如下<br>void(<em>myBlock)() = ((void (</em>)())&amp;<strong>main_block_impl_0((void *)</strong>main_block_func_0, &amp;__main_block_desc_0_DATA));</p>
 <p>// 将变量类型精简之后C++代码如下,我们发现Block变量实际上就是一个指向结构体<strong>main_block_impl_0的指针,而结构体中并未保存全局变量global的值或者指针<br>void(*myBlock)() = &amp;</strong>main_block_impl_0(<strong>main_block_func_0, &amp;</strong>main_block_desc_0_DATA);</p>
-<p>// 我们看一下结构体__main_block_impl_0的代码<br>struct __main_block_impl_0 {<br>struct __block_impl impl;<br>struct __main_block_desc_0* Desc;<br>__main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {<br>impl.isa = &amp;_NSConcreteStackBlock;<br>impl.Flags = flags;<br>impl.FuncPtr = fp;<br>Desc = desc;<br>}<br>};</p>
-<p>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl *))((<strong>block_impl *)myBlock)-&gt;FuncPtr)((</strong>block_impl *)myBlock);</p>
-<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global还是全局变量global的值<br>static void __main_block_func_0(struct __main_block_impl_0 *</strong>cself) {<br>NSLog((NSString *)&amp;<strong>NSConstantStringImpl</strong>var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_f35954_mi_0, global);<br>}</p>
+<p>// 我们看一下结构体<strong>main_block_impl_0的代码<br>struct </strong>main_block_impl_0 {<br>struct <strong>block_impl impl;<br>struct </strong>main_block_desc_0<em> Desc;<br>__main_block_impl_0(void </em>fp, struct __main_block_desc_0 *desc, int flags=0) {<br>impl.isa = &amp;_NSConcreteStackBlock;<br>impl.Flags = flags;<br>impl.FuncPtr = fp;<br>Desc = desc;<br>}<br>};</p>
+<p>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl <em>))((__block_impl </em>)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);</p>
+<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global还是全局变量global的值<br>static void </strong>main_block_func_0(struct <strong>main_block_impl_0 *</strong>cself) {<br>NSLog((NSString *)&amp;<strong>NSConstantStringImpl</strong>var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_f35954_mi_0, global);<br>}</p>
 <p>// 由此可知,全局变量所占用的内存只有一份,供所有函数共同调用,在Block定义时并未将全局变量的值或者指针传给Block变量所指向的结构体,因此在调用Block之前对局部变量进行修改会影响Block内部的值,同时内部的值也是可以修改的<br>Block内访问静态变量<br><img src="/img/qw.jpg" srcset="/img/loading.gif" lazyload alt=""><br>在Block中可以访问静态变量<br>// 声明静态变量global<br>static int global = 100;</p>
 <p>void(^myBlock)() = ^{<br>NSLog(@”global = %d”, global);<br>};<br>// 调用后控制台输出”global = 100”<br>myBlock();<br>在声明Block之后、调用Block之前对静态变量进行修改,在调用Block时静态变量值是修改之后的新值<br>// 声明静态变量global<br>static int global = 100;</p>
 <p>void(^myBlock)() = ^{<br>NSLog(@”global = %d”, global);<br>};<br>global = 101;<br>// 调用后控制台输出”global = 101”<br>myBlock();<br>在Block中可以直接修改静态变量<br>// 声明静态变量global<br>static int global = 100;</p>
 <p>void(^myBlock)() = ^{<br>global ++;<br>NSLog(@”global = %d”, global);<br>};<br>// 调用后控制台输出”global = 101”<br>myBlock();<br>注: 原理解析,通过clang命令将OC转为C++代码来查看一下Block底层实现<br>// OC代码如下<br>void(^myBlock)() = ^{<br>NSLog(@”global = %d”, global);<br>};</p>
 <p>// 转为C++代码如下<br>void(<em>myBlock)() = ((void (</em>)())&amp;<strong>main_block_impl_0((void *)</strong>main_block_func_0, &amp;__main_block_desc_0_DATA, &amp;global));</p>
 <p>// 将变量类型精简之后C++代码如下,我们发现Block变量实际上就是一个指向结构体<strong>main_block_impl_0的指针,而结构体的第三个元素是静态变量global的指针<br>void(*myBlock)() = &amp;</strong>main_block_impl_0(<strong>main_block_func_0, &amp;</strong>main_block_desc_0_DATA, &amp;global);</p>
-<p>// 我们看一下结构体__main_block_impl_0的代码<br>struct __main_block_impl_0 {<br>struct __block_impl impl;<br>struct __main_block_desc_0* Desc;<br>int *global;<br>__main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int *_global, int flags=0) : global(_global) {<br>impl.isa = &amp;_NSConcreteStackBlock;<br>impl.Flags = flags;<br>impl.FuncPtr = fp;<br>Desc = desc;<br>}<br>};</p>
-<p>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl *))((<strong>block_impl *)myBlock)-&gt;FuncPtr)((</strong>block_impl *)myBlock);</p>
-<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global正是定义Block时为结构体传进去的静态变量global的指针<br>static void __main_block_func_0(struct __main_block_impl_0 *</strong>cself) {<br>int <em>global = <strong>cself-&gt;global; // bound by copy<br>NSLog((NSString *)&amp;</strong>NSConstantStringImpl__var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_4d124d_mi_0, (</em>global));<br>}</p>
+<p>// 我们看一下结构体<strong>main_block_impl_0的代码<br>struct </strong>main_block_impl_0 {<br>struct <strong>block_impl impl;<br>struct </strong>main_block_desc_0<em> Desc;<br>int </em>global;<br><strong>main_block_impl_0(void *fp, struct </strong>main_block_desc_0 <em>desc, int </em>_global, int flags=0) : global(_global) {<br>impl.isa = &amp;_NSConcreteStackBlock;<br>impl.Flags = flags;<br>impl.FuncPtr = fp;<br>Desc = desc;<br>}<br>};</p>
+<p>// 在OC中调用Block的方法转为C++代码如下,实际上是指向结构体的指针myBlock访问其FuncPtr元素,在定义Block时为FuncPtr元素传进去的<strong>main_block_func_0方法<br>((void (*)(</strong>block_impl <em>))((__block_impl </em>)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);</p>
+<p>// <strong>main_block_func_0方法代码如下,由此可见NSLog的global正是定义Block时为结构体传进去的静态变量global的指针<br>static void </strong>main_block_func_0(struct <strong>main_block_impl_0 *</strong>cself) {<br>int <em>global = __cself-&gt;global; // bound by copy<br>NSLog((NSString </em>)&amp;<strong>NSConstantStringImpl</strong>var_folders_6y_vkd9wnv13pz6lc_h8phss0jw0000gn_T_main_4d124d_mi_0, (*global));<br>}</p>
 <p>// 由此可知,在Block定义时便是将静态变量的指针传给Block变量所指向的结构体,因此在调用Block之前对静态变量进行修改会影响Block内部的值,同时内部的值也是可以修改的<br>Block在MRC及ARC下的内存管理</p>
 <p>Block在MRC下的内存管理</p>
-<p>默认情况下,Block的内存存储在栈中,不需要开发人员对其进行内存管理<br>// 当Block变量出了作用域,Block的内存会被自动释放<br>void(^myBlock)() = ^{<br>NSLog(@”——“);<br>};<br>myBlock();<br>在Block的内存存储在栈中时,如果在Block中引用了外面的对象,不会对所引用的对象进行任何操作<br>Person *p = [[Person alloc] init];</p>
-<p>void(^myBlock)() = ^{<br>NSLog(@”——%@”, p);<br>};<br>myBlock();</p>
-<p>[p release]; // Person对象在这里可以正常被释放<br>如果对Block进行一次copy操作,那么Block的内存会被移动到堆中,这时需要开发人员对其进行release操作来管理内存<br>void(^myBlock)() = ^{<br>NSLog(@”——“);<br>};<br>myBlock();</p>
+<p>默认情况下,Block的内存存储在栈中,不需要开发人员对其进行内存管理<br>// 当Block变量出了作用域,Block的内存会被自动释放<br>void(^myBlock)() = ^{<br>NSLog(@”———“);<br>};<br>myBlock();<br>在Block的内存存储在栈中时,如果在Block中引用了外面的对象,不会对所引用的对象进行任何操作<br>Person *p = [[Person alloc] init];</p>
+<p>void(^myBlock)() = ^{<br>NSLog(@”———%@”, p);<br>};<br>myBlock();</p>
+<p>[p release]; // Person对象在这里可以正常被释放<br>如果对Block进行一次copy操作,那么Block的内存会被移动到堆中,这时需要开发人员对其进行release操作来管理内存<br>void(^myBlock)() = ^{<br>NSLog(@”———“);<br>};<br>myBlock();</p>
 <p>Block_copy(myBlock);</p>
 <p>// do something …</p>
 <p>Block_release(myBlock);<br>如果对Block进行一次copy操作,那么Block的内存会被移动到堆中,在Block的内存存储在堆中时,如果在Block中引用了外面的对象,会对所引用的对象进行一次retain操作,即使在Block自身调用了release操作之后,Block也不会对所引用的对象进行一次release操作,这时会造成内存泄漏<br>Person *p = [[Person alloc] init];</p>
-<p>void(^myBlock)() = ^{<br>NSLog(@”——%@”, p);<br>};<br>myBlock();</p>
+<p>void(^myBlock)() = ^{<br>NSLog(@”———%@”, p);<br>};<br>myBlock();</p>
 <p>Block_copy(myBlock);</p>
 <p>// do something …</p>
 <p>Block_release(myBlock);</p>
 <p>[p release]; // Person对象在这里无法正常被释放,因为其在Block中被进行了一次retain操作<br>如果对Block进行一次copy操作,那么Block的内存会被移动到堆中,在Block的内存存储在堆中时,如果在Block中引用了外面的对象,会对所引用的对象进行一次retain操作,为了不对所引用的对象进行一次retain操作,可以在对象的前面使用下划线下划线block来修饰<br>__block Person *p = [[Person alloc] init];</p>
-<p>void(^myBlock)() = ^{<br>NSLog(@”——%@”, p);<br>};<br>myBlock();</p>
+<p>void(^myBlock)() = ^{<br>NSLog(@”———%@”, p);<br>};<br>myBlock();</p>
 <p>Block_copy(myBlock);</p>
 <p>// do something …</p>
 <p>Block_release(myBlock);</p>
@@ -397,7 +383,7 @@
 <p>Block_release(_myBlock);<br>[super dealloc];<br>}</p>
 <p>@end</p>
 <p>Person *p = [[Person alloc] init];</p>
-<p>p.myBlock = ^{<br>NSLog(@”——%@”, p);<br>};<br>p.myBlock();</p>
+<p>p.myBlock = ^{<br>NSLog(@”———%@”, p);<br>};<br>p.myBlock();</p>
 <p>[p release]; // 因为myBlock作为Person的属性,采用copy修饰符修饰(这样才能保证Block在堆里面,以免Block在栈中被系统释放),所以Block会对Person对象进行一次retain操作,导致循环引用无法释放<br>情况二</p>
 <p>@interface Person : NSObject</p>
 <p>@property (nonatomic, copy) void(^myBlock)();</p>
@@ -407,7 +393,7 @@
 <p>@end</p>
 <p>@implementation Person</p>
 <ul>
-<li><p>(void)resetBlock<br>{<br>self.myBlock = ^{<br>NSLog(@”——%@”, self);<br>};<br>}</p>
+<li><p>(void)resetBlock<br>{<br>self.myBlock = ^{<br>NSLog(@”———%@”, self);<br>};<br>}</p>
 </li>
 <li><p>(void)dealloc<br>{<br>NSLog(@”Person dealloc”);</p>
 </li>
@@ -426,7 +412,7 @@
 <p>Block_release(_myBlock);<br>[super dealloc];<br>}</p>
 <p>@end</p>
 <p>__block Person *p = [[Person alloc] init];</p>
-<p>p.myBlock = ^{<br>NSLog(@”——%@”, p);<br>};<br>p.myBlock();</p>
+<p>p.myBlock = ^{<br>NSLog(@”———%@”, p);<br>};<br>p.myBlock();</p>
 <p>[p release]; // Person对象在这里可以正常被释放<br>情况二</p>
 <p>@interface Person : NSObject</p>
 <p>@property (nonatomic, copy) void(^myBlock)();</p>
@@ -436,7 +422,8 @@
 <p>@end</p>
 <p>@implementation Person</p>
 <ul>
-<li><p>(void)resetBlock<br>{<br>// 这里为了通用一点,可以使用__block typeof(self) p = self;<br>__block Person *p = self;<br>self.myBlock = ^{<br>NSLog(@”——%@”, p);<br>};<br>}</p>
+<li><p>(void)resetBlock<br>{<br>// 这里为了通用一点,可以使用<strong>block typeof(self) p = self;
+</strong>block Person *p = self;<br>self.myBlock = ^{<br>NSLog(@”———%@”, p);<br>};<br>}</p>
 </li>
 <li><p>(void)dealloc<br>{<br>NSLog(@”Person dealloc”);</p>
 </li>
@@ -445,8 +432,8 @@
 <p>[super dealloc];<br>}</p>
 <p>@end</p>
 <p>Person *p = [[Person alloc] init];<br>[p resetBlock];<br>[p release]; // Person对象在这里可以正常被释放<br>Block在ARC下的内存管理</p>
-<p>在ARC默认情况下,Block的内存存储在堆中,ARC会自动进行内存管理,程序员只需要避免循环引用即可<br>// 当Block变量出了作用域,Block的内存会被自动释放<br>void(^myBlock)() = ^{<br>NSLog(@”——“);<br>};<br>myBlock();<br>在Block的内存存储在堆中时,如果在Block中引用了外面的对象,会对所引用的对象进行强引用,但是在Block被释放时会自动去掉对该对象的强引用,所以不会造成内存泄漏<br>Person *p = [[Person alloc] init];</p>
-<p>void(^myBlock)() = ^{<br>NSLog(@”——%@”, p);<br>};<br>myBlock();</p>
+<p>在ARC默认情况下,Block的内存存储在堆中,ARC会自动进行内存管理,程序员只需要避免循环引用即可<br>// 当Block变量出了作用域,Block的内存会被自动释放<br>void(^myBlock)() = ^{<br>NSLog(@”———“);<br>};<br>myBlock();<br>在Block的内存存储在堆中时,如果在Block中引用了外面的对象,会对所引用的对象进行强引用,但是在Block被释放时会自动去掉对该对象的强引用,所以不会造成内存泄漏<br>Person *p = [[Person alloc] init];</p>
+<p>void(^myBlock)() = ^{<br>NSLog(@”———%@”, p);<br>};<br>myBlock();</p>
 <p>// Person对象在这里可以正常被释放<br>如果对象内部有一个Block属性,而在Block内部又访问了该对象,那么会造成循环引用<br>情况一</p>
 <p>@interface Person : NSObject</p>
 <p>@property (nonatomic, copy) void(^myBlock)();</p>
@@ -457,7 +444,7 @@
 </ul>
 <p>@end</p>
 <p>Person *p = [[Person alloc] init];</p>
-<p>p.myBlock = ^{<br>NSLog(@”——%@”, p);<br>};<br>p.myBlock();</p>
+<p>p.myBlock = ^{<br>NSLog(@”———%@”, p);<br>};<br>p.myBlock();</p>
 <p>// 因为myBlock作为Person的属性,采用copy修饰符修饰(这样才能保证Block在堆里面,以免Block在栈中被系统释放),所以Block会对Person对象进行一次强引用,导致循环引用无法释放<br>情况二</p>
 <p>@interface Person : NSObject</p>
 <p>@property (nonatomic, copy) void(^myBlock)();</p>
@@ -467,7 +454,7 @@
 <p>@end</p>
 <p>@implementation Person</p>
 <ul>
-<li><p>(void)resetBlock<br>{<br>self.myBlock = ^{<br>NSLog(@”——%@”, self);<br>};<br>}</p>
+<li><p>(void)resetBlock<br>{<br>self.myBlock = ^{<br>NSLog(@”———%@”, self);<br>};<br>}</p>
 </li>
 <li><p>(void)dealloc<br>{<br>NSLog(@”Person dealloc”);<br>}</p>
 </li>
@@ -484,7 +471,7 @@
 </ul>
 <p>@end</p>
 <p>Person *p = [[Person alloc] init];<br>__weak typeof(p) weakP = p;</p>
-<p>p.myBlock = ^{<br>NSLog(@”——%@”, weakP);<br>};<br>p.myBlock();</p>
+<p>p.myBlock = ^{<br>NSLog(@”———%@”, weakP);<br>};<br>p.myBlock();</p>
 <p>// Person对象在这里可以正常被释放<br>情况二</p>
 <p>@interface Person : NSObject</p>
 <p>@property (nonatomic, copy) void(^myBlock)();</p>
@@ -494,7 +481,8 @@
 <p>@end</p>
 <p>@implementation Person</p>
 <ul>
-<li><p>(void)resetBlock<br>{<br>// 这里为了通用一点,可以使用__weak typeof(self) weakP = self;<br>__weak Person *weakP = self;<br>self.myBlock = ^{<br>NSLog(@”——%@”, weakP);<br>};<br>}</p>
+<li><p>(void)resetBlock<br>{<br>// 这里为了通用一点,可以使用<strong>weak typeof(self) weakP = self;
+</strong>weak Person *weakP = self;<br>self.myBlock = ^{<br>NSLog(@”———%@”, weakP);<br>};<br>}</p>
 </li>
 <li><p>(void)dealloc<br>{<br>NSLog(@”Person dealloc”);<br>}</p>
 </li>
@@ -506,8 +494,8 @@
 <p>MyViewController *myController = [[MyViewController alloc] init];<br>// …<br>myController.completionHandler =  ^(NSInteger result) {<br>[myController dismissViewControllerAnimated:YES completion:nil];<br>};<br>[self presentViewController:myController animated:YES completion:^{<br>[myController release];<br>}];<br>在MRC中解决循环引用的办法即在变量前使用下划线下划线block修饰,禁止Block对所引用的对象进行retain操作</p>
 <p>__block MyViewController *myController = [[MyViewController alloc] init];<br>// …<br>myController.completionHandler =  ^(NSInteger result) {<br>[myController dismissViewControllerAnimated:YES completion:nil];<br>};<br>[self presentViewController:myController animated:YES completion:^{<br>[myController release];<br>}];<br>但是上述方法在ARC下行不通,因为下划线下划线block在ARC中并不能禁止Block对所引用的对象进行强引用,解决办法可以是在Block中将myController置空(为了可以修改myController,还是需要使用下划线下划线block对变量进行修饰)</p>
 <p>__block MyViewController *myController = [[MyViewController alloc] init];<br>// …<br>myController.completionHandler =  ^(NSInteger result) {<br>[myController dismissViewControllerAnimated:YES completion:nil];<br>myController = nil;<br>};<br>[self presentViewController:myController animated:YES completion:^{}];<br>上述方法确实可以解决循环引用,但是在ARC中还有更优雅的解决办法,新创建一个弱指针来指向该对象,并将该弱指针放在Block中使用,这样Block便不会造成循环引用</p>
-<p>MyViewController *myController = [[MyViewController alloc] init];<br>// …<br>__weak MyViewController *weakMyController = myController;<br>myController.completionHandler =  ^(NSInteger result) {<br>[weakMyController dismissViewControllerAnimated:YES completion:nil];<br>};<br>[self presentViewController:myController animated:YES completion:^{}];<br>虽然解决了循环引用,但是也容易涉及到另一个问题,因为Block是通过弱引用指向了myController对象,那么有可能在调用Block之前myController对象便已经被释放了,所以我们需要在Block内部再定义一个强指针来指向myController对象</p>
-<p>MyViewController *myController = [[MyViewController alloc] init];<br>// …<br>__weak MyViewController *weakMyController = myController;<br>myController.completionHandler =  ^(NSInteger result) {<br>MyViewController *strongMyController = weakMyController;<br>if (strongMyController)<br>{<br>[strongMyController dismissViewControllerAnimated:YES completion:nil];<br>}<br>else<br>{<br>// Probably nothing…<br>}<br>};<br>[self presentViewController:myController animated:YES completion:^{}];<br>这里需要补充一下,在Block内部定义的变量,会在作用域结束时自动释放,Block对其并没有强引用关系,且在ARC中只需要避免循环引用即可,如果只是Block单方面地对外部变量进行强引用,并不会造成内存泄漏</p>
+<p>MyViewController <em>myController = [[MyViewController alloc] init];<br>// …<br>__weak MyViewController </em>weakMyController = myController;<br>myController.completionHandler =  ^(NSInteger result) {<br>[weakMyController dismissViewControllerAnimated:YES completion:nil];<br>};<br>[self presentViewController:myController animated:YES completion:^{}];<br>虽然解决了循环引用,但是也容易涉及到另一个问题,因为Block是通过弱引用指向了myController对象,那么有可能在调用Block之前myController对象便已经被释放了,所以我们需要在Block内部再定义一个强指针来指向myController对象</p>
+<p>MyViewController <em>myController = [[MyViewController alloc] init];<br>// …<br>__weak MyViewController </em>weakMyController = myController;<br>myController.completionHandler =  ^(NSInteger result) {<br>MyViewController *strongMyController = weakMyController;<br>if (strongMyController)<br>{<br>[strongMyController dismissViewControllerAnimated:YES completion:nil];<br>}<br>else<br>{<br>// Probably nothing…<br>}<br>};<br>[self presentViewController:myController animated:YES completion:^{}];<br>这里需要补充一下,在Block内部定义的变量,会在作用域结束时自动释放,Block对其并没有强引用关系,且在ARC中只需要避免循环引用即可,如果只是Block单方面地对外部变量进行强引用,并不会造成内存泄漏</p>
 <p>注: 关于下划线下划线block关键字在MRC和ARC下的不同<br>__block在MRC下有两个作用</p>
 <ol>
 <li>允许在Block中访问和修改局部变量</li>
@@ -519,12 +507,7 @@
 </ol>
 <p>在开发中,我们一般使用数组的如下两个方法来进行排序</p>
 <p>不可变数组的方法: - (NSArray *)sortedArrayUsingComparator:(NSComparator)cmptr<br>可变数组的方法 : - (void)sortUsingComparator:(NSComparator)cmptr<br>其中,NSComparator是利用typedef定义的Block类型</p>
-<p>typedef NSComparisonResult (^NSComparator)(id obj1, id obj2);<br>其中,这个返回值为NSComparisonResult枚举,这个返回值用来决定Block的两个参数顺序,我们只需在Block中指明不同条件下Block的两个参数的顺序即可,方法内部会将数组中的元素分别利用Block来进行比较并排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">typedef NS_ENUM(NSInteger, NSComparisonResult)<br>&#123;<br>NSOrderedAscending &#x3D; -1L, &#x2F;&#x2F; 升序,表示左侧的字符在右侧的字符前边<br>NSOrderedSame, &#x2F;&#x2F; 相等<br>NSOrderedDescending &#x2F;&#x2F; 降序,表示左侧的字符在右侧的字符后边<br>&#125;;<br></code></pre></td></tr></table></figure>
-<p>我们以Person类为例,对Person对象以年龄升序进行排序,具体方法如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br>@interface Student : NSObject<br><br>@property (nonatomic, assign) int age;<br><br>@end<br><br><br>@implementation Student<br><br>@end<br><br><br>Student *stu1 &#x3D; [[Student alloc] init];<br>stu1.age &#x3D; 18;<br>Student *stu2 &#x3D; [[Student alloc] init];<br>stu2.age &#x3D; 28;<br>Student *stu3 &#x3D; [[Student alloc] init];<br>stu3.age &#x3D; 11;<br><br>NSArray *array &#x3D; @[stu1,stu2,stu3];<br><br>array &#x3D; [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) &#123;<br>Student *stu1 &#x3D; obj1;<br>Student *stu2 &#x3D; obj2;<br><br>if (stu1.age &gt; stu2.age)<br>&#123;<br>return NSOrderedDescending; &#x2F;&#x2F; 在这里返回降序,说明在该种条件下,obj1排在obj2的后边<br>&#125;<br>else if (stu1.age &lt; stu2.age)<br>&#123;<br>return NSOrderedAscending;<br>&#125;<br>else<br>&#123;<br>return NSOrderedSame;<br>&#125;<br>&#125;];<br><br></code></pre></td></tr></table></figure>
-
-
+<p>typedef NSComparisonResult (^NSComparator)(id obj1, id obj2);<br>其中,这个返回值为NSComparisonResult枚举,这个返回值用来决定Block的两个参数顺序,我们只需在Block中指明不同条件下Block的两个参数的顺序即可,方法内部会将数组中的元素分别利用Block来进行比较并排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c">typedef NS_ENUM(NSInteger, NSComparisonResult)<br>&#123;<br>NSOrderedAscending &#x3D; -1L, &#x2F;&#x2F; 升序,表示左侧的字符在右侧的字符前边<br>NSOrderedSame, &#x2F;&#x2F; 相等<br>NSOrderedDescending &#x2F;&#x2F; 降序,表示左侧的字符在右侧的字符后边<br>&#125;;<br></code></pre></td></tr></table></figure><br>我们以Person类为例,对Person对象以年龄升序进行排序,具体方法如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs Objective-c"><br>@interface Student : NSObject<br><br>@property (nonatomic, assign) int age;<br><br>@end<br><br><br>@implementation Student<br><br>@end<br><br><br>Student *stu1 &#x3D; [[Student alloc] init];<br>stu1.age &#x3D; 18;<br>Student *stu2 &#x3D; [[Student alloc] init];<br>stu2.age &#x3D; 28;<br>Student *stu3 &#x3D; [[Student alloc] init];<br>stu3.age &#x3D; 11;<br><br>NSArray *array &#x3D; @[stu1,stu2,stu3];<br><br>array &#x3D; [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) &#123;<br>Student *stu1 &#x3D; obj1;<br>Student *stu2 &#x3D; obj2;<br><br>if (stu1.age &gt; stu2.age)<br>&#123;<br>return NSOrderedDescending; &#x2F;&#x2F; 在这里返回降序,说明在该种条件下,obj1排在obj2的后边<br>&#125;<br>else if (stu1.age &lt; stu2.age)<br>&#123;<br>return NSOrderedAscending;<br>&#125;<br>else<br>&#123;<br>return NSOrderedSame;<br>&#125;<br>&#125;];<br><br></code></pre></td></tr></table></figure></p>
 
             </div>
             <hr>
@@ -717,9 +700,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

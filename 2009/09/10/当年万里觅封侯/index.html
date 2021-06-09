@@ -287,8 +287,6 @@
             <div class="markdown-body">
               <h5 id="诉衷情·当年万里觅封侯"><a href="#诉衷情·当年万里觅封侯" class="headerlink" title="诉衷情·当年万里觅封侯"></a><strong>诉衷情·当年万里觅封侯</strong></h5><p><strong>宋代：陆游</strong></p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br>当年万里觅封侯，匹马戍梁州。<br><br>关河梦断何处？尘暗旧貂裘。<br><br>胡未灭，鬓先秋，泪空流。<br><br>此生谁料，心在天山，身老沧洲。<br><br></code></pre></td></tr></table></figure>
-
-
 <blockquote>
 <p>译文<br>回想当年为了建功立业驰骋万里，单枪匹马奔赴边境戍守梁州。如今防守边疆要塞的从军生活只能在梦中出现，梦一醒不知身在何处？唯有曾穿过的貂裘，已积满灰尘变得又暗又旧。<br>胡人还未消灭，自己的双鬓却早已白如秋霜，只能任忧国的眼泪白白地流淌。谁能料我这一生，心始终在前线抗敌，人却老死在沧洲！</p>
 </blockquote>
@@ -502,9 +500,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

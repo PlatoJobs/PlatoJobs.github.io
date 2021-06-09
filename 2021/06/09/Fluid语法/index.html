@@ -15,10 +15,10 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="见天地，见众生，见自己">
-  <meta name="author" content="GitArtOS">
+  <meta name="author" content="技术">
   <meta name="keywords" content="GitArtOS">
   
-  <title>Oh My ZSH - 既见君子，云胡不喜</title>
+  <title>Fluid语法 - 既见君子，云胡不喜</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -210,12 +210,12 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://w.wallhaven.cc/full/72/wallhaven-7263kv.jpg') no-repeat center center;
+         style="background: url('/img/20210612.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Oh My ZSH">
+            <span class="h2" id="subtitle" title="Fluid语法">
               
             </span>
 
@@ -224,14 +224,14 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-author" aria-hidden="true"></i>
-      GitArtOS
+      技术
     </span>
   
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-04-27 12:15" pubdate>
-        2020年4月27日 中午
+      <time datetime="2021-06-09 14:00" pubdate>
+        2021年6月9日 下午
       </time>
     </span>
   
@@ -242,7 +242,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      312 字
+      459 字
     </span>
   
 
@@ -252,7 +252,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -282,23 +282,78 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Oh My ZSH</h1>
+            <h1 style="display: none">Fluid语法</h1>
             
             <div class="markdown-body">
-              <h4 id="1-Mac-下zsh使用-是自带zsh的，使用命令zsh-version"><a href="#1-Mac-下zsh使用-是自带zsh的，使用命令zsh-version" class="headerlink" title="1.Mac 下zsh使用 ,是自带zsh的，使用命令zsh --version"></a>1.Mac 下<code>zsh</code>使用 ,是自带<code>zsh</code>的，使用命令<code>zsh --version</code></h4><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ada"><br>➜  ~ zsh <span class="hljs-comment">--version</span><br>zsh <span class="hljs-number">5.7</span>.<span class="hljs-number">1</span> (x86_64-apple-darwin19.<span class="hljs-number">0</span>)<br>➜  ~ <br><br><br></code></pre></td></tr></table></figure>
-<h4 id="2-切换默认shell为zsh"><a href="#2-切换默认shell为zsh" class="headerlink" title="2. 切换默认shell为zsh"></a>2. 切换默认<code>shell</code>为<code>zsh</code></h4><h5 id="2-1-cat-etc-shells-能够清楚的查看已经安装好的-shell-脚本列表"><a href="#2-1-cat-etc-shells-能够清楚的查看已经安装好的-shell-脚本列表" class="headerlink" title="2.1 cat /etc/shells  能够清楚的查看已经安装好的 shell 脚本列表"></a>2.1 <code>cat /etc/shells</code>  能够清楚的查看已经安装好的 shell 脚本列表</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk"> ~ cat <span class="hljs-regexp">/etc/</span>shells<br><span class="hljs-comment"># List of acceptable shells for chpass(1).</span><br><span class="hljs-comment"># Ftpd will not allow users to connect who are not using</span><br><span class="hljs-comment"># one of these shells.</span><br><br><span class="hljs-regexp">/bin/</span>bash<br><span class="hljs-regexp">/bin/</span>csh<br><span class="hljs-regexp">/bin/</span>dash<br><span class="hljs-regexp">/bin/</span>ksh<br><span class="hljs-regexp">/bin/</span>sh<br><span class="hljs-regexp">/bin/</span>tcsh<br><span class="hljs-regexp">/bin/</span>zsh<br><br></code></pre></td></tr></table></figure>
-<h5 id="2-2-echo-SHELL-直接打印-shell-的环境变量"><a href="#2-2-echo-SHELL-直接打印-shell-的环境变量" class="headerlink" title="2.2 ~ echo $SHELL  直接打印 shell 的环境变量:"></a>2.2 <code>~ echo $SHELL</code>  直接打印 shell 的环境变量:</h5><p>我的已经切换过了，默认是<code>zsh:</code><br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">~ echo <span class="hljs-variable">$SHELL</span><br><span class="hljs-regexp">/bin/</span>zsh<br></code></pre></td></tr></table></figure></p>
-<h5 id="2-3-切换默认的-shell至-zsh-执行命令chsh-s-usr-local-bin-zsh"><a href="#2-3-切换默认的-shell至-zsh-执行命令chsh-s-usr-local-bin-zsh" class="headerlink" title="2.3 切换默认的 shell至 zsh: 执行命令chsh -s/usr/local/bin/zsh"></a>2.3 切换默认的 <code>shell</code>至 <code>zsh</code>: 执行命令<code>chsh -s/usr/local/bin/zsh</code></h5><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs perl">chsh -<span class="hljs-regexp">s/usr/local/</span>bin/zsh<br><br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>配置<code>zsh</code>是一件麻烦的事儿，爱折腾的程序猿怎么可能忍受？！ <code>oh-my-zsh</code>应运而生</p>
-</blockquote>
-<h4 id="3-oh-my-zsh-的诞生"><a href="#3-oh-my-zsh-的诞生" class="headerlink" title="3 oh-my-zsh 的诞生"></a>3 oh-my-zsh 的诞生</h4><h5 id="3-1-自动安装"><a href="#3-1-自动安装" class="headerlink" title="3.1 自动安装"></a>3.1 自动安装</h5><p>先用<code>HOMEBREW安装wget</code></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/robbyrussell/</span>oh-my-zsh<span class="hljs-regexp">/raw/m</span>aster<span class="hljs-regexp">/tools/i</span>nstall.sh -O - | sh<br></code></pre></td></tr></table></figure>
-<h5 id="3-2-手动安装"><a href="#3-2-手动安装" class="headerlink" title="3.2 手动安装"></a>3.2 手动安装</h5><p><code>git clonegit://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshcp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</code></p>
-<h5 id="3-3-all手动安装"><a href="#3-3-all手动安装" class="headerlink" title="3.3 all手动安装"></a>3.3 all手动安装</h5><p>在<a target="_blank" rel="noopener" href="https://github.com/ohmyzsh/ohmyzsh">oh-my-zsh</a>的github主页，手动将<code>zip包</code>下载下来。</p>
-<p>将<code>zip包</code>解压，拷贝至<code>~/.oh-my-zsh</code>目录。此处省略拷贝的操作步骤。</p>
-<p>执行<code>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</code></p>
-<h5 id="3-4-配置文件，其余看官网吧，so-easy"><a href="#3-4-配置文件，其余看官网吧，so-easy" class="headerlink" title="3.4 配置文件，其余看官网吧，so easy!"></a>3.4 配置文件，其余看官网吧，<code>so easy!</code></h5>
+              <h4 id="1-可选便签"><a href="#1-可选便签" class="headerlink" title="1. 可选便签"></a>1. 可选便签</h4><h5 id="1-1-效果1"><a href="#1-1-效果1" class="headerlink" title="1.1 效果1"></a>1.1 效果1</h5><div class="note note-success">
+            <p>文字 或者 <code>markdown</code> 均可</p>
+          </div>
+<h5 id="1-2-效果2"><a href="#1-2-效果2" class="headerlink" title="1.2 效果2"></a>1.2 效果2</h5> <div class="note note-primary">
+            <p>primary  </p>
+          </div> 
+<h4 id="2-html形式"><a href="#2-html形式" class="headerlink" title="2.  html形式"></a>2.  <code>html</code>形式</h4><p class="note note-primary">标签</p>
+
+
+<h4 id="3-行内标签"><a href="#3-行内标签" class="headerlink" title="3. 行内标签"></a>3. 行内标签</h4><span class="label label-primary">枚举</span> <span class="label label-primary">分类</span>
+<h4 id="4-勾选框"><a href="#4-勾选框" class="headerlink" title="4. 勾选框"></a>4. 勾选框</h4><div>
+            <input type="checkbox" disabled >普通示例
+          </div>
+<div>
+            <input type="checkbox" disabled checked="checked">默认选中
+          </div>
+
+            <input type="checkbox" disabled >内联示例
+           后面文字不换行，后面文字不换行后面文字不换行后面文字不换行后面文字不换行后面文字不换行
+
+文字写在后边（这样支持外联）
+
+<input type="checkbox" disabled > 也可以只传入一个参数，文字写在后边（这样不支持外联）
+文字写在后边（这样不支持外联）
+
+#### 5. 按钮
+
+你可以在` markdown `中加入如下的代码来使用` Button`：
+
+1.  <a class="btn" href="url"  title="title" target="_blank">text</a>
+<p>url：跳转链接<br>text：显示的文字<br>title：鼠标悬停时显示的文字（可选）</p>
+<ol>
+<li><a class="btn" href="url" title="title">text</a></li>
+</ol>
+<h5 id="5-1-示例1"><a href="#5-1-示例1" class="headerlink" title="5.1 示例1"></a>5.1 示例1</h5><a class="btn" href="https://platojobs.github.io"  title="title" target="_blank">PlatoJobs</a>
+<p>或者使用 <code>HTML</code>形式：</p>
+<p><a class="btn" href="https://platojobs.github.io" title="PlatoJobs">PlatoJobs</a></p>
+<h4 id="6-组图"><a href="#6-组图" class="headerlink" title="6. 组图"></a>6. 组图</h4><p>如果想把多张图片按一定布局组合显示，你可以在 <code>markdown</code> 中按如下格式：<br><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://w.wallhaven.cc/full/9m/wallhaven-9m5owx.jpg" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="https://w.wallhaven.cc/full/9m/wallhaven-9m5owx.jpg" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="https://w.wallhaven.cc/full/9m/wallhaven-9m5owx.jpg" srcset="/img/loading.gif" lazyload alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="https://w.wallhaven.cc/full/9m/wallhaven-9m5owx.jpg" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="https://w.wallhaven.cc/full/9m/wallhaven-9m5owx.jpg" srcset="/img/loading.gif" lazyload alt=""></div></div></div></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs swift">&#123;<span class="hljs-operator">%</span> gi total n1<span class="hljs-operator">-</span>n2<span class="hljs-operator">-</span><span class="hljs-operator">...</span> <span class="hljs-operator">%</span>&#125;<br>  <span class="hljs-operator">!</span>[](url)<br>  <span class="hljs-operator">!</span>[](url)<br>  <span class="hljs-operator">!</span>[](url)<br>  <span class="hljs-operator">!</span>[](url)<br>  <span class="hljs-operator">!</span>[](url)<br>&#123;<span class="hljs-operator">%</span> endgi <span class="hljs-operator">%</span>&#125;<br><br>total：图片总数量，对应中间包含的图片 url 数量<br>n1<span class="hljs-operator">-</span>n2<span class="hljs-operator">-</span><span class="hljs-operator">...</span>：每行的图片数量，可以省略，默认单行最多 <span class="hljs-number">3</span> 张图，求和必须相等于 total，否则按默认样式<br><br>如下图为 &#123;<span class="hljs-operator">%</span> gi <span class="hljs-number">5</span> <span class="hljs-number">3</span><span class="hljs-operator">-</span><span class="hljs-number">2</span> <span class="hljs-operator">%</span>&#125; 示例，代表共 <span class="hljs-number">5</span> 张图，第一行 <span class="hljs-number">3</span> 张图，第二行 <span class="hljs-number">2</span> 张图<span class="hljs-operator">。</span><br></code></pre></td></tr></table></figure>
+<h4 id="7-LaTeX-数学公式"><a href="#7-LaTeX-数学公式" class="headerlink" title="7.LaTeX 数学公式"></a>7.<code>LaTeX</code> 数学公式</h4><script type="math/tex; mode=display">
+E=mc^2</script><h4 id="8-Mermaid流程图"><a href="#8-Mermaid流程图" class="headerlink" title="8.Mermaid流程图"></a>8.<code>Mermaid</code>流程图</h4><h5 id="8-1-使用-Mermaid可以通过内置的Tag书写："><a href="#8-1-使用-Mermaid可以通过内置的Tag书写：" class="headerlink" title="8.1 使用 Mermaid可以通过内置的Tag书写："></a>8.1 使用 <code>Mermaid</code>可以通过内置的<code>Tag</code>书写：</h5>
+<pre>
+<code class="mermaid" >
+gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram to mermaid
+
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2               :         des4, after des3, 5d
+</code>
+</pre>
+<h5 id="8-2-也可以通过代码块书写"><a href="#8-2-也可以通过代码块书写" class="headerlink" title="8.2 也可以通过代码块书写"></a>8.2 也可以通过代码块书写</h5><pre><code class=" mermaid">classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --&gt; C2 : Where am i?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 &lt;--&gt; C2: Cool label
+</code></pre>
             </div>
             <hr>
             <div>
@@ -307,7 +362,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/shell/">shell</a>
+                      <a class="hover-with-bg" href="/categories/hexo%E4%B8%BB%E9%A2%98/">hexo主题</a>
                     
                   </div>
                 
@@ -315,7 +370,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/shell/">shell</a>
+                      <a class="hover-with-bg" href="/tags/Fluid/">Fluid</a>
                     
                   </div>
                 
@@ -332,18 +387,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/04/28/swift%E7%B4%AF%E5%92%8C%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%8E%A2%E7%B4%A2/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">swift类和结构体内存分配探索</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/04/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                        <span class="hidden-mobile">数据结构与算法（二）</span>
+                      <a href="/2021/06/09/%E6%88%91%E9%80%89%E6%8B%A9%E7%9C%8B%E5%88%B0%E7%BE%8E%E5%A5%BD/">
+                        <span class="hidden-mobile">我选择看到美好</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

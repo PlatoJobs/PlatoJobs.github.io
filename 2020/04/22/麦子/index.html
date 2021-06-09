@@ -300,7 +300,6 @@
 <p>星期天，麦子喜欢坐车往城里跑。麦子太喜欢城市了，麦子喜欢看城市车来车往高楼林立的模样，麦子喜欢看城市里大街上人来人往摩肩接踵的模样。麦子看着看着，就感觉心慌慌的，眼花花的。</p>
 <p>麦子后来迷了路。<br>再后来麦子认识了一个小伙子。</p>
 <a id="more"></a>
-
 <p>小伙子看麦子的样子很城市，小伙子说话的声音很城市，小伙子走路的样子很城市，小伙子当然是城里人。<br>麦子和小伙子最初一前一后走在城市里。<br>麦子和小伙子后来手挽手走在城市里。</p>
 <p>再后来，麦子就躺在小伙子的怀里。<br>再后来，小伙子就领麦子进了一间小房子。<br>麦子最初感觉很害怕，很疼，麦子后来就哭了，哭着哭着，麦子又笑了。<br>再后来，麦子找到小伙子，说，咱俩结婚吧，我将自己都给你了。<br>小伙子望着麦子，惊讶得张大了嘴，好像不是麦子在说话，而是麦田里麦棵上一穗麦子在说话。<br>小伙子后来哧哧笑着说，麦子麦子，你还真是一穗麦子！</p>
 <p><img src="http://q96fa88b1.bkt.clouddn.com/maizi.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -500,9 +499,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

@@ -252,7 +252,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      57
+      58
        分钟
     </span>
   
@@ -289,14 +289,16 @@
 <p>在编写处理字符串的程序或网页时，经常会有查找符合某些复杂规则的字符串的需要。正则表达式就是用于描述这些规则的工具。换句话说，正则表达式就是记录文本规则的代码。</p>
 <p>正则表达式语言由两种基本字符类型组成：原义（正常）<code>文本字符</code>和<code>元字符</code>。元字符使正则表达式具有处理能力。</p>
 </blockquote>
-<h3 id="常用元字符"><a href="#常用元字符" class="headerlink" title="常用元字符"></a>常用元字符</h3><table>
+<h3 id="常用元字符"><a href="#常用元字符" class="headerlink" title="常用元字符"></a>常用元字符</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>元字符</th>
 <th>做什么用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>.</code></td>
 <td>匹配除换行符以外的任意字符</td>
 </tr>
@@ -324,13 +326,16 @@
 <td><code>$</code></td>
 <td>匹配字符串的结束</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="字符转义"><a href="#字符转义" class="headerlink" title="字符转义"></a>字符转义</h3><blockquote>
 <p>如果你想查找元字符本身的话，比如你查找 <code>.</code> ,或者 <code>*</code> ,就出现了问题：你没办法指定它们，因为它们会被解释成别的意思。这时你就得使用 <code>\</code> 来取消这些字符的特殊意义。因此，你应该使用 <code>\.</code> 和 <code>\*</code> 。当然，要查找 <code>\</code> 本身，你也得用 <code>\\</code> .<br>例如： <code>deerchao\.net</code> 匹配 <strong>deerchao.net</strong>，<code>C:\\Windows</code> 匹配 <strong>C:\Windows</strong> 。</p>
 </blockquote>
 <h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><blockquote>
 <p>你已经看过了前面的 <code>*</code> , <code>+</code> , <code>&#123;2&#125;</code> , <code>&#123;5,12&#125;</code> 这几个匹配重复的方式了。下面是正则表达式中所有的限定符(指定数量的代码，例如*,{5,12}等)</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -338,7 +343,8 @@
 <th>做什么用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>*</code></td>
 <td>重复零次或更多次</td>
 </tr>
@@ -362,7 +368,9 @@
 <td><code>&#123;n,m&#125;</code></td>
 <td>重复n到m次</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>下面是一些重复的示例：<br><code>Windows\d+</code> 匹配Windows后面跟1个或更多数字<br><code>^\w+</code> 匹配一行的第一个单词(或整个字符串的第一个单词，具体匹配哪个意思得看选项设置)</p>
 </blockquote>
@@ -378,6 +386,7 @@
 <h3 id="反义"><a href="#反义" class="headerlink" title="反义"></a>反义</h3><blockquote>
 <p>有时需要查找不属于某个能简单定义的字符类的字符。比如想查找除了数字以外，其它任意字符都行的情况，这时需要用到反义：</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -385,7 +394,8 @@
 <th>做什么用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>\W</code></td>
 <td>匹配任意不是字母，数字，下划线，汉字的字符</td>
 </tr>
@@ -409,7 +419,9 @@
 <td><code>[^aeiou]</code></td>
 <td>匹配除了aeiou这几个字母以外的任意字符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>示例： <code>\S+</code> 匹配不包含空白符的字符串。 <code>&lt;a[^&gt;]+&gt;</code> 匹配用尖括号括起来的以a开头的字符串。</p>
 </blockquote>
@@ -420,7 +432,7 @@
 <p>接下来的四个用于查找在某些内容(但并不包括这些内容)之前或之后的东西，也就是说它们像\b,^,$那样用于指定一个位置，这个位置应该满足一定的条件(即断言)，因此它们也被称为 <strong>零宽断言</strong>。<br><code>(?=exp)</code> 也叫 <strong>零宽度正预测先行断言</strong>，它断言自身出现的位置的后面能匹配表达式exp。比如<code>\b\w+(?=ing\b)</code>，匹配以ing结尾的单词的前面部分(除了ing以外的部分)，如查找 <em>I’m singing while you’re dancing.</em> 时，它会匹配 sing 和 danc 。<br><code>(?&lt;=exp)</code> 也叫 <strong>零宽度正回顾后发断言</strong> ，它断言自身出现的位置的前面能匹配表达式exp。比如 <code>(?&lt;=\bre)\w+\b</code> 会匹配以re开头的单词的后半部分(除了re以外的部分)，例如在查找 <em>reading a book</em> 时，它匹配ading。<br>假如你想要给一个很长的数字中每三位间加一个逗号(当然是从右边加起了)，你可以这样查找需要在前面和里面添加逗号的部分： <code>((?&lt;=\d)\d&#123;3&#125;)+\b</code> ，用它对1234567890进行查找时结果是234567890。<br>下面这个示例同时使用了这两种断言： <code>(?&lt;=\s)\d+(?=\s)</code> 匹配以空白符间隔的数字( <strong>再次强调，不包括这些空白符</strong> )。</p>
 </blockquote>
 <h3 id="负向零宽断言"><a href="#负向零宽断言" class="headerlink" title="负向零宽断言"></a>负向零宽断言</h3><blockquote>
-<p>前面我们提到过怎么查找不是某个字符或不在某个字符类里的字符的方法(反义)。但是如果我们只是想要确保某个字符没有出现，但并不想去匹配它时怎么办？例如，如果我们想查找这样的单词–它里面出现了字母q,但是q后面跟的不是字母u,我们可以尝试这样：<br><code>\b\w*q[^u]\w*\b</code> 匹配 <em>包含后面不是字母u的字母q的单词</em> 。但是如果多做测试(或者你思维足够敏锐，直接就观察出来了)，你会发现，如果q出现在单词的结尾的话，像Iraq,Benq，这个表达式就会出错。这是因为[^u]总要匹配一个字符，所以如果q是单词的最后一个字符的话，后面的[^u]将会匹配q后面的单词分隔符(可能是空格，或者是句号或其它的什么)，后面的 <code>\w*\b</code> 将会匹配下一个单词，于是 <code>\b\w*q[^u]\w*\b</code>就能匹配整个Iraq fighting。<strong>负向零宽断言</strong> 能解决这样的问题，因为它只匹配一个位置，并不消费任何字符。现在，我们可以这样来解决这个问题： <code>\b\w*q(?!u)\w*\b</code> 。<br><strong>零宽度负预测先行断言</strong>(?!exp)，断言此位置的后面不能匹配表达式exp。例如： <code>\d&#123;3&#125;(?!\d)</code> 匹配三位数字，而且这三位数字的后面不能是数字； <code>\b((?!abc)\w)+\b</code> 匹配不包含连续字符串abc的单词。<br>同理，我们可以用(?&lt;!exp),<strong>零宽度负回顾后发断言来断言</strong> 此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。<br>一个更复杂的示例：<code>(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</code> 匹配不包含属性的简单HTML标签内里的内容。<code>(?&lt;=&lt;(\w+)&gt;)</code> 指定了这样的 <strong>前缀</strong>：被尖括号括起来的单词(比如可能是<strong>)，然后是. <code>*</code> (任意的字符串),最后是一个 **后缀</strong> <code>(?=&lt;\/\1&gt;)</code>。注意后缀里的 / ，它用到了前面提过的字符转义；\1则是一个反向引用，引用的正是捕获的第一组，前面的 <code>(\w+)</code> 匹配的内容，这样如果前缀实际上是<strong>的话，后缀就是</strong>了。整个表达式匹配的是<strong>和</strong>之间的内容(再次提醒，不包括前缀和后缀本身)。**</p>
+<p>前面我们提到过怎么查找不是某个字符或不在某个字符类里的字符的方法(反义)。但是如果我们只是想要确保某个字符没有出现，但并不想去匹配它时怎么办？例如，如果我们想查找这样的单词–它里面出现了字母q,但是q后面跟的不是字母u,我们可以尝试这样：<br><code>\b\w*q[^u]\w*\b</code> 匹配 <em>包含后面不是字母u的字母q的单词</em> 。但是如果多做测试(或者你思维足够敏锐，直接就观察出来了)，你会发现，如果q出现在单词的结尾的话，像Iraq,Benq，这个表达式就会出错。这是因为<sup><a href="#fn_u" id="reffn_u">u</a></sup>总要匹配一个字符，所以如果q是单词的最后一个字符的话，后面的<sup><a href="#fn_u" id="reffn_u">u</a></sup>将会匹配q后面的单词分隔符(可能是空格，或者是句号或其它的什么)，后面的 <code>\w*\b</code> 将会匹配下一个单词，于是 <code>\b\w*q[^u]\w*\b</code>就能匹配整个Iraq fighting。<strong>负向零宽断言</strong> 能解决这样的问题，因为它只匹配一个位置，并不消费任何字符。现在，我们可以这样来解决这个问题： <code>\b\w*q(?!u)\w*\b</code> 。<br><strong>零宽度负预测先行断言</strong>(?!exp)，断言此位置的后面不能匹配表达式exp。例如： <code>\d&#123;3&#125;(?!\d)</code> 匹配三位数字，而且这三位数字的后面不能是数字； <code>\b((?!abc)\w)+\b</code> 匹配不包含连续字符串abc的单词。<br>同理，我们可以用(?&lt;!exp),<strong>零宽度负回顾后发断言来断言</strong> 此位置的前面不能匹配表达式exp：(?&lt;![a-z])\d{7}匹配前面不是小写字母的七位数字。<br>一个更复杂的示例：<code>(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</code> 匹配不包含属性的简单HTML标签内里的内容。<code>(?&lt;=&lt;(\w+)&gt;)</code> 指定了这样的 <strong>前缀</strong>：被尖括号括起来的单词(比如可能是<strong>)，然后是. <code>*</code> (任意的字符串),最后是一个 </strong>后缀<strong> <code>(?=&lt;\/\1&gt;)</code>。注意后缀里的 \/ ，它用到了前面提过的字符转义；\1则是一个反向引用，引用的正是捕获的第一组，前面的 <code>(\w+)</code> 匹配的内容，这样如果前缀实际上是</strong>的话，后缀就是<strong>了。整个表达式匹配的是</strong>和<strong>之间的内容(再次提醒，不包括前缀和后缀本身)。</strong></p>
 </blockquote>
 <h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><blockquote>
 <p>小括号的另一种用途是通过语法(?#comment)来包含注释。例如：<code>2[0-4]\d(?#200-249)|25[0-5](?#250-255)|[01]?\d\d?(?#0-199)</code>。<br>要包含注释的话，最好是启用“忽略模式里的空白符”选项，这样在编写表达式时能任意的添加空格，Tab，换行，而实际使用时这些都将被忽略。启用这个选项后，在#后面到这一行结束的所有文本都将被当成注释忽略掉。例如，我们可以前面的一个表达式写成这样：<br><code>(?&lt;=</code> # 断言要匹配的文本的前缀<br><code>&lt;(\w+)&gt;</code> # 查找尖括号括起来的字母或数字(即HTML/XML标签)<br><code>)</code> # 前缀结束<br><code>.*</code> # 匹配任意文本<br><code>(?=</code> # 断言要匹配的文本的后缀<br><code>&lt;\/\1&gt;</code> # 查找尖括号括起来的内容：前面是一个”/“，后面是先前捕获的标签<br><code>)</code> # 后缀结束</p>
@@ -428,6 +440,7 @@
 <h3 id="贪婪与懒惰"><a href="#贪婪与懒惰" class="headerlink" title="贪婪与懒惰"></a>贪婪与懒惰</h3><blockquote>
 <p>当正则表达式中包含能接受重复的限定符时，通常的行为是（在使整个表达式能得到匹配的前提下）匹配 <strong>尽可能多</strong> 的字符。以这个表达式为例： <code>a.*b</code> ，它将会匹配最长的以a开始，以b结束的字符串。如果用它来搜索aabab的话，它会匹配整个字符串aabab。这被称为 <strong>贪婪匹配</strong>。<br>有时，我们更需要 <strong>懒惰匹配</strong>，也就是匹配尽可能少的字符。前面给出的限定符都可以被转化为懒惰匹配模式，只要在它后面加上一个问号 ? 。这样 <code>.*?</code> 就意味着匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复。<br>示例： <code>a.*?b</code> 匹配最短的，以a开始，以b结束的字符串。如果把它应用于aabab的话，它会匹配aab（第一到第三个字符）和ab（第四到第五个字符）。</p>
 </blockquote>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -435,7 +448,8 @@
 <th>做什么用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>*?</code></td>
 <td>重复任意次，但尽可能少重复</td>
 </tr>
@@ -455,15 +469,19 @@
 <td><code>&#123;n,&#125;?</code></td>
 <td>重复n次以上，但尽可能少重复</td>
 </tr>
-</tbody></table>
-<h3 id="其他元字符"><a href="#其他元字符" class="headerlink" title="其他元字符"></a>其他元字符</h3><table>
+</tbody>
+</table>
+</div>
+<h3 id="其他元字符"><a href="#其他元字符" class="headerlink" title="其他元字符"></a>其他元字符</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>元字符</th>
 <th>做什么用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>\a</code></td>
 <td>报警字符(打印它的效果是电脑嘀一声)</td>
 </tr>
@@ -548,7 +566,7 @@
 <td>为表达式后面的部分改变处理选项</td>
 </tr>
 <tr>
-<td><a href="`(?(exp)yes|no)`">1</a></td>
+<td>[1]</td>
 <td>把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</td>
 </tr>
 <tr>
@@ -556,15 +574,19 @@
 <td>同上，只是使用空表达式作为no</td>
 </tr>
 <tr>
-<td><a href="`(?(name)yes|no)`">2</a></td>
+<td>[2]</td>
 <td>如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</td>
 </tr>
 <tr>
 <td><code>(?(name)yes)</code></td>
 <td>同上，只是使用空表达式作为no</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
+<p>[1]:<code>(?(exp)yes|no)</code></p>
+<p>[2]:<code>(?(name)yes|no)</code></p>
 </blockquote>
 <h2 id="正则表达式常用实例"><a href="#正则表达式常用实例" class="headerlink" title="正则表达式常用实例"></a>正则表达式常用实例</h2><h3 id="账号-密码"><a href="#账号-密码" class="headerlink" title="账号/密码"></a>账号/密码</h3><figure class="highlight smalltalk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs smalltalk">帐号是否合法(字母开头，允许<span class="hljs-number">5</span><span class="hljs-number">-16</span>字节，允许字母数字下划线) = <span class="hljs-comment">&quot;^[a-zA-Z][a-zA-Z0-9_]&#123;4,15&#125;$&quot;</span><br>密码(以字母开头，长度在<span class="hljs-number">6</span>~<span class="hljs-number">18</span>之间，只能包含字母、数字和下划线) = <span class="hljs-comment">&quot;^[a-zA-Z]\w&#123;5,17&#125;$&quot;</span><br>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在<span class="hljs-number">8</span><span class="hljs-number">-10</span>之间) = <span class="hljs-comment">&quot;^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).&#123;8,10&#125;$&quot;</span><br><br></code></pre></td></tr></table></figure>
 <h3 id="字符串校验"><a href="#字符串校验" class="headerlink" title="字符串校验"></a>字符串校验</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs powershell">汉字 = <span class="hljs-string">&quot;^[\u4e00-\u9fa5]&#123;0,&#125;<span class="hljs-variable">$</span>&quot;</span>;<br>英文和数字 = <span class="hljs-string">&quot;^[A-Za-z0-9]+<span class="hljs-variable">$</span> 或 ^[A-Za-z0-9]&#123;4,40&#125;<span class="hljs-variable">$</span>&quot;</span>;<br>长度为<span class="hljs-number">3</span><span class="hljs-literal">-20</span>的所有字符 = <span class="hljs-string">&quot;^.&#123;3,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Za-z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个大写英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由<span class="hljs-number">26</span>个小写英文字母组成的字符串 = <span class="hljs-string">&quot;^[a-z]+<span class="hljs-variable">$</span>&quot;</span>；<br>由数字和<span class="hljs-number">26</span>个英文字母组成的字符串 = <span class="hljs-string">&quot;^[A-Za-z0-9]+<span class="hljs-variable">$</span>&quot;</span>；<br>由数字、<span class="hljs-number">26</span>个英文字母或者下划线组成的字符串 = <span class="hljs-string">&quot;^\w+<span class="hljs-variable">$</span> 或 ^\w&#123;3,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>中文、英文、数字包括下划线 = <span class="hljs-string">&quot;^[\u4E00-\u9FA5A-Za-z0-9_]+<span class="hljs-variable">$</span>&quot;</span>；<br>中文、英文、数字但不包括下划线等符号 = <span class="hljs-string">&quot;^[\u4E00-\u9FA5A-Za-z0-9]+<span class="hljs-variable">$</span> 或 ^[\u4E00-\u9FA5A-Za-z0-9]&#123;2,20&#125;<span class="hljs-variable">$</span>&quot;</span>；<br>禁止输入含有~的字符 = <span class="hljs-string">&quot;[^~\x22]+&quot;</span>；<br><br></code></pre></td></tr></table></figure>
@@ -573,7 +595,7 @@
 <h3 id="EMAIL地址"><a href="#EMAIL地址" class="headerlink" title="EMAIL地址"></a>EMAIL地址</h3><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">Email地址 = &quot;^<span class="hljs-symbol">\w</span>+([-+.]<span class="hljs-symbol">\w</span>+)*@<span class="hljs-symbol">\w</span>+([-.]<span class="hljs-symbol">\w</span>+)*<span class="hljs-symbol">\.</span><span class="hljs-symbol">\w</span>+([-.]<span class="hljs-symbol">\w</span>+)*$&quot;;<br><br></code></pre></td></tr></table></figure>
 <h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">域名 = <span class="hljs-string">&quot;<span class="hljs-subst">[a-zA-Z0-9]</span><span class="hljs-subst">[-a-zA-Z0-9]</span>&#123;0,62&#125;(/.<span class="hljs-subst">[a-zA-Z0-9]</span><span class="hljs-subst">[-a-zA-Z0-9]</span>&#123;0,62&#125;)+/.?&quot;</span>;<br>InternetURL = <span class="hljs-string">&quot;<span class="hljs-subst">[a-zA-z]</span>+://<span class="hljs-subst">[^\s]</span>* 或 ^http://(<span class="hljs-subst">[\w-]</span>+\.)+<span class="hljs-subst">[\w-]</span>+(/<span class="hljs-subst">[\w-./?%&amp;=]</span>*)?$&quot;</span><br><br></code></pre></td></tr></table></figure>
 <h3 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h3><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dust"><span class="xml">身份证号(15位、18位数字) = &quot;^\d</span><span class="hljs-template-variable">&#123;15&#125;</span><span class="xml">|\d</span><span class="hljs-template-variable">&#123;18&#125;</span><span class="xml">$&quot;</span><br><span class="xml">短身份证号码(数字、字母x结尾) = &quot;^([0-9])</span><span class="hljs-template-variable">&#123;7,18&#125;</span><span class="xml">(x|X)?$ 或 ^\d</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">|[0-9x]</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">|[0-9X]</span><span class="hljs-template-variable">&#123;8,18&#125;</span><span class="xml">?$&quot;</span><br><br></code></pre></td></tr></table></figure>
-<h3 id="数字类校验"><a href="#数字类校验" class="headerlink" title="数字类校验"></a>数字类校验</h3><pre><code>数字 = &quot;^[0-9]*$&quot;;
+<h3 id="数字类校验"><a href="#数字类校验" class="headerlink" title="数字类校验"></a>数字类校验</h3><p><code>数字 = &quot;^[0-9]*$&quot;;
 n位的数字 = &quot;^\d&#123;n&#125;$&quot;;
 至少n位的数字 = &quot;^\d&#123;n,&#125;$&quot;;
 m-n位的数字 = &quot;^\d&#123;m,n&#125;$&quot;;
@@ -584,8 +606,8 @@ m-n位的数字 = &quot;^\d&#123;m,n&#125;$&quot;;
 有两位小数的正实数 = &quot;^[0-9]+(.[0-9]&#123;2&#125;)?$&quot;;
 有1~3位小数的正实数 = &quot;^[0-9]+(.[0-9]&#123;1,3&#125;)?$&quot;;
 非零的正整数 = &quot;^[1-9]\d*$ 或 ^([1-9][0-9]*)&#123;1,3&#125;$ 或 ^\+?[1-9][0-9]*$&quot;;
-非零的负整数 = &quot;^\-[1-9][]0-9&quot;*$&quot; 或 &quot;^-[1-9]\d*$&quot;;
-```**</code></pre>
+非零的负整数 = &quot;^\-[1-9][]0-9&quot;*$&quot; 或 &quot;^-[1-9]\d*$&quot;;</code>**</p>
+
             </div>
             <hr>
             <div>
@@ -777,9 +799,55 @@ m-n位的数字 = &quot;^\d&#123;m,n&#125;$&quot;;
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 

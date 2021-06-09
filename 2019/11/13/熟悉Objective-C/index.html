@@ -322,13 +322,10 @@
 <blockquote>
 <p>字面量语法创建数组时候⚠️：若数组元素对象中有nil，那么则会抛出异常，因为字面量语法<br>实际上只是一种<code>语法糖</code>，其效果等于先创建了一个数组，然后把方括号内的所有对象添加到数组中。</p>
 </blockquote>
-<p>常见异常如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><br>*** Terminating app due to uncaught exception <br><span class="hljs-string">&#x27;NSInvalidArgumentException&#x27;</span>, reason: <span class="hljs-string">&#x27;*** </span><br><span class="hljs-string">-[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil object from objects[0]&#x27;</span><br><br></code></pre></td></tr></table></figure>
+<p>常见异常如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><br>*** Terminating app due to uncaught exception <br><span class="hljs-string">&#x27;NSInvalidArgumentException&#x27;</span>, reason: <span class="hljs-string">&#x27;*** </span><br><span class="hljs-string">-[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil object from objects[0]&#x27;</span><br><br></code></pre></td></tr></table></figure></p>
 <blockquote>
 <p>那么问题来了：</p>
-</blockquote>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-built_in">NSArray</span> * arrayA = [<span class="hljs-built_in">NSArray</span> arrayWithObjects:objc1,objc2,objc3,<span class="hljs-literal">nil</span>];<span class="hljs-comment">//方法1</span><br><br><span class="hljs-built_in">NSArray</span> * arrayB =@[objc1,objc2,objc3]; <br><br><span class="hljs-comment">//如果objc2=nil；那么arrayA只有一个元素，由于objc2=nil，方法1会提前结束。</span><br></code></pre></td></tr></table></figure>
-<hr>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-built_in">NSArray</span> * arrayA = [<span class="hljs-built_in">NSArray</span> arrayWithObjects:objc1,objc2,objc3,<span class="hljs-literal">nil</span>];<span class="hljs-comment">//方法1</span><br><br><span class="hljs-built_in">NSArray</span> * arrayB =@[objc1,objc2,objc3]; <br><br><span class="hljs-comment">//如果objc2=nil；那么arrayA只有一个元素，由于objc2=nil，方法1会提前结束。</span><br></code></pre></td></tr></table></figure></h2></blockquote>
 <h4 id="字面字典"><a href="#字面字典" class="headerlink" title="字面字典"></a>字面字典</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-built_in">NSDictionary</span> *person =[<span class="hljs-built_in">NSDictionary</span> dictionaryWithObjectsAndKeys:<span class="hljs-string">@&quot;value1&quot;</span>,<span class="hljs-string">@&quot;key1&quot;</span>,<span class="hljs-string">@&quot;value2&quot;</span>,<span class="hljs-string">@&quot;key2&quot;</span>,<span class="hljs-string">@&quot;value3&quot;</span>,<span class="hljs-string">@&quot;key3&quot;</span>, <span class="hljs-literal">nil</span>];<br>  <br><span class="hljs-comment">//字面量</span><br><span class="hljs-built_in">NSDictionary</span>* peronDic =@&#123;<span class="hljs-string">@&quot;key1&quot;</span>:<span class="hljs-string">@&quot;value1&quot;</span>,<span class="hljs-string">@&quot;key2&quot;</span>:<span class="hljs-string">@&quot;value2&quot;</span>,<span class="hljs-string">@&quot;key3&quot;</span>:<span class="hljs-string">@&quot;value3&quot;</span>&#125;;<br>   <br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>字面量的缺点：除了字符串之外，所创建出来的对象必须属于<code>Foundation</code>框架才行。如果是自定义了这些类的子类，则无法用字面量语法创建其对象。要想创建自定义子类的实例，必须用非字面量语法。由于<code>NSArray,NSDictionary,NSNumber</code>都是业已定型的子簇，因此很少会有人自定义子类。创建字符串时可以使用自定义的子类，然而必须要修改编译器的选项才行，除非你清楚这样做的后果。否则不鼓励。</p>
@@ -340,38 +337,30 @@
 </li>
 <li><p>若不打算公开某个常量，则应将其定义在使用该常量的实现文件里。</p>
 </li>
-<li><p>变量一定要用<code>static</code>与<code>const</code>声明。试图修改由<code>const</code>修饰符所声明的变量，那么编译器会报错。</p>
-</li>
-<li><p>有时候需要对外公开某个常量，比如说通知名称，而这个名称就可以声明为一个外界可见的常值变量。此类常量需放在<code>全局符号表</code>中，以便可以在定义该常量的编译单元之外使用</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// In the header file</span><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs<br><br><span class="hljs-comment">//In the implementation file</span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs=<span class="hljs-string">@&quot;PlatoJobs&quot;</span>;<span class="hljs-comment">//常量类型应从右至左解读</span><br><br><br></code></pre></td></tr></table></figure>
-<p>此类常量必须定义一次，而且只能定义一次，通常将其定义在与声明该常量的头文件相关的实现文件里。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//PlatoJobsManager.h</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff;<br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">PJLoginManager</span> : <span class="hljs-title">NSObject</span></span><br><br>-(<span class="hljs-keyword">void</span>)login;<br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//PlatoJobsManager.m</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;PJLoginManager.h&quot;</span></span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff =<span class="hljs-string">@&quot;PlatoJobsLoginNotification&quot;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">PJLoginManager</span></span><br><br>-(<span class="hljs-keyword">void</span>)login&#123;<br><br><span class="hljs-comment">//Perform login method</span><br><br>&#125;<br><br>-(<span class="hljs-keyword">void</span>)pj_didLogin&#123;<br><br>[<span class="hljs-built_in">NSNotificationCenter</span> defaultCenter]postNotificationName:PJLoginManagerNoticeff object:<span class="hljs-literal">nil</span>];<br>  <br>&#125;<br><br><span class="hljs-comment">//避免常量名字冲突，最好用与之相关的类名做前缀。</span><br><br><span class="hljs-keyword">@end</span><br><br></code></pre></td></tr></table></figure>
-<p>那么其他类型的常量也是如此</p>
-</li>
+<li>变量一定要用<code>static</code>与<code>const</code>声明。试图修改由<code>const</code>修饰符所声明的变量，那么编译器会报错。</li>
+<li>有时候需要对外公开某个常量，比如说通知名称，而这个名称就可以声明为一个外界可见的常值变量。此类常量需放在<code>全局符号表</code>中，以便可以在定义该常量的编译单元之外使用<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// In the header file</span><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs<br><br><span class="hljs-comment">//In the implementation file</span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> EFTDPlatoJobs=<span class="hljs-string">@&quot;PlatoJobs&quot;</span>;<span class="hljs-comment">//常量类型应从右至左解读</span><br><br><br></code></pre></td></tr></table></figure>
+此类常量必须定义一次，而且只能定义一次，通常将其定义在与声明该常量的头文件相关的实现文件里。<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//PlatoJobsManager.h</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;Foundation/Foundation.h&gt;</span></span><br><br><span class="hljs-keyword">extern</span> <span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff;<br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">PJLoginManager</span> : <span class="hljs-title">NSObject</span></span><br><br>-(<span class="hljs-keyword">void</span>)login;<br><span class="hljs-keyword">@end</span><br><br><span class="hljs-comment">//PlatoJobsManager.m</span><br><br><span class="hljs-meta">#import <span class="hljs-meta-string">&quot;PJLoginManager.h&quot;</span></span><br><br><span class="hljs-built_in">NSString</span> *<span class="hljs-keyword">const</span> PJLoginManagerNoticeff =<span class="hljs-string">@&quot;PlatoJobsLoginNotification&quot;</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">@implementation</span> <span class="hljs-title">PJLoginManager</span></span><br><br>-(<span class="hljs-keyword">void</span>)login&#123;<br><br><span class="hljs-comment">//Perform login method</span><br><br>&#125;<br><br>-(<span class="hljs-keyword">void</span>)pj_didLogin&#123;<br><br>[<span class="hljs-built_in">NSNotificationCenter</span> defaultCenter]postNotificationName:PJLoginManagerNoticeff object:<span class="hljs-literal">nil</span>];<br>  <br>&#125;<br><br><span class="hljs-comment">//避免常量名字冲突，最好用与之相关的类名做前缀。</span><br><br><span class="hljs-keyword">@end</span><br><br></code></pre></td></tr></table></figure>
+那么其他类型的常量也是如此</li>
 </ul>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs objc"><span class="hljs-comment">// PJAnimatView.h</span><br><span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> PJAniationDuration;<br><br><span class="hljs-comment">// PJAnimatView.m</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">NSTimeInterval</span> PJAniationDuration = <span class="hljs-number">0.8</span>;<br><br></code></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>不要使用预处理指令定义常量，如果有人重新定义了此值，编译器也不会警告，这将导致应用程序中的常量值不一致。</li>
-</ul>
-</blockquote>
-<ul>
 <li>实现文件中使用 <code>static const</code>定义的只在编译单元内可见的常量，无须为其加前缀，要加就加<code>k</code>加一区分。</li>
 <li><code>extern</code>来声明的全局常量，要在其前加类名前缀，来做区分，而且好查找。</li>
 </ul>
+</blockquote>
 <hr>
 <h3 id="用枚举便是状态、选项、状态码-enum"><a href="#用枚举便是状态、选项、状态码-enum" class="headerlink" title="用枚举便是状态、选项、状态码 enum"></a>用枚举便是状态、选项、状态码 <code>enum</code></h3><p>枚举只是一种常量命名方式。某个对象经历的各种状态就可以定义为一个简单的枚举集。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs objc"><br><span class="hljs-comment">//NS_ENUM 定义的枚举</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_ENUM</span>(<span class="hljs-built_in">NSUInteger</span>, PlatoJobsConnectState) &#123;<br>    PlatoJobsConnectStateDisconnected,<br>    PlatoJobsConnectStateConnecting,<br>    PlatoJobsConnectStateConnected,<br>&#125;;<br><br><span class="hljs-comment">//NS_OPTIONS 定义的枚举</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, PlatoJobsDirection)&#123;<br>    <br>    PlatoJobsDirectionUp =<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">0</span>,<br>    <br>    PlatoJobsDirectionDown = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">1</span>,<br>    <br>    PlatoJobsDirectionLeft = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">2</span>,<br>    <br>    PlatoJobsDirectionRight = <span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">3</span>,<br><br>&#125;;<br><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">NS_OPTIONS</span>(<span class="hljs-built_in">NSUInteger</span>, <span class="hljs-built_in">UIViewAutoresizing</span>) &#123;<br>    <span class="hljs-built_in">UIViewAutoresizingNone</span>                 = <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleLeftMargin</span>   = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">0</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleWidth</span>        = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">1</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleRightMargin</span>  = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">2</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleTopMargin</span>    = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">3</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleHeight</span>       = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">4</span>,<br>    <span class="hljs-built_in">UIViewAutoresizingFlexibleBottomMargin</span> = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">5</span><br> &#125;;<br><br><br><br></code></pre></td></tr></table></figure>
 <blockquote>
 <ul>
 <li>应该用枚举来表示状态机的状态，传递给方法的选项以及状态码等值，给这些值起个易懂的名字。</li>
-</ul>
-</blockquote>
-<ul>
 <li>如果把传递给某个方法的选项表示为枚举类型，而多个选项又可以同时使用，那么就将各选项值定义为2的幂，以便通过位或操作将其组合起来。</li>
 <li><code>NS_ENUM</code> 和 <code>NS_OPTIONS</code>宏来定义枚举类型，并指明底层数据类型。这么做可以确保枚举是用开发者所选的底层数据类型实现出来的，而不会采用编译器所选的类型。</li>
 <li>在处理枚举类型的switch语句中不要实现default分支。这样的话，加入新枚举之后，编译器就会提示开发者：switch语句并没有处理所有枚举。</li>
 </ul>
+</blockquote>
 <p><code>我们总是习惯在 switch 语句中加上 default 分支。然而，若是用枚举来定义状态机（state machine）,则最好不要有 default 分支。这样的话，如果稍后又加了一种状态，那么编译器就会发出警告信息，提示新加入的状态并未在 switch 分支中处理。假如写上了 default 分支，那么它就会处理这个新状态，从而导致编译器不发出警告信息。用 NS_ENUM 定义其他枚举类型时也要注意此问题。例如，在定义代表 UI 元素的枚举时，通常要确保 switch 语句能正确处理所有样式。</code></p>
 
             </div>
@@ -571,9 +560,55 @@
 
 
 
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
 
 
 
