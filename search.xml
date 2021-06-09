@@ -172,7 +172,7 @@ In case you want the old version with grey navbar
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2016-01-21 18:45:55</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://opensource.org/licenses/MIT
 ">[2]</span></a></sup></p>
-<p>Copyright (c) 2015-2019 Hiitea <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#108;&#x75;&#111;&#x68;&#97;&#x6f;&#x6a;&#105;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#108;&#x75;&#111;&#x68;&#97;&#x6f;&#x6a;&#105;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>Copyright (c) 2015-2019 Hiitea <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6c;&#x75;&#111;&#x68;&#97;&#111;&#106;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6c;&#x75;&#111;&#x68;&#97;&#111;&#106;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
 <h2 id="Buy-me-coffee-yum"><a href="#Buy-me-coffee-yum" class="headerlink" title="Buy me coffee :yum:"></a>Buy me coffee :yum:</h2><p>BTC: 19U6USzi7WaFmY3DTkgn67EzYpTqZPNwRG<br><img src="https://user-images.githubusercontent.com/5300359/30433338-cb7a9e48-9996-11e7-8e17-55f582b56e48.png" alt="image"></p>
 <p><a href="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png"><img src="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png" alt="Coffee Fund"></a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://cse.google.com/">https://cse.google.com/</a>
@@ -338,29 +338,6 @@ In case you want the old version with grey navbar
       </tags>
   </entry>
   <entry>
-    <title>Lookin 的使用</title>
-    <url>/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><img src="6lookin7.jpg" alt="Preview" title="Preview"></p>
-<p>Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带的 UI Inspector 工具，或另一款叫做 Reveal 的软件。<br>官网：<a href="https://lookin.work/">https://lookin.work/</a></p>
-<p>如果这是你的 iOS 项目第一次使用 Lookin，则需要先把 Lookin 的 iOS Framework 嵌入到你的 iOS 项目中，教程：<br><a href="https://lookin.work/faq/integration-guide/">https://lookin.work/faq/integration-guide/</a></p>
-<p>如果你只想先大概体验一下 Lookin 的功能，则可以下载下面这个已经配置好的项目，直接编译运行即可使用 Lookin 查看：<br><a href="https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip">https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip</a></p>
-<hr>
-<p><img src="mona-heart-hug-facebook.png" alt=""></p>
-<p>You can inspect and modify views in iOS app via Lookin, just like UI Inspector in Xcode, or another app called Reveal.<br>Website：<a href="https://lookin.work/">https://lookin.work/</a></p>
-<p>To use Lookin, you need to embed the iOS Framework of Lookin into your iOS project. Tutorial:<br><a href="https://lookin.work/faq/integration-guide/">https://lookin.work/faq/integration-guide/</a></p>
-<p>If you just want to take a glance, you can download the sample iOS project below which has been configured properly already to enable Lookin:<br><a href="https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip">https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip</a></p>
-<p><a href="https://github.com/QMUI/LookinServer">项目地址</a></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>UI</category>
-      </categories>
-      <tags>
-        <tag>Lookin</tag>
-        <tag>debug</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>熟悉Objective-C</title>
     <url>/2019/11/13/%E7%86%9F%E6%82%89Objective-C/</url>
     <content><![CDATA[<h3 id="了解Objective-C语言"><a href="#了解Objective-C语言" class="headerlink" title="了解Objective-C语言"></a>了解Objective-C语言</h3><ol>
@@ -452,6 +429,29 @@ In case you want the old version with grey navbar
       </tags>
   </entry>
   <entry>
+    <title>Lookin 的使用</title>
+    <url>/2019/11/15/Lookin-%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><img src="6lookin7.jpg" alt="Preview" title="Preview"></p>
+<p>Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带的 UI Inspector 工具，或另一款叫做 Reveal 的软件。<br>官网：<a href="https://lookin.work/">https://lookin.work/</a></p>
+<p>如果这是你的 iOS 项目第一次使用 Lookin，则需要先把 Lookin 的 iOS Framework 嵌入到你的 iOS 项目中，教程：<br><a href="https://lookin.work/faq/integration-guide/">https://lookin.work/faq/integration-guide/</a></p>
+<p>如果你只想先大概体验一下 Lookin 的功能，则可以下载下面这个已经配置好的项目，直接编译运行即可使用 Lookin 查看：<br><a href="https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip">https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip</a></p>
+<hr>
+<p><img src="mona-heart-hug-facebook.png" alt=""></p>
+<p>You can inspect and modify views in iOS app via Lookin, just like UI Inspector in Xcode, or another app called Reveal.<br>Website：<a href="https://lookin.work/">https://lookin.work/</a></p>
+<p>To use Lookin, you need to embed the iOS Framework of Lookin into your iOS project. Tutorial:<br><a href="https://lookin.work/faq/integration-guide/">https://lookin.work/faq/integration-guide/</a></p>
+<p>If you just want to take a glance, you can download the sample iOS project below which has been configured properly already to enable Lookin:<br><a href="https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip">https://cdn.lookin.work/download/QMUI-Demo-1-0-0.zip</a></p>
+<p><a href="https://github.com/QMUI/LookinServer">项目地址</a></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>UI</category>
+      </categories>
+      <tags>
+        <tag>Lookin</tag>
+        <tag>debug</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大龄程序员的职业规划</title>
     <url>/2019/11/15/%E5%A4%A7%E9%BE%84%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<p>程序员30岁以上,是可以继续技术生涯的. 我身边有很多邻近40+,还在做技术.</p>
@@ -500,6 +500,33 @@ In case you want the old version with grey navbar
 <h4 id="1-1-4-捕捉的输出"><a href="#1-1-4-捕捉的输出" class="headerlink" title="1.1.4 捕捉的输出"></a>1.1.4 捕捉的输出</h4><p><code>AVCaptureOutput</code> 是一个抽象类。用于为捕捉会话得到的数据寻找输出的目的地。框架定义了一些抽象类的高级扩展类。例如 <code>AVCaptureStillImageOutput</code> 和 <code>AVCaptureMovieFileOutput</code>类。使用它们来捕捉静态照片、视频。例如 <code>AVCaptureAudioDataOutput</code>和 <code>AVCaptureVideoDataOutput</code> ,使用它们来直接访问硬件捕捉到的数字样本。</p>
 <h4 id="1-1-5-捕捉连接"><a href="#1-1-5-捕捉连接" class="headerlink" title="1.1.5 捕捉连接"></a>1.1.5 捕捉连接</h4><p><code>AVCaptureConnection</code>类.捕捉会话先确定由给定捕捉设备输入渲染的媒体类型，并自动建立其到能够接收该媒体类型的捕捉输出端的连接。</p>
 <h4 id="1-1-6捕捉预览"><a href="#1-1-6捕捉预览" class="headerlink" title="1.1.6捕捉预览"></a>1.1.6捕捉预览</h4><p>如果不能在影像捕捉中看到正在捕捉的场景，那么应用程序用户体验就会很差。幸运的是框架定义了<code>AVCaptureVideoPreviewLayer</code> 类来满足该需求。这样就可以对捕捉的数据进行实时预览。</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>音视频</category>
+      </categories>
+      <tags>
+        <tag>AVFoundation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AV Foundation之视频捕捉（2）__创建预览视图</title>
+    <url>/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>前言在讲述<code>AVFoundation</code>框架之媒体捕捉。我将用一个小案例来开始整个知识点的引导以及疏通。我就不一一赘述相关的UI实现了。关于UI搭建部分，同学们可以在本篇文章末尾拿到百度网盘分享。你就可以在这个基础上进行编码了.<a href="https://platojobs.github.io/2019/11/17/AV-Foundation之视频捕捉（1）-关键概念/">AV Foundation 基础概念</a></p>
+</blockquote>
+<h4 id="2-1-1-创建预览视图"><a href="#2-1-1-创建预览视图" class="headerlink" title="2.1.1 创建预览视图"></a>2.1.1 创建预览视图</h4><p>图2-1是项目的用户界面的组成图示。我们把重点放在中间层<code>THPreview View</code>的实现上。因为它直接包含了<code>AVFoundation</code> 的用户界面。</p>
+<p><img src="图2-1.png" alt="图2-1"></p>
+<p>图2-1所示的THPreview View 类提供给用户用i 个摄像头当前拍摄内容的实时预览图。我们将使用AVCaptureVideoPreviewLayer方法实现这个行为。首先我们通过认识THPreview View 的接口开始了解如何实现。</p>
+<p>代码实现：<br><figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc"><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;AVFoundation/AVFoundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">THPreviewViewDelegate</span> &lt;<span class="hljs-title">NSObject</span>&gt;</span><br>- (<span class="hljs-keyword">void</span>)tappedToFocusAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//聚焦</span><br>- (<span class="hljs-keyword">void</span>)tappedToExposeAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//曝光</span><br>- (<span class="hljs-keyword">void</span>)tappedToResetFocusAndExposure;<span class="hljs-comment">//点击重置聚焦和曝光</span><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">THPreviewView</span> : <span class="hljs-title">UIView</span></span><br><span class="hljs-comment">//session用来关联AVCaptureVideoPreviewLayer和激活AVCaptureSession</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">strong</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">AVCaptureSession</span> *session;<br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">weak</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-keyword">id</span>&lt;THPreviewViewDelegate&gt; delegate;<br><span class="hljs-comment">//是否聚焦</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToFocusEnabled;<br><span class="hljs-comment">//是否曝光</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToExposeEnabled;<br><br><span class="hljs-keyword">@end</span><br><br><br></code></pre></td></tr></table></figure><br>实现：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc"><br>+ (Class)layerClass &#123;<br>    <span class="hljs-comment">// 返回AVCaptureVideoPreviewLayer对象</span><br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> <span class="hljs-keyword">class</span>];<br>&#125;<br><br>- (<span class="hljs-built_in">AVCaptureSession</span>*)session &#123;<br>    <span class="hljs-comment">// 返回捕捉会话</span><br>    <span class="hljs-keyword">return</span> [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setSession:(<span class="hljs-built_in">AVCaptureSession</span> *)session &#123;<br>    <span class="hljs-comment">// 捕捉数据直接输出到图层中，保证会话状态同步   </span><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer setSession:session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setupView &#123;<br><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer setVideoGravity:<span class="hljs-built_in">AVLayerVideoGravityResizeAspectFill</span>];<br><br><br>    _singleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleSingleTap:)];<br><br>    _doubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleTap:)];<br>    _doubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br><br>    _doubleDoubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleDoubleTap:)];<br>    _doubleDoubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br>    _doubleDoubleTapRecognizer.numberOfTouchesRequired = <span class="hljs-number">2</span>;<br><br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_singleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleDoubleTapRecognizer];<br>    [_singleTapRecognizer requireGestureRecognizerToFail:_doubleTapRecognizer];<br><br>    _focusBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">0.102</span> green:<span class="hljs-number">0.636</span> blue:<span class="hljs-number">1.000</span> alpha:<span class="hljs-number">1.000</span>]];<br>    _exposureBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">1.000</span> green:<span class="hljs-number">0.421</span> blue:<span class="hljs-number">0.054</span> alpha:<span class="hljs-number">1.000</span>]];<br>    [<span class="hljs-keyword">self</span> addSubview:_focusBox];<br>    [<span class="hljs-keyword">self</span> addSubview:_exposureBox];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)handleSingleTap:(<span class="hljs-built_in">UIGestureRecognizer</span> *)recognizer &#123;<br>    <span class="hljs-built_in">CGPoint</span> point = [recognizer locationInView:<span class="hljs-keyword">self</span>];<br>    [<span class="hljs-keyword">self</span> runBoxAnimationOnView:<span class="hljs-keyword">self</span>.focusBox point:point];<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.delegate) &#123;<br>        [<span class="hljs-keyword">self</span>.delegate tappedToFocusAtPoint:[<span class="hljs-keyword">self</span> captureDevicePointForPoint:point]];<br>    &#125;<br>&#125;<br><span class="hljs-comment">//屏幕坐标系转化为摄像头坐标系点</span><br>- (<span class="hljs-built_in">CGPoint</span>)captureDevicePointForPoint:(<span class="hljs-built_in">CGPoint</span>)point &#123;                      <span class="hljs-comment">// 3</span><br>    <span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *layer =<br>        (<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer;<br>    <span class="hljs-keyword">return</span> [layer captureDevicePointOfInterestForPoint:point];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h4 id="2-1-2-坐标空间转换"><a href="#2-1-2-坐标空间转换" class="headerlink" title="2.1.2 坐标空间转换"></a>2.1.2 坐标空间转换</h4><p>当使用<code>AVFoundation</code> 的捕捉API时，一定要理解屏幕坐标系和捕捉设备坐标系不同。iOS6.0之前的版本，要在这2个坐标空间进行转换非常困难。要精确的将屏幕坐标点转换为摄像头坐标点。开发者必须考虑诸如视频重力、镜像、图层变换和方向等因素进行综合计算。幸运的是，<code>AVCaptureVideoPreviewLayer</code>现在定义了一个转换方法让这一过程变得简单多了。</p>
+<p><code>AVCaptureVideoPreviewLayer</code>定义了2个方法用于坐标系间进行转换：</p>
+<p><code>captureDevicePointOfInterestForPoint:</code>获取屏幕坐标系的CGPoint 数据，返回转换得到的设备坐标系CGPoint数据。</p>
+<p><code>pointForCaptureDevicePointOfInterest:</code>获取摄像头坐标系的CGPoint数据，返回转换得到的屏幕坐标系CGPoint 数据。<br><code>THPreviewView</code> 使用<code>captureDevicePointOfInterestForPoint:</code>方法将用户触点信息转换为摄像头设备坐标系的中的点。在项目中点击对焦和点击曝光功能实现会用到这个转换坐标点。</p>
+<blockquote>
+<p>文章重点，要弄明白预览视图的创建 和 坐标空间转换的方法。<br><a href="https://github.com/PlatoJobs/AVFoundationCustum">实例代码</a></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -576,33 +603,6 @@ In case you want the old version with grey navbar
       </tags>
   </entry>
   <entry>
-    <title>AV Foundation之视频捕捉（2）__创建预览视图</title>
-    <url>/2019/11/17/AV-Foundation%E4%B9%8B%E8%A7%86%E9%A2%91%E6%8D%95%E6%8D%89%EF%BC%882%EF%BC%89-%E5%88%9B%E5%BB%BA%E9%A2%84%E8%A7%88%E8%A7%86%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>前言在讲述<code>AVFoundation</code>框架之媒体捕捉。我将用一个小案例来开始整个知识点的引导以及疏通。我就不一一赘述相关的UI实现了。关于UI搭建部分，同学们可以在本篇文章末尾拿到百度网盘分享。你就可以在这个基础上进行编码了.<a href="https://platojobs.github.io/2019/11/17/AV-Foundation之视频捕捉（1）-关键概念/">AV Foundation 基础概念</a></p>
-</blockquote>
-<h4 id="2-1-1-创建预览视图"><a href="#2-1-1-创建预览视图" class="headerlink" title="2.1.1 创建预览视图"></a>2.1.1 创建预览视图</h4><p>图2-1是项目的用户界面的组成图示。我们把重点放在中间层<code>THPreview View</code>的实现上。因为它直接包含了<code>AVFoundation</code> 的用户界面。</p>
-<p><img src="图2-1.png" alt="图2-1"></p>
-<p>图2-1所示的THPreview View 类提供给用户用i 个摄像头当前拍摄内容的实时预览图。我们将使用AVCaptureVideoPreviewLayer方法实现这个行为。首先我们通过认识THPreview View 的接口开始了解如何实现。</p>
-<p>代码实现：<br><figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc"><br><span class="hljs-meta">#import <span class="hljs-meta-string">&lt;AVFoundation/AVFoundation.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">@protocol</span> <span class="hljs-title">THPreviewViewDelegate</span> &lt;<span class="hljs-title">NSObject</span>&gt;</span><br>- (<span class="hljs-keyword">void</span>)tappedToFocusAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//聚焦</span><br>- (<span class="hljs-keyword">void</span>)tappedToExposeAtPoint:(<span class="hljs-built_in">CGPoint</span>)point;<span class="hljs-comment">//曝光</span><br>- (<span class="hljs-keyword">void</span>)tappedToResetFocusAndExposure;<span class="hljs-comment">//点击重置聚焦和曝光</span><br><span class="hljs-keyword">@end</span><br><br><span class="hljs-class"><span class="hljs-keyword">@interface</span> <span class="hljs-title">THPreviewView</span> : <span class="hljs-title">UIView</span></span><br><span class="hljs-comment">//session用来关联AVCaptureVideoPreviewLayer和激活AVCaptureSession</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">strong</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">AVCaptureSession</span> *session;<br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">weak</span>, <span class="hljs-keyword">nonatomic</span>) <span class="hljs-keyword">id</span>&lt;THPreviewViewDelegate&gt; delegate;<br><span class="hljs-comment">//是否聚焦</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToFocusEnabled;<br><span class="hljs-comment">//是否曝光</span><br><span class="hljs-keyword">@property</span> (<span class="hljs-keyword">nonatomic</span>) <span class="hljs-built_in">BOOL</span> tapToExposeEnabled;<br><br><span class="hljs-keyword">@end</span><br><br><br></code></pre></td></tr></table></figure><br>实现：</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc"><br>+ (Class)layerClass &#123;<br>    <span class="hljs-comment">// 返回AVCaptureVideoPreviewLayer对象</span><br>    <span class="hljs-keyword">return</span> [<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> <span class="hljs-keyword">class</span>];<br>&#125;<br><br>- (<span class="hljs-built_in">AVCaptureSession</span>*)session &#123;<br>    <span class="hljs-comment">// 返回捕捉会话</span><br>    <span class="hljs-keyword">return</span> [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setSession:(<span class="hljs-built_in">AVCaptureSession</span> *)session &#123;<br>    <span class="hljs-comment">// 捕捉数据直接输出到图层中，保证会话状态同步   </span><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span>*)<span class="hljs-keyword">self</span>.layer setSession:session];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)setupView &#123;<br><br>    [(<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer setVideoGravity:<span class="hljs-built_in">AVLayerVideoGravityResizeAspectFill</span>];<br><br><br>    _singleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleSingleTap:)];<br><br>    _doubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleTap:)];<br>    _doubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br><br>    _doubleDoubleTapRecognizer =<br>    [[<span class="hljs-built_in">UITapGestureRecognizer</span> alloc] initWithTarget:<span class="hljs-keyword">self</span> action:<span class="hljs-keyword">@selector</span>(handleDoubleDoubleTap:)];<br>    _doubleDoubleTapRecognizer.numberOfTapsRequired = <span class="hljs-number">2</span>;<br>    _doubleDoubleTapRecognizer.numberOfTouchesRequired = <span class="hljs-number">2</span>;<br><br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_singleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleTapRecognizer];<br>    [<span class="hljs-keyword">self</span> addGestureRecognizer:_doubleDoubleTapRecognizer];<br>    [_singleTapRecognizer requireGestureRecognizerToFail:_doubleTapRecognizer];<br><br>    _focusBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">0.102</span> green:<span class="hljs-number">0.636</span> blue:<span class="hljs-number">1.000</span> alpha:<span class="hljs-number">1.000</span>]];<br>    _exposureBox = [<span class="hljs-keyword">self</span> viewWithColor:[<span class="hljs-built_in">UIColor</span> colorWithRed:<span class="hljs-number">1.000</span> green:<span class="hljs-number">0.421</span> blue:<span class="hljs-number">0.054</span> alpha:<span class="hljs-number">1.000</span>]];<br>    [<span class="hljs-keyword">self</span> addSubview:_focusBox];<br>    [<span class="hljs-keyword">self</span> addSubview:_exposureBox];<br>&#125;<br><br>- (<span class="hljs-keyword">void</span>)handleSingleTap:(<span class="hljs-built_in">UIGestureRecognizer</span> *)recognizer &#123;<br>    <span class="hljs-built_in">CGPoint</span> point = [recognizer locationInView:<span class="hljs-keyword">self</span>];<br>    [<span class="hljs-keyword">self</span> runBoxAnimationOnView:<span class="hljs-keyword">self</span>.focusBox point:point];<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">self</span>.delegate) &#123;<br>        [<span class="hljs-keyword">self</span>.delegate tappedToFocusAtPoint:[<span class="hljs-keyword">self</span> captureDevicePointForPoint:point]];<br>    &#125;<br>&#125;<br><span class="hljs-comment">//屏幕坐标系转化为摄像头坐标系点</span><br>- (<span class="hljs-built_in">CGPoint</span>)captureDevicePointForPoint:(<span class="hljs-built_in">CGPoint</span>)point &#123;                      <span class="hljs-comment">// 3</span><br>    <span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *layer =<br>        (<span class="hljs-built_in">AVCaptureVideoPreviewLayer</span> *)<span class="hljs-keyword">self</span>.layer;<br>    <span class="hljs-keyword">return</span> [layer captureDevicePointOfInterestForPoint:point];<br>&#125;<br><br></code></pre></td></tr></table></figure>
-<h4 id="2-1-2-坐标空间转换"><a href="#2-1-2-坐标空间转换" class="headerlink" title="2.1.2 坐标空间转换"></a>2.1.2 坐标空间转换</h4><p>当使用<code>AVFoundation</code> 的捕捉API时，一定要理解屏幕坐标系和捕捉设备坐标系不同。iOS6.0之前的版本，要在这2个坐标空间进行转换非常困难。要精确的将屏幕坐标点转换为摄像头坐标点。开发者必须考虑诸如视频重力、镜像、图层变换和方向等因素进行综合计算。幸运的是，<code>AVCaptureVideoPreviewLayer</code>现在定义了一个转换方法让这一过程变得简单多了。</p>
-<p><code>AVCaptureVideoPreviewLayer</code>定义了2个方法用于坐标系间进行转换：</p>
-<p><code>captureDevicePointOfInterestForPoint:</code>获取屏幕坐标系的CGPoint 数据，返回转换得到的设备坐标系CGPoint数据。</p>
-<p><code>pointForCaptureDevicePointOfInterest:</code>获取摄像头坐标系的CGPoint数据，返回转换得到的屏幕坐标系CGPoint 数据。<br><code>THPreviewView</code> 使用<code>captureDevicePointOfInterestForPoint:</code>方法将用户触点信息转换为摄像头设备坐标系的中的点。在项目中点击对焦和点击曝光功能实现会用到这个转换坐标点。</p>
-<blockquote>
-<p>文章重点，要弄明白预览视图的创建 和 坐标空间转换的方法。<br><a href="https://github.com/PlatoJobs/AVFoundationCustum">实例代码</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>音视频</category>
-      </categories>
-      <tags>
-        <tag>AVFoundation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>男生其实没多少选择</title>
     <url>/2019/12/15/%E7%94%B7%E7%94%9F%E5%85%B6%E5%AE%9E%E6%B2%A1%E5%A4%9A%E5%B0%91%E9%80%89%E6%8B%A9/</url>
     <content><![CDATA[<blockquote>
@@ -615,43 +615,6 @@ In case you want the old version with grey navbar
       </categories>
       <tags>
         <tag>成长</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>”音频编码格式“</title>
-    <url>/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/</url>
-    <content><![CDATA[<blockquote>
-<p>我们通常从音乐App（如：酷狗音乐、QQ音乐）听歌时，会看到一首歌需要的存储空间大概是10M左右，对于手机磁盘来说这是可以接受的。但在网络中实时在线传播的话，这个数据量可能就太大了，所以必须对其进行压缩编码。<br>压缩编码的基本指标之一就是压缩比，压缩比通常小于1（否则就没有必要去做压缩）。</p>
-</blockquote>
-<ul>
-<li>压缩算法</li>
-</ul>
-<blockquote>
-<p>压缩算法包含无损压缩和有损压缩，常用压缩格式中，用的较多的是有损压缩</p>
-</blockquote>
-<ul>
-<li>无损压缩 ：解压后的数据可以完全复原</li>
-<li>有损压缩：解压后的数据不能完全复原，会丢失一部分信息，压缩比越小，丢失的信息就越多，信号还原后失真就会越大</li>
-</ul>
-<ul>
-<li>压缩编码原理</li>
-</ul>
-<blockquote>
-<p>压缩编码原理实际上是压缩掉冗余信号，冗余信号是指不能被人耳感知到的信号，包含人耳听觉范围之外的音频信号以及被掩蔽掉的音频信号<br>常用压缩编码格式</p>
-</blockquote>
-<ol>
-<li>PCM编码<br>音频的裸数据格式就是脉冲编码调制(Pulse Code Modulation, PCM)数据，是 按照一定的格式记录采样和量化后的数字数据，描述一段PCM数据需要这几个概念：量化格式(sampleFormat)、采样率(sampleRate)、声道数(channel)</li>
-<li>WAV编码<br>WAV编码的一种实现（有多种实现方式，但是都不会进行压缩操作）就是在PCM数据格式的前面加上44字节，分别用来描述PCM的采样率、声道数、数据格式等信息</li>
-<li>MP3编码<br>MP3具有不错的压缩比，使用<code>LAME编码</code>（MP3编码格式的一种实现）的中高码率的MP3文件，听感上非常接近源WAV文件<br>特点：音质在128Kbit/s 以上表现还不错，压缩比比较高，大量软件和硬件都支持，兼容性好<br>使用场合：高比特率下对兼容性有要求的音乐欣赏</li>
-<li>AAC编码<br>AAC是新一代的音频有损压缩技术，通过一些附件的编码技术（比如PS、SBR等），衍生出了LC-AAC、HE-AAC、HE-AAC v2三种主要的编码格式。<code>LC-AAC</code>是比较传统的AAC，相对而言，其主要应用于中高码率场景的编码（≥ 80Kbit/s） ；HE-AAC(相当于AAC+SBR)主要应用于中低码率场景的编码（≤80Kbit/s)；而<code>HE-AACv2</code>（相当于AAC+SBR+PS)主要用于低码率场景的编码（≤48Kbit/s)。大部分编码器都设置为≤48Kbit/s自动启用PS技术，而&gt;48Kbit/s则不加PS，相当于普通的HE-AAC<br>特点：在小于128Kbit/s的码率下表现优异，并且多用于视频中的音频编码<br>使用场合：128Kbit/s以下的音频编码，多用于视频中音频轨的编码</li>
-<li>Ogg<br>一种非常有潜力的编码，在各种码率下都有比较优秀的表现，尤其在中低码率场景下。Ogg除了音质好之外，Ogg有着非常出色的算法，可以用更小的码率达到更好的音质，128Kbit/s的Ogg比192Kbit/s甚至更高码率的MP3还要出色<br>特点：可以用比MP3更小的码率实现比MP3更好的音质，高中低码率下均有良好表现<br>缺点：兼容性不够好，流媒体特性不支持，目前没有美图服务软件的支出，因此基于Ogg的数字广播还无法实现，Ogg目前受支持的情况还不够好，无论是软件上的还是硬件上的支持，都无法和MP3箱体并论<br>适用场合：语音聊天的音频消息场景</li>
-</ol>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>编码</tag>
       </tags>
   </entry>
   <entry>
@@ -691,6 +654,43 @@ In case you want the old version with grey navbar
       </categories>
       <tags>
         <tag>copy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>”音频编码格式“</title>
+    <url>/2020/03/09/%E2%80%9D%E9%9F%B3%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E2%80%9C/</url>
+    <content><![CDATA[<blockquote>
+<p>我们通常从音乐App（如：酷狗音乐、QQ音乐）听歌时，会看到一首歌需要的存储空间大概是10M左右，对于手机磁盘来说这是可以接受的。但在网络中实时在线传播的话，这个数据量可能就太大了，所以必须对其进行压缩编码。<br>压缩编码的基本指标之一就是压缩比，压缩比通常小于1（否则就没有必要去做压缩）。</p>
+</blockquote>
+<ul>
+<li>压缩算法</li>
+</ul>
+<blockquote>
+<p>压缩算法包含无损压缩和有损压缩，常用压缩格式中，用的较多的是有损压缩</p>
+</blockquote>
+<ul>
+<li>无损压缩 ：解压后的数据可以完全复原</li>
+<li>有损压缩：解压后的数据不能完全复原，会丢失一部分信息，压缩比越小，丢失的信息就越多，信号还原后失真就会越大</li>
+</ul>
+<ul>
+<li>压缩编码原理</li>
+</ul>
+<blockquote>
+<p>压缩编码原理实际上是压缩掉冗余信号，冗余信号是指不能被人耳感知到的信号，包含人耳听觉范围之外的音频信号以及被掩蔽掉的音频信号<br>常用压缩编码格式</p>
+</blockquote>
+<ol>
+<li>PCM编码<br>音频的裸数据格式就是脉冲编码调制(Pulse Code Modulation, PCM)数据，是 按照一定的格式记录采样和量化后的数字数据，描述一段PCM数据需要这几个概念：量化格式(sampleFormat)、采样率(sampleRate)、声道数(channel)</li>
+<li>WAV编码<br>WAV编码的一种实现（有多种实现方式，但是都不会进行压缩操作）就是在PCM数据格式的前面加上44字节，分别用来描述PCM的采样率、声道数、数据格式等信息</li>
+<li>MP3编码<br>MP3具有不错的压缩比，使用<code>LAME编码</code>（MP3编码格式的一种实现）的中高码率的MP3文件，听感上非常接近源WAV文件<br>特点：音质在128Kbit/s 以上表现还不错，压缩比比较高，大量软件和硬件都支持，兼容性好<br>使用场合：高比特率下对兼容性有要求的音乐欣赏</li>
+<li>AAC编码<br>AAC是新一代的音频有损压缩技术，通过一些附件的编码技术（比如PS、SBR等），衍生出了LC-AAC、HE-AAC、HE-AAC v2三种主要的编码格式。<code>LC-AAC</code>是比较传统的AAC，相对而言，其主要应用于中高码率场景的编码（≥ 80Kbit/s） ；HE-AAC(相当于AAC+SBR)主要应用于中低码率场景的编码（≤80Kbit/s)；而<code>HE-AACv2</code>（相当于AAC+SBR+PS)主要用于低码率场景的编码（≤48Kbit/s)。大部分编码器都设置为≤48Kbit/s自动启用PS技术，而&gt;48Kbit/s则不加PS，相当于普通的HE-AAC<br>特点：在小于128Kbit/s的码率下表现优异，并且多用于视频中的音频编码<br>使用场合：128Kbit/s以下的音频编码，多用于视频中音频轨的编码</li>
+<li>Ogg<br>一种非常有潜力的编码，在各种码率下都有比较优秀的表现，尤其在中低码率场景下。Ogg除了音质好之外，Ogg有着非常出色的算法，可以用更小的码率达到更好的音质，128Kbit/s的Ogg比192Kbit/s甚至更高码率的MP3还要出色<br>特点：可以用比MP3更小的码率实现比MP3更好的音质，高中低码率下均有良好表现<br>缺点：兼容性不够好，流媒体特性不支持，目前没有美图服务软件的支出，因此基于Ogg的数字广播还无法实现，Ogg目前受支持的情况还不够好，无论是软件上的还是硬件上的支持，都无法和MP3箱体并论<br>适用场合：语音聊天的音频消息场景</li>
+</ol>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>编码</tag>
       </tags>
   </entry>
   <entry>

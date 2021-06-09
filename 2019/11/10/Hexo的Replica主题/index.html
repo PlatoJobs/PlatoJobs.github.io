@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"8848d1ed00fec4679c426ec85a86ffea","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"platojobs.github.io","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":200}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"8848d1ed00fec4679c426ec85a86ffea","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"bGuVBJuoPcuJ3WLgYwkAFCeO-gzGzoHsz","app_key":"TWifepJ7PWgkBqLQePUpoyhE","server_url":"https://bguvbjuo.lc-cn-n1-shared.com"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -259,6 +259,14 @@
 
   
   
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
 </div>
 
             
@@ -316,7 +324,7 @@ In case you want the old version with grey navbar
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2016-01-21 18:45:55</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://opensource.org/licenses/MIT
 ">[2]</span></a></sup></p>
-<p>Copyright (c) 2015-2019 Hiitea <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#108;&#x75;&#111;&#x68;&#97;&#x6f;&#x6a;&#105;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#108;&#x75;&#111;&#x68;&#97;&#x6f;&#x6a;&#105;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
+<p>Copyright (c) 2015-2019 Hiitea <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#x6c;&#x75;&#111;&#x68;&#97;&#111;&#106;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#x6c;&#x75;&#111;&#x68;&#97;&#111;&#106;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a></p>
 <h2 id="Buy-me-coffee-yum"><a href="#Buy-me-coffee-yum" class="headerlink" title="Buy me coffee :yum:"></a>Buy me coffee :yum:</h2><p>BTC: 19U6USzi7WaFmY3DTkgn67EzYpTqZPNwRG<br><img src="https://user-images.githubusercontent.com/5300359/30433338-cb7a9e48-9996-11e7-8e17-55f582b56e48.png" srcset="/img/loading.gif" lazyload alt="image"></p>
 <p><a target="_blank" rel="noopener" href="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png"><img src="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png" srcset="/img/loading.gif" lazyload alt="Coffee Fund"></a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://cse.google.com/">https://cse.google.com/</a>
@@ -471,6 +479,31 @@ In case you want the old version with grey navbar
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
   
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
 
   
 
@@ -530,6 +563,8 @@ In case you want the old version with grey navbar
 
 
 
+
+  <script defer src="/js/leancloud.js" ></script>
 
 
 
