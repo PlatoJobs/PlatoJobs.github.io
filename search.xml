@@ -109,36 +109,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello GitHub HomePage</title>
-    <url>/2017/11/24/2017-11-24/</url>
-    <content><![CDATA[<p>It was the end of November,more than a month after ourreturn from Baskerville Hall.Holmes and I were sitting on either side of a bright fire in our sitting room in Baker Street.Since our return,Holmes had been working hard on two other cases,and he had been too busy to discuss the Baskerville case.But now the other cases were finished,and he had been successful in both of them.I decided it was a good time to ask him the final questions about Stapleton and the hound.</p>
-<p>‘The picture showed us that Stapleton was indeed a Baskerville,’Holmes began.’He was the son of Roger Baskerville,who was Sir Charles’younger brotner.Roger was a criminal who escaped from prison and ran away to South America.Everyone thought he had died unmarried,but that was not true.He had one son,also called Roger,whom we knew as Stapleton.Stapleton married a beautiful South Ameri can,and came to England,where he started a school in the north.He discovered that he would inherit the Baskerville lands and fortune if Sir Charles and Sir Henry both died.That is why he moved to Devonshire when the school closed.</p>
-<p>‘When he met Sir Charles,he heard the story of the hell hound.He also learned that Sir Charles believed these super natural stories,and that he had a weak heart.</p>
-<p>‘Stapleton had the idea of buying a huge hound,and of using the phosphorus to make it shine like the hound in the story.I have found the place where he bought the animal.He took it by train to Devonshire and walked many miles over the moors with it so that it would not be seen near Baskerville Hall.</p>
-<p>‘He needed to get Sir Charles out of the Hall at night.This would be easy to do if his wife made Sir Charles fall in love with her.But,although he beat her,she refused to help him with his evil plan.</p>
-<p>‘Then Stapleton met Laura Lyons.We know that he made her write a letter to bring Sir Charles to the moor gate on that sad night.The hound,which was shining with phosphorus,chased Sir Charles down the Yew Alley.Sir Charles’ terror was so great that his weak heart stopped,and he died,but the animal did not touch the dead body.</p>
-<p>‘The hound had run on the grass,so it left no footprints,ex cept the one found by Dr Mortimer.You see how clever Staple ton was.Neither he nor the hound had touched Sir Charles so there was no sign of murder.The only two people who might suspect him—his wife and Mrs Lyons could not be certain about what he had done.Anyway,neither of them would in form the police about him.</p>
-<p>‘Next,Stapleton learned that Sir Henry had reached Eng land,so he went to London.He hoped to murder Sir Henry there.He took his wife with him,but he wasn’t sure that she would keep his secret,so he did not tell her the truth.He locked her up in their hotel.She knew that he had some evil plan,but she was too frightened to give Sir Henry a clear warning.Instead,she sent him the letter made of words cut from a newspaper.</p>
-<p>‘Meanwhile,Stapleton was wearing a false beard and fol lowing Sir Henry.He needed something to give the hound Sir Henry’s scent,so he paid a maid at Sir Henry’s hotel to steal one of his shoes The first one was a new one,and didn’t have Sir Henry’s scent on it.It was no use for the hound,so he put it back,and another,older,shoe was stolen.When the shoes were changed,I knew that the hound must be a natural and not a supernatural creature.</p>
-<p>‘Next there was the letter made of words cut from a news paper.When I looked at it,I held it close to my eyes.I noticed a smell of perfume,so I guessed that a woman had sent the let ter.</p>
-<p>‘By the time I went to Devonshire I knew that there was a real hound,and I knew we were looking for a man and a wom an.I guessed that the Stapletons were the pair.I had to watch Stapleton,but I had to hide myself As I have explained.I could not tell you what I was doing.I stayed in Newtown and used the hut on the moor only when necessary.</p>
-<p>‘Your letters were sent to me immediately from Baker Street,and were very helpful.When you told me that Stapleton had owned a school in the north of England.I checked on him and where he had come from.I discovered he had come from South America.And then everything became clear.</p>
-<p>‘By the time you found me on the moor,I knew everything,but I could prove nothing.We had to catch the man doing something criminal,and so I had to put Sir Henry in danger.</p>
-<p>‘Dr Mortimer tells me that Sir Henry will be completely better after some rest.As you know,the two of them have be come good friends,and are going on a long holiday together.Sir Henry will take some time to forget Miss Stapleton.He loved her deeply and it hurt him badly when he learned the truth about her.</p>
-<p>‘She was very frightened of her cruel husband,but she sus pected that he was responsible for Sir Charles’ death.She knew about the hound,and when Selden died she guessed that the hound had killed him.She knew her husband had the hound at their house on the night Sir Henry came to dinner.They argued about the hound that evening,and as they argued Stapleton told her about Mrs Lyons.Any love she had for her husband disappeared at that moment.He knew that she want ed to help Sir Henry,so he beat her and tied her up.</p>
-<p>‘He probably hoped that when he inherited the Baskerville lands,she would love him again.He certainly thought that she would keep silent if she became Lady Baskerville.But I think he was wrong.He had been too cruel to her.She could not for give him or love him again,nor,I think,allow him to enjoy the results of his crime.<br><img src="/img/q1.jpg" alt=""><br>‘Of course,he could not frighten Sir Henry in the same way as Sir Charles.Sir Henry was a young and healthy man.So he kept the hound hungry.He knew that the animal would either kill Sir Henry or would hurt him so badly that it would be easy to complete the murder.’</p>
-<p>I had one last question for Holmes.’But Stapleton was living so close to Baskerville Hall and using a false name.It looked very strange.How would he explain that to the police,if after Sir Henry’s death he then inherited the Baskerville lands and fortune?’</p>
-<p>‘I don’t know how he planned to explain the false name and why he was living at Pen House,’said Holmes.’I can only say that he was a very clever man.I am sure he had thought of an answer to the problem.</p>
-<p>‘But that’s enough work for the evening,Watson.I have two tickets for the theatre.If we get ready now,we shall have time to stop at my favourite restaurant for some dinner on the way.’</p>
-]]></content>
-      <categories>
-        <category>历史</category>
-      </categories>
-      <tags>
-        <tag>日志</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo的Replica主题</title>
     <url>/2019/11/10/Hexo%E7%9A%84Replica%E4%B8%BB%E9%A2%98/</url>
     <content><![CDATA[<h1 id="Replica"><a href="#Replica" class="headerlink" title="Replica "></a>Replica <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/LICENSE-MIT-blue.svg" alt="LICENSE MIT"></a></h1><p>Github style replication for hexo theme. </p>
@@ -172,7 +142,7 @@ In case you want the old version with grey navbar
 <figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">tags</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2016-01-21 18:45:55</span><br><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
 <h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><p>The MIT License<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://opensource.org/licenses/MIT
 ">[2]</span></a></sup></p>
-<p>Copyright (c) 2015-2019 Hiitea <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#108;&#x75;&#x6f;&#x68;&#x61;&#x6f;&#106;&#105;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;">&#108;&#x75;&#x6f;&#x68;&#x61;&#x6f;&#106;&#105;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#111;&#109;</a></p>
+<p>Copyright (c) 2015-2019 Hiitea <a href="&#x6d;&#x61;&#105;&#x6c;&#116;&#111;&#x3a;&#x6c;&#x75;&#111;&#104;&#x61;&#111;&#x6a;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x6c;&#x75;&#111;&#104;&#x61;&#111;&#x6a;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a></p>
 <h2 id="Buy-me-coffee-yum"><a href="#Buy-me-coffee-yum" class="headerlink" title="Buy me coffee :yum:"></a>Buy me coffee :yum:</h2><p>BTC: 19U6USzi7WaFmY3DTkgn67EzYpTqZPNwRG<br><img src="https://user-images.githubusercontent.com/5300359/30433338-cb7a9e48-9996-11e7-8e17-55f582b56e48.png" alt="image"></p>
 <p><a href="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png"><img src="https://user-images.githubusercontent.com/5300359/53497706-baf13a00-3adf-11e9-8223-5aa1c63b8779.png" alt="Coffee Fund"></a></p>
 <section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://cse.google.com/">https://cse.google.com/</a>
@@ -183,6 +153,36 @@ In case you want the old version with grey navbar
       </categories>
       <tags>
         <tag>主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello GitHub HomePage</title>
+    <url>/2017/11/24/2017-11-24/</url>
+    <content><![CDATA[<p>It was the end of November,more than a month after ourreturn from Baskerville Hall.Holmes and I were sitting on either side of a bright fire in our sitting room in Baker Street.Since our return,Holmes had been working hard on two other cases,and he had been too busy to discuss the Baskerville case.But now the other cases were finished,and he had been successful in both of them.I decided it was a good time to ask him the final questions about Stapleton and the hound.</p>
+<p>‘The picture showed us that Stapleton was indeed a Baskerville,’Holmes began.’He was the son of Roger Baskerville,who was Sir Charles’younger brotner.Roger was a criminal who escaped from prison and ran away to South America.Everyone thought he had died unmarried,but that was not true.He had one son,also called Roger,whom we knew as Stapleton.Stapleton married a beautiful South Ameri can,and came to England,where he started a school in the north.He discovered that he would inherit the Baskerville lands and fortune if Sir Charles and Sir Henry both died.That is why he moved to Devonshire when the school closed.</p>
+<p>‘When he met Sir Charles,he heard the story of the hell hound.He also learned that Sir Charles believed these super natural stories,and that he had a weak heart.</p>
+<p>‘Stapleton had the idea of buying a huge hound,and of using the phosphorus to make it shine like the hound in the story.I have found the place where he bought the animal.He took it by train to Devonshire and walked many miles over the moors with it so that it would not be seen near Baskerville Hall.</p>
+<p>‘He needed to get Sir Charles out of the Hall at night.This would be easy to do if his wife made Sir Charles fall in love with her.But,although he beat her,she refused to help him with his evil plan.</p>
+<p>‘Then Stapleton met Laura Lyons.We know that he made her write a letter to bring Sir Charles to the moor gate on that sad night.The hound,which was shining with phosphorus,chased Sir Charles down the Yew Alley.Sir Charles’ terror was so great that his weak heart stopped,and he died,but the animal did not touch the dead body.</p>
+<p>‘The hound had run on the grass,so it left no footprints,ex cept the one found by Dr Mortimer.You see how clever Staple ton was.Neither he nor the hound had touched Sir Charles so there was no sign of murder.The only two people who might suspect him—his wife and Mrs Lyons could not be certain about what he had done.Anyway,neither of them would in form the police about him.</p>
+<p>‘Next,Stapleton learned that Sir Henry had reached Eng land,so he went to London.He hoped to murder Sir Henry there.He took his wife with him,but he wasn’t sure that she would keep his secret,so he did not tell her the truth.He locked her up in their hotel.She knew that he had some evil plan,but she was too frightened to give Sir Henry a clear warning.Instead,she sent him the letter made of words cut from a newspaper.</p>
+<p>‘Meanwhile,Stapleton was wearing a false beard and fol lowing Sir Henry.He needed something to give the hound Sir Henry’s scent,so he paid a maid at Sir Henry’s hotel to steal one of his shoes The first one was a new one,and didn’t have Sir Henry’s scent on it.It was no use for the hound,so he put it back,and another,older,shoe was stolen.When the shoes were changed,I knew that the hound must be a natural and not a supernatural creature.</p>
+<p>‘Next there was the letter made of words cut from a news paper.When I looked at it,I held it close to my eyes.I noticed a smell of perfume,so I guessed that a woman had sent the let ter.</p>
+<p>‘By the time I went to Devonshire I knew that there was a real hound,and I knew we were looking for a man and a wom an.I guessed that the Stapletons were the pair.I had to watch Stapleton,but I had to hide myself As I have explained.I could not tell you what I was doing.I stayed in Newtown and used the hut on the moor only when necessary.</p>
+<p>‘Your letters were sent to me immediately from Baker Street,and were very helpful.When you told me that Stapleton had owned a school in the north of England.I checked on him and where he had come from.I discovered he had come from South America.And then everything became clear.</p>
+<p>‘By the time you found me on the moor,I knew everything,but I could prove nothing.We had to catch the man doing something criminal,and so I had to put Sir Henry in danger.</p>
+<p>‘Dr Mortimer tells me that Sir Henry will be completely better after some rest.As you know,the two of them have be come good friends,and are going on a long holiday together.Sir Henry will take some time to forget Miss Stapleton.He loved her deeply and it hurt him badly when he learned the truth about her.</p>
+<p>‘She was very frightened of her cruel husband,but she sus pected that he was responsible for Sir Charles’ death.She knew about the hound,and when Selden died she guessed that the hound had killed him.She knew her husband had the hound at their house on the night Sir Henry came to dinner.They argued about the hound that evening,and as they argued Stapleton told her about Mrs Lyons.Any love she had for her husband disappeared at that moment.He knew that she want ed to help Sir Henry,so he beat her and tied her up.</p>
+<p>‘He probably hoped that when he inherited the Baskerville lands,she would love him again.He certainly thought that she would keep silent if she became Lady Baskerville.But I think he was wrong.He had been too cruel to her.She could not for give him or love him again,nor,I think,allow him to enjoy the results of his crime.<br><img src="/img/q1.jpg" alt=""><br>‘Of course,he could not frighten Sir Henry in the same way as Sir Charles.Sir Henry was a young and healthy man.So he kept the hound hungry.He knew that the animal would either kill Sir Henry or would hurt him so badly that it would be easy to complete the murder.’</p>
+<p>I had one last question for Holmes.’But Stapleton was living so close to Baskerville Hall and using a false name.It looked very strange.How would he explain that to the police,if after Sir Henry’s death he then inherited the Baskerville lands and fortune?’</p>
+<p>‘I don’t know how he planned to explain the false name and why he was living at Pen House,’said Holmes.’I can only say that he was a very clever man.I am sure he had thought of an answer to the problem.</p>
+<p>‘But that’s enough work for the evening,Watson.I have two tickets for the theatre.If we get ready now,we shall have time to stop at my favourite restaurant for some dinner on the way.’</p>
+]]></content>
+      <categories>
+        <category>历史</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
       </tags>
   </entry>
   <entry>
@@ -2052,28 +2052,6 @@ Class08 &lt;--&gt; C2: Cool label
 ]]></content>
   </entry>
   <entry>
-    <title>hexo练习</title>
-    <url>/2017/11/24/hexo%E7%BB%83%E4%B9%A0/</url>
-    <content><![CDATA[<h3 id="一、别号：-quote"><a href="#一、别号：-quote" class="headerlink" title="一、别号： quote"></a>一、别号： quote</h3><blockquote><p>content</p>
-<footer><strong>[author[</strong><cite>source]] [link] [source_link_title]</cite></footer></blockquote>
-<blockquote><p>生活在哪里跌倒，在哪里爬起来！</p>
-</blockquote>
-<blockquote><p>生活在哪里跌倒，在哪里爬起来！</p>
-<footer><strong>博客</strong><cite>崔盛希</cite></footer></blockquote>
-<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io">http://devdocs.io</a></p>
-<footer><strong>@CuiShegXi</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
-<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
-<h3 id="二、别名：-code"><a href="#二、别名：-code" class="headerlink" title="二、别名： code"></a>二、别名： code</h3><p>写法：<br><figure class="highlight clean"><figcaption><span>[title] [lang:language] [url] [link text]</span></figcaption><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">code</span> snippet<br></code></pre></td></tr></table></figure><br>普通代码<br><figure class="highlight isbl"><table><tr><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-string">&#x27;Hello World!&#x27;</span>);</span><br></code></pre></td></tr></table></figure><br>指定语言的代码<br><figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc">[rectangle setX: <span class="hljs-number">10</span> y: <span class="hljs-number">10</span> width: <span class="hljs-number">20</span> height: <span class="hljs-number">20</span>];<br></code></pre></td></tr></table></figure><br>附加说明<br><figure class="highlight cpp"><figcaption><span>Array.map</span></figcaption><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">array</span>.<span class="hljs-built_in">map</span>(callback[, thisArg])<br></code></pre></td></tr></table></figure><br>附加说明和网址<br><figure class="highlight excel"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact">Underscore.js</a></figcaption><table><tr><td class="code"><pre><code class="hljs excel">_.compact([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-built_in">false</span>, <span class="hljs-number">2</span>, &#x27;&#x27;, <span class="hljs-number">3</span>]);<br>=&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>你的心换了锁，钥匙给了别人</title>
     <url>/2017/11/24/%E4%BD%A0%E7%9A%84%E5%BF%83%E6%8D%A2%E4%BA%86%E9%94%81%EF%BC%8C%E9%92%A5%E5%8C%99%E7%BB%99%E4%BA%86%E5%88%AB%E4%BA%BA/</url>
     <content><![CDATA[<p>雨，好像是千万支魔指，好像是千万条琴弦，弹出了千变万化的声音——题记</p>
@@ -2190,6 +2168,28 @@ Class08 &lt;--&gt; C2: Cool label
       </categories>
       <tags>
         <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo练习</title>
+    <url>/2017/11/24/hexo%E7%BB%83%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="一、别号：-quote"><a href="#一、别号：-quote" class="headerlink" title="一、别号： quote"></a>一、别号： quote</h3><blockquote><p>content</p>
+<footer><strong>[author[</strong><cite>source]] [link] [source_link_title]</cite></footer></blockquote>
+<blockquote><p>生活在哪里跌倒，在哪里爬起来！</p>
+</blockquote>
+<blockquote><p>生活在哪里跌倒，在哪里爬起来！</p>
+<footer><strong>博客</strong><cite>崔盛希</cite></footer></blockquote>
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io">http://devdocs.io</a></p>
+<footer><strong>@CuiShegXi</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
+<h3 id="二、别名：-code"><a href="#二、别名：-code" class="headerlink" title="二、别名： code"></a>二、别名： code</h3><p>写法：<br><figure class="highlight clean"><figcaption><span>[title] [lang:language] [url] [link text]</span></figcaption><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">code</span> snippet<br></code></pre></td></tr></table></figure><br>普通代码<br><figure class="highlight isbl"><table><tr><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">alert</span>(<span class="hljs-string">&#x27;Hello World!&#x27;</span>);</span><br></code></pre></td></tr></table></figure><br>指定语言的代码<br><figure class="highlight objc"><table><tr><td class="code"><pre><code class="hljs objc">[rectangle setX: <span class="hljs-number">10</span> y: <span class="hljs-number">10</span> width: <span class="hljs-number">20</span> height: <span class="hljs-number">20</span>];<br></code></pre></td></tr></table></figure><br>附加说明<br><figure class="highlight cpp"><figcaption><span>Array.map</span></figcaption><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">array</span>.<span class="hljs-built_in">map</span>(callback[, thisArg])<br></code></pre></td></tr></table></figure><br>附加说明和网址<br><figure class="highlight excel"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact">Underscore.js</a></figcaption><table><tr><td class="code"><pre><code class="hljs excel">_.compact([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-built_in">false</span>, <span class="hljs-number">2</span>, &#x27;&#x27;, <span class="hljs-number">3</span>]);<br>=&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
